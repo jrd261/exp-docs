@@ -3,7 +3,7 @@ url: "http://127.0.0.1:4012"
 baseurl: "/mydoc/writers-pdf"
 port: 4012
 output: pdf
-print_title: Jekyll theme for documentation — writers
+print_title: EXP Platform Documentation — Writers
 print_subtitle: version 4.0
 output: pdf
 defaults:
