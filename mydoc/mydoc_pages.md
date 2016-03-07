@@ -8,19 +8,19 @@ summary: "This theme uses pages only, not posts. You need to make sure your page
 
 
 ## Where to author content
-Use a text editor such as Sublime Text, WebStorm, IntelliJ, or Atom to create pages. 
+Use a text editor such as Sublime Text, WebStorm, IntelliJ, or Atom to create pages.
 
 My preference is IntelliJ/WebStorm, since it will treat all files in your project as belonging to a project. This allows you to easily search for instances of keywords, do find-and-replace operations, or do other actions that apply across the whole project.
 
 ## Page names and excluding files from outputs
 
-By default, everything in your project is included in the output. This is problematic when you're single sourcing and need to exclude some files from an output. 
+By default, everything in your project is included in the output. This is problematic when you're single sourcing and need to exclude some files from an output.
 
-Here's the approach I've taken. Put all files in your root directory, but put the project name first and then any special conditions. For example, mydoc_writers_intro.md. 
+Here's the approach I've taken. Put all files in your root directory, but put the project name first and then any special conditions. For example, mydoc_writers_intro.md.
 
 In your configuration file, you can exclude all files that don't belong to that project by using wildcards such as the following:
 
-exclude: 
+exclude:
 
 - mydoc_*
 - mydoc_writers_*
@@ -58,12 +58,12 @@ The following table describes each of the frontmatter that you can use with this
 
 {{site.data.alerts.tip}} You can see the scripts that conditionally appear by looking in the _layouts/default.html page. Note that these scripts are served via a CDN, so the user must be online for the scripts to work. However, if the user isn't online, the tables and video still appear. In other words, they degrade gracefully. {{site.data.alerts.end}}
 
-## What about permalinks? 
+## What about permalinks?
 What about permalinks? This theme isn't build using permalinks because it makes linking and directory structures problematic. Permalinks generate an index file inside a folder for each file in the output. This makes it so links (to other pages as well as to resources such as styles and scripts) need to include `../` depending upon where the other assets are located. But for any pages outside folders, such as the index.html page, you wouldn't use the `../` structure.
 
 Basically, permalinks complicate the linking structure significantly, so they aren't used here. As a result, page URLs have an .html extension. If you include `permalink: something` in your frontmatter, your link to the page will break (actually, you could still go to sample instead of sample.html, but none of the styles or scripts will be correctly referenced).
 
-## Colons in page titles 
+## Colons in page titles
 
 If you want to use a colon in your page title, you must enclose the title's value in quotation marks.
 
@@ -76,7 +76,7 @@ If you add `published: false` in the frontmatter, your page won't be published. 
 ## Markdown or HTML format
 
 Pages can be either Markdown or HTML format (specified through either an .md or .html file extension).
- 
+
 If you use Markdown, you can also include HTML formatting where needed. But not vice versa &mdash; if you use HTML (as your file extension), you can't insert Markdown content.
 
 Also, if you use HTML inside a Markdown file, you cannot use Markdown inside of HTML. But you can use HTML inside of Markdown.
@@ -94,9 +94,9 @@ If this approach creates too many files in one long list, consider grouping file
 You can use standard Multimarkdown syntax for tables. You can also use fenced code blocks. The configuration file shows the Markdown processor and extensiosn:
 
 ```
-markdown: redcarpet
+markdown: kramdown
 
-redcarpet:
+kramdown:
   extensions: ["no_intra_emphasis", "fenced_code_blocks", "tables", "with_toc_data"]
 ```
 These extensions mean the following:
@@ -108,7 +108,7 @@ These extensions mean the following:
 | tables  | allow table syntax    |
 | with_toc\_data  | add ID tags to headings automatically   |
 
-You can also add "autolink" as an option if you want links such as http://google.com to automatically be converted into links. 
+You can also add "autolink" as an option if you want links such as http://google.com to automatically be converted into links.
 
 {{site.data.alerts.note}} Make sure you leave the <code>with_toc_data</code> option included. This auto-creates an ID for each Markdown-formatted heading, which then gets injected into the mini-TOC. Without this auto-creation of IDs, the mini-TOC won't include the heading. If you ever use HTML formatting for headings, you need to manually add an ID attribute to the heading in order for the heading to appear in the mini-TOC. {{site.data.alerts.end}}
 

@@ -40,7 +40,7 @@ GEM
       liquid (= 3.0.6)
       mercenary (~> 0.3)
       rdiscount (= 2.1.8)
-      redcarpet (= 3.3.3)
+      kramdown (= 3.3.3)
       rouge (= 1.10.1)
       terminal-table (~> 1.4)
     github-pages-health-check (0.6.0)
@@ -102,14 +102,11 @@ GEM
       sawyer (~> 0.6.0, >= 0.5.3)
     posix-spawn (0.3.11)
     public_suffix (1.5.3)
-    pygments.rb (0.6.3)
-      posix-spawn (~> 0.3.6)
-      yajl-ruby (~> 1.2.0)
     rb-fsevent (0.9.7)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     rdiscount (2.1.8)
-    redcarpet (3.3.3)
+    kramdown (3.3.3)
     rouge (1.10.1)
     safe_yaml (1.0.4)
     sass (3.4.21)
@@ -131,7 +128,7 @@ DEPENDENCIES
   github-pages
   jekyll
   pygments.rb
-  redcarpet
+  kramdown
 
 BUNDLED WITH
    1.10.6

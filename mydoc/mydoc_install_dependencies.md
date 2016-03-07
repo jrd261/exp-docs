@@ -76,7 +76,7 @@ source "https://rubygems.org"
 # gem "rails"
 gem 'github-pages'
 gem 'pygments.rb'
-gem 'redcarpet'
+gem 'kramdown'
 ```
 
 Use Bundler to install the needed gems:
