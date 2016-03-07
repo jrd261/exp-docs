@@ -7,7 +7,8 @@ product: doc
 platform: all
 version: all
 output: web
-destination: ../doc_outputs/mydoc/designers
+# destination: ../doc_outputs/mydoc/designers
+url: "brianfeister.github.io/documentation-theme-jekyll"
 topnav_title: Jekyll Documentation Theme
 homepage_title: Jekyll doc theme for designers
 site_title: Jekyll theme for designers
