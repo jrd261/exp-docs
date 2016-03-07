@@ -314,6 +314,10 @@ footer {
 font-size: smaller;
 }
 
+footer .footer-logo {
+  width: 60px;
+}
+
 /* FAQ page */
 #accordion .panel-heading {
 font-size: 12px;
@@ -398,6 +402,12 @@ ul#mysidebar {
   margin-top:40px;
 
   border-radius:0px;
+}
+
+img.sidebar-logo {
+  width: 144px;
+  display: block;
+  margin: 0 auto 15px;
 }
 
 .nav ul li ul li a {
