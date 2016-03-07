@@ -271,7 +271,7 @@ textarea {
   background-image: none;
 }
 a {
-  color: #248EC2;
+  color: rgb(126,87,194);
   text-decoration: none;
 }
 a:hover,
@@ -313,7 +313,7 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid #bac9c2;
+  border-top: 1px solid rgb(166, 136, 220);
 }
 .sr-only {
   position: absolute;
@@ -457,7 +457,7 @@ h4 small,
 .page-header {
   padding-bottom: 9px;
   margin: 40px 0 20px;
-  border-bottom: 1px solid #bac9c2;
+  border-bottom: 1px solid rgb(166, 136, 220);
 }
 ul,
 ol {
@@ -513,10 +513,10 @@ dd {
   .dl-horizontal dd:after {
     content: " ";
     /* 1 */
-  
+
     display: table;
     /* 2 */
-  
+
   }
   .dl-horizontal dd:after {
     clear: both;
@@ -525,10 +525,10 @@ dd {
   .dl-horizontal dd:after {
     content: " ";
     /* 1 */
-  
+
     display: table;
     /* 2 */
-  
+
   }
   .dl-horizontal dd:after {
     clear: both;
@@ -546,7 +546,7 @@ abbr.initialism {
 blockquote {
   padding: 10px 20px;
   margin: 0 0 20px;
-  border-left: 5px solid #bac9c2;
+  border-left: 5px solid rgb(166, 136, 220);
 }
 blockquote p {
   font-size: 17.5px;
@@ -567,7 +567,7 @@ blockquote small:before {
 blockquote.pull-right {
   padding-right: 15px;
   padding-left: 0;
-  border-right: 5px solid #bac9c2;
+  border-right: 5px solid rgb(166, 136, 220);
   border-left: 0;
 }
 blockquote.pull-right p,
@@ -1571,7 +1571,7 @@ input[type="number"]::-webkit-inner-spin-button {
 .form-control[readonly],
 fieldset[disabled] .form-control {
   cursor: not-allowed;
-  background-color: #bac9c2;
+  background-color: rgb(166, 136, 220);
 }
 textarea.form-control {
   height: auto;
@@ -3203,7 +3203,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   font-weight: normal;
   line-height: 1;
   text-align: center;
-  background-color: #bac9c2;
+  background-color: rgb(166, 136, 220);
   border: 1px solid #cccccc;
   border-radius: 4px;
 }
@@ -3298,7 +3298,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #bac9c2;
+  background-color: rgb(166, 136, 220);
 }
 .nav > li.disabled > a {
   color: #f9faf9;
@@ -3313,7 +3313,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
-  background-color: #bac9c2;
+  background-color: rgb(166, 136, 220);
   border-color: #74ab50;
 }
 .nav .nav-divider {
@@ -3339,7 +3339,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   border-radius: 4px 4px 0 0;
 }
 .nav-tabs > li > a:hover {
-  border-color: #bac9c2 #bac9c2 #dddddd;
+  border-color: rgb(166, 136, 220) rgb(166, 136, 220) #dddddd;
 }
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
@@ -4053,7 +4053,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
-  background-color: #bac9c2;
+  background-color: rgb(166, 136, 220);
 }
 .pagination > .active > a,
 .pagination > .active > span,
@@ -4150,7 +4150,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pager li > a:hover,
 .pager li > a:focus {
   text-decoration: none;
-  background-color: #bac9c2;
+  background-color: rgb(166, 136, 220);
 }
 .pager .next > a,
 .pager .next > span {
@@ -4271,7 +4271,7 @@ a.list-group-item.active > .badge,
   font-weight: 200;
   line-height: 2.1428571435;
   color: inherit;
-  background-color: #bac9c2;
+  background-color: rgb(166, 136, 220);
 }
 .jumbotron h1 {
   line-height: 1;
