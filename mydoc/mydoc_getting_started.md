@@ -24,7 +24,7 @@ I added a page called {{site.data.mydoc.mydoc_urls.mydoc_install_dependencies.li
 
 Before you start customizing the theme, make sure you can build the theme with the default content and settings first.
 
-1. Download the theme from the [exp-docs Github repository](https://github.com/tomjohnson1492/exp-docs) and unzip it into your ~username/projects folder.
+1. Download the theme from the [exp-docs Github repository](https://github.com/scala-inc/exp-docs) and unzip it into your ~username/projects folder.
 
     You can either download the theme files directly by clicking the **Download Zip** button on the right of the repo, or use git to clone the repository to your local machine.
 

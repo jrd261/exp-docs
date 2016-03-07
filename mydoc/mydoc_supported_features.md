@@ -1,6 +1,6 @@
 ---
 title: Supported features
-tags: 
+tags:
   - "getting_started"
 keywords: "features, capabilities, scalability, multichannel output, dita, hats, comparison, benefits"
 last_updated: "November 30, 2015"
@@ -14,16 +14,15 @@ Features | Supported | Notes
 --------|-----------|-----------
 Content re-use | Yes | Supports re-use through Liquid. You can re-use variables, snippets of code, entire pages, and more. In DITA speak, this includes conref and keyref.
 Markdown | Yes | You can author content using Markdown syntax. This is a wiki-like syntax for HTML that you can probably pick up in 10 minutes. Where Markdown falls short, you can use HTML. Where HTML falls short, you use Liquid, which is a scripting that allows you to incorporate more advanced logic.
-Responsive design | Yes | Uses Bootstrap framework. 
+Responsive design | Yes | Uses Bootstrap framework.
 Translation | Yes | I haven't done a translation project yet (just a pilot test). Here's the basic approach: Export the pages and send them to a translation agency. Then create a new project for that language and insert the translated pages. Everything will be translated.
 PDF | Yes | You can generate PDFs from your Jekyll site. This theme uses Prince XML (costs $495) to do the PDF conversion task. You basically set up a page that uses Liquid logic to get all the pages you want, and then you use PrinceXML (not part of Jekyll) to convert that page into a PDF.
-Collaboration |  Yes | You collaborate with Jekyll projects the same way that developers collaborate with software projects. (You don't need a CMS.) Because you're working with text file formats, you can use any version control software (Git, Mercurial, Perforce, Bitbucket, etc.) as a CMS for your files. 
+Collaboration |  Yes | You collaborate with Jekyll projects the same way that developers collaborate with software projects. (You don't need a CMS.) Because you're working with text file formats, you can use any version control software (Git, Mercurial, Perforce, Bitbucket, etc.) as a CMS for your files.
 Scalability | Yes | Your site can scale to any size. It's up to you to determine how you will design the information architecture for your thousands of pages. You can choose what you display at first, second, third, fourth, and more levels, etc. Note that when your project has thousands of pages, the build time will be longer (maybe 1 minute per thousand pages?). It really depends on how many for loops you have iterating through the pages.
 Lightweight architecture | Yes | You don't need a LAMP stack (Linux, Apache, MySQL, PHP) architecture to get your site running. All of the building is done on your own machine, and you then push the static HTML files onto a server.
 Multichannel output | Yes | This term can mean a number of things, but let's say you have 10 different sites you want to generate from the same source. Maybe you have 7 different versions of your product, and 3 different locations. You can assemble your Jekyll site with various configurations, variants, and more. Jekyll actually does all of this quite well. Just specify a different config file for each unique build.
-Skinnability | Yes | You can skin your Jekyll site to look identical to pretty much any other site online. If you have a UX team, they can really skin and design the site using all the tools familiar to the modern designer -- JavaScript, HTML5, CSS, jQuery, and more. Jekyll is built on the modern web development stack rather than the XML stack (XSLT, XPath, XQuery). 
+Skinnability | Yes | You can skin your Jekyll site to look identical to pretty much any other site online. If you have a UX team, they can really skin and design the site using all the tools familiar to the modern designer -- JavaScript, HTML5, CSS, jQuery, and more. Jekyll is built on the modern web development stack rather than the XML stack (XSLT, XPath, XQuery).
 Support | Yes | The community for your Jekyll site isn't so much other tech writers (as is the case with DITA) but rather the wider web development community. [Jekyll Talk](http://talk.jekyllrb.com) is a great resource. So is Stack Overflow.
-Blogging features | No | This theme just uses pages, not posts. I may integrate in post features in the future, but the theme really wasn't designed with posts in mind. If you want a post version of the site, you can clone my [blog theme](https://github.com/tomjohnson1492/tomjohnson1492.github.io), which is highly similar in that it's based on Bootstrap, but it uses posts to drive most of the features. I wanted to keep the project files simple.
 CMS interface | No | Unlike with WordPress, you don't log into an interface and navigate to your files. You work with text files and preview the site dynamically in your browser. Don't worry -- this is part of the simplicy that makes Jekyll awesome. I recommend using WebStorm as your text editor.
 WYSIWYG interface | No, but ... | As noted in the previous point, I use WebStorm to author content, because I like working in text file formats. But you can use any Markdown editor you want (e.g., Lightpaper for Mac, Marked) to author your content.
 Versioning | Yes, but... | Jekyll doesn't version your files. You upload your files to a version control system such as Git. Your files are versioned there.
