@@ -1,3 +1,3 @@
-scp -r /Applications/XAMPP/xamppfiles/htdocs/documentation-theme-jekyll/writers name@domain:/var/www/html/documentation-theme-jekyll/writers
+scp -r /Applications/XAMPP/xamppfiles/htdocs/exp-docs/writers name@domain:/var/www/html/exp-docs/writers
 echo "All done."
 

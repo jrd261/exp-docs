@@ -23,7 +23,7 @@ jekyll serve
 By default, the _config.yml in the root directory will be used, Jekyll will scan the current directory for files, and the folder `_site` will be used as the output. You can customize these build commands like this:
 
 ```
-jekyll serve --config configs/config_writers.yml --destination /users/tjohnson/projects/documentation-theme-jekyll-builds/writer
+jekyll serve --config configs/config_writers.yml --destination /users/tjohnson/projects/exp-docs-builds/writer
 ```
 
 Here the `configs/config_writers.yml` file is used instead of `_config.yml`. The destination directory is `../mydoc_writers`.

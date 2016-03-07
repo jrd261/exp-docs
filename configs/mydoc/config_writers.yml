@@ -7,12 +7,12 @@ version: all
 output: web
 destination: ../doc_outputs/mydoc/writers
 topnav_title: Jekyll Documentation Theme
-homepage_title: Jekyll doc theme for writers
-site_title: Jekyll theme for writers
+homepage_title: Jekyll doc theme for designers
+site_title: Documentation for EXP Platform
 project_folder: mydoc
-company_name: Your company
+company_name: EXP
 footer_image_location: ../../common_images/company_logo.png
-github_editme_path: tomjohnson1492/documentation-theme-jekyll/edit/reviews
+github_editme_path: scalainc/exp-docs/edit/gh_pages
 # variables
 
 
@@ -38,7 +38,7 @@ exclude:
 
 # same for all
 host: 127.0.0.1
-feedback_email: tomjohnson1492@gmail.com
+feedback_email: replace-me@scala.com
 
 # these settings should work, but they don't seem to apply the right highlighting
 

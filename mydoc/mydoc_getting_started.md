@@ -24,7 +24,7 @@ I added a page called {{site.data.mydoc.mydoc_urls.mydoc_install_dependencies.li
 
 Before you start customizing the theme, make sure you can build the theme with the default content and settings first.
 
-1. Download the theme from the [documentation-theme-jekyll Github repository](https://github.com/tomjohnson1492/documentation-theme-jekyll) and unzip it into your ~username/projects folder.
+1. Download the theme from the [exp-docs Github repository](https://github.com/tomjohnson1492/exp-docs) and unzip it into your ~username/projects folder.
 
     You can either download the theme files directly by clicking the **Download Zip** button on the right of the repo, or use git to clone the repository to your local machine.
 
@@ -49,7 +49,7 @@ Before you start customizing the theme, make sure you can build the theme with t
 
 	These gems are the only ones the project uses. Go to the [Rubygems site](https://rubygems.org) for each of these gems (based on the links above). In the right column, click the "INSTALL" command and paste the copied command into your terminal. If your computer gives you permissions errors, add `sudo` before the command.
 
-5. In your terminal, browse to the documentation-theme-jekyll folder that you downloaded.
+5. In your terminal, browse to the exp-docs folder that you downloaded.
 6. Build the writer's output:
 
     ```
@@ -88,7 +88,7 @@ Before you start customizing the theme, make sure you can build the theme with t
 
 ## Questions
 
-If you have questions, contact me at <a href="mailto:tomjohnson1492@gmail.com">tomjohnson1492@gmail.com</a>. My regular site is [idratherbewriting.com](http://idratherbewriting.com). I'm eager to make these installation instructions as clear as possible, so please let me know if there are areas of confusion that need clarifying.
+If you have questions, contact me at <a href="mailto:replace-me@scala.com">replace-me@scala.com</a>. My regular site is [idratherbewriting.com](http://idratherbewriting.com). I'm eager to make these installation instructions as clear as possible, so please let me know if there are areas of confusion that need clarifying.
 
 {% include custom/mydoc/getting_started_series_next.html %}
 
