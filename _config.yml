@@ -14,7 +14,7 @@ homepage_title: EXP Docs
 site_title: Documentation for EXP Platform
 project_folder: mydoc
 company_name: EXP
-footer_image_location: common_images/exp_logo_large.svg
+footer_image_location: /common_images/exp_logo_large.svg
 github_editme_path: scalainc/exp-docs/edit/gh-pages
 # variables
 
