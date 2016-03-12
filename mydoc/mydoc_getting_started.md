@@ -18,7 +18,7 @@ Before you start installing the theme, make sure you have all of these prerequis
 * **[Rubygems](https://rubygems.org/pages/download)**. This is a package manager for Ruby. Type `which gem` to confirm.
 * **Text editor**: My recommendations is WebStorm (or IntelliJ). You can use another text editor. However, there are certain shortcuts and efficiencies in WebStorm (such as using Find and Replace across the project, or Markdown syntax highlighting) that I'll be noting in this documentation.
 
-I added a page called {{site.data.mydoc.mydoc_urls.mydoc_install_dependencies.link}} that explains how to install any necessary RubyGem dependencies in case you run into errors.
+I added a page called {{site.data.urls.mydoc_install_dependencies.link}} that explains how to install any necessary RubyGem dependencies in case you run into errors.
 
 ## Build the default project
 
@@ -80,11 +80,11 @@ Before you start customizing the theme, make sure you can build the theme with t
 
 	Open the writers and designers folders and click the index.html file. The themes should launch and appear similar to their appearance in the preview folder. This is because the themes are built using a relative link structure, so you can move the theme to any folder you want without breaking the links.
 
-    If the theme builds both outputs successfully, great. You can move on to the other sections. If you run into errors building the themes, solve them before moving on. See {{site.data.mydoc.mydoc_urls.mydoc_troubleshooting.link}} for more information.
+    If the theme builds both outputs successfully, great. You can move on to the other sections. If you run into errors building the themes, solve them before moving on. See {{site.data.urls.mydoc_troubleshooting.link}} for more information.
 
-	{{site.data.alerts.tip}} You can set up profiles in iTerm to initiate all your builds with one selection. See {{site.data.mydoc.mydoc_urls.mydoc_iterm_profiles.link}} for details. {{site.data.alerts.end}}
+	{{site.data.alerts.tip}} You can set up profiles in iTerm to initiate all your builds with one selection. See {{site.data.urls.mydoc_iterm_profiles.link}} for details. {{site.data.alerts.end}}
 
-	More information about building the PDF versions is provided in {{site.data.mydoc.mydoc_urls.mydoc_generating_pdfs.link}}.
+	More information about building the PDF versions is provided in {{site.data.urls.mydoc_generating_pdfs.link}}.
 
 ## Questions
 

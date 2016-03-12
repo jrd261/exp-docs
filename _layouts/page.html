@@ -13,11 +13,12 @@ layout: default
    {% endif %}
 {% include toc.html %}
 
+  {{content}}
+
     {% if site.github_editme_path %}
 
-    <a target="_blank" href="https://github.com/{{site.github_editme_path}}/{{page.path}}" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+    <a target="_blank" href="https://github.com/{{site.github_editme_path}}/{{page.path}}" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Suggest Edits</a>
     {% endif %}
-  {{content}}
 
 <div class="tags">
     {% if page.tags != null %}
@@ -34,5 +35,6 @@ layout: default
 </div>
 
 {{hr_shaded}}
+
 
 {% include footer.html %}

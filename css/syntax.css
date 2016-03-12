@@ -6,8 +6,7 @@
     border-radius: 4px;
 }
 .highlight pre, code { background: #272822; border-radius: 0; }
-.highlight @extend %vertical-rhythm;
-.highlight .c { color: #c2b680; background-color: #272822 } /* Comment */
+.highlight .c { color: #c2b680; background-color: #272822; } /* Comment */
 .highlight .err { color: #dcdccc; background-color: #272822 } /* Error */
 .highlight .g { color: #dcdccc; background-color: #272822 } /* Generic */
 .highlight .k { color: #ff6651; font-weight: bold } /* Keyword */
@@ -75,4 +74,3 @@
 .highlight .vg { color: #dabfa5; background-color: #272822 } /* Name.Variable.Global */
 .highlight .vi { color: #dabfa5; background-color: #272822 } /* Name.Variable.Instance */
 .highlight .il { color: #dcdccc; background-color: #272822 } /* Literal.Number.Integer.Long */
-}

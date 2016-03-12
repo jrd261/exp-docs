@@ -18,7 +18,7 @@ Also, creating a PDF this way gives you a lot more control and customization cap
 
 ## Demo
 
-You can see an example of the finished product here: 
+You can see an example of the finished product here:
 
 <a target="_blank" class="noCrossRef" href="files/{{pdf_file_name}}"><button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> PDF Download</button></a>
 
@@ -56,10 +56,10 @@ defaults:
 
 Also note that the default page layout is `page_print`. This layout strips out all the sections that shouldn't appear in the print PDF, such as the sidebar and top navigation bar.
 
-Finally, note that there's a `output: pdf` toggle in case you want to make some of your content unique to PDF output. For example, you could add conditional logic that checks whether `site.output` is `pdf` or `web`. If it's `pdf`, then include information only for the PDF, and so on. 
+Finally, note that there's a `output: pdf` toggle in case you want to make some of your content unique to PDF output. For example, you could add conditional logic that checks whether `site.output` is `pdf` or `web`. If it's `pdf`, then include information only for the PDF, and so on.
 
 In the configuration file, customize the values for the `print_title` and `print_subtitle` that you want. These will appear on the title page of the PDF.
-     
+
 ## 3. Make sure your sidebar_doc.yml file has a titlepage.html and tocpage.html
 
 There are two template pages in the root directory that are critical to the PDF:
@@ -108,7 +108,7 @@ There's another file (in the root directory of the theme) that is critical to th
 
 Open up the css/printstyles.css file and customize what you want for the headers and footers. At the very least, customize the email address (`youremail@domain.com`) that appears in the bottom left.
 
-Exactly how the print styling works here is pretty cool. You don't need to understand the rest of the content in this section unless you want to customize your PDFs to look different from what I've configured. 
+Exactly how the print styling works here is pretty cool. You don't need to understand the rest of the content in this section unless you want to customize your PDFs to look different from what I've configured.
 
 This style creates a page reference for a link:
 
@@ -128,7 +128,7 @@ a[href*="mailto"]::after, a[data-toggle="tooltip"]::after, a[href].noCrossRef::a
 
 {{site.data.alerts.tip}} If you have a link to a file download, or some other link that shouldn't have a cross reference (such as link used in JavaScript for navtabs or collapsible sections, for example, add `noCrossRef` as a class to the link to avoid having it say "page 0" in the cross reference.{{site.data.alerts.end}}
 
-This style specifies that following links to web resources, the URL should be inserted instead of the page number: 
+This style specifies that following links to web resources, the URL should be inserted instead of the page number:
 
 ```css
 a[href^="http:"]::after, a[href^="https:"]::after {
@@ -148,7 +148,7 @@ This style sets the page margins:
 }
 ```
 
-To set a specific style property for a particular page, you have to name the page. This allows Prince to identify the page. 
+To set a specific style property for a particular page, you have to name the page. This allows Prince to identify the page.
 
 First you add frontmatter to the page that specifies the type. For the titlepage.html, here's the frontmatter:
 
@@ -190,7 +190,7 @@ body.title { page: title }
 
 This means that for content inside of `body class="title"`, we can style this page in our stylesheet using `@page title`.
 
-Here's how that title page is styled: 
+Here's how that title page is styled:
 
 ```css
 @page title {
@@ -211,7 +211,7 @@ Here's how that title page is styled:
 
 As you can see, we don't have any header or footer content, because it's the title page.
 
-For the tocpage.html, which has the `type: frontmatter`, this is specified in the stylesheet: 
+For the tocpage.html, which has the `type: frontmatter`, this is specified in the stylesheet:
 
 ```css
 body.frontmatter { page: frontmatter }
@@ -235,7 +235,7 @@ body.frontmatter {counter-reset: page 1}
 
 With `counter(page, lower-roman)`, we reset the page count to 1 so that the title page doesn't start the count. Then we also add some header and footer info. The page numbers start counting in lower-roman numerals.
 
-Finally, for the first page (which doesn't have a specific name), we restart the counting to 1 again and this time use regular numbers. 
+Finally, for the first page (which doesn't have a specific name), we restart the counting to 1 again and this time use regular numbers.
 
 ```css
 body.first_page {counter-reset: page 1}
@@ -286,7 +286,7 @@ There are a couple of Prince functions that are default functions from Prince. T
         content: string(doctitle);
 ```
 
-This gets the current page: 
+This gets the current page:
 
 ```js
         content: "Page " counter(page);
@@ -296,7 +296,7 @@ Because the theme uses JavaScript in the CSS, you have to add the `--javascript`
 
 ## 5. Customize the PDF script
 
-Open the mydoc_1_multiserve_pdf.sh file in the root directory and customize it for your specific configuration files. 
+Open the mydoc_1_multiserve_pdf.sh file in the root directory and customize it for your specific configuration files.
 
 echo 'Killing all Jekyll instances'
 kill -9 $(ps aux | grep '[j]ekyll' | awk '{print $2}')
@@ -378,7 +378,7 @@ javascript content here ...
 ```
 {% endraw %}
 
-For more detail about using `unless` in conditional logic, see {{site.data.mydoc.mydoc_urls.mydoc_conditional_logic.link}}. What this code means is "run this code unless this value is the case."
+For more detail about using `unless` in conditional logic, see {{site.data.urls.mydoc_conditional_logic.link}}. What this code means is "run this code unless this value is the case."
 
 ## Overriding Bootstrap Print Styles
 
@@ -387,7 +387,7 @@ The theme relies on Bootstrap's CSS for styling. However, for print media, Boots
 ```
 @media print{*,:after,:before{color:#000!important;text-shadow:none!important;background:0 0!important;-webkit-box-shadow:none!important;box-shadow:none!important}
 ```
-This is minified, but basically the `*` (asterisk) means select all, and applied the color #000 (black). As a result, the Bootstrap style strips out all color from the PDF (for Bootstrap elements). 
+This is minified, but basically the `*` (asterisk) means select all, and applied the color #000 (black). As a result, the Bootstrap style strips out all color from the PDF (for Bootstrap elements).
 
 This is problematic for code snippets that have syntax highlighting. I decided to remove this de-coloring from the print output. I commented out the Bootstrap style:
 

@@ -1,6 +1,6 @@
 ---
 title: 5. Customize the conditions file
-tags: 
+tags:
   - navigation
 keywords: "single sourcing, conditions, filtering, attributes, logic"
 last_updated: "November 30, 2015"
@@ -24,9 +24,9 @@ In the \_includes/custom directory, open the conditions.html file. Duplicate one
 ```
 {% if site.project == "mydoc_writers" %}
 {% assign audience = "writers" %}
-{% assign sidebar = site.data.mydoc.mydoc_sidebar.entries %}
-{% assign topnav = site.data.mydoc.mydoc_topnav.topnav %}
-{% assign topnav_dropdowns = site.data.mydoc.mydoc_topnav.topnav_dropdowns %}
+{% assign sidebar = site.data.sidebar.entries %}
+{% assign topnav = site.data.topnav.topnav %}
+{% assign topnav_dropdowns = site.data.topnav.topnav_dropdowns %}
 {% assign version = "all" %}
 {% assign product = "all" %}
 {% assign platform = "all" %}
@@ -40,7 +40,7 @@ You need to duplicate this block for each output you have.
 
 Once you've duplicated the block, make a few customizations:
 
-* In each place that "mydoc" appears, change "mydoc" to "acme". 
+* In each place that "mydoc" appears, change "mydoc" to "acme".
 * Use the same attributes for project, audience, version, product, and platform that you used in your configuration file. (If you don't have a specific attribute value that you need, just put "all".) The values here have to exactly match those in the configuration file.
 
 {{site.data.alerts.tip}} If you want to create signposts in the code as shown in the conditions.html file, install a utility called [figlets](http://www.figlet.org/) on your Mac. The figlets just make scanning long code blocks easier. If you have 15+ configuration groupings in your conditions file, the figlets make it easy to scan.{{site.data.alerts.end}}

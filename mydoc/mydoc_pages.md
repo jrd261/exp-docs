@@ -71,7 +71,7 @@ If you want to use a colon in your page title, you must enclose the title's valu
 
 If you add `published: false` in the frontmatter, your page won't be published. You can also move draft pages into the _drafts folder to exclude them from the build.
 
-{{site.data.alerts.tip}} You can create file templates in WebStorm that have all your common frontmatter, such as all possible tags, prepopulated. See {{site.data.mydoc.mydoc_urls.mydoc_webstorm_text_editor.link}} for details. {{site.data.alerts.end}}
+{{site.data.alerts.tip}} You can create file templates in WebStorm that have all your common frontmatter, such as all possible tags, prepopulated. See {{site.data.urls.mydoc_webstorm_text_editor.link}} for details. {{site.data.alerts.end}}
 
 ## Markdown or HTML format
 

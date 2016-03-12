@@ -329,6 +329,11 @@ text-decoration: none;
 }
 
 /* navgoco sidebar styles (customized) */
+
+.nav a.brand:hover, .nav li.active > a.brand {
+  background-color: transparent;
+}
+
 .nav, .nav ul, .nav li {
     list-style: none;
 }
@@ -983,3 +988,4 @@ div.results {
     background-color: yellow;
     font-weight: bold;
 }
+

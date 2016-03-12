@@ -1,13 +1,13 @@
 ---
 title: Top navigation
-tags: 
+tags:
   - navigation
 keywords: "custom menu, custom_menu, pop-out, frameescape, frame escape, top nav bar, topnav"
 last_updated: "November 30, 2015"
 summary: "The top navigation provides some additional features involving a custom menu and pop-out link that you can customize."
 ---
 
-{{site.data.alerts.note}} For basic information about configuring the top navigation, see {{site.data.mydoc.mydoc_urls.mydoc_top_navigation.link}}. This section gets into the top navigation in more depth. {{site.data.alerts.end}}
+{{site.data.alerts.note}} For basic information about configuring the top navigation, see {{site.data.urls.mydoc_top_navigation.link}}. This section gets into the top navigation in more depth. {{site.data.alerts.end}}
 ## Custom Menu
 
 It's common to publish multiple sites. If you want to link the multiple together, you could simply list links to the other doc sites in a drop-down menu configured in the topnav_dropdowns section in the topnav_doc.yml file. However, suppose you want to do something more fancy.
@@ -28,7 +28,7 @@ Included in the topnav.html file is an include to /doc/custom_menu.html. The cod
 ```
 {% endraw %}
 
-{{site.data.alerts.note}} In the theme, the link to the custom_menu.html include in the \_includes/topnav.html file is currently commented out. This is because this feature only works when you have multiple outputs hosted on the same server. 
+{{site.data.alerts.note}} In the theme, the link to the custom_menu.html include in the \_includes/topnav.html file is currently commented out. This is because this feature only works when you have multiple outputs hosted on the same server.
 
 Github Pages, where I'm publishing this theme, allows only one output per Github Pages directory. So rather than removing this custom_menu feature from the theme, I've just commented it out so that it won't appear broken in the demo.{{site.data.alerts.end}}
 
@@ -46,6 +46,6 @@ This Custom Menu may not be something you want, and if so, just remove the inclu
 
 ## Pop-out link
 
-The topnav.html file also has an include to frameescape.html (which is also commented out). What does this file do? If the site is embedded inside a frame, a link on the top navigation bar appears that says Pop-out, and it will open the site in a new window. 
+The topnav.html file also has an include to frameescape.html (which is also commented out). What does this file do? If the site is embedded inside a frame, a link on the top navigation bar appears that says Pop-out, and it will open the site in a new window.
 
 In most cases, you'll want to simply remove this include. I added this because some of my doc sites are delivered through a Salesforce Community and are embedded inside another page in a small area. This pop-out link is a way of liberating the site from these embedded page scenarios. If your site isn't embedded in an iframe, the Pop-out link doesn't appear. (Also, because it is commented out, it won't appear.) You can remove this part of the theme.

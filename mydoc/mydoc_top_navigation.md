@@ -1,6 +1,6 @@
 ---
 title: 7. Configure the top navigation
-tags: 
+tags:
   - navigation
 keywords: "bootstrap, lists, drop-down, drop down navigation, top nav bar, topnav"
 last_updated: "November 30, 2015"
@@ -13,7 +13,7 @@ weight: 7
 
 ## Changing the top navigation
 
-The top navigation reads from the \_data/mydoc/mydoc_topnav_doc.yml file. There are two *separate* sections in the mydoc_topnav_doc.yml file:
+The top navigation reads from the \_data.topnav_doc.yml file. There are two *separate* sections in the topnav.yml file:
 
 * `topnav`
 * `topnav_dropdowns`
@@ -39,7 +39,7 @@ If you want the URL to point to an external site, use `external_url` instead of 
 
 ## No links in topnav get included in the PDF
 
-The way the PDF file is currently set up, only the links in the sidebar get included in the PDF. None of the links in the top nav get included in the PDF. 
+The way the PDF file is currently set up, only the links in the sidebar get included in the PDF. None of the links in the top nav get included in the PDF.
 
 It wouldn't be hard to iterate through the top navigation bar and included the content in the PDF as well, but I think it's a best practice to put content links in the sidebar, and to put external links/resources in the top navigation.
 

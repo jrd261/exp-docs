@@ -9,6 +9,7 @@ version: all
 output: web
 # destination: ../doc_outputs/mydoc/designers
 url: "scalainc.github.io/exp-docs"
+title: EXP Docs
 topnav_title: EXP Docs
 homepage_title: EXP Docs
 site_title: Documentation for EXP Platform
@@ -16,8 +17,9 @@ project_folder: mydoc
 company_name: EXP
 footer_image_location: /common_images/exp_logo_large.svg
 github_editme_path: scalainc/exp-docs/edit/gh-pages
-# variables
+relative_permalinks: false
 
+# variables
 
 sidebar_tagline: Developers
 sidebar_version: Version 1.0
@@ -32,7 +34,8 @@ pdf_file_name: mydoc_designers_pdf.pdf
 #  application_id: 'HXUBJERYYB'
 #  index_name:     'documentation_theme_jekyll_designers'
 port: 4009
-
+include:
+  - _pages
 exclude:
   - _site
   - _drafts

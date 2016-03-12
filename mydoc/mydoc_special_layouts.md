@@ -11,18 +11,18 @@ summary: "This theme has a few special layouts. Special layouts include the JS f
 
 ## FAQ layout
 
-See {{site.data.mydoc.mydoc_urls.mydoc_faq.link}} for an example of the FAQ format, which follows an accordion, collapse/expand format. This code is from Bootstrap.
+See {{site.data.urls.mydoc_faq.link}} for an example of the FAQ format, which follows an accordion, collapse/expand format. This code is from Bootstrap.
 
 ## Knowledgebase layout
 
-See {{site.data.mydoc.mydoc_urls.mydoc_kb_layout.link}} for a possible layout for knowledge base articles. This layout looks for pages containing specific tags.
+See {{site.data.urls.mydoc_kb_layout.link}} for a possible layout for knowledge base articles. This layout looks for pages containing specific tags.
 
 ## Scroll layout
 
-If you have a long JSON message you're documenting, see the {{site.data.mydoc.mydoc_urls.mydoc_scroll.link}}. This layout adds a side pane showing links to pointers in the left pane. 
+If you have a long JSON message you're documenting, see the {{site.data.urls.mydoc_scroll.link}}. This layout adds a side pane showing links to pointers in the left pane.
 
 ## Shuffle layout
 
-If you want a dynamic card layout that allows you to filter the cards, see {{site.data.mydoc.mydoc_urls.mydoc_shuffle.link}}. This uses the Shuffle JS library.
+If you want a dynamic card layout that allows you to filter the cards, see {{site.data.urls.mydoc_shuffle.link}}. This uses the Shuffle JS library.
 
 

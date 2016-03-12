@@ -13,11 +13,11 @@ weight: 6
 ## Understand how the sidebar works
 
 In the \_data folder, the mydoc_sidebar.yml files contains the sidebar items for the theme. These list items (which are in YAML format) form your main navigation, and all pages in your project must appear here to be included in the PDF or the URL generator. Both the PDF and the URL generator (mydoc_urls.txt) iterate over the pages listed in the mydoc_sidebar.yml file to produce their output.
- 
+
 As a best practice, do the following with the sidebar:
- 
-* List all pages in your project somewhere in the sidebar. 
-* As soon as you create a new page, add it to your sidebar (so you don't forget about the page). 
+
+* List all pages in your project somewhere in the sidebar.
+* As soon as you create a new page, add it to your sidebar (so you don't forget about the page).
 * Copy and paste the existing YAML chunks (then customize them) to get the formatting right.
 
 YAML is a markup that uses spacing and hyphens instead of tags. YAML is a superset of JSON, so you can convert from YAML to JSON and vice versa equivalently.
@@ -40,20 +40,20 @@ Within these levels, you add your content. You can only have two levels in the s
 Introduction
  -> Getting started
  -> Features
- -> Configuration 
+ -> Configuration
 	-> Options
 	-> Automation
 ```
 
-"Introduction" is a heading &mdash; it's the first level. Beneath it are Getting started and Features &mdash; these sub-items for the first level. 
+"Introduction" is a heading &mdash; it's the first level. Beneath it are Getting started and Features &mdash; these sub-items for the first level.
 
 Configuration is a heading announcing a second level. Below it are Options and Automation &mdash; these are on the second level.
 
-You can't add more than two levels. In general, it's a best practice not to create more than two levels of navigation anyway, since it creates a paralysis of choice for the user. 
+You can't add more than two levels. In general, it's a best practice not to create more than two levels of navigation anyway, since it creates a paralysis of choice for the user.
 
 (If you need deeper sublevels, I recommend creating different sidebars for different pages, which is logic that I haven't coded into the theme but which could probably be added fairly easily. Additionally, if you wanted to create a third level, you could do so by following the same pattern as the second level and customizing a few things. However, the theme is not coded to support additional levels.)
- 
-The code in the theme's sidebar.html file (in the \_includes folder) iterates through the items in the mydoc_sidebar.yml file using a Liquid `for` loop and inserts the items into HTML. Iterating over a list in a data file to populate HTML is a common technique with static site generators. 
+
+The code in the theme's sidebar.html file (in the \_includes folder) iterates through the items in the mydoc_sidebar.yml file using a Liquid `for` loop and inserts the items into HTML. Iterating over a list in a data file to populate HTML is a common technique with static site generators.
 
 What I've added in this theme is some special logic that checks if the sidebar items meet the right attribute conditions. As a result, the sidebar.html file has code that looks like this:
 
@@ -66,7 +66,7 @@ What I've added in this theme is some special logic that checks if the sidebar i
 ```
 {% endraw %}
 
-Only if the sidebar item contains the right `audience`, `product`, `platform`, `version`, and `output` attributes does the item get included in the sidebar navigation. 
+Only if the sidebar item contains the right `audience`, `product`, `platform`, `version`, and `output` attributes does the item get included in the sidebar navigation.
 
 This means you will have just one sidebar data file for all the outputs in a single project. Different projects will use different sidebar data files, but all outputs for a single project will use the same sidebar data file. (This allows you to do single sourcing.)
 
@@ -78,9 +78,9 @@ This is where the conditions.html file (inside \_includes) comes into play. `aud
 ```liquid
 {% if site.project == "mydoc_writers" %}
 {% assign audience = "writers" %}
-{% assign sidebar = site.data.mydoc.mydoc_sidebar.entries %}
-{% assign topnav = site.data.mydoc.mydoc_topnav.topnav %}
-{% assign topnav_dropdowns = site.data.mydoc.mydoc_topnav.topnav_dropdowns %}
+{% assign sidebar = site.data.sidebar.entries %}
+{% assign topnav = site.data.topnav.topnav %}
+{% assign topnav_dropdowns = site.data.topnav.topnav_dropdowns %}
 {% assign version = "all" %}
 {% assign product = "all" %}
 {% assign platform = "all" %}
@@ -90,15 +90,15 @@ This is where the conditions.html file (inside \_includes) comes into play. `aud
 ```
 {% endraw %}
 
-`audience` is a variable set to `writers` for the mydoc_writers project. Therefore anywhere `audience` appears, `writers` gets inserted in its place. 
+`audience` is a variable set to `writers` for the mydoc_writers project. Therefore anywhere `audience` appears, `writers` gets inserted in its place.
 
-When the sidebar.html code runs `subcategory.audience contains audience`, it's saying that the subcategory item must have an attribute called `audience`, and the value for audience must contain `writers`. 
+When the sidebar.html code runs `subcategory.audience contains audience`, it's saying that the subcategory item must have an attribute called `audience`, and the value for audience must contain `writers`.
 
 All of the attributes (which are defined in the conditions.html file) must be met in order to display in the navigation. The attributes must be present on both the heading and items under that heading.
 
 However, note that the `output` attribute is a bit different. With this attribute, you just list whether you want a `web` or `pdf` output (or both, usually). For both, you just write `web, pdf`.
 
-The logic in the sidebar is multi-step and somewhat complex, but you're also doing something truly sophisticated. You're instructing a static site generator to conditionally include certain information while using the same source files (not just the same sidebar data file, but the same sidebar.html file). 
+The logic in the sidebar is multi-step and somewhat complex, but you're also doing something truly sophisticated. You're instructing a static site generator to conditionally include certain information while using the same source files (not just the same sidebar data file, but the same sidebar.html file).
 
 Fortunately, once you set it up, you don't need to think about the underlying logic that's processing. You just make sure you're putting the right attributes on your sidebar items.
 
@@ -134,13 +134,13 @@ The first section in the sidebar subcategory list is a special frontmatter secti
 
 ```
 
-The only values you should change here are the values for the `audience`, `platform`, `product,` and `version`. 
+The only values you should change here are the values for the `audience`, `platform`, `product,` and `version`.
 
 These frontmatter pages are used in producing the PDF. This part will grab the titlepage.html and tocpage.html content in the theme's root directory. (If you're not publishing PDF, you can remove this section.)
 
 Note that the output is `pdf` only for these frontmatter pages. They are specific to the PDF output only.
 
 
-To learn more about the sidebar, see {{site.data.mydoc.mydoc_urls.mydoc_sidebar_navigation.link}}.
+To learn more about the sidebar, see {{site.data.urls.mydoc_sidebar_navigation.link}}.
 
 {% include custom/mydoc/getting_started_series_next.html %}

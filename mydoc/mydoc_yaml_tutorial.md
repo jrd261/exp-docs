@@ -5,37 +5,37 @@ keywords: search
 summary: "YAML is a format that relies on white spacing to separate out the various elements of content. Jekyll lets you use Liquid with YAML as a way to parse through the data. Storing items for your table of contents is one of the most common uses of YAML with Jekyll."
 ---
 ## Overview
-One of the most interesting features of Jekyll is the ability to separate out data elements from formatting elements using a combination of YAML and Liquid. This setup is most common when you're trying to create a table of contents. 
+One of the most interesting features of Jekyll is the ability to separate out data elements from formatting elements using a combination of YAML and Liquid. This setup is most common when you're trying to create a table of contents.
 
 Not many Jekyll themes actually have a robust table of contents, which is critical when you are creating any kind of documentation or reference material that has a lot of pages.
 
-Here's the basic approach in creating a table of contents. You store your data items in a YAML file using YAML syntax. (I'll go over more about YAML syntax in a later section.) You then create your HTML structure in another file, such as sidebar.html. You might leverage one of the many different table of content frameworks (such as [Navgoco](https://github.com/tefra/navgoco)) that have been created for this HTML structure. 
+Here's the basic approach in creating a table of contents. You store your data items in a YAML file using YAML syntax. (I'll go over more about YAML syntax in a later section.) You then create your HTML structure in another file, such as sidebar.html. You might leverage one of the many different table of content frameworks (such as [Navgoco](https://github.com/tefra/navgoco)) that have been created for this HTML structure.
 
 Then, using Liquid syntax for loops and conditions, you access all of those values from the data file and splice them into HTML formatting. This will become more clear as we go through some examples.
 
 ## YAML overview
 
-Rather than just jump into YAML at the most advanced level, I'm going to start from ground zero with an introduction to YAML and how you access basic values in your data files using Jekyll. 
+Rather than just jump into YAML at the most advanced level, I'm going to start from ground zero with an introduction to YAML and how you access basic values in your data files using Jekyll.
 
-Note that you don't actually have to use Jekyll when using YAML. YAML is used in a lot of other systems and is a format completely independent of Jekyll. However, because Jekyll uses Liquid, it gives you a lot of power to parse through your YAML data and make use of it. 
+Note that you don't actually have to use Jekyll when using YAML. YAML is used in a lot of other systems and is a format completely independent of Jekyll. However, because Jekyll uses Liquid, it gives you a lot of power to parse through your YAML data and make use of it.
 
 YAML itself doesn't do anything on its own &mdash; it's just a way of storing your data in a specific structure that other utilities can parse.
 
 ## YAML basics
 You can read about YAML from a lot of different sources. Here are some basic characteristics of YAML:
 
-* YAML ("**Y**AML **A**in't **M**arkup **L**anguage") doesn't use markup tags. This means you won't see any kind of angle brackets. It uses white space as a way to form the structure. This makes YAML much more human readable. 
+* YAML ("**Y**AML **A**in't **M**arkup **L**anguage") doesn't use markup tags. This means you won't see any kind of angle brackets. It uses white space as a way to form the structure. This makes YAML much more human readable.
 *  Because YAML does use white space for the structure, YAML is extremely picky about the exactness of spaces. If you have just one extra space somewhere, it can cause the whole file to be invalid.
 * For each new level in YAML, you indent two spaces. Each level provides a different access point for the content. You use dot notation to access each new level.
-* Because tabs are not universally implemented the same way in editors, a tab might not equate to two spaces. In general, it's best to manually type two spaces to create a new level in YAML. 
+* Because tabs are not universally implemented the same way in editors, a tab might not equate to two spaces. In general, it's best to manually type two spaces to create a new level in YAML.
 * YAML has several types of elements. The most common are mappings and lists. A mapping is simply a key-value pair. A list is a sequence of items. List start with hyphens.
-* Items at each level can have various properties. You can create conditions based on the properties. 
-* You can use "for" loops to iterate through a list. 
+* Items at each level can have various properties. You can create conditions based on the properties.
+* You can use "for" loops to iterate through a list.
 
 I realize a lot of this vague and general; however, it will become a lot more clear as we go through some concrete examples.
 
 In the \_data/mydoc folder, there's a file called samplelist.yml. All of these examples come from that file.
- 
+
 ## Example 1: Simple mapping
 
 **YAML:**
@@ -50,34 +50,34 @@ name:
 
 {% raw %}
 ```liquid
-Husband's name: {{site.data.mydoc.samplelist.name.husband}}
+Husband's name: {{site.data.samplelist.name.husband}}
 
-Wife's name: {{site.data.mydoc.samplelist.name.wife}}
+Wife's name: {{site.data.samplelist.name.wife}}
 ```
 {% endraw %}
 
-Notice that in order to access the data file, you use `site.data.mydoc.samplelist`. `mydoc` is the folder, and `samplelist` is the name of the YAML file.
+Notice that in order to access the data file, you use `site.data.samplelist`. `mydoc` is the folder, and `samplelist` is the name of the YAML file.
 
 **Result:**
 
-Husband's name: {{site.data.mydoc.samplelist.name.husband}}
+Husband's name: {{site.data.samplelist.name.husband}}
 
-Wife's name: {{site.data.mydoc.samplelist.name.wife}}
+Wife's name: {{site.data.samplelist.name.wife}}
 
 ## Example 2: Line breaks
 
 **YAML:**
 
 ```yaml
-feedback: > 
+feedback: >
   This is my feedback to you.
   Even if I include linebreaks here,
   all of the linebreaks will be removed when the value is inserted.
-    
+
 block: |
-    This pipe does something a little different. 
+    This pipe does something a little different.
     It preserves the breaks.
-    This is really helpful for code samples, 
+    This is really helpful for code samples,
     since you can format the code samples with
        the appropriate
 ```
@@ -86,19 +86,19 @@ block: |
 
 ```liquid
 **Feedback**
-{{site.data.mydoc.samplelist.feedback}}
+{{site.data.samplelist.feedback}}
 
 **Block**
-{{site.data.mydoc.samplelist.block}}
+{{site.data.samplelist.block}}
 ```
 
 **Result:**
 
 **Feedback**
-{{site.data.mydoc.samplelist.feedback}}
+{{site.data.samplelist.feedback}}
 
 **Block**
-{{site.data.mydoc.samplelist.block}}
+{{site.data.samplelist.block}}
 
 The right angle bracket `>` allows you to put the value on the next lines (which must be indented). Even if you create a line break, the output will remove all of those line breaks, creating one paragraph.
 
@@ -119,7 +119,7 @@ bikes:
 
 {% raw %}
 ```liquid
-{% for item in site.data.mydoc.samplelist.bikes %}
+{% for item in site.data.samplelist.bikes %}
 * {{item.title}}
 {% endfor %}
 ```
@@ -127,14 +127,14 @@ bikes:
 
 **Result:**
 
-{% for item in site.data.mydoc.samplelist.bikes %}
+{% for item in site.data.samplelist.bikes %}
 * {{item.title}}
 {% endfor %}
 
 Here we use a "for" loop to get each item in the bikes list. By using `.title` we only get the `title` property from each list item.
 
 ## Example 4: List items
- 
+
 **YAML:**
 
 ```yaml
@@ -144,13 +144,13 @@ salesteams:
    - location: US
    - location: Spain
    - location: France
-``` 
-      
+```
+
 **Markdown + Liquid:**
 
 {% raw %}
 ```
-{% for item in site.data.mydoc.samplelist.salesteams %}
+{% for item in site.data.samplelist.salesteams %}
 <h3>{{item.title}}</h3>
 <ul>
 {% for entry in item.subitems %}
@@ -162,7 +162,7 @@ salesteams:
 {% endraw %}
 
 **Result:**
-{% for item in site.data.mydoc.samplelist.salesteams %}
+{% for item in site.data.samplelist.salesteams %}
 <h3>{{item.title}}</h3>
 <ul>
 {% for entry in item.subitems %}
@@ -202,7 +202,7 @@ toc:
 
 {% raw %}
 ```liquid
-{% for item in site.data.mydoc.samplelist.toc %}
+{% for item in site.data.samplelist.toc %}
 <h3>{{item.title}}</h3>
 <ul>
 {% for entry in item.subitems %}
@@ -215,7 +215,7 @@ toc:
 
 **Result:**
 
-{% for item in site.data.mydoc.samplelist.toc %}
+{% for item in site.data.samplelist.toc %}
 <h3>{{item.title}}</h3>
 <ul>
 {% for entry in item.subitems %}
@@ -224,7 +224,7 @@ toc:
 </ul>
 {% endfor %}
 
-This example is similar to the previous one, but it's more developed as a real table of contents. 
+This example is similar to the previous one, but it's more developed as a real table of contents.
 
 ## Example 6: Variables
 
@@ -239,18 +239,18 @@ myref: *hello
 
 {% raw %}
 ```liquid
-{{ site.data.mydoc.samplelist.myref }}
+{{ site.data.samplelist.myref }}
 ```
 {% endraw %}
 
 **Result:**
 
-{{ site.data.mydoc.samplelist.myref }}
+{{ site.data.samplelist.myref }}
 
 This example is notably different. Here I'm showing how to reuse content in YAML file. If you have the same value that you want to repeat in other mappings, you can create a variable using the `&` symbol. Then when you want to refer to that variable's value, you use an asterisk `*` followed by the name of the variable.
- 
+
 In this case the variable is `&hello` and its value is `Greetings earthling!` In order to reuse that same value, you just type `*hello`.
- 
+
 I don't use variables much, but that's not to say they couldn't be highly useful. For example, let's say you put name of the product in parentheses after each title (because you have various products that you're providing documentation for in the same site). You could create a variable for that product name so that if you change how you're referring to it, you wouldn't have to change all instances of it in your YAML file.
 
 ## Example 7: Positions in lists
@@ -262,24 +262,24 @@ about:
  - zero
  - one
  - two
- - three 
+ - three
 ```
 
 **Markdown:**
 
 {% raw %}
 ```
-{{ site.data.mydoc.samplelist.about[0] }}
+{{ site.data.samplelist.about[0] }}
 ```
 {% endraw %}
 
 **Result:**
 
-{{ site.data.mydoc.samplelist.about[0] }}
+{{ site.data.samplelist.about[0] }}
 
 You can see that I'm accessing one of the items in the list using `[0]`. This refers to the position in the array where a list item is. Like most programming languages, you start counting at zero, not one.
- 
-I wanted to include this example because it points to the challenge in getting a value from a specific list item. You can't just call out a specific item in a list like you can with a mapping. This is why you usually iterate through the list items using a "for" loop. 
+
+I wanted to include this example because it points to the challenge in getting a value from a specific list item. You can't just call out a specific item in a list like you can with a mapping. This is why you usually iterate through the list items using a "for" loop.
 
 ## Example 8: Properties from list items at specific positions
 
@@ -291,7 +291,7 @@ numbercolors:
    properties: red
  - one:
    properties: yellow
- - two: 
+ - two:
    properties: green
  - three:
    properties: blue
@@ -301,13 +301,13 @@ numbercolors:
 
 {% raw %}
 ```liquid
-{{ site.data.mydoc.samplelist.numbercolors[0].properties }}
+{{ site.data.samplelist.numbercolors[0].properties }}
 ```
 {% endraw %}
 
 **Result:**
 
-{{ site.data.mydoc.samplelist.numbercolors[0].properties }}
+{{ site.data.samplelist.numbercolors[0].properties }}
 
 This example is similar as before; however, in this case were getting a specific property from the list item in the zero position.
 
@@ -343,7 +343,7 @@ mypages:
 
 {% raw %}
 ```liquid
-{% for sec in site.data.mydoc.samplelist.mypages %}
+{% for sec in site.data.samplelist.mypages %}
 {% if sec.audience == "writers" %}
 * {{sec.url}}
 {% endif %}
@@ -353,19 +353,19 @@ mypages:
 
 **Result:**
 
-{% for sec in site.data.mydoc.samplelist.mypages %}
+{% for sec in site.data.samplelist.mypages %}
 {% if sec.audience == "writers" %}
 * {{sec.url}}
 {% endif %}
 {% endfor %}
 
 This example shows how you can use conditions in order to selectively get the YAML content. In your table of contents, you might have a lot of different pages. However, you might only want to get the pages for a particular audience. Conditions lets you get only the items that meet those audience attributes.
- 
+
 Now let's adjust the condition just a little. Let's add a second condition so that the `audience` property has to be `writers` and the `product` property has to be gizmo. This is how you would write it:
 
 {% raw %}
 ```liquid
-{% for sec in site.data.mydoc.samplelist.mypages %}
+{% for sec in site.data.samplelist.mypages %}
 {% if sec.audience == "writers" and sec.product == "gizmo" %}
 * {{sec.url}}
 {% endif %}
@@ -375,7 +375,7 @@ Now let's adjust the condition just a little. Let's add a second condition so th
 
 And here is the result:
 
-{% for sec in site.data.mydoc.samplelist.mypages %}
+{% for sec in site.data.samplelist.mypages %}
 {% if sec.audience == "writers" and sec.product == "gizmo" %}
 * {{sec.url}}
 {% endif %}

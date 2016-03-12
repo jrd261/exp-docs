@@ -44,11 +44,11 @@ Tags have a few components.
 	{% assign projectTags = site.data.tags_doc.allowed-tags %}
 	```
 	{% endraw %}
-	
+
 	The tags_doc name must correspond with how you label your tags file. Here, "doc" should be your project name.
-	
+
 2. In the \_data file, add a yml file similar to tags_doc.yml. The YML file lists the tags that are allowed:
-	
+
 	```json
 	allowed-tags:
 	  - getting_started
@@ -59,11 +59,11 @@ Tags have a few components.
 	  - special_layouts
 	  - content types
 	```
-	
+
 3. Create a tag archive file for each tag in your tags_doc.yml list. Name the file like this: tag_getting_started.html, where doc is your project name. (Again, tags with multiple words need hyphens in them.)
-	
+
 	Each tag archive file needs only this:
-	
+
 	{% raw %}
 	```liquid
 	---
@@ -76,8 +76,8 @@ Tags have a few components.
 
 	{{site.data.alerts.note}}In the \_includes/mydoc folder, there's a taglogic.html file. This file (included in each tag archive file) has common logic for getting the tags and listing out the pages containing the tag in a table with summaries or truncated excerpts. You don't have to do anything with the file &mdash; just leave it there because the tag archive pages reference it.{{site.data.alerts.end}}
 
-5. Adjust button color or tag placement as desired. 
-	
+5. Adjust button color or tag placement as desired.
+
 	By default, the \_layouts/page.html file will look for any tags on a page and insert them at the bottom of the page using this code:
 
 	{% raw %}
@@ -95,10 +95,10 @@ Tags have a few components.
 </div>
 	```
 	{% endraw %}
-	
+
 Because this code appears on the \_layouts/page.html file by default, you don't need to do anything. However, if you want to alter the placement or change the button color, you can do so.
-	
-You can change the button color by changing the class on the button from `btn-info` to one of the other button classes bootstrap provides. See {{site.data.mydoc.mydoc_urls.mydoc_labels.link}} for more options on button class names.
+
+You can change the button color by changing the class on the button from `btn-info` to one of the other button classes bootstrap provides. See {{site.data.urls.mydoc_labels.link}} for more options on button class names.
 
 ## Retrieving pages for a specific tag
 
@@ -106,7 +106,7 @@ If you want to retrieve pages outside of a particular tag_archive page, you coul
 
 {% raw %}
 ```liquid
-Getting started pages: 
+Getting started pages:
 <ul>
 {% for page in site.pages %}
 {% for tag in page.tags %}
@@ -114,12 +114,12 @@ Getting started pages:
 <li><a href="{{page.url | prepend: '..'}}">{{page.title}}</a></li>
 {% endif %}
 {% endfor %}
-{% endfor %} 
+{% endfor %}
 </ul>
 ```
 {% endraw %}
 
-Here's how that code renders: 
+Here's how that code renders:
 
 Getting started pages:
 <ul>
@@ -145,7 +145,7 @@ Getting started pages:
 <li><a href="{{page.url | prepend: '..'}}">{{page.title}}</a></li>
 {% endif %}
 {% endfor %}
-{% endfor %} 
+{% endfor %}
 </ul>
 {% endraw %}
 ```
@@ -165,11 +165,11 @@ Getting started pages:
 </ul>
 
 ## Efficiency
-Although the tag approach here uses `for` loops, these are somewhat inefficient on a large site. Most of my tech doc projects don't have hundreds of pages (like my blog does). If your project does have hundreds of pages, this `for` loop approach with tags is going to slow down your build times. 
+Although the tag approach here uses `for` loops, these are somewhat inefficient on a large site. Most of my tech doc projects don't have hundreds of pages (like my blog does). If your project does have hundreds of pages, this `for` loop approach with tags is going to slow down your build times.
 
-Without the ability to access pages inside a universal namespace with the page type, there aren't many workarounds here for faster looping. 
+Without the ability to access pages inside a universal namespace with the page type, there aren't many workarounds here for faster looping.
 
-With posts (instead of pages), since you can access just the posts inside `posts.tag.tagname`, you can be a lot more efficient with the looping. 
+With posts (instead of pages), since you can access just the posts inside `posts.tag.tagname`, you can be a lot more efficient with the looping.
 
 Still, if the build times are getting long (e.g., 1 or 2 minutes per build), look into reducing the number of `for` loops on your site.
 
@@ -184,7 +184,7 @@ If you don't want tags to appear at all on your page, remove the tags property f
 
 ## Remembering the right tags
 
-Since you may have many tags and find it difficult to remember what tags are allowed, I recommend creating a template that prepopulates all your frontmatter with all possible tags. Then just remove the tags that don't apply. 
+Since you may have many tags and find it difficult to remember what tags are allowed, I recommend creating a template that prepopulates all your frontmatter with all possible tags. Then just remove the tags that don't apply.
 
-See {{site.data.mydoc.mydoc_urls.mydoc_webstorm_text_editor.link}} for tips on creating file templates in WebStorm.
+See {{site.data.urls.mydoc_webstorm_text_editor.link}} for tips on creating file templates in WebStorm.
 
