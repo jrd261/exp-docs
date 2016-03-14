@@ -1,3 +1,12 @@
+---
+permalink: /v1/network/
+title: Network
+keywords: network
+last_updated: November 30, 2015
+tags: [getting_started]
+summary: ""
+---
+
 # The EXP Network
 
 ## Overview
