@@ -9,4 +9,4 @@ summary: "A guide for developers using the EXP platform."
 
 # Developer Guide
 
-[Network](./network)
+[Network](../network)
