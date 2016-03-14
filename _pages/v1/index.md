@@ -7,12 +7,12 @@ tags: [getting_started]
 
 <div class="row">
     <div class="col-md-6">
-        <div class="well">
+        <div class="callout">
             <strong>User Guide</strong>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="well">
+    <div class="callout">
+        <div class="callout">
             <strong>Developer Guide</strong>
         </div>
     </div>

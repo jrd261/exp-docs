@@ -1,3 +1,9 @@
+---
+# this ensures Jekyll reads the file and compiles it from SASS to CSS in output
+---
+
+@import "bootstrap/variables";
+
 body {
     font-size:15px;
 }
@@ -162,7 +168,7 @@ table > thead:first-child > tr:first-child > td {
   border-top: 0;
 }
 table > tbody + tbody {
-  b
+  // b
 }
 table > tbody > tr:nth-of-type(odd) {
   background-color: #f9f9f9;
@@ -228,7 +234,7 @@ ul#results-container a {
 background-color: transparent;
 }
 
-ul#results-container a: hover {
+ul#results-container a:hover {
   color: black;
 }
 
@@ -354,10 +360,6 @@ text-decoration: none;
     margin: 1px 0;
 }
 
-.nav > li li {
-    margin: 2px 0;
-}
-
 .nav a {
     color: #333;
     display: block;
@@ -382,11 +384,6 @@ text-decoration: none;
     content: '\25b4';
 }
 
-.nav a:hover, .nav li.active > a {
-    background-color: #8D8D8D;
-    color: #f5f5f5;
-}
-
 .nav > li.active > a  {
     background-color: #347DBE;
 }
@@ -401,12 +398,6 @@ text-decoration: none;
     font-size: 14px;
     line-height: 20px;
     padding: 4px 10px;
-}
-
-ul#mysidebar {
-  margin-top:40px;
-
-  border-radius:0px;
 }
 
 img.sidebar-logo {
@@ -746,8 +737,32 @@ ol.series li {
     border-color: #248ec2 !important;
 }
 
-#mysidebar .nav ul {
+#mysidebar {
+  margin-top:40px;
+  border-radius:0px;
+
+  &.nav > li.active > a {
+    background-color: $brand-primary;
+    color: white;
+  }
+
+  .nav ul {
     background-color: #FAFAFA;
+    .nav > li > a:hover,
+    .nav > li > a:focus {
+      color: $text-color;
+    }
+
+    .nav a:hover {
+      background-color: #DCDCDC;
+    }
+
+    .nav li.active > a {
+
+      color: #f5f5f5;
+    }
+
+  }
 }
 .nav ul.series li {
     list-style: decimal;
@@ -918,12 +933,12 @@ span.soft {
 }
 
 
-@media only screen and (min-width: 900px), @media only screen and (min-device-width: 900px) {
-    .col-md-9 img {
-        max-width: 700px;
-        max-height: 700px;
-    }
-}
+// @media only screen and (min-width: 900px), @media only screen and (min-device-width: 900px) {
+//     .col-md-9 img {
+//         max-width: 700px;
+//         max-height: 700px;
+//     }
+// }
 
 *:hover > .anchorjs-link {
     transition: color .25s linear;
@@ -989,3 +1004,84 @@ div.results {
     font-weight: bold;
 }
 
+.summary {
+    color: #808080;
+    border-left: 5px solid #ED1951;
+    font-size:16px;
+}
+
+
+h3 {color: #ED1951; }
+h4 {color: #808080; }
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    background-color: #248ec2;
+    color: white;
+}
+
+div.navbar-collapse .dropdown-menu > li > a:hover {
+    background-color: #347DBE;
+}
+
+.nav li.thirdlevel > a {
+    background-color: #FAFAFA !important;
+    color: #248EC2;
+    font-weight: bold;
+}
+
+a[data-toggle="tooltip"] {
+    color: #649345;
+    font-style: italic;
+    cursor: default;
+}
+
+.navbar-inverse {
+    // background-color: rgb(126,87,194);
+    // border-color: #015CAE;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #015CAE;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #015CAE;
+    color: #ffffff;
+}
+
+/* not sure if using this ...*/
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #248ec2 !important;
+}
+
+.btn-primary {
+    color: #ffffff;
+    background-color: #347DBE;
+    border-color: #347DBE;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    background-color: #347DBE;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+    background-color: #248ec2;
+    border-color: #347DBE;
+}
+
+.printTitle {
+    color: #015CAE !important;
+}
+
+body.print h1 {color: #015CAE !important; font-size:28px !important;}
+body.print h2 {color: #595959 !important; font-size:20px !important;}
+body.print h3 {color: #E50E51 !important; font-size:14px !important;}
+body.print h4 {color: #679DCE !important; font-size:14px; font-style: italic !important;}
+
+.anchorjs-link:hover {
+  color: #216f9b;
+}

@@ -18,7 +18,7 @@
                         path: '/'
                     },
                     slide: {
-                        duration: 400,
+                        duration: 200,
                         easing: 'swing'
                     }
                 });
@@ -97,5 +97,5 @@
                  -->
 
     </div>
-    <!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+    <!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside main.js, the script runs before the sidebar code runs and the class never gets inserted.-->
     <script>$("li.active").parents('li').toggleClass("active");</script>
