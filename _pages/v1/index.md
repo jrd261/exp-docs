@@ -7,13 +7,27 @@ tags: [getting_started]
 
 <div class="row">
     <div class="col-md-6">
-        <div class="callout">
+        <div class="bs-callout bs-callout-primary">
             <strong>User Guide</strong>
+            <ul>
+                <li>a list</li>
+                <li>of</li>
+                <li>exciting</li>
+                <li>documentation</li>
+                <li>for users</li>
+            </ul>
         </div>
     </div>
-    <div class="callout">
-        <div class="callout">
+    <div class="col-md-6">
+        <div class="bs-callout bs-callout-primary">
             <strong>Developer Guide</strong>
+            <ul>
+                <li>a list</li>
+                <li>of</li>
+                <li>exciting</li>
+                <li>documentation</li>
+                <li>for developers</li>
+            </ul>
         </div>
     </div>
 </div>
