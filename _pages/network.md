@@ -1,5 +1,5 @@
 ---
-permalink: /v1/network/
+permalink: /network/
 title: Network
 keywords: network
 summary: ""
@@ -79,7 +79,7 @@ The broadcast is made up of 3 components, the channel, the message name, and the
 
 The response to the HTTP request is a list of response payloads that were received while the HTTP request was open.
 
-To specify the amount of wait for responses, add a `timeout` query parameter to the broadcast, specifying the number of milliseconds to wait for responses to the broadcast: i.e. `/api/networks/current/broadcasts?timeout=5000`. The HTTP request will be kept open for approximately the given timeout. 
+To specify the amount of wait for responses, add a `timeout` query parameter to the broadcast, specifying the number of milliseconds to wait for responses to the broadcast: i.e. `/api/networks/current/broadcasts?timeout=5000`. The HTTP request will be kept open for approximately the given timeout.
 
 
 
@@ -87,9 +87,9 @@ To specify the amount of wait for responses, add a `timeout` query parameter to 
 ## Listening
 
 
-### Advanced Topic: Manual Connection 
+### Advanced Topic: Manual Connection
 
-Listening for broadcasts requires an active socket connection to the EXP Network. The easiest way to listen is to use one of the EXP SDKs. 
+Listening for broadcasts requires an active socket connection to the EXP Network. The easiest way to listen is to use one of the EXP SDKs.
 
 The authentication field `network` contains information about which host you shoudl establish a connection to in order to listen for events. EXP network servers use the SocketIO protocol. Using a SocketIO client, connect to the host provided in `network.host` and pass your authentication token as the `token` query param. Once a connection is established, you will need to subscribe to a channel. Send the `subscribe` event with a list of channel ids you wish to listen on. You will subsequently receive a `subscribed` event containing a list of channel ids you are now subscribed to. If you get disconnected you will need to resubscribe to all channels.
 

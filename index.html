@@ -1,21 +1,24 @@
 ---
-layout: none
+layout: default
 search: exclude
+title: EXP Documentation Home
+homepage: true
 ---
 
-{% include custom/conditions.html %}
+<div class="post-content">
 
-<!DOCTYPE HTML>
-<html lang="en-US">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url={{projectFolder}}/home.html">
-    <script type="text/javascript">
-        window.location.href = "{{projectFolder}}"
-    </script>
+  {% capture index-include %}{% include index.md %}{% endcapture %}
+  {{ index-include | markdownify }}
 
-</head>
-<body>
 
-</body>
-</html>
+
+    {% if site.github_editme_path %}
+
+    <a target="_blank" href="https://github.com/{{site.github_editme_path}}/{{page.path}}" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+    {% endif %}
+
+</div>
+
+{{hr_shaded}}
+
+{% include footer.html %}

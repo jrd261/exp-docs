@@ -1,9 +1,4 @@
----
-permalink: /v1/
-title: EXP Documentation
-keywords: developer
-tags: [getting_started]
----
+# EXP Documentation
 
 <div class="row">
     <div class="col-md-6">
