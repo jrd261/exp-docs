@@ -105,3 +105,182 @@ Once subscribed to a channel, you will begin to receive broadcasts. The broadcas
 ```
 
 
+# TEMP STUFF
+# Examples
+
+
+## Creating a Device and Listening for Updates
+
+Updates to API resources are sent out over a system channel with the event name "update".
+
+```javascript
+exp.createDevice({ 'name': 'my_sweet_device' }).then(device => {
+  return device.save().then(() => {
+    device.getChannel({ system: true }).listen('update', payload => {
+      console.log('Device was updated!');
+    });
+  });
+});
+```
+
+
+## Modifying a Resource in Place
+
+```javascript
+exp.getExperience('[uuid]').then(experience => {
+  experience.document.name = 'new name';
+  return experience.save()
+});
+```
+
+
+## Using The EXP Network
+
+The EXP network facilitates real time communication between entities connected to EXP. A user or device can broadcast a JSON serializable payload to users and devices in your organization, and listeners to those broadcasts can respond to the broadcasters.
+
+### Channels
+
+All messages on the EXP network are sent over a channel. Channels have a name, and two flags: ```system``` and ```consumer```.
+
+```javascript
+const channel = exp.getChannel('myChannel', { system: false, consumer: false });
+```
+
+Use ```system: true``` to get a system channel. You cannot send messages on a system channels but can listen for system notifications, such as updates to API resources.
+
+Use ```consumer: true``` to get a consumer channel. Consumer devices can only listen or broadcast on consumer channels. When ```consumer: false``` you will not receive consumer device broadcasts and consumer devices will not be able to hear your broadcasts.
+
+Both ```system``` and ```consumer``` default to ```false```. Consumer devices will be unable to broadcast or listen to messages on non-consumer channels.
+
+
+### Broadcasting
+
+Use the broadcast method of a channel object to send a named message containing an optional JSON serializable payload to other entities on the EXP network. You can optionally include a timeout to wait for responses to the broadcast. The broadcast will return a promise and resolve approximately after the given timeout (milliseconds) with a ```list``` of response payloads. Each response payload can any JSON serializable type.
+
+```javascript
+exp.getChannel('myChannel').broadcast('myEvent', 'hello', 5000).then(responses => {
+  responses.forEach(response => console.log(response));
+});
+```
+
+### Listening
+
+To listen for broadcasts, call the listen method of a channel object.  Pass in the name of the event you wish to listen for and a callback to handle the broadcast. The callback will receive the broadcast payload. Listen returns a promise that resolves with a listener object when listening on the network has actually started. Calling cancel on the listener object stops the callback from being executed.
+
+
+```javascript
+
+exp.getChannel('myChannel').listen('myEvent', payload => {
+  console.log('Event Received!');
+  console.log(payload);
+}).then(listener => {
+  // Remove the listener after 5 seconds.
+  setTimeout(() => listener.cancel(), 5000);
+});
+
+```
+
+
+### Responding
+
+To respond to a broadcast, call the second argument of the listener callback with your response.
+
+```javascript
+
+exp.getChannel('my_channel').listen('my_event', (payload, respond) => {
+  if (payload === 'hello!') respond('hi there!');
+});
+
+```
+
+
+
+## Starting the SDK
+
+The SDK is started by calling ```exp.start``` and specifying your credentials and configuration options. You may supply user, device, or consumer app credentials. You can also authenticate in pairing mode.
+
+Users must specify their ```username```, ```password```, and ```organization```.
+
+```javascript
+exp.start({ username: 'joe@joemail.com', password: 'JoeRocks42', organization: 'joesorg' });
+```
+
+Devices must specify their ```uuid``` and ```secret``` .
+```javascript
+exp.start({ uuid: '[uuid]', secret: '[secret]' });
+```
+
+Consumer apps must specify their ```uuid``` and ```apiKey```.
+
+```javascript
+exp.start({ uuid: '[uuid]', apiKey: '[api key]');
+```
+
+
+
+## Advanced Options
+
+
+
+# API Resources
+
+# The EXP Network
+
+# Advanced Topics
+
+## Context Based Memory Management
+
+A ```context``` is a string that can be used to track event listener registration. A copy of an instance of the SDK can be created by calling ```clone(context)``` method. This will return a cloned instance of the SDK bound to the given context. Calling ```clear(context)``` on any SDK instance derived from the original would remove all event listeners registered by the SDK instance bound to that context. This feature is generally intended for use by player apps, but it provides a simple interface to memory management of event listeners and can help reduce the chances of memory leaks due to orphaned event listener registrations in complex or long lived applications.
+
+In this example, a module starts the SDK, and exports two cloned instances of the SDK bound to different contexts. After some interval, we clear all the event listeners bound to one of the context:
+
+```javascript
+const exp = require('exp-sdk');
+
+exp.start(options);
+exp1 = exp.clone('context 1')
+exp2 = exp.clone('context 2');
+
+exp1.getChannel('myChannelName').listen('myEventName', () => {});
+exp2.getChannel('myChannelName').listen('myEventName', () => {});
+
+exp2.clear(); // Unregisters all callbacks and listerers attached by exp2.
+
+```
+
+Note that calling ```stop``` on a cloned SDK instance or the original sdk instance stops the sdk for the original and all derived clones.
+
+
+## Using Multiple Instances of the SDK
+
+Calling ```exp.fork()``` will return an unstarted instance of the sdk.
+
+```javascript
+
+const exp = require('exp-sdk');
+const exp2 = exp.fork();
+
+exp.start(options1);
+exp2.start(options2)
+
+exp.stop();
+exp2.stop();
+
+```
+
+
+Context based memory management is also supported when using multiple instances of the SDK, but unique names must be used for each context as event listeners are registered in a global pool.
+
+```javascript
+const exp = require('exp-sdk');
+const sdk1 = exp.start(options1);
+const sdk2 = exp.start(options2);
+sdk1A = sdk1.clone('A');
+sdk1B = sdk1.clone('B');
+sdk2A = sdk2.clone('A');
+
+sdk2.clear('A'); // Also clears sdk1A!
+
+```
+
+
