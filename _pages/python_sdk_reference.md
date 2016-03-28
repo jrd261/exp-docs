@@ -244,7 +244,7 @@ exp.delete('/api/location/[uuid]') # Delete a location.
 ```
 
 
-## Common Resource Methods and Properties
+## Resources
 
 These methods and attributes are shared by many of the abstract API resources.
 
