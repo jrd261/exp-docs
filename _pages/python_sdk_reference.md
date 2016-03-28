@@ -5,7 +5,6 @@ keywords: python, sdk
 summary: ""
 ---
 
-
 # Python SDK Reference v1.0.0
 
 ## Installation
