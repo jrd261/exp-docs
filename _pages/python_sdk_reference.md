@@ -1,17 +1,13 @@
 ---
 permalink: /python_sdk_reference/
-title: Python SDK Reference
+title: Python SDK Reference v1.0.0
 keywords: python, sdk
-summary: ""
-toc: false
+summary: "EXP Python SDK reference for version 1.0.0."
 ---
 
+# Installation
 
-# Python SDK Reference v1.0.0
-
-## Installation
-
-## Runtime
+# Runtime
 
 **`exp_sdk.start(options)`**
 
@@ -86,11 +82,34 @@ Returns the up to date authentication payload. The authentication payload may be
 print 'My authentication token is : %s' % exp.get_auth()['token']
 ```
 
+# Exceptions
+
+ **`exp_sdk.ExpError`**
+
+ Base class for all EXP exceptions.
+ 
+ **`exp_sdk.UnexpectedError`**
+ 
+ Raised when an unexpected error occurs.
+ 
+ **`exp_sdk.RuntimeError`**
+ 
+ Raised when [startup options](#runtime) are incorrect or inconsistent.
+ 
+ **`exp_sdk.AuthenticationError`**
+ 
+ Raised when the sdk cannot authenticate due to bad credentials.
+ 
+ **`exp_sdk.ApiError`**
+ 
+ Raised when an API call fails. Has properties `message` and `code`.
 
 
-## Network
 
-### Channels
+
+# Network
+
+## Channels
 
 **`exp.get_channel(name, consumer=False, system=False)`**
 
@@ -133,7 +152,7 @@ location.get_channel().fling({ 'appTemplate' : { 'uuid': '[uuid'} })
 Requests that [devices](#device) listening for this event on this channel visually identify themselves. Implementation is device specific; this is simply a convience method.
 
 
-### Listeners
+## Listeners
 
 **`listener.wait(timeout=0)`**
 
@@ -155,7 +174,7 @@ while True:
 
 Cancels the listener. The listener is unsubscribed from [broadcasts](#broadcast) and will no longer receive messages. This cannot be undone.
 
-### Broadcasts
+## Broadcasts
 
 **`broadcast.payload`**
 
@@ -177,9 +196,9 @@ while True:
 ```
 
 
-## API
+# API
 
-### Custom HTTP Requests
+## Custom HTTP Requests
 
 These methods all users to send custom authenticated API calls. `params` is a dictionary of url params, `payload` is a JSON serializable type, and `timeout` is the duration, in seconds, to wait for the request to complete. `path` is relative to the api host root. All methods will return a JSON serializable type.
 
@@ -225,7 +244,7 @@ exp.delete('/api/location/[uuid]') # Delete a location.
 ```
 
 
-### Common Resource Methods and Properties
+## Common Resource Methods and Properties
 
 These methods and attributes are shared by many of the abstract API resources.
 
@@ -274,7 +293,7 @@ channel.broadcast('hello?')
 ```
 
 
-### Devices
+## Devices
 
 Devices inherit all [common resource methods and attributes](#resources).
 
@@ -307,7 +326,7 @@ Returns a list of the device's [zones](#zones).
 Returns the device's [experience](#experiences) or `None`
 
 
-### Thing
+## Things
 
 Things inherit all [common resource methods and attributes](#resources).
 
@@ -340,7 +359,7 @@ Returns a list of the thing's [#zones](#zones).
 Returns the device's [experience](#experiences) or `None`
 
 
-### Experience
+## Experiences
 
 Experiences inherit all [common resource methods and attributes](#resources).
 
@@ -361,7 +380,7 @@ Returns a list of experiences matching the given query parameters. `params` is a
 Returns a list of [devices](#devices) that are part of this experience.
 
 
-### Locations
+## Locations
 Locations inherit all [common resource methods and attributes](#resources).
 
 **`exp.get_location(uuid=None)`**
@@ -394,7 +413,7 @@ Returns a list of [zones](#zones) that are part of this location.
 Returns a url pointing to the location's layout image.
 
 
-### Zones
+## Zones
 Zones inherit the [common resource methods and attributes](#resources) `save()`, `refresh()`, and `get_channel()`.
 
 **`zone.key`**
@@ -418,7 +437,7 @@ Returns all [things](#things) that are members of this zone.
 Returns the zone's [location](#locations)
 
 
-### Feeds
+## Feeds
 Feeds inherit all [common resource methods and attributes](#resources).
 
 **`exp.get_feed(uuid=None)`**
@@ -446,7 +465,7 @@ feeds = exp.find_feeds({ 'subtype': 'scala:feed:facebook' })
 Returns the feed's data.
 
 
-### Data
+## Data
 
 Data items inherit the [common resource methods and attributes](#resources) `save()`, `refresh()`, and `get_channel()`.
 
@@ -487,7 +506,7 @@ The data item's group. Settable
 The data item's value. Settable.
 
 
-### Content
+## Content
 Content items inherit all [common resource methods and attributes](#resources) except `save()`.
 
 **`exp.get_content(uuid=None)`**
@@ -513,28 +532,5 @@ Returns a boolean indicating whether or not this content item has a variant with
 **`content.get_variant_url(name)`**
 
 Returns the delivery url for a variant of this content item.
-
-
-## Exceptions
-
- **`exp_sdk.ExpError`**
-
- Base class for all EXP exceptions.
- 
- **`exp_sdk.UnexpectedError`**
- 
- Raised when an unexpected error occurs.
- 
- **`exp_sdk.RuntimeError`**
- 
- Raised when [startup options](#runtime) are incorrect or inconsistent.
- 
- **`exp_sdk.AuthenticationError`**
- 
- Raised when the sdk cannot authenticate due to bad credentials.
- 
- **`exp_sdk.ApiError`**
- 
- Raised when an API call fails. Has properties `message` and `code`.
 
 
