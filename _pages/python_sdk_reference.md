@@ -4,11 +4,13 @@ title: Python SDK Reference
 keywords: python, sdk
 summary: ""
 ---
-**Python SDK Reference v1.0.0**
 
-# Installation
 
-# Runtime
+# Python SDK Reference v1.0.0
+
+## Installation
+
+## Runtime
 
 **`exp_sdk.start(options)`**
 
@@ -85,9 +87,9 @@ print 'My authentication token is : %s' % exp.get_auth()['token']
 
 
 
-# Network
+## Network
 
-## Channels
+### Channels
 
 **`exp.get_channel(name, consumer=False, system=False)`**
 
@@ -134,7 +136,7 @@ location = exp.get_location('[uuid]')
 location.get_channel().identify()  # Tell all devices at this location to identify themselves!
 ```
 
-## Listeners
+### Listeners
 
 **`listener.wait(timeout=0)`**
 
@@ -161,7 +163,7 @@ listener.cancel()
 broadcast = listener.wait(60)  # Will always be None
 ```
 
-## Broadcasts
+### Broadcasts
 
 **`broadcast.payload`**
 
@@ -183,9 +185,9 @@ while True:
 ```
 
 
-# API
+## API
 
-## Custom HTTP Requests
+### Custom HTTP Requests
 
 These methods all users to send custom authenticated API calls. `params` is a dictionary of url params, `payload` is a JSON serializable type, and `timeout` is the duration, in seconds, to wait for the request to complete. `path` is relative to the api host root. All methods will return a JSON serializable type.
 
@@ -231,7 +233,7 @@ exp.delete('/api/location/[uuid]') # Delete a location.
 ```
 
 
-## Common Resource Methods and Properties
+### Common Resource Methods and Properties
 
 These methods and attributes are shared by many of the abstract API resources.
 
@@ -280,7 +282,7 @@ channel.broadcast('hello?')
 ```
 
 
-## Devices
+### Devices
 Devices inherit all [common resource methods and attributes](#common-resource-methods-and-properties).
 
 **`exp.get_device(uuid=None)`** 
@@ -312,7 +314,7 @@ Returns a list of the device's [zones](#zone).
 Returns the device's [experience](#experience) or `None`
 
 
-## Thing
+### Thing
 Things inherit all [common resource methods and attributes](#resource).
 **`exp.get_thing(uuid=None)`**
 
@@ -343,7 +345,7 @@ Returns a list of the thing's [#zones](#zone).
 Returns the device's [experience](#experience) or `None`
 
 
-## Experience
+### Experience
 Experiences inherit all [common resource methods and attributes](#resource).
 **`exp.get_experience(uuid=None)`**
 
@@ -364,7 +366,7 @@ Returns a list of [experiences](#experience) matching the given query parameters
 Returns a list of [devices](#device) that are part of this experience.
 
 
-## Locations
+### Locations
 Locations inherit all [common resource methods and attributes](#resource).
 
 **`exp.get_location(uuid=None)`**
@@ -397,7 +399,7 @@ Returns a list of [zones](#zone) that are part of this location.
 Returns a url pointing to the location's layout image.
 
 
-## Zone
+### Zones
 Zones inherit the [common resource methods and attributes](#resource) `save()`, `refresh()`, and `get_channel()`.
 
 **`zone.key`**
@@ -449,7 +451,7 @@ feeds = exp.find_feeds({ 'subtype': 'scala:feed:facebook' })
 Returns the feed's data.
 
 
-## Data
+### Data
 Data items inherit the [common resource methods and attributes](#resource) `save()`, `refresh()`, and `get_channel()`.
 
 **`exp.get_data(group='default', key=None)`**
@@ -490,7 +492,7 @@ The data item's group. Settable
 The data item's value. Settable.
 
 
-## Content
+### Content
 Content items inherit all [common resource methods and attributes](#resource) except `save()`.
 
 **`exp.get_content(uuid=None)`**
@@ -522,7 +524,7 @@ Returns the delivery url for a variant of this content item.
 
 
 
-# Exceptions
+## Exceptions
 
  **`exp_sdk.ExpError`**
 
