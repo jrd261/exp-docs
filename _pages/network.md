@@ -18,6 +18,19 @@ summary: ""
 
 ## Overview
 
+**`exp.get_devices()`**
+
+Does something interesting (test).
+
+```javascript
+
+const exp = require('exp')
+exp.get_devices()
+
+```
+
+**`exp.get_asd()`**
+
 The EXP network faciliates real time communication across the EXP platform. Messaging takes place in the form of [broadcasts](#broadcasting) and [responses](#responding). Broadcasts contain a name and JSON serializable payload and are emitted onto a specified [channel](#channels). Entities can listen on channels for broadcasts with a specified name, and respond to the broadcast with a JSON serializable payload. The broadcaster receives a JSON array of response payloads.
 
 
