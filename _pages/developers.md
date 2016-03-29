@@ -9,5 +9,4 @@ summary: "A guide for developers using the EXP platform."
 
 # Developer Guide
 
-- [Network](../network)
-- [Python SDK Reference](../python_sdk_reference)
+- [Python SDK Reference](../python_sdk_reference-1.0.0)
