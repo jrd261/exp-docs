@@ -50,4 +50,6 @@ Device's must supply a `type` field of `device`, and a JWT containing their `uui
 ## Consumer App Credentials
 
 Consumer apps must supply a `type` field of `consumerApp` and a JWT container a 
+
+
 ## Refreshing a Token
