@@ -4,6 +4,15 @@
 <meta name="description" content="{% if page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 160 }}{% endif %}">
 <meta name="keywords" content="{{page.tags}}{% if page.tags %}, {% endif %} {{page.keywords}}">
 
+<!--Open Graph Protocol-->
+<meta name="og:locale" content="en_US" />
+<meta name="og:title" content="EXP Docs" />
+<meta name="og:type" content="website" />
+<meta name="og:image" content="http://docs..io/assets/exp-thumbnail-dark.jpg">
+<meta name="og:site_name" content="EXP Docs" >
+<meta name="og:url" content="http://docs.goexp.io" />
+<meta name="og:description" content="{% if page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 160 }}{% endif %}" />
+
 <title>{% if page.homepage == true %} {{site.homepage_title}} {% elsif page.title %}{{ page.title }}{% endif %}  | {{ site.site_title }}</title>
 <link rel="stylesheet" type="text/css" href="/css/syntax.css">
 <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
