@@ -2,14 +2,14 @@
 permalink: /developers/
 title: Developer Guide
 keywords: developer
-last_updated: November 30, 2015
+last_updated: April 12, 2016
 tags: [getting_started]
 summary: "A guide for developers using the EXP platform."
 ---
 
 # Getting Started With App Development
 
-## Essential Concepts of an EXP Player App
+## What an EXP Player App Is
 
 ### It consists of HTML, CSS, Javscript and a configuration file
 Your app consists of a zipped directory of one or more files, the most important of which is the `index.html`.
@@ -21,8 +21,8 @@ The EXP Javascript SDK is available on the `window` object to be used by your ja
 dynamic content and broadcast events to other devices in the experience.
 
 ### Explicit authentication is unnecessary
-When an app using the Javascript SDK is running inside of a player, it already has been authenticated by the player
-pairing process. This is in contrast to non-player apps which must use `exp.start()` to join the EXP network.
+When an app using the Javascript SDK is running inside of a player, the player itself has already has been authenticated by the
+pairing process.
 
 ### Life begins at `load()`
 Whereas most javascript applications start themselves through `document.onload` or some similar event that the browser
@@ -37,15 +37,15 @@ Hello World example.
 
 
 ## Hello World for EXP Player Apps
-There are two alternatives to get started with a new app:
+This is a walkthrough for how to make your own custom app in EXP. Our goal is to show you:
 
-* Create a directory in your own development environment with `index.html` at the root
+* what the bare minimum necessary files are for an EXP app to work on a player
+* how to get access to the config object that will allow you to configure your apps from the EXP interface
+* how to upload your app and get it running on a debug player
 
-* Navigate to the content route in EXP and choose `New > New App`. This will let you edit the files in an in-browser editor
-
-### 1. Show some HTML on the screen
-First we'll show some boring static content. If you created the app using the EXP UI then the following `index.html` was already created.
-If you are creating it in your own environment then copy and paste the following into your `index.html`.
+### 1. The `index.html`
+To get started with an EXP app, make a new directory and put a file called `index.html` into it. The directory
+containing `index.html` is what we'll eventually upload to EXP. Write the following in your `index.html`:
 
     <!DOCTYPE html>
     <html>
@@ -60,80 +60,117 @@ If you are creating it in your own environment then copy and paste the following
       </body>
     </html>
 
-Read [here]() for more information about setting up a player and assigning an app. If all has gone well you should see something like
+So far, it is a very simple HTML document that simply shows a static header in a nice font. In fact, an `index.html`
+with anything at all in it (that's valid HTML) is all that's necessary for an app, and we could just upload it right now.
+We'll spruce it up a bit more before uploading it though.
 
-![index.html](/common_images/developers/letsgetstarted.png)
+### 2. Showing dynamic content
+Showing some HTML on a screen is useful, but it's not the main strength of EXP. The real reason we want to write an EXP app
+is to show dynamic content loaded from the cloud. For our Hello World app we will inject the simplest possible dynamic content into our
+page -- some text.
 
-### 2. Verifying a connection to EXP
-Communication with EXP is through the `exp` object which is already available on the window object. Besides this object,
-the other bit of "magic" that comes from being in an EXP player is that you must define `load()` and `play()` functions
-on the global scope. To demonstrate this, copy the following code into a javascript file or script tag included in your app.
+Modify the `index.html` to include a div in which to put the string and an external javascript file. It should look like:
+
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <link href='//fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+        <style>
+          html { font-family: 'Roboto', sans-serif; color: #7E57C2; background-color: #FFF }
+        </style>
+      </head>
+      <body>
+        <h1>Let's get started!</h1>
+        <div id="message-container"></div>
+
+        <script src="main.js"></script>
+      </body>
+    </html>
+
+And create a `main.js` file alongside the `index.js` file with the following contents:
 
     'use strict';
 
     function play() {
-      var deviceUuid = exp.auth.identity.uuid;
-
-      exp.getDevice(deviceUuid).then(function(device) {
-        device = device.document;
-
-        console.log(device.name);
-        console.log(device.uuid);
-      });
+      var message = exp.app.config.message;
+      var container = document.getElementById('message-container');
+      
+      container.innerHTML = message;
     }
 
-Running this in a player should result in the player name and uuid being logged in console. This example demonstrates how
-configuration information is available on the `exp.auth` object, and how to use an asynchronous call like `getDevice()` to
-EXP. Note that `getDevice()` returns a javascript promise rather than using a callback, as do many other methods in the EXP Javascript SDK. 
+What happens in this bit of Javascript is that we execute some logic within the function `play`. The `play` function is
+called automatically by EXP when the app is ready to go, so all our logic must be initiated from within it.
 
-### 3. Getting content
-To get some dynamic content into our app, we first have to create a `manifest.json` that will tell EXP to allow
-configuration of the content from the UI. Create and copy the following into a `manifest.json` file in the root of
-the app. *Note: replace "YOUR_APP_NAME" with the name you gave your own app*.
+For our Hello World app, we want to show some text on the screen, so we put the text from `exp.app.config` into the container div.
+
+### 3. Setting up configuration
+Finally, we must create the `manifest.json` file alongside the `index.html` and `main.js` files. The manifest should exist
+in every EXP app, and contains information about the app like its name as well as what there is that can be configured.
+For our app it will be:
 
     {
-      "name": "YOUR_APP_NAME",
+      "name": "Hello World",
       "configTypes": [{
-        "name": "exampleImages",
-        "type": "appArray",
-        "label": "Some Example Images",
-        "path": "exampleImages",
-        "multiItem": true
+        "name": "message",
+        "type": "text",
+        "label": "Message to User",
+        "required": false,
+        "path": "message"
       }],
       "config": {
-        "slides": []
+        "message": ""
       }
     }
 
-This will allow you to assign a number of images to instances of the app in the app settings page.
+You must replace `YOUR_APP_NAME` in the above file with whatever name you plan to give to the app when you upload it to EXP.
 
-![app configuration](/common_images/developers/appconfiguration.png)
+The above manifest allows one text field configuration parameter for an app. The most important line to take note of in this
+manifest is where we set `"path": "message"`. In `main.js` we depend on this path being set up that way with the line:
 
-Next, we will display the first assigned image in the app. Add a div to the body of the app as a container for
-exp to put the image in.
+    var message = exp.app.config.message;
 
-Finally, add some code to the `play()` function that will load the image array and play its first element in the
-container div.
+The initial state of the config object is being set in the manifest too. We set `message` to be a blank string.
 
-    var key = exp.app.config.exampleImages[0].key;
-    var container = document.getElementById('image-container');
+### 4. Uploading and Testing the App
+The code for the app is now complete. Compress the app directory into a .zip file and upload it as a content item to the content tree.
+After clicking "Upload App", you will be prompted to enter a name and upload the file. **You must enter the same name as you used
+in the manifest file.**
 
-    exp.app.launch({
-      key: key,
-      container: container
-    });
+![Uploading an App](/common_images/developers/uploading_an_app.png "Uploading an App")
 
-A couple of things to note about the above code:
+![Uploading an App Dialog](/common_images/developers/uploading_an_app_dialog.png "Uploading an App Dialog")
 
-* in this case the configuration was accessed as `exp.app.config.examplesImages`. The last part, `exampleImages` depends
-    on the `key` property we set in the manifest.
+From the Experiences route, create a new experience (choose "Empty Experience" rather than "From Template").
 
-* we pointed the `exp.app.launch()` function to a content key and a container in the dom. We didn't tell it what
-    type of content to expect, it figures that out on its own. In this case it was an image but it could have been other
-    types of content such as a video or even another app.
+![Creating a New Experience](/common_images/developers/creating_new_experience.png "Creating a New Experience")
+
+From the Apps tab of the experience add an instance of the app we just wrote.
+
+![Adding an App](/common_images/developers/add_app.png "Adding an App")
+
+![Open App Settings](/common_images/developers/open_app_settings.png "Open App Settings")
+
+From the app settings menu for the instance of the app we just added, configure the message.
+
+![App Settings](/common_images/developers/app_settings.png "App Settings")
+
+From the Schedule tab, add a new day plan that runs our app at all times of the day, and assign that day plan to the current day.
+
+![Creating Day Plan](/common_images/developers/creating_day_plan.png "Creating Day Plan")
+
+![Creating Schedule](/common_images/developers/creating_schedule.png "Creating Schedule")
+
+Now, we have an experience with our app included and scheduled to run. The last step is assigning a device to show whatever is
+scheduled to be running right now. If you don't already have a player set up and added in EXP, do so now by adding a new device
+from the Devices tab of the experience and entering the pairing code from [player.goexp.io](https://player.goexp.io). If you
+already have a player set up, add that to the experience instead.
+
+As soon as the device is added we should see the player showing something like:
+
+![Hello World Player](/common_images/developers/hello_world_player.png "Hello World Player")
 
 ### Conclusion
-If you refresh the player you should now be able to see your content front and center.
+That's it! You have now learned the basics of how to create an EXP player app.
 
 To learn more about what's possible with an EXP player app, read the documentation for the EXP Javascript SDK.
 
