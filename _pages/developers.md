@@ -12,22 +12,17 @@ summary: "A guide for developers using the EXP platform."
 ## What an EXP Player App Is
 
 ### It consists of HTML, CSS, Javscript and a configuration file
-Your app consists of a zipped directory of one or more files, the most important of which is the `index.html`.
+Your app consists of a directory of one or more files, the most important of which is the `index.html`.
 When the app is scheduled to be played in an EXP player, the `index.html` will be displayed on the player, with any
 styles or script tags included in the index file also being loaded as you would expect.
 
-### Communication with EXP is through the Javascript SDK
-The EXP Javascript SDK is available on the `window` object to be used by your javascript. It will be used to get
+### Your App has Access to the EXP Javascript SDK
+A running instance of the EXP Javascript SDK is available on the `window` object to be used by your javascript. It will be used to get
 dynamic content and broadcast events to other devices in the experience.
 
 ### Explicit authentication is unnecessary
 When an app using the Javascript SDK is running inside of a player, the player itself has already has been authenticated by the
 pairing process.
-
-### Life begins at `load()`
-Whereas most javascript applications start themselves through `document.onload` or some similar event that the browser
-sends out, most EXP apps structure themselves around the `load()` and `play()` functions, which will be run for
-you by the player at the appropriate times.
 
 ### It has dynamic configuration
 Your app can be written to be flexible about its content. For instance, in a slideshow app the images and videos are not
@@ -122,8 +117,6 @@ For our app it will be:
       }
     }
 
-You must replace `YOUR_APP_NAME` in the above file with whatever name you plan to give to the app when you upload it to EXP.
-
 The above manifest allows one text field configuration parameter for an app. The most important line to take note of in this
 manifest is where we set `"path": "message"`. In `main.js` we depend on this path being set up that way with the line:
 
@@ -133,8 +126,7 @@ The initial state of the config object is being set in the manifest too. We set 
 
 ### 4. Uploading and Testing the App
 The code for the app is now complete. Compress the app directory into a .zip file and upload it as a content item to the content tree.
-After clicking "Upload App", you will be prompted to enter a name and upload the file. **You must enter the same name as you used
-in the manifest file.**
+After clicking "Upload App", you will be prompted to enter a name and upload the file. 
 
 ![Uploading an App](/common_images/developers/uploading_an_app.png "Uploading an App")
 
