@@ -11,7 +11,7 @@
   </div>
   <div class="col-md-6">
     <div class="bs-callout bs-callout-primary">
-      <strong>Guides</strong>
+      <strong>Developer Guides</strong>
       <ul>
         <li><a href="/getting-started">Getting Started With App Development</a></li>
         <!--<li><a href="/network">Network Guide</a></li>-->
