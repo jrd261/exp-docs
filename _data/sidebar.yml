@@ -64,7 +64,7 @@ entries:
       product: all
       version: all
       output: web, pdf
-      items:
+      thirdlevel:
       - title: Getting Started with App Development
         url: /developers/apps
         audience: developers, designers
@@ -78,7 +78,7 @@ entries:
       product: all
       version: all
       output: web, pdf
-      items:
+      thirdlevel:
       - title: Authentication
         url: /developers/authentication
         audience: developers
@@ -92,7 +92,7 @@ entries:
       product: all
       version: all
       output: web, pdf
-      items:
+      thirdlevel:
       - title: Python SDK Reference
         url: /developers/reference/python_sdk_reference-1.0.0/
         audience: developers, designers
