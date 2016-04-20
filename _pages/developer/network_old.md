@@ -1,11 +1,35 @@
 ---
-permalink: /developers/network/
-title: Network
+permalink: /developers/network_old/
+title: The EXP Network
 keywords: network
 summary: ""
 ---
 
-# Overview
+# The EXP Network
+
+- [Overview](#overview)
+- [Channels](#channels)
+  - [System Flag](#system-flag)
+  - [Consumer Flag](#consumer-flag)
+- [Broadcasting](#broadcasting)
+- [Listening](#listening)
+- [Responding](#responding)
+- [Examples](#examples)
+
+## Overview
+
+**`exp.get_devices()`**
+
+Does something interesting (test).
+
+```javascript
+
+const exp = require('exp')
+exp.get_devices()
+
+```
+
+**`exp.get_asd()`**
 
 The EXP network faciliates real time communication across the EXP platform. Messaging takes place in the form of [broadcasts](#broadcasting) and [responses](#responding). Broadcasts contain a name and JSON serializable payload and are emitted onto a specified [channel](#channels). Entities can listen on channels for broadcasts with a specified name, and respond to the broadcast with a JSON serializable payload. The broadcaster receives a JSON array of response payloads.
 
@@ -34,6 +58,19 @@ Under the hood, channels are actually defined by a hash of the organization, nam
 
 
 ## Broadcasting
+
+
+```javascript
+exp.getChannel('myChannel').broadcast('hello', {}, 500).then(responses => {});
+```
+
+
+```python
+responses = exp.get_channel('my channel').broadcast('hello', None, 500)
+```
+
+
+
 
 Sending a broadcast is as simple as sending a HTTP POST to `/api/networks/current/broadcasts`.
 
@@ -360,5 +397,3 @@ while True:
     broadcast.respond('Nice to meet you!')
 
 ```
-
-
