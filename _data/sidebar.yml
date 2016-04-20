@@ -73,14 +73,14 @@ entries:
       version: all
       output: web, pdf
     - title: Python SDK Reference
-      url: /developers/reference/python_sdk_reference-1.0.0/
+      url: /developers/reference/python_sdk_reference/
       audience: developers, designers
       platform: all
       product: all
       version: all
       output: web, pdf
     - title: Javascript SDK Reference
-      url: /developers/reference/javascript_sdk_reference-1.0.0/
+      url: /developers/reference/javascript_sdk_reference/
       audience: developers, designers
       platform: all
       product: all

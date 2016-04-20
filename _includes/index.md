@@ -18,7 +18,7 @@
           <div class="bs-callout bs-callout">
             <strong>Tutorials and Walkthroughs</strong>
             <ul>
-              <li><a href="/developers/apps">Getting Started With App Development</a></li>
+              <li><a href="/developers/apps">Getting Started With Player App Development</a></li>
             </ul>
           </div>
         </div>
@@ -34,8 +34,8 @@
           <div class="bs-callout">
             <strong>Platform SDKs</strong>
             <ul>
-              <li><a href="/developers/reference/python_sdk_reference-1.0.0">Python SDK Reference</a></li>
-              <li><a href="/developers/reference/javascript_sdk_reference-1.0.0">Javascript SDK Reference</a></li>
+              <li><a href="/developers/reference/python_sdk_reference">Python SDK Reference</a></li>
+              <li><a href="/developers/reference/javascript_sdk_reference">Javascript SDK Reference</a></li>
             </ul>
           </div>
         </div>
