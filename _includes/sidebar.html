@@ -51,7 +51,7 @@
             {% for entry in sidebar %}
             {% for subcategory in entry.subcategories %}
             {% if subcategory.audience contains audience and subcategory.product contains product and subcategory.platform contains platform and subcategory.version contains version and subcategory.output contains "web" %}
-            <li style="display:none;"><a href="#">{{ subcategory.title }}</a>
+            <li><a href="#">{{ subcategory.title }}</a>
                 <ul>
                     {% for item in subcategory.items %}
                     {% if item.audience contains audience and item.product contains product and item.platform contains platform and item.version contains version and item.output contains "web" %}
