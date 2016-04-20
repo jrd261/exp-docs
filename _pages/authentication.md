@@ -1,7 +1,7 @@
 
 # Overview
 
-Most HTTP requests to EXP, and the connection to the EXP network, require a valid authentication token. To obtain a token, [supply credentials](#exchanging-credentials-for-a-token) in an HTTP POST to the `/api/auth/login` endpoint, or if [exchange an existing valid token](#refreshing-a-token) for a new one by sending an authenticated HTTP POST request to `/api/auth/token`. Authentication tokens are short lived, ~hours, and must be exchanged for a new token before they expire.
+Most HTTP requests to EXP, and the connection to the EXP network, require a valid authentication token. To obtain a token, [supply credentials](#exchanging-credentials-for-a-token) in an HTTP POST to the `/api/auth/login` endpoint, or [exchange an existing valid token](#refreshing-a-token) for a new one by sending an authenticated HTTP POST request to `/api/auth/token`. Authentication tokens are short lived, ~hours, and must be exchanged for a new token before they expire.
 
 To make an authenticated request, supply the authentication token in the `Authorization` header of the HTTP request, i.e.
 
@@ -9,14 +9,14 @@ To make an authenticated request, supply the authentication token in the `Author
 Authorization: Bearer [token]
 ```
 
-In addition to authentication tokens, a "restricted token" can also be used for read-only access certain resources, e.g. content. The restricted token can be attached to an HTTP request as a cookie with name `_rt`, or as a query parameter, i.e. `/api/enpoint?_rt=[token]`.
+In addition to authentication tokens, a long lived "restricted token" can also be used for read-only access certain resources, like content. The restricted token can be attached to an HTTP request as a cookie with name `_rt`, or as a query parameter, i.e. `/api/enpoint?_rt=[token]`.
 
 
 
 
 # Exchanging Credentials for a Token
 
-To obtain an authentication token or restricted token, you must send a POST request to ```/api/auth/login``` with a JSON payload containing your login credentials. If successful, the response will be a [authentication response payload](#authentication-response-payload).
+To obtain an authentication token or restricted token, send a POST request to ```/api/auth/login``` with a JSON payload containing login credentials. If successful, the response will be a [authentication response payload](#authentication-response-payload).
 
 ### User Credentials
 
@@ -57,20 +57,19 @@ Consumer apps must supply a `type` field of `consumerApp` and a JWT containing t
 
 # Refreshing a Token
 
-To refresh your token, simply send an authenticated HTTP POST request to `/api/auth/token'. You should receive a [authentication payload](#authentication-payload-response) if your token is valid.
+To refresh a token, send an authenticated HTTP POST request to `/api/auth/token'. The response will be an [authentication payload](#authentication-payload-response) with a new token if your current token was valid.
 
 
 
 # Authentication Response Payload
 
-The authentication response payload is a JSON object containing various information.
-
-- api.host: The API server to use your token with.
-- network.host: The EXP network server you are assigned to.
-- identity: Information about who you are.
-- token: Your bearer authentication token.
-- expiration: The unix time in milliseconds when your token will expire.
-- restrictedToken: A token that allows read only access to low security things like content delivery.
+The authentication response payload is a JSON object containing the following properties:
+- api.host: The API host.
+- network.host: The EXP network host.
+- identity: Information about the identity associated with the supplied credentials.
+- token: The authentication token.
+- expiration: The unix time in milliseconds when the token will expire.
+- restrictedToken: The restricted token.
 
 Here is an example response payload:
 
