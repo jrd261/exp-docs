@@ -2,7 +2,6 @@
 permalink: /developers/reference/python_sdk_reference-1.0.0/
 title: Python SDK Reference (v1.0.0)
 keywords: python, sdk
-summary: "Reference document for EXP Python SDK"
 ---
 
 

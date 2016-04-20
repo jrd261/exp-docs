@@ -2,7 +2,6 @@
 permalink: /developers/reference/javascript_sdk_reference-1.0.0/
 title: Javascript SDK Reference (v1.0.0)
 keywords: javascript, sdk
-summary: "Reference document for EXP Javascript SDK"
 ---
 
 
