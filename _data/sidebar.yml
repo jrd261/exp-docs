@@ -11,6 +11,13 @@ entries:
     product: all
     version: all
     output: web, pdf
+  - title: SDK Reference
+    url: /reference/
+    audience: developers
+    platform: all
+    product: all
+    version: all
+    output: web, pdf
   # - title:
   #   audience: developers, designers
   #   platform: all
