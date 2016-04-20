@@ -14,6 +14,7 @@
       <strong>Developer Guides</strong>
       <ul>
         <li><a href="/getting-started">Getting Started With App Development</a></li>
+        <li><a href="/developers/authentication">Network Guide</a></li>
         <!--<li><a href="/network">Network Guide</a></li>-->
       </ul>
       <strong>SDK Documentation</strong>
