@@ -13,11 +13,10 @@
 <div class="row">
   <div class="col-md-12">
     <div class="bs-callout bs-callout-primary">
+      <strong>Developer Guide</strong>
+      <br>
       <div class="row">
-        <strong>Developer Guide</strong>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="bs-callout bs-callout">
             <strong>Tutorials and Walkthroughs</strong>
             <ul>
@@ -25,7 +24,7 @@
             </ul>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="bs-callout">
             <strong>Platform Reference</strong>
             <ul>
@@ -33,7 +32,7 @@
             </ul>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="bs-callout">
             <strong>Platform SDKs</strong>
             <ul>
