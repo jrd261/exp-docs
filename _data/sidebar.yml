@@ -72,6 +72,13 @@ entries:
       product: all
       version: all
       output: web, pdf
+  - title: Reference
+    audience: developers, designers
+    platform: all
+    product: all
+    version: all
+    output: web, pdf
+    items:
     - title: Python SDK Reference
       url: /developers/reference/python_sdk_reference-1.0.0/
       audience: developers, designers

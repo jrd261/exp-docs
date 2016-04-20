@@ -11,12 +11,31 @@
   </div>
   <div class="col-md-6">
     <div class="bs-callout bs-callout-primary">
-      <strong><a href="/developers">Developer Guide</a></strong>
-      <ul>
-        <li><a href="/developers/apps">Getting Started With App Development</a></li>
-        <li><a href="/developers/authentication">Authentication</a></li>
-        <li><a href="/developers/reference/python_sdk_reference-1.0.0">Python SDK Reference</a></li>
-        <li><a href="/developers/reference/javascript_sdk_reference-1.0.0">Javascript SDK Reference</a></li>
+      <strong>Developer Guide</strong>
+       <div class="bs-callout bs-callout-primary">
+         <strong>Tutorials and Walkthroughs</strong>
+         <ul>
+           <li><a href="/developers/apps">Getting Started With App Development</a></li>
+           <li>
+             <ul>
+               <li>Coming soon.</li>
+             </ul>
+           </li>
+         </ul>
+       </div>
+       <div class="bs-callout bs-callout-primary">
+         <strong>Platform Reference</strong>
+         <ul>
+           <li><a href="/developers/authentication">Authentication</a></li>
+         </ul>
+       </div>
+       <div class="bs-callout bs-callout-primary">
+         <strong>SDK Reference</strong>
+         <ul>
+           <li><a href="/developers/reference/python_sdk_reference-1.0.0">Python SDK Reference</a></li>
+           <li><a href="/developers/reference/javascript_sdk_reference-1.0.0">Javascript SDK Reference</a></li>
+         </ul>
+       </div>
       </ul>
     </div>
   </div>
