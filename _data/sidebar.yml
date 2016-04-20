@@ -58,52 +58,31 @@ entries:
     version: all
     output: web, pdf
     items:
-    - title: Tutorials and Walkthroughs
+    - title: Getting Started with App Development
+      url: /developers/apps
       audience: developers, designers
       platform: all
       product: all
       version: all
       output: web, pdf
-      thirdlevel:
-      - title: Getting Started with App Development
-        url: /developers/apps
-        audience: developers, designers
-        platform: all
-        product: all
-        version: all
-        output: web, pdf
-    - title: Platform Reference
+    - title: Authentication
+      url: /developers/authentication
+      audience: developers
+      platform: all
+      product: all
+      version: all
+      output: web, pdf
+    - title: Python SDK Reference
+      url: /developers/reference/python_sdk_reference-1.0.0/
       audience: developers, designers
       platform: all
       product: all
       version: all
       output: web, pdf
-      thirdlevel:
-      - title: Authentication
-        url: /developers/authentication
-        audience: developers
-        platform: all
-        product: all
-        version: all
-        output: web, pdf
-    - title: Platform SDKs
+    - title: Javascript SDK Reference
+      url: /developers/reference/javascript_sdk_reference-1.0.0/
       audience: developers, designers
       platform: all
       product: all
       version: all
       output: web, pdf
-      thirdlevel:
-      - title: Python SDK Reference
-        url: /developers/reference/python_sdk_reference-1.0.0/
-        audience: developers, designers
-        platform: all
-        product: all
-        version: all
-        output: web, pdf
-      - title: Javascript SDK Reference
-        url: /developers/reference/javascript_sdk_reference-1.0.0/
-        audience: developers, designers
-        platform: all
-        product: all
-        version: all
-        output: web, pdf

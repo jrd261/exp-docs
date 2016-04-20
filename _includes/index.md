@@ -9,8 +9,6 @@
       </ul>
     </div>
   </div>
-</div>
-<div class="row">
   <div class="col-md-12">
     <div class="bs-callout bs-callout-primary">
       <strong>Developer Guide</strong>
