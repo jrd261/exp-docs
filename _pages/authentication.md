@@ -1,4 +1,12 @@
 
+---
+permalink: /developers/authentication
+title: Authentication
+keywords: developer
+summary: "Authenticating with EXP"
+---
+
+
 # Overview
 
 Most HTTP requests to EXP, and the connection to the EXP network, require a valid authentication token. To obtain a token, [supply credentials](#exchanging-credentials-for-a-token) in an HTTP POST to the `/api/auth/login` endpoint, or [exchange an existing valid token](#refreshing-a-token) for a new one by sending an authenticated HTTP POST request to `/api/auth/token`. Authentication tokens are short lived, ~hours, and must be exchanged for a new token before they expire.
