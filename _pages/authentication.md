@@ -1,17 +1,24 @@
 
 # Overview
 
-EXP uses token based authentication. To obtain a token you can [supply credentials](#exchanging-credentials-for-a-token) in an HTTP POST to the `/api/auth/login` endpoint, or if you already have a valid token, you can [create a new token](#refreshing-a-token) by sending an authenticated HTTP POST request to `/api/auth/token`.
+Most HTTP requests to EXP, and the connection to the EXP network, require a valid authentication token. To obtain a token, [supply credentials](#exchanging-credentials-for-a-token) in an HTTP POST to the `/api/auth/login` endpoint, or if [exchange an existing valid token](#refreshing-a-token) for a new one by sending an authenticated HTTP POST request to `/api/auth/token`. Authentication tokens are short lived, ~hours, and must be exchanged for a new token before they expire.
 
+To make an authenticated request, supply the authentication token in the `Authorization` header of the HTTP request, i.e.
+
+```
+Authorization: Bearer [token]
+```
+
+In addition to authentication tokens, a "restricted token" can also be used for read-only access certain resources, e.g. content. The restricted token can be attached to an HTTP request as a cookie with name `_rt`, or as a query parameter, i.e. `/api/enpoint?_rt=[token]`.
 
 
 
 
 # Exchanging Credentials for a Token
 
-To obtain an authentication token, you must send a POST request to ```/api/auth/login``` with a JSON payload containing your login credentials. If successful, the response will be a [authentication response payload](#authentication-response-payload).
+To obtain an authentication token or restricted token, you must send a POST request to ```/api/auth/login``` with a JSON payload containing your login credentials. If successful, the response will be a [authentication response payload](#authentication-response-payload).
 
-## User Credentials
+### User Credentials
 
 User's must supply their `username` and `password`. If no `organization` is specified, the most recently used organization will be automatically chosen.
 
@@ -24,7 +31,7 @@ User's must supply their `username` and `password`. If no `organization` is spec
 ```
 
 
-## Device Credentials
+### Device Credentials
 
 Device's must supply a `type` field of `device`, and a JWT containing their `uuid`, signed by their `secret`. See [jwt.io](http://jwt.io).
 
@@ -36,7 +43,7 @@ Device's must supply a `type` field of `device`, and a JWT containing their `uui
 ```
 
 
-## Consumer App Credentials
+### Consumer App Credentials
 
 Consumer apps must supply a `type` field of `consumerApp` and a JWT containing their consumer app `uuid`, signed by their consumer app `api key`. See [jwt.io](http://jwt.io).
 
@@ -48,25 +55,9 @@ Consumer apps must supply a `type` field of `consumerApp` and a JWT containing t
 ```
 
 
-
-
 # Refreshing a Token
 
 To refresh your token, simply send an authenticated HTTP POST request to `/api/auth/token'. You should receive a [authentication payload](#authentication-payload-response) if your token is valid.
-
-
-
-# Making an Authenticated Request
-
-To make an authenticated request, supply your authentication token in the `Authorization` header of the HTTP request, i.e.
-
-```
-Authorization: Bearer [token]
-```
-
-
-
-
 
 
 
