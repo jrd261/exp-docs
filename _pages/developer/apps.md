@@ -1,5 +1,5 @@
 ---
-permalink: /getting-started/
+permalink: /developers/apps
 title: Getting Started
 keywords: developer
 last_updated: April 12, 2016

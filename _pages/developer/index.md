@@ -1,8 +1,8 @@
 ---
 permalink: /developers/
 title: Developer Guide
-keywords: developer
+keywords: developers
 last_updated: April 12, 2016
-tags: [getting_started]
+tags: [developers]
 summary: "A guide for developers using the EXP platform."
 ---
