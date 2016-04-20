@@ -4,7 +4,6 @@ title: Authentication
 keywords: developer, authentication
 last_updated: April 20, 2016
 tags: [auth]
-summary: "Authentication in the EXP platform."
 ---
 
 
