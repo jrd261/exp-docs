@@ -58,21 +58,35 @@ entries:
     version: all
     output: web, pdf
     items:
-    - title: Getting Started with App Development
-      url: /developers/apps
+    - title: Tutorials and Walkthroughs
       audience: developers, designers
       platform: all
       product: all
       version: all
       output: web, pdf
-    - title: Authentication
-      url: /developers/authentication
-      audience: developers
+      items:
+      - title: Getting Started with App Development
+        url: /developers/apps
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
+    - title: Tutorials and Walkthroughs
+      audience: developers, designers
       platform: all
       product: all
       version: all
       output: web, pdf
-  - title: Reference
+      items:
+      - title: Authentication
+        url: /developers/authentication
+        audience: developers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
+  - title: Platform SDKs
     audience: developers, designers
     platform: all
     product: all

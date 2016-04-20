@@ -11,7 +11,7 @@
   </div>
   <div class="col-md-6">
     <div class="bs-callout bs-callout-primary">
-      <strong>Developer Guinde</strong>
+      <strong>Developer Guide</strong>
        <div class="bs-callout bs-callout">
          <strong>Tutorials and Walkthroughs</strong>
          <ul>
@@ -27,18 +27,8 @@
        <div class="bs-callout">
          <strong>Platform SDKs</strong>
          <ul>
-           <li>
-             <div>Python</div>
-             <ul>
-               <li><a href="/developers/reference/python_sdk_reference-1.0.0">Reference</a></li>
-             </ul>
-           </li>
-           <li>
-             <div>Javascript</div>
-             <ul>
-               <li><a href="/developers/reference/javascript_sdk_reference-1.0.0">Reference</a></li>
-             </ul>
-           </li>
+           <li><a href="/developers/reference/python_sdk_reference-1.0.0">Python SDK Reference</a></li>
+           <li><a href="/developers/reference/javascript_sdk_reference-1.0.0">Javascript SDK Reference</a></li>
          </ul>
        </div>
       </ul>
