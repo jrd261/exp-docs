@@ -9,10 +9,7 @@ EXP uses token based authentication. To obtain a token you can [supply credentia
 
 # Exchanging Credentials for a Token
 
-To obtain an authentication token, you must send a POST request to ```/api/auth/login``` with a JSON payload containing your login credentials. There are three different types of login credentials:
-- User
-- Device
-- Consumer App
+To obtain an authentication token, you must send a POST request to ```/api/auth/login``` with a JSON payload containing your login credentials. If successful, the response will be a [authentication response payload](#authentication-response-payload).
 
 ## User Credentials
 
@@ -50,6 +47,15 @@ Consumer apps must supply a `type` field of `consumerApp` and a JWT containing t
 }
 ```
 
+
+
+
+# Refreshing a Token
+
+To refresh your token, simply send an authenticated HTTP POST request to `/api/auth/token'. You should receive a [authentication payload](#authentication-payload-response) if your token is valid.
+
+
+
 # Making an Authenticated Request
 
 To make an authenticated request, supply your authentication token in the `Authorization` header of the HTTP request, i.e.
@@ -64,7 +70,7 @@ Authorization: Bearer [token]
 
 
 
-## Authentication Response Payload
+# Authentication Response Payload
 
 The authentication response payload is a JSON object containing various information.
 
@@ -98,9 +104,3 @@ Here is an example response payload:
 }
 
 ```
-
-
-
-## Refreshing a Token
-
-To refresh your token, simply send an authenticated HTTP POST request to `/api/auth/token'. You should receive a [authentication payload](#authentication-payload-response) if your token is valid.
