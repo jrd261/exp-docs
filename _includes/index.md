@@ -1,7 +1,7 @@
 # EXP Documentation
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-12">
     <div class="bs-callout bs-callout-primary">
       <strong>User Guide</strong>
       <ul>
@@ -9,7 +9,7 @@
       </ul>
     </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-12">
     <div class="bs-callout bs-callout-primary">
       <strong>Developer Guide</strong>
        <div class="bs-callout bs-callout">
