@@ -28,7 +28,7 @@ In addition to authentication tokens, a long lived "restricted token" can also b
 
 To obtain an authentication token or restricted token, send a POST request to ```/api/auth/login``` with a JSON payload containing login credentials. If successful, the response will be a [authentication response payload](#authentication-response-payload).
 
-### User Credentials
+## User Credentials
 
 User's must supply their `username` and `password`. If no `organization` is specified, the most recently used organization will be automatically chosen.
 
@@ -41,7 +41,7 @@ User's must supply their `username` and `password`. If no `organization` is spec
 ```
 
 
-### Device Credentials
+## Device Credentials
 
 Device's must supply a `type` field of `device`, and a JWT containing their `uuid`, signed by their `secret`. See [jwt.io](http://jwt.io).
 
@@ -53,7 +53,7 @@ Device's must supply a `type` field of `device`, and a JWT containing their `uui
 ```
 
 
-### Consumer App Credentials
+## Consumer App Credentials
 
 Consumer apps must supply a `type` field of `consumerApp` and a JWT containing their consumer app `uuid`, signed by their consumer app `api key`. See [jwt.io](http://jwt.io).
 
