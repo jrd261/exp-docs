@@ -77,7 +77,7 @@ The authentication response payload is a JSON object containing the following pr
 - network.host: The EXP network host.
 - identity: Information about the identity associated with the supplied credentials.
 - token: The authentication token.
-- expiration: The unix time in milliseconds when the token will expire.
+- expiration: The UNIX time in milliseconds when the token will expire.
 - restrictedToken: The restricted token.
 
 Here is an example response payload:

@@ -6,14 +6,14 @@ keywords: network
 
 # Overview
 
-The EXP network faciliates real time communication between devices on the EXP platform. Messaging takes place though multicast broadcasting.
+The EXP network facilities real time communication between devices on the EXP platform. Messaging takes place though multi-cast broadcasting.
 
 Broadcasts contain a name and JSON serializable payload. A broadcast is sent on a specified [channel](#channels). Devices can listen on channels for broadcasts with some specified name, take action upon receiving a broadcast given the broadcast payload, and respond to the broadcast with a JSON serializable response payload. The broadcaster in turn receives a JSON array of response payloads.
 
 
 # Channels
 
-Channels provide namespacing for messaging and help reduce network traffic by routing broadcasts to only devices that are actively listening on the given channel.
+Channels provide name-spacing for messaging and help reduce network traffic by routing broadcasts to only devices that are actively listening on the given channel.
 
 In addition to a channel name, channels have two flags `system` and `consumer`. The channel name can be any string. The full channel is defined by the combination of the organization, channel name, and these two flags. Channels with the same name, but different flags are **NOT** the same channel.
 

@@ -2,7 +2,6 @@
 permalink: /developers/network_old/
 title: The EXP Network
 keywords: network
-summary: ""
 ---
 # Advanced Topics
 
