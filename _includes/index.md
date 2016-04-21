@@ -26,8 +26,9 @@
           <div class="bs-callout">
             <strong>Platform Guides</strong>
             <ul>
-              <li><a href="/developers/guides/network">The EXP Network</a></li>
               <li><a href="/developers/guides/player-apps">Player Apps</a></li>
+              <li><a href="/developers/guides/network">The EXP Network</a></li>
+              <li><a href="/developers/guides/data">The Data API</a></li>
             </ul>
           </div>
         </div>

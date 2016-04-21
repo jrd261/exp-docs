@@ -258,14 +258,8 @@ Once this app is uploaded to EXP and can be referenced by uuid, any player app i
 
 var options = { template: '[uuid]', config: { url: '[url]' }
 exp.player.launch(options).then(function (app) {
-    app.play().then(function () { console.log('The video is finished!'); });
+    app.play().then(function () { console.log('The image was shown!'); });
 });
 
 
 ```
-
-An interesting exercise would be to add the ability to configure the
-video to play multiple times, or loop.
-
-Another interesting exercise would be to write an app that plays a
-series of video apps with different urls, i.e. a video slideshow.
