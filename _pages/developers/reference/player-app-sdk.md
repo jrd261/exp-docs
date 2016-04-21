@@ -158,4 +158,3 @@ container | string or DOM Element | The ID of the DOM element in the parent docu
 config | object | Configuration options for the app.
 minDuration | number | The minimum amount of time to play the app for if app doesn't hold playback.
 maxDuration | number | The maximum amount of time to play an app that holds playback.
-forever | boolean | Whether or not to auto restart the app. App will play immediately.
