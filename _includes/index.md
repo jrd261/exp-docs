@@ -16,11 +16,9 @@
       <div class="row">
         <div class="col-md-6">
           <div class="bs-callout bs-callout">
-            <strong>Tutorials, Walkthroughs, and Examples</strong>
+            <strong>Tutorials and Walkthroughs</strong>
             <ul>
               <li><a href="/developers/tutorials/player-apps">Getting Started With Player App Development</a></li>
-              <li><a href="/developers/tutorials/video-app">Player App Example: Video Player</a></li>
-              <li><a href="/developers/tutorials/image-app">Player App Example: Image Viewer</a></li>
             </ul>
           </div>
         </div>
