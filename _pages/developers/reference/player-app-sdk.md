@@ -1,5 +1,5 @@
 ---
-permalink: /developers/reference/player-apps-sdk/
+permalink: /developers/reference/player-app-sdk/
 title: Player App SDK Reference
 keywords: developer
 last_updated: April 20, 2016

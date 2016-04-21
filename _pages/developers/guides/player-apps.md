@@ -16,6 +16,7 @@ external events. An app can be a little as a microservice, or as big
 as a full angular user interface. Here are the important concepts:
 
 - Apps are just HTML5 web pages.
+- Apps can access and define configuration options.
 - Apps run inside iframes within the player.
 - Many apps can be playing simultaneously.
 - Apps can launch other apps, and manage and interact with other apps.
@@ -130,3 +131,13 @@ When an app launches another app, a parent-child relationship is
 formed between the two apps, regardless of whether or not that
 relationship is mirrored in the DOM. If the parent is aborted, the
 children are aborted as well.
+
+
+
+# Configuration
+
+Apps can include a `manifest.json` alongside their `index.html` to
+specify configuration options that app needs to run, along with
+default values for those options. These options are shown in the user
+interface. See the Player App Manifest reference materials for more
+information (COMING SOON).
