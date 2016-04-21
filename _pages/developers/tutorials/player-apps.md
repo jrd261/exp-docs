@@ -1,5 +1,5 @@
 ---
-permalink: /developers/apps
+permalink: /developers/tutorials/player-apps
 title: Getting Started With Player App Development
 keywords: developer
 last_updated: April 12, 2016

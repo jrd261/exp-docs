@@ -1,5 +1,5 @@
 ---
-permalink: /developers/reference/python_sdk_reference/
+permalink: /developers/reference/python-sdk
 title: Python SDK Reference (v1.0.2)
 keywords: python, sdk
 ---

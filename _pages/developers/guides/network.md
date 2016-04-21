@@ -1,5 +1,5 @@
 ---
-permalink: /developers/network/
+permalink: /developers/guides/network
 title: The EXP Network
 keywords: network
 ---
