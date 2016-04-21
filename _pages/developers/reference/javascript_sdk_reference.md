@@ -5,7 +5,6 @@ keywords: javascript, sdk
 ---
 
 
-
 # Installation
 
 ## Bower
@@ -17,6 +16,7 @@ bower install exp-sdk
 ```
 
 Then include the sdk in a script tag from the bower_components directory. You can then access the sdk as the window bound global `EXP`.
+
 
 ```html
 <script src="bower_components/exp-sdk/exp-sdk.min.js"></script>
@@ -95,6 +95,10 @@ Stops the the SDK instance and clears all event listeners. Sdk instance cannot b
 **`exp.getAuth()`**
 
 Resolves to the current authentication payload. The authentication payload may be updated by performing this request.
+
+**`exp.auth`**
+
+Returns the current authentication payload. Will be null if not yet authenticated.
 
 **`exp.on('update',callback)`** 
 
@@ -229,7 +233,7 @@ Things inherit all [common resource methods and attributes](#resources).
 
 Resolves to the thing with the given uuid or `None` if no things could be found.
 
-**`exp.create_thing(document=None)`**
+**`exp.createThing(document=None)`**
 
 Resolves to a thing created based on the supplied document.
 
