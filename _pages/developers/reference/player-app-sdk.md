@@ -12,7 +12,7 @@ properties available specific to the player.
 
 `exp` becomes available just before `load` is called and so is not
 available immediately after the document `DOMContentLoaded` event or
-window `load` event. See [the player app guide](/developers/guides/player-apps/index.md).
+window `load` event. See [the player app guide](/developers/guides/player-apps/).
 
 
 # Apps
