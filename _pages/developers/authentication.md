@@ -10,7 +10,9 @@ tags: [auth]
 
 # Overview
 
-Most HTTP requests to EXP, and the connection to the EXP network, require a valid authentication token. To obtain a token, [supply credentials](#exchanging-credentials-for-a-token) in an HTTP POST to the `/api/auth/login` endpoint, or [exchange an existing valid token](#refreshing-a-token) for a new one by sending an authenticated HTTP POST request to `/api/auth/token`. Authentication tokens are short lived, ~hours, and must be exchanged for a new token before they expire.
+**This is an advanced topic. Out SDKs handle authentication automatically.***
+
+Most requests to EXP, and a connection to the EXP network, require a valid authentication token. To obtain a token, [supply credentials](#exchanging-credentials-for-a-token) in an HTTP POST to `/api/auth/login`, or [exchange an existing valid token](#refreshing-a-token) for a new one by sending an authenticated HTTP POST request to `/api/auth/token`. Authentication tokens are short lived, ~hours, and must be exchanged for a new token before they expire.
 
 To make an authenticated request, supply the authentication token in the `Authorization` header of the HTTP request, i.e.
 
@@ -18,7 +20,11 @@ To make an authenticated request, supply the authentication token in the `Author
 Authorization: Bearer [token]
 ```
 
-In addition to authentication tokens, a long lived "restricted token" can also be used for read-only access certain resources, like content. The restricted token can be attached to an HTTP request as a cookie with name `_rt`, or as a query parameter, i.e. `/api/enpoint?_rt=[token]`.
+In addition to authentication tokens, a long lived "restricted token" can also be used for read-only access certain resources, like content. The restricted token can be attached to an HTTP request as a cookie with name `_rt`, or as a query parameter, i.e.
+
+```
+/api/endpoint?_rt=[restricted token]`
+```
 
 
 
@@ -42,25 +48,25 @@ User's must supply their `username` and `password`. If no `organization` is spec
 
 ## Device Credentials
 
-Device's must supply a `type` field of `device`, and a JWT containing their `uuid`, signed by their `secret`. See [jwt.io](http://jwt.io).
+Device's must supply a `type` field of `device`, and a JWT containing the UUID, signed by the `secret`. See [jwt.io](http://jwt.io).
 
-```json
-{
+```javascript
+const payload = JSON.stringify({
   "type": "device",
-  "token": "[Signed JWT]"
-}
+  "token": JWT.sign({ uuid: '[uuid]' }, '[secret]')
+});
 ```
 
 
 ## Consumer App Credentials
 
-Consumer apps must supply a `type` field of `consumerApp` and a JWT containing their consumer app `uuid`, signed by their consumer app `api key`. See [jwt.io](http://jwt.io).
+Consumer apps must supply a `type` field of `consumerApp` and a JWT minimally containing the consumer app UUID, signed by the consumer app `api key`. See [jwt.io](http://jwt.io).
 
-```json
-{
+```javascript
+const payload = JSON.stringify({
   "type": "consumerApp",
-  "token": "[Signed JWT]"
-}
+  "token": jwt.sign({ uuid: '[uuid]' }, '[api key]')
+});
 ```
 
 
@@ -85,10 +91,10 @@ Here is an example response payload:
 ```json
 {
   "api": {
-    "host": "https://goexp.io"
+    "host": "https://api.goexp.io"
   },
   "network": {
-    "host": "https://network-27.goexp.io"
+    "host": "https://network27.goexp.io"
   },
   "identity": {
     "type": "user",
