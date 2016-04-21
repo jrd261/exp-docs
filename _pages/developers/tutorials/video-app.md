@@ -1,5 +1,5 @@
 ---
-permalink: /developers/tutorials/video-app
+permalink: /developers/tutorials/video-app/
 title: Player App Example: Video Player
 keywords: developer
 last_updated: April 20, 2016

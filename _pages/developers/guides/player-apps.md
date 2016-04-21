@@ -1,5 +1,5 @@
 ---
-permalink: /developers/guides/player-apps
+permalink: /developers/guides/player-apps/
 title: Player Apps
 keywords: developer
 last_updated: April 20, 2016

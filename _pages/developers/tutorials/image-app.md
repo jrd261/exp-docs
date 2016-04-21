@@ -1,5 +1,5 @@
 ---
-permalink: /developers/tutorials/image-app
+permalink: /developers/tutorials/image-app/
 title: Player App Example: Image Viewer
 keywords: developer
 last_updated: April 20, 2016
