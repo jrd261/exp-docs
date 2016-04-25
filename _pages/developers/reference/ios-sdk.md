@@ -243,18 +243,6 @@ ExpSwift.findThings(["limit":10, "skip":0, "sort":"name"]).then { (things: Searc
 
 ## Experiences
 
-**`ExpSwift.getCurrentExperience()`**
-
-Get the current experience. Resolves to an [Experience Object](#experience-object).
-
-```swift
-ExpSwift.getCurrentExperience().then { experience -> Void  in
-    debugPrint(experience.get("name"))
-    }.error { error in
-        debugPrint(error)
-}
-```
-
 **`ExpSwift.getExperience(uuid:String)`**
 
 Get a single experience by UUID. Resolves to a [Experience Object](#experience-object).
