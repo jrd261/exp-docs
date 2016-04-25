@@ -145,7 +145,7 @@ Whether or not you are connected to the network.
  Returns a channel with the given name with two flags: `consumerApp` and `system`. Consumer devices can only listen and broadcast on consumer channels. System channels are listen only and can receive broadcasts about system events.
  
 ```swift
-    let channel = ExpSwift.getChannel("my-channel",system: false,consumerApp: true)
+let channel = ExpSwift.getChannel("my-channel",system: false,consumerApp: true)
 ```
 
 **`channel.broadcast(name, payload, timeout)`** 
@@ -153,10 +153,10 @@ Whether or not you are connected to the network.
 Sends a broadcast with given `name` and `payload` on the channel. Waits for responses for `timeout` milliseconds and resolves with an array of responses.
 
 ```swift
-    var payload:Dictionary<String,AnyObject> = ["opening":"knock knock?"]
-    channel.broadcast("hi", payload: payload1, timeout: "2000").then { result -> Void in
-        debugPrint(result)
-    }
+var payload:Dictionary<String,AnyObject> = ["opening":"knock knock?"]
+channel.broadcast("hi", payload: payload1, timeout: "2000").then { result -> Void in
+    debugPrint(result)
+}
 ```
 
 **`channel.listen(name, callback)`** 
@@ -166,11 +166,11 @@ Registers a [listener](#listeners) callback for events on the channel with the g
 The callback is called with the broadcast payload as the first argument. Call the `respond` method to send a response back to the broadcaster.
 
 ```swift
-    channel.listen("myEvent",  callback: { (resultListen) -> Void in
-        debugPrint(resultListen)
-        //respond to listen method
-        ExpSwift.respond(["text":"hi to you too"])
-    })
+channel.listen("myEvent",  callback: { (resultListen) -> Void in
+    debugPrint(resultListen)
+    //respond to listen method
+    ExpSwift.respond(["text":"hi to you too"])
+})
 ```
 
 **`ExpSwift.respond(payload)`**
@@ -178,18 +178,18 @@ The callback is called with the broadcast payload as the first argument. Call th
 Call the `respond` method to send a response back to the broadcaster whith a `payload`.
 
 ```swift
-    var payload:Dictionary<String,AnyObject> = ["opening":"knock knock?"]
-    ExpSwift.respond(payload).then { result -> Void in
-        debugPrint(result)
-    }
+var payload:Dictionary<String,AnyObject> = ["opening":"knock knock?"]
+ExpSwift.respond(payload).then { result -> Void in
+    debugPrint(result)
+}
 ```
 
 **`channel.fling(payload)`** 
 
 Fling an app launch payload on the channel.
 ```swift
-     let payload:Dictionary<String,AnyObject> = ["uuid":"myUuid"]
-     channel1.fling(payload)
+let payload:Dictionary<String,AnyObject> = ["uuid":"myUuid"]
+channel1.fling(payload)
 ```
 
 
@@ -216,7 +216,8 @@ ExpSwift.getDevice("8930ff64-1063-4a03-b1bc-33e1ba463d7a").then { (device: Devic
 Query for multiple devices. Resolves to an array of [Devices](#devices).
 
 ```swift
-ExpSwift.findDevices(["limit":10, "skip":0, "sort":"name"]).then { (devices: SearchResults<Device>) -> Void  in
+ExpSwift.findDevices(["limit":10, "skip":0, "sort":"name"]).then 
+        { (devices: SearchResults<Device>) -> Void  in
             for device in devices.getResults() {
                 debugPrint(device.get("name"))
             }
@@ -244,12 +245,13 @@ ExpSwift.getThing("8930ff64-1063-4a03-b1bc-33e1ba463d7a").then { (thing: Thing) 
 Query for multiple things. Resolves to an array of [Things](#things).
 
 ```swift
-ExpSwift.findThings(["limit":10, "skip":0, "sort":"name"]).then { (things: SearchResults<Thing>) -> Void  in
-    for thing in things.getResults() {
-        debugPrint(thing.get("name"))
-    }
-}.error { error in
-    debugPrint(error)
+ExpSwift.findThings(["limit":10, "skip":0, "sort":"name"]).then 
+        { (things: SearchResults<Thing>) -> Void  in
+            for thing in things.getResults() {
+                debugPrint(thing.get("name"))
+            }
+        }.error { error in
+            debugPrint(error)
 }
 ```
 
@@ -261,10 +263,11 @@ ExpSwift.findThings(["limit":10, "skip":0, "sort":"name"]).then { (things: Searc
 Get a single experience by UUID. Resolves to a [Experience](#experiences).
 
 ```swift
-ExpSwift.getExperience("58dc59e4-a44c-4b6e-902b-e6744c09d933").then { (experience: Experience) -> Void  in
-    debugPrint(experience.get("name"))
-}.error { error in
-        debugPrint(error)
+ExpSwift.getExperience("58dc59e4-a44c-4b6e-902b-e6744c09d933").then 
+        { (experience: Experience) -> Void  in
+            debugPrint(experience.get("name"))
+        }.error { error in
+            debugPrint(error)
 }
 ```
 
@@ -273,12 +276,13 @@ ExpSwift.getExperience("58dc59e4-a44c-4b6e-902b-e6744c09d933").then { (experienc
 Query for multiple experiences. Resolves to an array of [Experiences](#experiences).
 
 ```swift
-ExpSwift.findExperiences(["limit":10, "skip":0, "sort":"name"]).then { (experiences: SearchResults<Experience>) -> Void  in
-    for experience in experiences.getResults() {
-        debugPrint(experience.get("name"))
-    }
-}.error { error in
-        debugPrint(error)
+ExpSwift.findExperiences(["limit":10, "skip":0, "sort":"name"]).then 
+        { (experiences: SearchResults<Experience>) -> Void  in
+            for experience in experiences.getResults() {
+                debugPrint(experience.get("name"))
+            }
+        }.error { error in
+            debugPrint(error)
 }
 ```
 
@@ -301,12 +305,13 @@ ExpSwift.getLocation("3e2e25df-8324-4912-91c3-810751f527a4").then { (location: L
 Query for multiple locations. Resolves to an array of [Locations](#locations).
 
 ```swift
-ExpSwift.findLocations(["limit":10, "skip":0, "sort":"name"]).then { (locations: SearchResults<Location>) -> Void  in
-    for location in locations.getResults() {
-        debugPrint(location.get("name"))
-    }
-    }.error { error in
-        debugPrint(error)
+ExpSwift.findLocations(["limit":10, "skip":0, "sort":"name"]).then 
+        { (locations: SearchResults<Location>) -> Void  in
+            for location in locations.getResults() {
+                debugPrint(location.get("name"))
+            }
+        }.error { error in
+            debugPrint(error)
 }
 ```
 
@@ -347,12 +352,13 @@ ExpSwift.getFeed("3e2e25df-8324-4912-91c3-810751f527a4").then { (feed: Feed) -> 
 Query for multiple feeds. Resolves to an array of [Feeds](#feeds).
 
 ```swift
-ExpSwift.findFeeds(["limit":10, "skip":0, "sort":"name"]).then { (locations: SearchResults<Feed>) -> Void  in
-    for feed in feeds.getResults() {
-        debugPrint(feed("name"))
-    }
-}.error { error in
-    debugPrint(error)
+ExpSwift.findFeeds(["limit":10, "skip":0, "sort":"name"]).then 
+        { (locations: SearchResults<Feed>) -> Void  in
+            for feed in feeds.getResults() {
+                debugPrint(feed("name"))
+            }
+        }.error { error in
+            debugPrint(error)
 }
 ```
 
@@ -392,12 +398,13 @@ ExpSwift.getData("cats", "fluffbottom").then { (data: Data) -> Void  in
 Query for multiple data items. Resolves to an SearchResults object containing [Data](#data).
 
 ```swift
-ExpSwift.findData(["limit":10, "skip":0, "sort":"key", "group":"cats"]).then { (data: SearchResults<Data>) -> Void  in
-    for dataItem in data.getResults() {
-        debugPrint(dataItem.get("value"))
-    }
-}.error { error in
-    debugPrint(error)
+ExpSwift.findData(["limit":10, "skip":0, "sort":"key", "group":"cats"]).then 
+        { (data: SearchResults<Data>) -> Void  in
+            for dataItem in data.getResults() {
+                debugPrint(dataItem.get("value"))
+            }
+        }.error { error in
+            debugPrint(error)
 }
 ```
 
@@ -420,12 +427,13 @@ ExpSwift.getContent("root").then { (content: Content) -> Void  in
 Query for multiple content . Resolves to a SearchResults object containing [Content](#content).
 
 ```swift
-ExpSwift.findContent(["limit":10, "skip":0, "sort":"name", "name":"images"]).then { (data: SearchResults<Content>) -> Void  in
-    for content in data.getResults() {
-        debugPrint(content.get("name"))
-    }
-}.error { error in
-    debugPrint(error)
+ExpSwift.findContent(["limit":10, "skip":0, "sort":"name", "name":"images"]).then 
+        { (data: SearchResults<Content>) -> Void  in
+            for content in data.getResults() {
+                debugPrint(content.get("name"))
+            }
+        }.error { error in
+            debugPrint(error)
 }
 ```
 
