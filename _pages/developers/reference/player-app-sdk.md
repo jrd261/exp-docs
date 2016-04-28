@@ -99,9 +99,9 @@ exp.player.launch(options).then(function (app) { app.play(); });
 ```
 
 
-**`app.abort(error)`**
+**`app.abort(error, force)`**
 
-Stop playback and remove the app. Optionally pass in an `error` to indicate why playback was stopped.
+Stop playback and remove the app. Optionally pass in an `error` to indicate why playback was stopped. Set `force` to `true` to abort an app that is set to launch and play forever.
 
 
 ```javascript
@@ -125,6 +125,21 @@ Returns an array of all `apps` launched by the app.
 
 # Player
 
+**`exp.player.launch(options)`**
+
+Returns a promise to a new app. When the promise resolves, the app is
+bound to the DOM and is ready for playback. See [Launch Options](#launch-options).
+
+**`exp.player.resolve(options)`**
+
+Resolves to the specified [Launch Options](#launch-options) into launch options that include an app uuid.
+
+**`exp.player.restart()`**
+
+Restart the player.
+
+## Options
+
 **`exp.player.options.get(name)`**
 
 Returns the player option with the given name.
@@ -137,24 +152,33 @@ Sets the player option with the given name to the given value. Note that only st
 
 Permanently saves any options set manually. Returns a promise that resolves when the options were saved.
 
-**`exp.player.launch(options)`**
 
-Returns a promise to a new app. When the promise resolves, the app is
-bound to the DOM and is ready for playback. See [Launch Options](#launch-options).
-
-**`exp.player.restart()`**
-
-Restart the player.
 
 
 
 # Launch Options
 
+One and only one of the following options must be specified: `url`, `urls`, `content`, or `app`.
+
 Name | Type | Description
 --- | --- | ---
 template | string | The UUID of the app template to use.
-name | string | (optional) The name of the app.
+url | string | The URL to play. The player will guess the app to play the URL with.
+urls | array of strings | A list of urls to play in a slideshow.
+content | string or array of strings | Must contain UUIDs of content items. The player will determine which app to play the content item with or if an array is specified, will play the content items in a slideshow.
+
+Other options:
+
+Name | Type | Description
+--- | --- | ---
+name | string | The name of the app.
 container | string or DOM Element | The ID of the DOM element in the parent document or the DOM element to load the app into. Defaults to the parent apps element.
 config | object | Configuration options for the app.
 minDuration | number | The minimum amount of time to play the app for if app doesn't hold playback.
 maxDuration | number | The maximum amount of time to play an app that holds playback.
+forever | boolean | Whether or not to play the app forever. If `true`, app will automatically start to play when loaded.
+autoplay | boolean | Whether or not to automatically play the app when it is loaded.
+
+
+
+
