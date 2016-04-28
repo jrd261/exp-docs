@@ -572,7 +572,7 @@ String variantUrl = contentNode.getVariantUrl("320.png");
 ```
 
 
-# LOGGING
+# Logging
 
 Android uses Proguard for packaging Apps, If you want to remove the Exp logs before you publish your app you need to change **build.gradle** under your project and add the file **proguard-android-optimize.txt** under build tpyes proguardFiles, this will activate the proguard rules that you can define in the file **proguard-rules.pro**, in this file you can remove the logs that you want. The configuration should luke like this 
 
