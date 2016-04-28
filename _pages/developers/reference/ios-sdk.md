@@ -503,7 +503,7 @@ Get the absolute url to the content node's variant data. Useful for image/video 
 let url = content.getVariantUrl("320.png");
 ```
 
-# LOGGING
+# Logging
 
 If you want to see the ExpSwift logs you need to Click on the POD project name at the top of the File Navigator at the left of the Xcode project window. Choose the Build Settings tab and scroll down to the "Swift Compiler - Custom Flags" section near the bottom. Click the Down Arrow next to Other Flags to expand the section.
 Click on the Debug line to select it. Place your mouse cursor over the right side of the line and double-click. A list view will appear. Click the + button at the lower left of the list view to add a value. A text field will become active.
