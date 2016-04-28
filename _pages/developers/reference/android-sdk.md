@@ -399,7 +399,7 @@ Exp.getFeed("052a2419-0621-45ad-aa03-3747dbfe2b6d")
         });
 ```
 
-**`ExpSwift.findFeeds(params:[String:AnyObject])`**
+**`Exp.findFeeds(params:[String:AnyObject])`**
 
 Query for multiple feeds. Resolves to an array of [Feeds](#feed-object).
 
@@ -507,7 +507,7 @@ Exp.getContent("d24c6581-f3d2-4d5a-b6b8-e90a4812d7df")
 });
 ```
 
-**`ExpSwift.findContent(options)`**
+**`Exp.findContent(options)`**
 
 ```java
 Exp.findContent(options)
@@ -572,9 +572,9 @@ String variantUrl = contentNode.getVariantUrl("320.png");
 ```
 
 
-# LOGGING
+# Logging
 
-Android uses Proguard for packaging Apps, If you want to remove the ExpSwift logs before you publish your app you need to change **build.gradle** under your project and add the file **proguard-android-optimize.txt** under build tpyes proguardFiles, this will activate the proguard rules that you can define in the file **proguard-rules.pro**, in this file you can remove the logs that you want. The configuration should luke like this 
+Android uses Proguard for packaging Apps, If you want to remove the Exp logs before you publish your app you need to change **build.gradle** under your project and add the file **proguard-android-optimize.txt** under build tpyes proguardFiles, this will activate the proguard rules that you can define in the file **proguard-rules.pro**, in this file you can remove the logs that you want. The configuration should luke like this 
 
 ```xml
  buildTypes {
