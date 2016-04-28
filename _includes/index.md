@@ -38,11 +38,9 @@
             <ul>
               <li><a href="/developers/reference/python-sdk">Python SDK</a></li>
               <li><a href="/developers/reference/javascript-sdk">Javascript SDK</a></li>
-              <!--<li><a href="/developers/reference/player-app-sdk">Player App SDK</a></li>
+              <!--<li><a href="/developers/reference/player-app-sdk">Player App SDK</a></li>-->
               <li><a href="/developers/reference/ios-sdk">IOS SDK</a></li>
-
               <li><a href="/developers/reference/android-sdk">Android SDK</a></li>-->
-
               <li><a href="/developers/reference/authentication">Authentication</a></li>
             </ul>
           </div>
