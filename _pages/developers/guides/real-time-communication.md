@@ -1,12 +1,12 @@
 ---
-permalink: /developers/guides/network
-title: The EXP Network
+permalink: /developers/guides/real-time-communication
+title: Real Time Communications
 keywords: network
 ---
 
 # Overview
 
-The EXP network facilities real time communication between devices on the EXP platform. Messaging takes place though multi-cast broadcasting.
+Devices on the EXP platform can communicate in real time. Messaging takes place though multi-cast broadcasting.
 
 Broadcasts have a name, payload, and channel. Using the SDKs, devices can listen on channels for broadcasts by name, and take action upon receiving the payload. Devices can also respond to the broadcast with a response payload. The broadcaster in turn recieves an array of response payloads.
 
@@ -15,7 +15,7 @@ Both the broadcast and response payload must be JSON serializable types.
 
 # Channels
 
-Channels provide name-spacing for messaging and help reduce network traffic by routing broadcasts to only devices that are actively listening on the given channel.
+Channels provide name-spacing for messaging and help reduce traffic by routing broadcasts to only devices that are actively listening on the given channel.
 
 In addition to a channel name, channels have two flags `system` and `consumer`. The channel name can be any string, but the full channel is a combination of the organization, channel name, and these two flags. Channels with the same name, but different system or consumer flags are **NOT** the same channel.
 
@@ -26,7 +26,7 @@ Consumer app credentials are typically delivered with a mobile application to th
 
 # Sending a Broadcast
 
-The easiest way to use the EXP Network is with one of our SDKs, however, broadcasts can still be emitted with an HTTP request. Sending a broadcast is as simple as sending a HTTP POST to `/api/networks/current/broadcasts`.
+The easiest way to use the real time communication is with one of our SDKs, however, broadcasts can still be emitted with an HTTP request. Sending a broadcast is as simple as sending a HTTP POST to `/api/networks/current/broadcasts`.
 
 ```javascript
 {
