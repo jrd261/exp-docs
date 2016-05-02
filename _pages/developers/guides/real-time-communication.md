@@ -1,6 +1,6 @@
 ---
 permalink: /developers/guides/real-time-communication
-title: Real Time Communications=
+title: Real Time Communication
 keywords: network
 ---
 
