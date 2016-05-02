@@ -27,6 +27,7 @@
             <strong>Platform Guides</strong>
             <ul>
               <li><a href="/developers/guides/player-apps">Player Apps</a></li>
+              <li><a href="/developers/guides/local-app-development">Local App Development</a></li>
               <li><a href="/developers/guides/real-time-communication">Real Time Communication</a></li>
               <li><a href="/developers/guides/data">The Data API</a></li>
             </ul>
