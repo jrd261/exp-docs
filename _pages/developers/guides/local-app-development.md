@@ -23,8 +23,6 @@ Note: You may need to use `sudo` or be logged in as `root`.
 
 # Launch Your Application 
 
-First, use the EXP user interface or API to create a device. You do not need to record the uuid or secret.
-
 Assuming you have a local HTML5 application, change your working directory to the directory containing `index.html` and run
 
 ```bash
@@ -37,7 +35,7 @@ You can also specify the path:
 exp play ./my-app/
 ```
 
-This will launch an EXP player in a webrowser. The first time you run `exp play` you'll be presented with a pairing screen. Use the EXP user interface to pair the device you created to this player.
+This will launch an EXP player in a webrowser. The first time you run `exp play` you'll be presented with a pairing screen. Use the EXP user interface to pair a device with your browser.
 
 After pairing the device, your app will now be running inside of a full featured EXP player. The `exp play` command will automatically reload the player when you make changes to your application's code.
 
