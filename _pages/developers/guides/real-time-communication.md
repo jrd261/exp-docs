@@ -1,14 +1,14 @@
 ---
 permalink: /developers/guides/real-time-communication
-title: Real Time Communications
+title: Real Time Communications=
 keywords: network
 ---
 
 # Overview
 
-Devices on the EXP platform can communicate in real time. Messaging takes place though multi-cast broadcasting.
+Devices on the EXP platform can communicate with low latency via multi-cast broadcasting.
 
-Broadcasts have a name, payload, and channel. Using the SDKs, devices can listen on channels for broadcasts by name, and take action upon receiving the payload. Devices can also respond to the broadcast with a response payload. The broadcaster in turn recieves an array of response payloads.
+Broadcasts have a name, payload, and channel. Using the SDKs, devices can listen on channels (via websocket) for broadcasts by name, and take action upon receiving the payload. Devices can also respond to the broadcast with a response payload. The broadcaster in turn recieves an array of response payloads.
 
 Both the broadcast and response payload must be JSON serializable types.
 
