@@ -73,7 +73,7 @@ Starts and returns an sdk instance. Can be called multiple times to start multip
 - `secret` The device secret.
 - `apiKey` The consumer app api key. Required consumer app credential.
 - `host` The api host to authenticate with. Defaults to `https://api.goexp.io`.
-- `enableNetwork` Whether or not to establish a socket connection with the EXP network. If `false` you will not be able to listen for broadcasts. Defaults to `true`.
+- `enableNetwork` Whether or not to establish a socket connection with the network for real time communication. If `false` you will not be able to listen for broadcasts. Defaults to `true`.
 
 
 ```swift
@@ -142,7 +142,7 @@ ExpSwift.on("error", callback: { obj -> Void in
 ```
 
 
-# Network
+# Real Time Communication
 
 
 ## Status
