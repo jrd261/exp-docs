@@ -10,7 +10,7 @@ tags: [auth]
 
 # Overview
 
-**This is an advanced topic. Out SDKs handle authentication automatically.***
+**This is an advanced topic. Our SDKs handle authentication automatically.**
 
 Most requests to EXP, and a connection to the EXP network, require a valid authentication token. To obtain a token, [supply credentials](#exchanging-credentials-for-a-token) in an HTTP POST to `/api/auth/login`, or [exchange an existing valid token](#refreshing-a-token) for a new one by sending an authenticated HTTP POST request to `/api/auth/token`. Authentication tokens are short lived, ~hours, and must be exchanged for a new token before they expire.
 
