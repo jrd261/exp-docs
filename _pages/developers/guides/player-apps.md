@@ -73,15 +73,12 @@ The player will then look in the app window for a `play` method. If a
 `play` method is defined, it is called.
 
 If there is no play method or the play method does not return a
-promise, the app will remain in the `playing` state until the minimum
-duration specified in the launch options is reached.
+promise, the app will remain in the `playing` state until the
+duration specified in the launch options (or the default duration) is reached.
 
 If the play method returns a promise, the player will play the app
-until the promise is resolved/rejected or the maximum duration
-specified in the launch options is reached.
+until either the promise is resolved/rejected OR if `forceDuration` is `true` and the duration specified in the launch options (or the default duration) has elapsed.
 
-When playback finishes, the player immediately transitions the app
-into the `finished` state.
 
 
 ## Unloading: `window.unload()`
