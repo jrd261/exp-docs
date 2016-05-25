@@ -36,7 +36,7 @@ A short description of the purpose of the app.
 ## Content configuration
 In addition to the metadata properties, there are the `configTypes` and `config` properties.
 
-`configTypes` is an array of objects, each object standing for a different type of content that could be provided.
+`configTypes` is an array of objects, each object standing for a UI control which saves data to your experience. Each `type` is a different UI control for different way of presenting the user with a choice, including select dropdowns, lists of content, upload regions, simple text inputs, and checkboxes.
 
 `config` is an object that serves as the "default" configuration object new instances of your app will have.
 
@@ -45,9 +45,9 @@ In addition to the metadata properties, there are the `configTypes` and `config`
   "name": "Example App",
   "configTypes": [
     {
-      "name": "Message",
+      "name": "message",
       "type": "text",
-      "label": "message",
+      "label": "Message",
       "path": "userMessage",
       "required": false
     }
@@ -59,16 +59,16 @@ In addition to the metadata properties, there are the `configTypes` and `config`
 ```
 
 **`name`**
-An optional field to help you, the developer, remember what the configuration object is for.
+A required field that serves as a unique key (identifier) for this control
 
 **`type`**
 The type of value this is configuration for. The possible types of configuration objects are catalogued below.
 
 **`label`**
-The label that the field will have in the EXP UI.
+The label shown to the user in the EXP UI.
 
 **`path`**
-The key or path this value will be stored at on the configuration object.
+The path in the `app.config` object to which this value will be stored.
 
 **`required`**
 A boolean value (default `false`) which, if true, will not let the user save changes to the app config unless
@@ -89,9 +89,9 @@ A simple text message. Its value is a string and in the UI the user will edit it
 {
   "configTypes": [
     {
-      "name": "Message",
+      "name": "message",
       "type": "text",
-      "label": "message",
+      "label": "Message",
       "path": "userMessage",
       "required": false
     }
@@ -110,10 +110,10 @@ An image that the user can upload and will then be available to your app. The us
 {
   "configTypes": [
     {
-      "name": "Logo",
+      "name": "logo",
       "type": "image",
       "label": "Sidebar Logo",
-      "path": "logo",
+      "path": "sidebarLogo",
       "multiItem": false,
       "required": false
     }
@@ -152,7 +152,7 @@ For this type, `supportedTypes` should be supplied with the type of feed you are
 {
   "configTypes": [
     {
-      "name": "Weather Feed",
+      "name": "weather",
       "type": "feed",
       "label": "Weather Feed",
       "path": "weatherFeed",
@@ -174,7 +174,7 @@ A color for the user to pick. Often used for letting them choose a theme for you
 {
   "configTypes": [
     {
-      "name":"Trimary Color",
+      "name":"primary",
       "type":"color",
       "label":"Primary Color",
       "required":true,
@@ -195,7 +195,7 @@ additional config parameter supplied called `options` that lists the possible va
 {
   "configTypes": [
     {
-      "name":"Temperature",
+      "name":"temp",
       "type":"select",
       "label":"Temperature",
       "required":true,
@@ -265,11 +265,11 @@ of permitted content types. Possible values that can be restricted to are:
 {
   "configTypes": [
     {
-      "name": "Content",
+      "name": "content",
       "type": "appArray",
-      "label": "Content to Show",
+      "label": "Content For App",
       "required": true,
-      "path": "content",
+      "path": "contentItems",
       "restriction": ["video", "image"]
     }
   ],
