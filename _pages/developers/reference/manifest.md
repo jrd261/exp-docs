@@ -22,13 +22,13 @@ These options affect how your app appears to users of the app who are configurin
 ```
 
 **`name`**
-The name it will have in the UI.
+The name for the app in the UI.
 
 **`icon`**
-The icon it will have in the UI.
+The icon for the app in the UI.
 
 **`background`**
-The background color it will have in the UI.
+The background color of the app in the UI.
 
 **`description`**
 A short description of the purpose of the app.
@@ -36,7 +36,7 @@ A short description of the purpose of the app.
 ## Content configuration
 In addition to the metadata properties, there are the `configTypes` and `config` properties.
 
-`configTypes` is an array of objects, each object standing for a UI control which saves data to your experience. Each `type` is a different UI control for different way of presenting the user with a choice, including select dropdowns, lists of content, upload regions, simple text inputs, and checkboxes.
+`configTypes` is an array of objects, each object standing for a UI control which saves data to your experience. Each type is a different UI control for different way of presenting the user with a choice, including select dropdowns, lists of content, upload regions, simple text inputs, and checkboxes.
 
 `config` is an object that serves as the "default" configuration object new instances of your app will have.
 
