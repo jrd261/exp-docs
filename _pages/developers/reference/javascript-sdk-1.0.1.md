@@ -1,4 +1,8 @@
-
+---
+permalink: /developers/reference/javascript-sdk-1.0.1/
+title: Javascript SDK Reference (v1.0.1)
+keywords: javascript, sdk
+---
 
 
 
