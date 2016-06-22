@@ -16,9 +16,10 @@
       <div class="row">
         <div class="col-md-6">
           <div class="bs-callout bs-callout">
-            <strong>Tutorials and Walkthroughs</strong>
+            <strong>Tutorials, Walkthroughs, and Examples</strong>
             <ul>
               <li><a href="/developers/tutorials/player-apps">Getting Started With Player App Development</a></li>
+              <li><a href="https://github.com/scalainc/exp-app-boilerplates">Example Player Applications</a></li>
             </ul>
           </div>
         </div>
