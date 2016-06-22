@@ -19,6 +19,7 @@
             <strong>Tutorials, Walkthroughs, and Examples</strong>
             <ul>
               <li><a href="/developers/tutorials/player-apps">Getting Started With Player App Development</a></li>
+              <li><a href="https://github.com/scalainc/exp-cli">Using EXP CLI</a></li>
               <li><a href="https://github.com/scalainc/exp-app-boilerplates">Example Player Applications</a></li>
             </ul>
           </div>
