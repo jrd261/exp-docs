@@ -388,13 +388,13 @@ Resolves to an array of [zones](#zones) that are part of this location.
 
 Returns a url pointing to the location's layout image.
 
-**`location.getDevices()`**
-
-Resolves to an array of [devices](#devices) that are part of this location.
-
 **`location.getCurrentLocation()`**
 
 Resolves to the current Location(#locations) or `null`
+
+**`location.getDevices()`**
+
+Resolves to an array of [devices](#devices) that are part of this location.
 
 ```swift
 location.getDevices().then { (devices: SearchResults<Device>) -> Void  in
