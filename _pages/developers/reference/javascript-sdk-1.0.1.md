@@ -387,6 +387,7 @@ Resolves to the feed's data.
 ## Data
 
 Data items inherit the [common resource methods and attributes](#resources) `save()`, `refresh()`, and `getChannel()`.
+There is a limit of 16MB per data document.
 
 **`exp.getData(group, key)`**
 
