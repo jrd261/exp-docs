@@ -1,6 +1,6 @@
 ---
 permalink: /developers/reference/android-sdk/
-title: Android SDK Reference (v1.0.2)
+title: Android SDK Reference (v1.0.0)
 keywords: android, sdk
 ---
 
@@ -12,7 +12,7 @@ keywords: android, sdk
 Gradle:
 
 ```java
-compile 'io.goexp:exp-android-sdk:v1.0.2'
+compile 'io.goexp:exp-android-sdk:v1.0.0'
 ```
 
 Exp Android SDK requires at minimum Java 7 and Android 4.3.
@@ -219,22 +219,6 @@ Exp.findDevices(options)
   });
 ```
 
-**`device.getZones()`**
-
-Resolves to an array of [zones](#zones) that are part of this device.
-
-**`device.getLocation()`**
-
-Resolves to an [Location](#locations) that are part of this device.
-
-**`device.getExperience()`**
-
-Resolves to an [Experience](#experiences) that are part of this device.
-
-**`Device.getCurrentDevice()`**
-
-Resolves to the current Device(#devices) or `null`
-
 ## Things
 
 **`Exp.getThing(uuid)`**
@@ -285,19 +269,8 @@ Exp.findthings(options)
     });
 ```
 
-**`thing.getZones()`**
-
-Resolves to an array of [zones](#zones) that are part of this device.
-
-**`thing.getLocation()`**
-
-Resolves to an [Location](#locations) that are part of this device.
-
-**`thing.getExperience()`**
-
-Resolves to an [Experience](#experiences) that are part of this device.
-
 ## Experiences
+
 
 **`Exp.getExperience(uuid)`**
 
@@ -343,33 +316,6 @@ Exp.findExperiences(options)
                 }
 });
 ```
-
-**`experience.geDevices()`**
-
-Resolves to a SearchResults object containing [Devices](#devices).
-
-```java
-experience.getDevices().then(new Subscriber<SearchResults<Device>>() {
-            @Override
-            public void onCompleted() {
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Log.e("error", e.toString());
-            }
-
-            @Override
-            public void onNext(SearchResults<Device> resultDevices) {
-                Log.i("Response", resultDevices.toString());
-            }
-        });
-```
-
-**`experience.getCurrentExperience()`**
-
-Resolves to the current Experience(#experiences) or `null`
-
 
 ## Locations
 
@@ -421,54 +367,6 @@ Resolves to an array of [zones](#zones) that are part of this location.
 
 Returns a url pointing to the location's layout image.
 
-**`location.getCurrentLocation()`**
-
-Resolves to the current Location(#locations) or `null`
-
-**`location.geDevices()`**
-
-Resolves to a SearchResults object containing [Devices](#devices).
-
-```java
-location.getDevices().then(new Subscriber<SearchResults<Device>>() {
-            @Override
-            public void onCompleted() {
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Log.e("error", e.toString());
-            }
-
-            @Override
-            public void onNext(SearchResults<Device> resultDevices) {
-                Log.i("Response", resultDevices.toString());
-            }
-        });
-```
-
-**`location.geThings()`**
-
-Resolves to a SearchResults object containing [Things](#things).
-
-```java
-location.geThings().then(new Subscriber<SearchResults<Thing>>() {
-            @Override
-            public void onCompleted() {
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Log.e("error", e.toString());
-            }
-
-            @Override
-            public void onNext(SearchResults<Thing> resultThings) {
-                Log.i("Response", resultThings.toString());
-            }
-        });
-```
-
 ## Zones
 
 **`zone.getKey()`**
@@ -478,58 +376,6 @@ The zone's key.
 **`zone.getName()`**
 
 The zone's name.
-
-**`zone.getCurrentZones()`**
-
-Resolves to the current zones or an empty array.
-
-**`zone.getDevices()`**
-
-Resolves to an array of [devices](#devices) that are members of this zone.
-
-```java
-zone.getDevices().then(new Subscriber<SearchResults<Device>>() {
-            @Override
-            public void onCompleted() {
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Log.e("error", e.toString());
-            }
-
-            @Override
-            public void onNext(SearchResults<Device> resultDevice) {
-                Log.i("Response", resultDevice.toString());
-            }
-        });
-```
-
-**`zone.getThings()`**
-
-Resolves to an array of [things](#things) that are members of this zone.
-
-```java
-zone.getThings().then(new Subscriber<SearchResults<Things>>() {
-            @Override
-            public void onCompleted() {
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Log.e("error", e.toString());
-            }
-
-            @Override
-            public void onNext(SearchResults<Things> resultThings) {
-                Log.i("Response", resultThings.toString());
-            }
-        });
-```
-
-**`zone.getLocation()`**
-
-Resolves to the zone's [location](#locations)
 
 ## Feeds
 
