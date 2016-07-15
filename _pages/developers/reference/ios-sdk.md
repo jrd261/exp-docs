@@ -1,6 +1,6 @@
 ---
 permalink: /developers/reference/ios-sdk/
-title: IOS SDK Reference (v1.0.0)
+title: IOS SDK Reference (v1.0.2)
 keywords: ios, sdk
 ---
 
@@ -256,6 +256,22 @@ ExpSwift.findDevices(["limit":10, "skip":0, "sort":"name"]).then
 }
 ```
 
+**`device.getLocation()`**
+
+Resolves to the device's [location](#locations) or `null`.
+
+**`device.getZones()`**
+
+Resolves to an array of the device's [zones](#zones).
+
+**`device.getExperience()`**
+
+Resolves to the device's [experience](#experiences) or `null`
+
+**`Device.getCurrentDevice()`**
+
+Resolves to the current Device(#devices) or `null`
+
 ## Things
 
 **`ExpSwift.getThing(uuid:String)`**
@@ -285,8 +301,19 @@ ExpSwift.findThings(["limit":10, "skip":0, "sort":"name"]).then
 }
 ```
 
-## Experiences
+**`thing.getLocation()`**
 
+Resolves to the device's [location](#locations) or `null`.
+
+**`thing.getZones()`**
+
+Resolves to an array of the device's [zones](#zones).
+
+**`thing.getExperience()`**
+
+Resolves to the device's [experience](#experiences) or `null`
+
+## Experiences
 
 **`ExpSwift.getExperience(uuid:String)`**
 
@@ -315,6 +342,14 @@ ExpSwift.findExperiences(["limit":10, "skip":0, "sort":"name"]).then
             debugPrint(error)
 }
 ```
+
+**`experience.getDevices()`**
+
+Resolves to an array of [devices](#devices) that are part of this experience.
+
+**`experience.getCurrentExperience()`**
+
+Resolves to the current Experience(#experiences) or `null`
 
 ## Locations
 
@@ -353,6 +388,37 @@ Resolves to an array of [zones](#zones) that are part of this location.
 
 Returns a url pointing to the location's layout image.
 
+**`location.getCurrentLocation()`**
+
+Resolves to the current Location(#locations) or `null`
+
+**`location.getDevices()`**
+
+Resolves to an array of [devices](#devices) that are part of this location.
+
+```swift
+location.getDevices().then { (devices: SearchResults<Device>) -> Void  in
+    for device in devices.getResults() {
+        debugPrint(device.get("name"))
+    }
+    }.error { error in
+        debugPrint(error)
+}
+
+**`location.getThings()`**
+
+Resolves to an array of [things](#things) that are part of this location.
+
+```swift
+location.getThings().then { (things: SearchResults<Thing>) -> Void  in
+    for thing in things.getResults() {
+        debugPrint(thing.get("name"))
+    }
+    }.error { error in
+        debugPrint(error)
+}
+```
+
 ## Zones
 
 **`zone.key`**
@@ -362,6 +428,42 @@ The zone's key.
 **`zone.name`**
 
 The zone's name.
+
+**`zone.getCurrentZones()`**
+
+Resolves to the current zones or an empty array.
+
+**`zone.getDevices()`**
+
+Resolves to an array of [devices](#devices) that are members of this zone.
+
+```swift
+zone.getDevices().then { (devices: SearchResults<Device>) -> Void  in
+    for device in devices.getResults() {
+        debugPrint(device.get("name"))
+    }
+    }.error { error in
+        debugPrint(error)
+}
+```
+
+**`zone.getThings()`**
+
+Resolves to an array of [things](#things) that are members of this zone.
+
+```swift
+zone.getThings().then { (things: SearchResults<Thing>) -> Void  in
+    for thing in things.getResults() {
+        debugPrint(thing.get("name"))
+    }
+    }.error { error in
+        debugPrint(error)
+}
+```
+
+**`zone.getLocation()`**
+
+Resolves to the zone's [location](#locations)
 
 ## Feeds
 
