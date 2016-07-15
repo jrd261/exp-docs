@@ -4,92 +4,117 @@
 entries:
 - title: Sidebar
   subcategories:
-#  - title: Developer Guide
-#    url: /developers/
-#    audience: developers, designers
-#    platform: all
-#    product: all
-#    version: all
-#    output: web, pdf
-   # - title:
-  #   audience: developers, designers
-  #   platform: all
-  #   product: all
-  #   version: all
-  #   output: pdf
-  #   type: frontmatter
-  #   items:
-  #   - title:
-  #     url: /titlepage.html
-  #     audience: developers, designers
-  #     platform: all
-  #     product: all
-  #     version: all
-  #     output: pdf
-  #     type: frontmatter
-  #   - title:
-  #     url: /tocpage.html
-  #     audience: developers, designers
-  #     platform: all
-  #     product: all
-  #     version: all
-  #     output: pdf
-  #     type: frontmatter
-
-#  - title: User Guide
-#    audience: developers, designers
-#    platform: all
-#    product: all
-#    version: all
-#    output: web, pdf
-#    items:
-    #- title: Overview
-      #url: /users/
-      #audience: developers, designers
-      #platform: all
-      #product: all
-      #version: all
-      #output: web, pdf
-
-  # - title: Developer Guide
-  #   audience: developers, designers
-  #   platform: all
-  #   product: all
-  #   version: all
-  #   output: web, pdf
-  #   items:
-  #   - title: Getting Started with App Development
-  #     url: /developers/apps
-  #     audience: developers, designers
-  #     platform: all
-  #     product: all
-  #     version: all
-  #     output: web, pdf
-  #   - title: Authentication
-  #     url: /developers/authentication
-  #     audience: developers, designers
-  #     platform: all
-  #     product: all
-  #     version: all
-  #     output: web, pdf
-  #   - title: The EXP Network
-  #     url: /developers/network
-  #     audience: developers, designers
-  #     platform: all
-  #     product: all
-  #     version: all
-  #     output: web, pdf
-  #   - title: Python SDK Reference
-  #     url: /developers/reference/python_sdk_reference/
-  #     audience: developers, designers
-  #     platform: all
-  #     product: all
-  #     version: all
-  #     output: web, pdf
-  #   - title: Javascript SDK Reference
-  #     url: /developers/reference/javascript_sdk_reference/
-  #     audience: developers, designers
-  #     platform: all
-  #     product: all
-  #     version: all
-  #     output: web, pdf
+  - title: Developer Guide
+    audience: developers, designers
+    platform: all
+    product: all
+    version: all
+    output: web, pdf
+    items:
+    - title: Tutorials, Walkthroughs and Examples
+      output: web, pdf
+      thirdlevel:
+      - title: Getting Started with App Development
+        url: /developers/tutorials/player-apps
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
+      - title: Using EXP CLI
+        external_url: https://github.com/scalainc/exp-cli
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
+      - title: Example Player Applications
+        external_url: https://github.com/scalainc/exp-app-boilerplates
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
+    - title: Platform Guides
+      output: web, pdf
+      thirdlevel:
+      - title: Player Apps
+        url: /developers/guides/player-apps/
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
+      - title: Local App Development
+        url: /developers/guides/local-app-development
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
+      - title: Real Time Communication
+        url: /developers/guides/real-time-communication
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
+      - title: The Data API
+        url: /developers/guides/data
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
+    - title: Reference
+      output: web, pdf
+      thirdlevel:
+      - title: Python SDK
+        url: /developers/reference/python-sdk/
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
+      - title: Javascript SDK
+        url: /developers/reference/javascript-sdk-1.0.0/
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
+      - title: Player App SDK
+        url: /developers/reference/player-app-sdk/
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
+      - title: IOS SDK
+        url: /developers/reference/ios-sdk/
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
+      - title: Android SDK
+        url: /developers/reference/android-sdk/
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
+      - title: Authentication
+        url: /developers/reference/authentication/
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
+      - title: Manifest.json
+        url: /developers/reference/manifest/
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
