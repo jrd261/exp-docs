@@ -77,7 +77,7 @@ entries:
         version: all
         output: web, pdf
       - title: Javascript SDK
-        url: /developers/reference/javascript-sdk-1.0.0/
+        url: /developers/reference/javascript-sdk/
         audience: developers, designers
         platform: all
         product: all
