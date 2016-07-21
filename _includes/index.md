@@ -44,8 +44,8 @@ To that end, EXP provides:
   <div class="col-md-12">
       <ul>
         <li><a href="/developers/reference/authentication">Learn about Authentication</a></li>
-        <li><a href="/developers/reference/python-sdk-1.0.4">Learn about Python SDK</a></li>
-        <li><a href="/developers/reference/javascript-sdk-1.0.3">Learn about Javascript SDK</a></li>
+        <li><a href="/developers/reference/python-sdk">Learn about Python SDK</a></li>
+        <li><a href="/developers/reference/javascript-sdk">Learn about Javascript SDK</a></li>
         <li><a href="/developers/reference/player-app-sdk">Learn about Player App SDK</a></li>
         <li><a href="/developers/reference/ios-sdk">Learn about IOS SDK</a></li>
         <li><a href="/developers/reference/android-sdk">Learn about Android SDK</a></li>
