@@ -77,14 +77,14 @@ entries:
         version: all
         output: web, pdf
       - title: Javascript SDK
-        url: /developers/reference/javascript-sdk/
+        url: /developers/reference/javascript-sdk
         audience: developers, designers
         platform: all
         product: all
         version: all
         output: web, pdf
       - title: Player App SDK
-        url: /developers/reference/player-app-sdk/
+        url: /developers/reference/player-app-sdk
         audience: developers, designers
         platform: all
         product: all
