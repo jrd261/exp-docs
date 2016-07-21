@@ -1,6 +1,6 @@
 ---
 permalink: /developers/reference/python-sdk/
-title: Python SDK Reference (v1.0.2)
+title: Python SDK Reference (v1.0.3)
 keywords: python, sdk
 ---
 
