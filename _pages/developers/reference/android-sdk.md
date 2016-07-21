@@ -1,6 +1,6 @@
 ---
 permalink: /developers/reference/android-sdk/
-title: Android SDK Reference (v1.0.2)
+title: Android SDK Reference (v1.0.3)
 keywords: android, sdk
 ---
 
@@ -12,7 +12,7 @@ keywords: android, sdk
 Gradle:
 
 ```java
-compile 'io.goexp:exp-android-sdk:v1.0.2'
+compile 'io.goexp:exp-android-sdk:v1.0.3'
 ```
 
 Exp Android SDK requires at minimum Java 7 and Android 4.3.
@@ -553,7 +553,7 @@ Exp.getFeed("052a2419-0621-45ad-aa03-3747dbfe2b6d")
         });
 ```
 
-**`Exp.findFeeds(params:[String:AnyObject])`**
+**`Exp.findFeeds(options)`**
 
 Query for multiple feeds. Resolves to an array of [Feeds](#feed-object).
 
@@ -596,6 +596,26 @@ feed.getData().then(new Subscriber<Map>() {
         }
     });
 ```
+
+**`feed.getData(query)`**
+
+Get the feed's dynamic data. Resolves to the output of the feed query, with dynamic parameters.
+```java
+Map<String,Object> query = new HashMap<String, Object>();
+query.put("name","scala");
+feed.getData(query).then(new Subscriber<Map>() {
+        @Override
+        public void onCompleted() {}
+        @Override
+        public void onError(Throwable e) {}
+
+        @Override
+        public void onNext(Map feedData) {
+          Log.i("Response", feedData.toString());
+        }
+    });
+```
+
 
 ## Data
 
