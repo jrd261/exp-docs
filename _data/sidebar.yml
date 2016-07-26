@@ -35,6 +35,13 @@ entries:
         product: all
         version: all
         output: web, pdf
+      - title: Integrating FEED in Player App
+        url: /developers/tutorials/usingfeeds
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
     - title: Platform Guides
       output: web, pdf
       thirdlevel:
@@ -61,6 +68,13 @@ entries:
         output: web, pdf
       - title: The Data API
         url: /developers/guides/data
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
+      - title: Data Aggregator
+        url: /developers/guides/feeds
         audience: developers, designers
         platform: all
         product: all
