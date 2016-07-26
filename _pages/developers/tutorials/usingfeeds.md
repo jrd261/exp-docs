@@ -7,14 +7,14 @@ tags: []
 ---
 
 # Overview
-`HTML Apps` may require `third party data` integration, think of POS or News information. 
+`HTML Apps` may require `third party data` integration, think of POS or News information.
 The `EXP platform` provides a variety of third party connectors called `FEEDS`.
 This tutorial will show you, how to set up a `FEED` in the `EXP platform` and integrate the data returned in a Angular HTML app.
 
 # RSS HTML APP
 We are going to create a standalone `Angular HTML App` that will pull Facebook Posts from the `EXP platform`.
 To get the RSS news data form the `EXP platform` we will use the `EXP Player SDK` to help us make a connection.
-For more info on the `EXP SDK's`, please check the [Developer Guide - Reference](http://docs.goexp.io/). 
+For more info on the `EXP SDK's`, please check the [Developer Guide - Reference](http://docs.goexp.io/).
 
 ## Setup Feed
 In the `EXP platform` we are going to setup a `Facebook FEED` that will pull postings from the the scala Facebook page.
@@ -24,8 +24,8 @@ In the `EXP platform` we are going to setup a `Facebook FEED` that will pull pos
 - Click the `Facebook` icon to create a integration. Follow the onscreen `instructions`, you have to enter valid facebook credentials.
 
 ![tutorial](/common_images/tutorials/feed_tutorial_1.png "feed tutorial 1")
- 
-- When integration is finished click on `FEED` in the menu on the left. 
+
+- When integration is finished click on `FEED` in the menu on the left.
 
 - Click the `ADD` button and give the feed a valid unique name like `SCALA FACEBOOK`.
 
@@ -44,13 +44,13 @@ In the `EXP platform` we are going to setup a `Facebook FEED` that will pull pos
 ![tutorial](/common_images/tutorials/feed_tutorial_3.png "feed tutorial 3")
 
 ## EXP player SDK
-The `EXP player SDK` is available when running a HTML app on a EXP player. When the app is starting a function called load is fired in Javascript. 
-From here the SDK can be accessed using the exp object. So getting configuration information as example: `exp.app.config`     
+The `EXP player SDK` is available when running a HTML app on a EXP player. When the app is starting a function called load is fired in Javascript.
+From here the SDK can be accessed using the exp object. So getting configuration information as example: `exp.app.config`
 
 ## App Start Point
-This is the starting point of the `Angular RSS HTML` app. 
-We are using `Bower` to manage the `Angular modules`. 
-Alternative the modules can also be `downloaded` by hand and included, or `CDN` links can be used. 
+This is the starting point of the `Angular RSS HTML` app.
+We are using `Bower` to manage the `Angular modules`.
+Alternative the modules can also be `downloaded` by hand and included, or `CDN` links can be used.
 
 1. [Angular - Reference](https://angularjs.org/)
 
@@ -61,7 +61,7 @@ Alternative the modules can also be `downloaded` by hand and included, or `CDN` 
 - Copy the HTML code and add this to the `index.html` file in your project directory:
 
 ```html
-    
+
     <!DOCTYPE html>
     <html ng-app="facebookApp">
     <head>
@@ -69,10 +69,10 @@ Alternative the modules can also be `downloaded` by hand and included, or `CDN` 
         <title>Facebook APP</title>
         <link href="bower_components/angular-material/angular-material.min.css" rel="stylesheet">
     </head>
-    <body ng-controller="mainController" style="height: 100%;width: 100%">
-    <md-toolbar style="height: 5%;width: 100%" layout="row" layout-align="center center">
+    <body ng-controller="mainController">
+    <md-toolbar layout="row" layout-align="center center">
         <div layout="row" layout-align="start center">
-            &nbsp;&nbsp;<h1><span> { { pageName | uppercase } } </span></h1>
+            <span>  {% raw %} {{ pageName | uppercase }} {% endraw %} </span></h1>
         </div>
         <div flex>
 
@@ -109,21 +109,21 @@ Alternative the modules can also be `downloaded` by hand and included, or `CDN` 
 
     <script src="scripts/app.js" type="text/javascript"></script>
     <script src="scripts/controller.js" type="text/javascript"></script>
-    
+
     </html>
-    
+
 ```
 
 - Copy the JavaScript code and add this to the `app.js` file in your project directory:
- 
+
 ```javascript
-    
+
     'use strict';
-    
+
     var app = angular.module('facebookApp',['ngMaterial']);
-    
+
     app.controller('mainController',['$scope', function($scope){
-    
+
         function getRandomColor() {
             var letters = '0123456789ABCDEF'.split('');
             var color = '#';
@@ -132,7 +132,7 @@ Alternative the modules can also be `downloaded` by hand and included, or `CDN` 
             }
             return color;
         }
-    
+
         $scope.pageLogo = 'http://scala.com/wp-content/uploads/2012/07/scala-logo.png';
         $scope.pageName = 'Scala';
         $scope.messages = [
@@ -143,9 +143,9 @@ Alternative the modules can also be `downloaded` by hand and included, or `CDN` 
                 background: {'background-color':getRandomColor()}
             }
         ];
-    
+
     }]);
-    
+
 ```
 
 - When using `bower` you can add this to the bower.json file, and then run bower install:
@@ -174,17 +174,17 @@ Alternative the modules can also be `downloaded` by hand and included, or `CDN` 
     }
 ```
 
-Check if the `app.js` and `angular modules` can be found and that the link in the `index.html` is ok. 
-Preview the `Angular HTML app` in the browser to check if it works correctly. 
- 
+Check if the `app.js` and `angular modules` can be found and that the link in the `index.html` is ok.
+Preview the `Angular HTML app` in the browser to check if it works correctly.
+
 ## EXP player SDK
 The `Angular HTML app` has a `controller` that has scope variables.
-At the moment the `scope variables` in the `Angular HTML app` contains dummy data. 
+At the moment the `scope variables` in the `Angular HTML app` contains dummy data.
 Goal is to `populate` these scope variables with data from our `SCALA Facebook FEED` receiving from `EXP`.
 
 ### Manifest File
-In order to give the user control over options in the `angular HTML App` we can add a `manifest.json` file in the root of the app. 
-This way a `FEED` source can be easily selected and maybe the `interval` on checking for new data.  
+In order to give the user control over options in the `angular HTML App` we can add a `manifest.json` file in the root of the app.
+This way a `FEED` source can be easily selected and maybe the `interval` on checking for new data.
 
 - Create a file called manifest.json in the root of the `Angular HTML App` and add this code:
 
@@ -226,7 +226,7 @@ Available property types are:
 1. feed: to select a feed.
 2. number: to enter number values.
 3. text: to enter text values.
-4. select: a selection of options. 
+4. select: a selection of options.
 5. image: to select a image file.
 6. color: to select a HTML color value.
 7. appArray: to select different HTML apps.
@@ -234,9 +234,9 @@ Available property types are:
 The config section will be used to set `default` values for the `Angular HTML App`.
 
 ### The load function
-We want to load all `angular code` when the `EXP player` is ready and starts the `Angular HTML App`. 
+We want to load all `angular code` when the `EXP player` is ready and starts the `Angular HTML App`.
 A `load` function will be fired at this time. When running `bootstrap` the `Angular HTML App`.
- 
+
 - Remove the `ng-app` option in the `index.html` page:
 
 ```html
@@ -248,14 +248,14 @@ A `load` function will be fired at this time. When running `bootstrap` the `Angu
             <title>Facebook APP</title>
             <link href="bower_components/angular-material/angular-material.min.css" rel="stylesheet">
         </head>
-    
+
         <body ng-controller="mainController" style="height: 100%;width: 100%">
         <md-toolbar style="height: 5%;width: 100%" layout="row" layout-align="center center">
             <div layout="row" layout-align="start center">
                 &nbsp;&nbsp;<h1><span> { { pageName | uppercase } } </span></h1>
             </div>
             <div flex>
-    
+
             </div>
             <div style="height: 100%" layout="row" layout-align="center center">
                 <img ng-src="{ { pageLogo } }" height="40%">&nbsp;&nbsp;
@@ -271,7 +271,7 @@ A `load` function will be fired at this time. When running `bootstrap` the `Angu
                                 <h3> { { message.created } } </h3>
                             </div>
                             <div flex>
-    
+
                             </div>
                             <div>
                                 <h3> { { message.date | date:'dd-MM-yyyy' } } </h3>
@@ -286,26 +286,26 @@ A `load` function will be fired at this time. When running `bootstrap` the `Angu
         <script src="bower_components/angular-material/angular-material.min.js" type="text/javascript"></script>
         <script src="bower_components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
         <script src="bower_components/angular-aria/angular-aria.min.js" type="text/javascript"></script>
-    
+
         <script src="scripts/app.js" type="text/javascript"></script>
     </html>
-    
+
 ```
- 
+
 
 - Bootstrap the App name on the load function, modify the app.js code:
 
 ```javascript
-    
+
     'use strict';
-    
+
     var app = angular.module('facebookApp',['ngMaterial']);
-    
+
     // fires from EXP player
     function load () { angular.bootstrap(document.body, ['facebookApp']); }
-    
+
     app.controller('mainController',['$scope', function($scope){
-    
+
         function getRandomColor() {
             var letters = '0123456789ABCDEF'.split('');
             var color = '#';
@@ -314,7 +314,7 @@ A `load` function will be fired at this time. When running `bootstrap` the `Angu
             }
             return color;
         }
-    
+
         $scope.pageLogo = 'http://scala.com/wp-content/uploads/2012/07/scala-logo.png';
         $scope.pageName = 'Scala';
         $scope.messages = [
@@ -325,11 +325,11 @@ A `load` function will be fired at this time. When running `bootstrap` the `Angu
                 background: {'background-color':getRandomColor()}
             }
         ];
-    
+
     }]);
-    
+
 ```
- 
+
 ### Access EXP object
 Now that we are loading all `angular code` from the `load function` we can access the `EXP object` safely in the angular controller.
 
@@ -339,18 +339,18 @@ Now that we are loading all `angular code` from the `load function` we can acces
 
 ```javascript
     'use strict';
-    
+
     var app = angular.module('facebookApp',['ngMaterial']);
-    
+
     // fires from EXP player
     function load () { angular.bootstrap(document.body, ['facebookApp']); }
-    
+
     app.controller('mainController',['$scope','$interval', function($scope, $interval){
-    
+
         $scope.pageLogo = '';
         $scope.pageName = '';
         $scope.messages = [];
-    
+
         var getRandomColor = function() {
             var letters = '0123456789ABCDEF'.split('');
             var color = '#';
@@ -359,7 +359,7 @@ Now that we are loading all `angular code` from the `load function` we can acces
             }
             return color;
         };
-    
+
         // get feed from EXP
         var getFeedData = function(){
             exp.getFeed(exp.app.config.feed.uuid)
@@ -367,20 +367,20 @@ Now that we are loading all `angular code` from the `load function` we can acces
                     return feed.getData();
                 })
                 .then(function(data){
-    
+
                     $scope.pageLogo = data.details.imageUrl;
                     $scope.pageName = data.details.name;
                     $scope.messages = [];
-    
+
                     for(var index=0; index<data.items.length;index++){
-    
+
                         var tempText = '';
                         if(data.items[index].text.length > 210){
                             tempText = data.items[index].text.substr(1, 207) + '...';
                         }else{
                             tempText = data.items[index].text;
                         }
-    
+
                         $scope.messages.push({
                             text: tempText,
                             date: data.items[index].date,
@@ -388,19 +388,19 @@ Now that we are loading all `angular code` from the `load function` we can acces
                             background: {'background-color':getRandomColor()}
                         })
                     }
-    
+
                     $scope.$apply();
                 });
         };
-    
+
         getFeedData();
         $interval(getFeedData, (exp.app.config.refreshRateSeconds * 1000))
-    
+
     }]);
 ```
 
 As you can see the `exp.getFeed` will get the `FEED` Object according to a `UUID` that we receive from the `config` object.
-Then the `getData` function can be called to receive the json data feed from the `EXP platform`.   
+Then the `getData` function can be called to receive the json data feed from the `EXP platform`.
 
 ## End Result
 To get the Angular HTML App running in EXP you have to preform a couple of steps:
@@ -416,7 +416,7 @@ To get the Angular HTML App running in EXP you have to preform a couple of steps
 - When you save this the Template is available in the `EXP platform`.
 
 - Go to Experiences and create a `Empty Experience`.
- 
+
 - Select `Apps` and add your App Template.
 
 - Click on `App settings` button and set the properties.
@@ -426,11 +426,11 @@ To get the Angular HTML App running in EXP you have to preform a couple of steps
 - Add a `Player` and setup a `scheduling`.
 
 When running the `Angular HTML app` you should be able to see a result like this:
- 
+
 ![Uploading an App](/common_images/tutorials/feed_tutorial_5.png "feed tutorial 5")
 
 # Conclusion
-That’s it! You have now learned the basics of how to `integrate FEED data` using the `EXP Player SDK`. 
+That’s it! You have now learned the basics of how to `integrate FEED data` using the `EXP Player SDK`.
 
 Scala offers a List of `SDK's` for multiple program languages:
 
