@@ -8,28 +8,30 @@ tags: []
 
 # Overview
 `HTML Apps` may require `third party data` integration, think of POS or News information.
-The `EXP platform` provides a variety of third party connectors called `FEEDS`.
-This tutorial will show you, how to set up a `FEED` in the `EXP platform` and integrate the data returned in a Angular HTML app.
+The `EXP platform` provides a `data aggregator` with a variety of third party connectors called `FEEDS`.
+This tutorial will show how to set up a `FEED` in the `EXP platform` and integrate the data returned in a `Angular HTML App`.
 
 # RSS HTML APP
-We are going to create a standalone `Angular HTML App` that will pull Facebook Posts from the `EXP platform`.
-To get the RSS news data form the `EXP platform` we will use the `EXP Player SDK` to help us make a connection.
+As a example on how `FEED` integrations works, we are going to create a `Angular HTML App` that will pull `Facebook` postings from the `EXP platform`.
+This `Angular HTML App` will run in a EXP player and will use the `EXP Player SDK` to get the `Facebook` data form the `EXP platform`.
 For more info on the `EXP SDK's`, please check the [Developer Guide - Reference](http://docs.goexp.io/).
 
 ## Setup Feed
 In the `EXP platform` we are going to setup a `Facebook FEED` that will pull postings from the the scala Facebook page.
 
-- Login to `EXP` and select integrations.
+- Login to `EXP` and select `integrations`.
 
 - Click the `Facebook` icon to create a integration. Follow the onscreen `instructions`, you have to enter valid facebook credentials.
 
 ![tutorial](/common_images/tutorials/feed_tutorial_1.png "feed tutorial 1")
 
-- When integration is finished click on `FEED` in the menu on the left.
+- When integration is finished click on `FEEDS` in the menu on the left.
 
-- Click the `ADD` button and give the feed a valid unique name like `SCALA FACEBOOK`.
+- Click the `ADD` button on the right top side and give the feed a valid unique name like `SCALA FACEBOOK`.
 
 - Select `FACEBOOK` as `FEED` type.
+
+- Select `Static`.
 
 - Enter the Facebook page name `scala`.
 
@@ -44,13 +46,15 @@ In the `EXP platform` we are going to setup a `Facebook FEED` that will pull pos
 ![tutorial](/common_images/tutorials/feed_tutorial_3.png "feed tutorial 3")
 
 ## EXP player SDK
-The `EXP player SDK` is available when running a HTML app on a EXP player. When the app is starting a function called load is fired in Javascript.
-From here the SDK can be accessed using the exp object. So getting configuration information as example: `exp.app.config`
+The `EXP player SDK` will automatically be injected into the `HTML Apps` running on a `EXP player`. 
+The `EXP Player` fires a Javascript `load` function when the `SDK` is loaded.
+From here the `SDK` can be accessed using the `exp` object. 
+For example getting configuration information: `exp.app.config`.
 
 ## App Start Point
 This is the starting point of the `Angular RSS HTML` app.
 We are using `Bower` to manage the `Angular modules`.
-Alternative the modules can also be `downloaded` by hand and included, or `CDN` links can be used.
+Alternative the modules can also be `downloaded` manually and included, or `CDN` links can be used.
 
 1. [Angular - Reference](https://angularjs.org/)
 
@@ -72,13 +76,13 @@ Alternative the modules can also be `downloaded` by hand and included, or `CDN` 
     <body ng-controller="mainController">
     <md-toolbar layout="row" layout-align="center center">
         <div layout="row" layout-align="start center">
-            <span>  {% raw %} {{ pageName | uppercase }} {% endraw %} </span></h1>
+            <span>{% raw %}{{ pageName | uppercase }}{% endraw %}</span></h1>
         </div>
         <div flex>
 
         </div>
         <div style="height: 100%" layout="row" layout-align="center center">
-            <img ng-src=" { { pageLogo } } " height="40%">&nbsp;&nbsp;
+            <img ng-src="{% raw %}{{ pageLogo }}{% endraw %}" height="40%">&nbsp;&nbsp;
         </div>
     </md-toolbar>
     <md-content style="width: 100%;height: 100%">
@@ -88,13 +92,13 @@ Alternative the modules can also be `downloaded` by hand and included, or `CDN` 
                 <md-grid-tile-footer>
                     <div layout="row" style="width: 100%">
                         <div>
-                            <h3> { { message.created } } </h3>
+                            <h3>{% raw %}{{ message.created }}{% endraw %}</h3>
                         </div>
                         <div flex>
 
                         </div>
                         <div>
-                            <h3> { { message.date | date:'dd-MM-yyyy' } } </h3>
+                            <h3>{% raw %}{{ message.date | date:'dd-MM-yyyy' }}{% endraw %}</h3>
                         </div>
                     </div>
                 </md-grid-tile-footer>
@@ -148,7 +152,7 @@ Alternative the modules can also be `downloaded` by hand and included, or `CDN` 
 
 ```
 
-- When using `bower` you can add this to the bower.json file, and then run bower install:
+- When using `bower` you can add this to the `bower.json` file, and then run bower install:
 
 ```json
     {
@@ -174,17 +178,18 @@ Alternative the modules can also be `downloaded` by hand and included, or `CDN` 
     }
 ```
 
-Check if the `app.js` and `angular modules` can be found and that the link in the `index.html` is ok.
+Check if the `app.js` and `angular modules` can be found and that the links in the `index.html` are ok.
 Preview the `Angular HTML app` in the browser to check if it works correctly.
 
 ## EXP player SDK
-The `Angular HTML app` has a `controller` that has scope variables.
+The `Angular HTML app` uses a `controller` that has scope variables to `bind data` to the HTML file.
 At the moment the `scope variables` in the `Angular HTML app` contains dummy data.
 Goal is to `populate` these scope variables with data from our `SCALA Facebook FEED` receiving from `EXP`.
 
 ### Manifest File
-In order to give the user control over options in the `angular HTML App` we can add a `manifest.json` file in the root of the app.
-This way a `FEED` source can be easily selected and maybe the `interval` on checking for new data.
+Before start implementing the data in the `angular HTML App`, a configuration file can be added using a `manifest.json`.
+This configuration file is placed in the root of the project. 
+In principle we are creating a App Template from the `angular HTML App` this way, allowing a `EXP user` to select a `FEED` or set a interval duration. 
 
 - Create a file called manifest.json in the root of the `Angular HTML App` and add this code:
 
@@ -218,24 +223,27 @@ This way a `FEED` source can be easily selected and maybe the `interval` on chec
     }
 ```
 
-Now we created a `Template` from the `Angular HTML App` that can be configured.
-The configTypes array allows to create properties to select in EXP.
+Now we created an `App Template` from the `Angular HTML App` that can be configured.
+A user can now select a `Facebook FEED` and `refresh interval` for the data in the `EXP platform`.  
+
+Looking in the manifest file the configTypes array allows to create properties to select in the `EXP platform`.
 
 Available property types are:
 
-1. feed: to select a feed.
-2. number: to enter number values.
-3. text: to enter text values.
-4. select: a selection of options.
-5. image: to select a image file.
-6. color: to select a HTML color value.
-7. appArray: to select different HTML apps.
+1. `feed`: to select a feed.
+2. `number`: to enter number values.
+3. `text`: to enter text values.
+4. `select`: a selection of options.
+5. `image`: to select a image file.
+6. `color`: to select a HTML color value.
+7. `appArray`: to select different HTML apps.
 
 The config section will be used to set `default` values for the `Angular HTML App`.
+To `access` these values using the 'EXP Player SDK', simple use the `exp` object and reference to the path name like: `exp.app.config.refreshRateSeconds` 
 
 ### The load function
-We want to load all `angular code` when the `EXP player` is ready and starts the `Angular HTML App`.
-A `load` function will be fired at this time. When running `bootstrap` the `Angular HTML App`.
+When the `load function` is fired the `Scala Player` is ready injecting the `exp object`, at that moment we can load all `angular code` and start the `Angular HTML App`.
+The `Scala Player` can only fire this function when it's created in the `Angular HTML App`. 
 
 - Remove the `ng-app` option in the `index.html` page:
 
@@ -252,13 +260,13 @@ A `load` function will be fired at this time. When running `bootstrap` the `Angu
         <body ng-controller="mainController" style="height: 100%;width: 100%">
         <md-toolbar style="height: 5%;width: 100%" layout="row" layout-align="center center">
             <div layout="row" layout-align="start center">
-                &nbsp;&nbsp;<h1><span> { { pageName | uppercase } } </span></h1>
+                &nbsp;&nbsp;<h1><span>{% raw %}{{ pageName | uppercase }}{% endraw %}</span></h1>
             </div>
             <div flex>
 
             </div>
             <div style="height: 100%" layout="row" layout-align="center center">
-                <img ng-src="{ { pageLogo } }" height="40%">&nbsp;&nbsp;
+                <img ng-src="{% raw %}{{ pageLogo }}{% endraw %}" height="40%">&nbsp;&nbsp;
             </div>
         </md-toolbar>
         <md-content style="width: 100%;height: 100%">
@@ -268,13 +276,13 @@ A `load` function will be fired at this time. When running `bootstrap` the `Angu
                     <md-grid-tile-footer>
                         <div layout="row" style="width: 100%">
                             <div>
-                                <h3> { { message.created } } </h3>
+                                <h3>{% raw %}{{ message.created }}{% endraw %}</h3>
                             </div>
                             <div flex>
 
                             </div>
                             <div>
-                                <h3> { { message.date | date:'dd-MM-yyyy' } } </h3>
+                                <h3>{% raw %}{{ message.date | date:'dd-MM-yyyy' }}{% endraw %}</h3>
                             </div>
                         </div>
                     </md-grid-tile-footer>
@@ -293,7 +301,7 @@ A `load` function will be fired at this time. When running `bootstrap` the `Angu
 ```
 
 
-- Bootstrap the App name on the load function, modify the app.js code:
+- Bootstrap the App name in the load function, modify the app.js code:
 
 ```javascript
 
@@ -331,9 +339,9 @@ A `load` function will be fired at this time. When running `bootstrap` the `Angu
 ```
 
 ### Access EXP object
-Now that we are loading all `angular code` from the `load function` we can access the `EXP object` safely in the angular controller.
+Now that we are loading all `angular code` from the `load function` we can access the `exp object` safely in the angular controller.
 
-- Create a function to get the feed Data using the `EXP object`. Populate the data into the `$scope variables`.
+- Create a function to get the feed Data using the `exp object`. Populate the data into the `$scope variables`.
 
 - Controller should be modified like this:
 
@@ -400,7 +408,7 @@ Now that we are loading all `angular code` from the `load function` we can acces
 ```
 
 As you can see the `exp.getFeed` will get the `FEED` Object according to a `UUID` that we receive from the `config` object.
-Then the `getData` function can be called to receive the json data feed from the `EXP platform`.
+Then the `getData` function can be called to receive the json data from the `EXP platform`. These methods are `async` and work with the promise objects.
 
 ## End Result
 To get the Angular HTML App running in EXP you have to preform a couple of steps:
