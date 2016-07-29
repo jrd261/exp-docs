@@ -35,7 +35,7 @@ entries:
         product: all
         version: all
         output: web, pdf
-      - title: Integrating FEED in Player App
+      - title: Integrating a Feed in Player App
         url: /developers/tutorials/usingfeeds
         audience: developers, designers
         platform: all
