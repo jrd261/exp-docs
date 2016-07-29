@@ -67,55 +67,110 @@ Alternative the modules can also be `downloaded` manually and included, or `CDN`
 ```html
 
     <!DOCTYPE html>
-    <html ng-app="facebookApp">
-    <head>
-        <meta charset="UTF-8">
-        <title>Facebook APP</title>
-        <link href="bower_components/angular-material/angular-material.min.css" rel="stylesheet">
-    </head>
-    <body ng-controller="mainController">
-    <md-toolbar layout="row" layout-align="center center">
-        <div layout="row" layout-align="start center">
-            <span>{% raw %}{{ pageName | uppercase }}{% endraw %}</span></h1>
-        </div>
-        <div flex>
-
-        </div>
-        <div style="height: 100%" layout="row" layout-align="center center">
-            <img ng-src="{% raw %}{{ pageLogo }}{% endraw %}" height="40%">&nbsp;&nbsp;
-        </div>
-    </md-toolbar>
-    <md-content style="width: 100%;height: 100%">
-        <md-grid-list md-cols="4" md-row-height="16:9">
-            <md-grid-tile ng-repeat="message in messages" ng-style="message.background">
-                <div style="width: 95%;height:95%;color: white" layout="column" layout-align="start start"><h2>{{message.text}}</h2></div>
-                <md-grid-tile-footer>
-                    <div layout="row" style="width: 100%">
-                        <div>
-                            <h3>{% raw %}{{ message.created }}{% endraw %}</h3>
-                        </div>
-                        <div flex>
-
-                        </div>
-                        <div>
-                            <h3>{% raw %}{{ message.date | date:'dd-MM-yyyy' }}{% endraw %}</h3>
-                        </div>
+    <html>
+    
+        <head>
+            <meta charset="UTF-8">
+            <title>Facebook APP</title>
+            <link href="bower_components/angular-material/angular-material.min.css" rel="stylesheet">
+            <link href="style/style.css" rel="stylesheet">
+        </head>
+    
+        <body ng-controller="mainController" class="main_container">
+    
+        <md-toolbar class="tool_bar" layout="row" layout-align="center center">
+    
+            <div layout="row" layout-align="start center" class="title_container">
+                <h1><span>{{pageName | uppercase}}</span></h1>
+            </div>
+    
+            <div flex></div>
+    
+            <div class="image_container" layout="row" layout-align="center center">
+                <img ng-src="{{pageLogo}}" class="image">
+            </div>
+    
+        </md-toolbar>
+    
+        <md-content class="content_container">
+            <md-grid-list md-cols="4" md-row-height="16:9">
+                <md-grid-tile ng-repeat="message in messages" ng-style="message.background">
+    
+                    <div class="tile_content" layout="column" layout-align="start start">
+                        <h2>{{message.text}}</h2>
                     </div>
-                </md-grid-tile-footer>
-            </md-grid-tile>
-        </md-grid-list>
-    </md-content>
-    </body>
-    <script src="bower_components/angular/angular.min.js" type="text/javascript"></script>
-    <script src="bower_components/angular-material/angular-material.min.js" type="text/javascript"></script>
-    <script src="bower_components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
-    <script src="bower_components/angular-aria/angular-aria.min.js" type="text/javascript"></script>
-
-    <script src="scripts/app.js" type="text/javascript"></script>
-    <script src="scripts/controller.js" type="text/javascript"></script>
-
+    
+                    <md-grid-tile-footer>
+                        <div layout="row" class="footer_container">
+                            <div>
+                                <h3>{{message.created}}</h3>
+                            </div>
+                            <div flex>
+    
+                            </div>
+                            <div>
+                                <h3>{{message.date | date:'dd-MM-yyyy'}}</h3>
+                            </div>
+                        </div>
+                    </md-grid-tile-footer>
+    
+                </md-grid-tile>
+            </md-grid-list>
+        </md-content>
+    
+        </body>
+        <script src="bower_components/angular/angular.min.js" type="text/javascript"></script>
+        <script src="bower_components/angular-material/angular-material.min.js" type="text/javascript"></script>
+        <script src="bower_components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
+        <script src="bower_components/angular-aria/angular-aria.min.js" type="text/javascript"></script>
+    
+        <script src="scripts/app.js" type="text/javascript"></script>
     </html>
 
+```
+
+- Copy the style sheet code and add this to the `style.css` file in your project directory:
+
+```stylesheet
+
+    .main_container{
+        height: 100%;
+        width: 100%;
+    }
+    
+    .tool_bar{
+        height: 5%;
+        width: 100%;
+    }
+    
+    .image_container{
+        height: 100%;
+        padding-right: 2%;
+    }
+    
+    .title_container{
+        padding-left: 2%;
+    }
+    
+    .image_container .image{
+        height: 40%;
+    }
+    
+    .content_container{
+        width: 100%;
+        height: 100%;
+    }
+    
+    .tile_content{
+        width: 95%;
+        height:95%;
+        color: white;
+    }
+    
+    .footer_container{
+        width: 100%;
+    }
+    
 ```
 
 - Copy the JavaScript code and add this to the `app.js` file in your project directory:
