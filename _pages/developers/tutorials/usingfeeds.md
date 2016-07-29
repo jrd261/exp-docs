@@ -8,28 +8,28 @@ tags: []
 
 # Overview
 `HTML Apps` may require `third party data` integration, think of POS or News information.
-The `EXP platform` provides a `data aggregator` with a variety of third party connectors called `FEEDS`.
-This tutorial will show how to set up a `FEED` in the `EXP platform` and integrate the data returned in a `Angular HTML App`.
+The `EXP platform` provides a `data aggregator` with a variety of third party connectors called feeds.
+This tutorial will show how to set up a feed in the EXP platform and integrate the data returned in an Angular JS HTML App.
 
 # RSS HTML APP
-As a example on how `FEED` integrations works, we are going to create a `Angular HTML App` that will pull `Facebook` postings from the `EXP platform`.
-This `Angular HTML App` will run in a EXP player and will use the `EXP Player SDK` to get the `Facebook` data form the `EXP platform`.
-For more info on the `EXP SDK's`, please check the [Developer Guide - Reference](http://docs.goexp.io/).
+As a example on how feed integrations works, we are going to create an Angular JS HTML App that will pull Facebook postings from the EXP platform.
+This `Angular HTML App` will run in a EXP player and will use the [EXP Player APP SDK](/developers/reference/player-app-sdk/) to get the Facebook data form the EXP platform.
+For more info on the `EXP SDK's`, please check the [Developer Guide - Reference](/#more-resources).
 
 ## Setup Feed
-In the `EXP platform` we are going to setup a `Facebook FEED` that will pull postings from the the scala Facebook page.
+In the EXP platform we are going to setup a Facebook feed that will pull postings from the the scala Facebook page.
 
-- Login to `EXP` and select `integrations`.
+- Login to EXP and navigate to `Integrations`.
 
-- Click the `Facebook` icon to create a integration. Follow the onscreen `instructions`, you have to enter valid facebook credentials.
+- Click the `Facebook` icon to create a integration. Follow the onscreen instructions, you have to enter valid facebook credentials.
 
 ![tutorial](/common_images/tutorials/feed_tutorial_1.png "feed tutorial 1")
 
-- When integration is finished click on `FEEDS` in the menu on the left.
+- After you've successfully authorized and granted permission to EXP, click on `Feeds` in the menu on the left.
 
-- Click the `ADD` button on the right top side and give the feed a valid unique name like `SCALA FACEBOOK`.
+- Click the `ADD` button on the right top side and give the feed a valid unique name like `Scala Facebook Feed`.
 
-- Select `FACEBOOK` as `FEED` type.
+- Select `Facebook` as feed type.
 
 - Select `Static`.
 
@@ -46,15 +46,15 @@ In the `EXP platform` we are going to setup a `Facebook FEED` that will pull pos
 ![tutorial](/common_images/tutorials/feed_tutorial_3.png "feed tutorial 3")
 
 ## EXP player SDK
-The `EXP player SDK` will automatically be injected into the `HTML Apps` running on a `EXP player`. 
-The `EXP Player` fires a Javascript `load` function when the `SDK` is loaded.
+The [EXP Player APP SDK](/developers/reference/player-app-sdk/) will automatically be injected into all HTML apps running on an EXP player. 
+The EXP player fires a Javascript `load` function when the `SDK` is loaded.
 From here the `SDK` can be accessed using the `exp` object. 
 For example getting configuration information: `exp.app.config`.
 
 ## App Start Point
-This is the starting point of the `Angular RSS HTML` app.
+This is the starting point of the Angular RSS HTML app.
 We are using `Bower` to manage the `Angular modules`.
-Alternative the modules can also be `downloaded` manually and included, or `CDN` links can be used.
+Alternatively, the modules can also be downloaded manually and included, or CDN links can be used.
 
 1. [Angular - Reference](https://angularjs.org/)
 
@@ -127,50 +127,6 @@ Alternative the modules can also be `downloaded` manually and included, or `CDN`
         <script src="scripts/app.js" type="text/javascript"></script>
     </html>
 
-```
-
-- Copy the style sheet code and add this to the `style.css` file in your project directory:
-
-```stylesheet
-
-    .main_container{
-        height: 100%;
-        width: 100%;
-    }
-    
-    .tool_bar{
-        height: 5%;
-        width: 100%;
-    }
-    
-    .image_container{
-        height: 100%;
-        padding-right: 2%;
-    }
-    
-    .title_container{
-        padding-left: 2%;
-    }
-    
-    .image_container .image{
-        height: 40%;
-    }
-    
-    .content_container{
-        width: 100%;
-        height: 100%;
-    }
-    
-    .tile_content{
-        width: 95%;
-        height:95%;
-        color: white;
-    }
-    
-    .footer_container{
-        width: 100%;
-    }
-    
 ```
 
 - Copy the JavaScript code and add this to the `app.js` file in your project directory:
