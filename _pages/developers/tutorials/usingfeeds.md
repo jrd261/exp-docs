@@ -7,8 +7,8 @@ tags: []
 ---
 
 # Overview
-`HTML Apps` may require `third party data` integration, think of POS or News information.
-The `EXP platform` provides a `data aggregator` with a variety of third party connectors called feeds.
+HTML Apps may require third party data `integration`, perhaps you want to setup a point of sale (POS) or display news information.
+The EXP platform provides a data aggregator with a variety of third party connectors called `feeds`.
 This tutorial will show how to set up a feed in the EXP platform and integrate the data returned in an Angular JS HTML App.
 
 # RSS HTML APP
