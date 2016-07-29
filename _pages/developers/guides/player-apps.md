@@ -237,16 +237,6 @@ function load () {
   });
 }
 
-
-function play () {
-  return new Promise(function (resolve) {
-    var video = document.getElementById('video');
-    video.onended = resolve;
-    video.play();
-  });
-}
-
-
 ```
 
 Once this app is uploaded to EXP and can be referenced by uuid, any player app in your organization can launch a video by url by simply calling:

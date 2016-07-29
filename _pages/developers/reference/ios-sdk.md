@@ -1,6 +1,6 @@
     ---
 permalink: /developers/reference/ios-sdk/
-title: IOS SDK Reference (v1.0.2)
+title: IOS SDK Reference (v1.0.3)
 keywords: ios, sdk
 ---
 
@@ -505,6 +505,17 @@ The feed's UUID
 Get the feed's data. Resolves to the output of the feed query.
 ```swift
     feed.getData().then { (data: [AnyObject]) -> Void in
+        debugPrint(data)
+    }.error { error in
+    debugPrint(error)
+    }
+```
+
+**`feed.getData(query:[String:AnyObject])`**
+
+Get the feed's dynamic data. Resolves to the output of the feed query, with dynamic parameters.
+```swift
+    feed.getData(["name":"scala"]).then { (data: [AnyObject]) -> Void in
         debugPrint(data)
     }.error { error in
     debugPrint(error)
