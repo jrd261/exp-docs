@@ -160,8 +160,8 @@ responses = channel.broadcast('hi!', { 'test': 'nice to meet you!' })
 Returns a [listener](#listener) for events on the channel. `timeout` is how many seconds to wait for the channel to open. `max_age` is the number of seconds the listener will buffer events before they are discarded. If `timeout` is reached before the channel is opened, a `NetworkError` will be raised.
 
 ```python
-channel = exp.get_channel('my-channel')
-listener = channel.listen('my-event', max_age=30)
+channel = exp.get_channel('my-consumer-channel', consumer=True)
+listener = channel.listen('hi', max_age=30)
 ```
 
 **`channel.fling(payload)`**
@@ -418,6 +418,10 @@ Returns the feed's data. For dynamic feeds specify key value query params in `pa
 
 Data items inherit the [common resource methods and attributes](#resources) `save()`, `refresh()`, and `get_channel()`.
 There is a limit of 16MB per data document.
+
+*Note that data values must be a javascript object, but can contain other primitives.*
+
+
 
 **`exp.get_data(group='default', key=None)`**
 
