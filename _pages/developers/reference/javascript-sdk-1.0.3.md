@@ -391,8 +391,6 @@ Resolves to the feed's data. Params is an object of key value query params for d
 Data items inherit the [common resource methods and attributes](#resources) `save()`, `refresh()`, and `getChannel()`.
 There is a limit of 16MB per data document.
 
-*Note that data values must be a javascript object, but can contain other primitives.*
-
 **`exp.getData(group, key)`**
 
 Resolves to the data item with the given group and key or `null` if the data item could not be found.
@@ -401,7 +399,7 @@ Resolves to the data item with the given group and key or `null` if the data ite
 exp.getData('cats', 'fluffy').then(data => {});
 ```
 
-**`exp.createData(group, key, value)`**
+**`exp.createData(groupr, key, value)`**
 
 Resolves to a data item created based on the supplied group, key, and value.
 
