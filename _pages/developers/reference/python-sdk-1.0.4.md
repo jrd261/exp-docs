@@ -4,337 +4,366 @@ title: Python SDK Reference (v1.0.4)
 keywords: python, sdk
 ---
 
-
-
-
 # Installation
 
-## Bower
+Install the `exp-sdk` package from PyPi via your favorite python package manager.
 
-The easiest way to get the SDK for standalone browser usage is using `bower`.
-
-```
-bower install exp-sdk
+```bash
+pip install exp-sdk
 ```
 
-Then include the sdk in a script tag from the bower_components directory. You can then access the sdk as the window bound global `EXP`.
-
-
-```html
-<script src="bower_components/exp-sdk/exp-sdk.min.js"></script>
-<script>// I have access to EXP!</script>
-```
-
-
-## NPM
-
-To use the EXP SDK with NodeJS, install using `npm`:
-
-```
-npm install exp-sdk
-```
-
-and require in the `exp` module.
-
-```javascript
-const EXP = require('exp-sdk');
-```
-
+This gives your environment access to the ```exp_sdk``` module. 
 
 
 # Runtime
 
 ## Starting the SDK
 
-**`EXP.start(options)`**
+**`exp_sdk.start(options)`**
 
-Starts and returns an sdk instance. Can be called multiple times to start multiple independent instances of the sdk. The sdk can be started using user, device, or consumer app credentials. `options` is an object that supports the following properties:
+Starts and returns an sdk instance. Can be called multiple times to start multiple independent instances of the sdk. The sdk can be started using user, device, or consumer app credentials.`**options` supports the following keyword arguments:
 
-- `username` The username used to log in to EXP. Required user credential.
-- `password` The password of the user. Required user credential.
-- `organization` The organization of the user. Required user credential.
-- `uuid` The uuid of the device or consumer app. Required consumer app credential and required device credential unless `allowPairing` is `true`.
-- `secret` The device secret. Required device credential unless `allowPairing` is `true`.
-- `apiKey` The consumer app api key. Required consumer app credential.
-- `allowPairing` Whether or not to allow authentication to fallback to pairing mode. If `true`, invalid or missing device credentials will start the sdk in pairing mode. Defaults to `false`.
-- `host` The api host to authenticate with. Defaults to `https://api.goexp.io`.
-- `enableNetwork` Whether or not to establish a socket connection with the network for real time communication. If `false` you will not be able to listen for broadcasts. Defaults to `true`.
+- `username=None` The username used to log in to EXP. Required user credential.
+- `password=None` The password of the user. Required user credential.
+- `organization=None` The organization of the user. Required user credential
+- `uuid=None` The device or consumer app uuid. Required consumer app credential and required device credential unless `allow_pairing` is `True`.
+- `secret=None` The device secret. Required device credential unless `allow_pairing` is `True`.
+- `api_key=None` The consumer app api key. Required consumer app credential.
+- `allow_pairing=False` Whether to allow authentication to fallback to pairing mode. If `True`, invalid or empty device - credentials will start the sdk in pairing mode.
+- `host=https://api.goexp.io` The api host to authenticate with.
+- `enable_network=True` Whether or not to establish a socket connection with the EXP. If `False`, you will not be - able to listen for broadcasts.
 
-```javascript
+```python
+import exp_sdk
+
 # Authenticating as a user.
-exp = EXP.start({ username: 'joe@scala.com', password: 'joeIsAwes0me', organization: 'joeworld' })
+exp = exp_sdk.start(username='joe@scala.com', password='joeIsAwes0me', organization='joeworld')
 
 # Authenticating as a device.
-exp = EXP.start({ uuid: '[uuid]', secret: '[secret]' });
+exp = exp_sdk.start(uuid='[uuid]', secret='[secret]')
 
 # Authenticating as a consumer app.
-exp = EXP.start({ uuid: '[uuid]', apiKey: '[api-key]' });
+exp = exp_sdk.start(uuid='[uuid]', api_key='[api-key]')
 ```
+
+
 
 ## Stopping the SDK
 
-**`EXP.stop()`**
 
-Stops all running instance of the sdk, cancels all listeners and closes socket connections.
+**`exp_sdk.stop()`**
 
-```javascript
-exp1 = EXP.start(options1)
-exp2 = EXP.start(options2)
+Stops all running instances of the sdk, cancels all listeners and stops all socket connections.
 
-EXP.stop()
-exp1.createDevice()  // Error
+```python
+exp_1 = exp_sdk.start(**options_1)
+exp_2 = exp_sdk.start(**options_2)
+
+exp_sdk.stop()
+exp_2.create_device()  # Exception.
 ```
 
-New instance can still be started by calling `EXP.start()`.
-
+New instances can still be created by calling `start`.
 
 **`exp.stop()`**
 
-Stops the the SDK instance and clears all event listeners. Sdk instance cannot be restarted and any invokation on the instance will result in an Error being thrown.
+Stops the sdk instance, cancels its listeners, and stops all socket connections.
 
-## Authentication
+```python
+exp = exp_sdk.start(**options)
+exp.stop()
+exp.get_auth()  # Exception.
+```
 
-**`exp.getAuth()`**
+Sdk instances cannot be restarted and any invokation on the instance will raise an exception.
 
-Resolves to the current authentication payload. The authentication payload may be updated by performing this request.
+## Exceptions
 
-**`exp.auth`**
+ **`exp_sdk.ExpError`**
 
-Returns the current authentication payload. Will be null if not yet authenticated.
+ Base class for all EXP exceptions.
 
-**`exp.on('update',callback)`**
+ **`exp_sdk.UnexpectedError`**
 
-Callback is called when authentication payload is updated. Returns a [listener](#listener).
+ Raised when an unexpected error occurs.
+
+ **`exp_sdk.RuntimeError`**
+
+ Raised when [startup options](#runtime) are incorrect or inconsistent.
+
+ **`exp_sdk.NetworkError`**
+
+Raised when an error or timeout occurs when attempting to listen on the network.
+
+ **`exp_sdk.AuthenticationError`**
+
+ Raised when the sdk cannot authenticate due to bad credentials.
+
+ **`exp_sdk.ApiError`**
+
+ Raised when an API call fails. Has properties `message` and `code`.
 
 
-**`exp.on('error',callback)`**
+## Authentication Payload
 
-Register a callback for when the sdk instance encounters a critical error and cannot continue. The callback is called with the error as the first argument. This is generally due to authentication failure. Returns a [listener](#listeners).
 
-```javascript
-const exp = EXP.start(options)
-exp.on('error', error => console.error('Uhoh, the sdk instance died.', error));
+**`exp.get_auth()`**
+
+Returns the up to date authentication payload. The authentication payload may be updated when invoking this method.
+
+```python
+print 'My authentication token is : %s' % exp.get_auth()['token']
 ```
 
 
+## Logging
 
-## Listeners
-
-**listener.cancel()**
-
-Cancels the registered callback. This operation cannot be undone.
+The EXP SDK uses the ```exp-sdk``` logger namespace.
 
 
-# Real Time Communication
+# Real Time Communications
 
 ## Status
 
+**`exp.is_connected`**
 
-**`exp.on('offline',callback)`**
+Whether or not there is an active socket connection.
 
-Callback is called when connection to EXP is lost. Returns a [listener](#listener).
-
-
-**`exp.on('online',callback)`**
-
-Callback is called when connection to EXP is established. Returns a [listener](#listeners).
-
-**`exp.isConnected`**
-
-Whether or not you are connected to EXP.
+```python
+# Wait for a connection.
+while not exp.is_connected:
+  time.sleep(1)
+```
 
 
 ## Channels
 
- **`exp.getChannel(name, options)`**
+**`exp.get_channel(name, consumer=False, system=False)`**
 
- Returns a channel with the given name and options. Options is a javascript object with two flags: `consumer` and `system`. Consumer devices can only listen and broadcast on consumer channels. System channels are listen only and can receive broadcasts about system events.
+Returns a [channel](#channels) with the given name and flags.
 
-```javascript
-channel = exp.getChannel('my-consumer-channel', { consumer: true })
+```python
+channel = exp.get_channel('my-consumer-channel', consumer=True)
 ```
 
+**`channel.broadcast(name, payload=None, timeout=0.1)`**
 
-**`channel.broadcast(name, payload, timeout)`**
+Sends a [broadcast](#broadcast) on the channel with the given name and payload and returns a list of responses. `timeout` is the number of seconds to hold the request open to wait for responses.
 
-Sends a broadcast with given `name` and `payload` on the channel. Waits for responses for `timeout` milliseconds and resolves with an array of responses.
-
-```javascript
-channel.broadcast('hi!', { test: 'nice to meet you!' }).then(responses => {
-  responses.forEach(response => console.log(response));
-});
+```python
+responses = channel.broadcast('hi!', { 'test': 'nice to meet you!' })
+[print response for response in responses]
 ```
 
+**`channel.listen(name, timeout=10, max_age=60)`**
 
-**`channel.listen(name, callback)`**
+Returns a [listener](#listener) for events on the channel. `timeout` is how many seconds to wait for the channel to open. `max_age` is the number of seconds the listener will buffer events before they are discarded. If `timeout` is reached before the channel is opened, a `NetworkError` will be raised.
 
-Registers a [listener](#listeners) callback for events on the channel with the given `name`. Resolves to a [listener](#listeners) when the callback is registered and the connection has subscribed to the channel.
-
-The callback is called with the broadcast payload as the first argument and a `respond` method as the second argument. Call the `respond` method to send a response back to the broadcaster.
-
-```javascript
-channel = exp.getChannel('my-channel')
-channel.listen('myEvent', (payload, respond) => {
-  if (payload && payload.text === 'hi') respond({ text: 'hi to you too!' });
-});
+```python
+channel = exp.get_channel('my-channel')
+listener = channel.listen('my-event', max_age=30)
 ```
-
 
 **`channel.fling(payload)`**
 
 Fling an app launch payload on the channel.
-```javascript
-channel.fling({ appTemplate: { uuid: '[uuid]' } });
+
+```python
+location = exp.get_location('[uuid]')
+location.get_channel().fling({ 'appTemplate' : { 'uuid': '[uuid'} })
 ```
+
 
 **`channel.identify()`**
 
 Requests that [devices](#device) listening for this event on this channel visually identify themselves. Implementation is device specific; this is simply a convience method.
 
 
+## Listeners
+
+**`listener.wait(timeout=0)`**
+
+Wait for `timeout` seconds for broadcasts. Returns a [broadcast](#broadcasts) if a [broadcast](#broadcasts) is in the queue or if a [broadcast](#broadcasts) is received before the timeout. If timeout is reached, returns `None`. If timeout is set to 0 (the default), will return immediately.
+
+```python
+channel = exp.get_channel('my-channel')
+listener = channel.listen('my-event')
+
+while True:
+  broadcast = listener.wait(60)
+  if broadcast:
+    print 'I got a broadcast!'
+```
+
+[Broadcasts](#broadcasts) are returned in the order they are received.
+
+**`listener.cancel()`**
+
+Cancels the listener. The listener is unsubscribed from [broadcasts](#broadcast) and will no longer receive messages. This cannot be undone.
+
+## Broadcasts
+
+**`broadcast.payload`**
+
+The payload of the broadcast. Can be any JSON serializable type.
+
+**`broadcast.respond(response)`**
+
+Respond to the broadcast with a JSON serializable response.
+
+```python
+channel = exp.get_channel('my-channel')
+listener = channel.listen('my-event')
+
+while True:
+  broadcast = listener.wait(60)
+  if broadcast and broadcast.payload == 'hi!':
+    broadcast.respond('hi back at you!')
+    break
+```
+
+
 # API
+
 
 ## Devices
 
 Devices inherit all [common resource methods and attributes](#resources).
 
-**`exp.getDevice(uuid)`**
+**`exp.get_device(uuid=None)`** 
 
-Resolves to the device with the given uuid or `null` if the device could be found.
+Returns the device with the given uuid or `None` if no device could be found.
 
-**`exp.createDevice(document)`**
+**`exp.get_current_device()`** 
 
-Resolves to a device created based on the supplied document.
+Returns the current device or `None` if not applicable.
 
-**`exp.findDevices(params)`**
+**`exp.create_device(document=None)`**
 
-Resolves to an array of devices matching the given query parameters. `params` is a map of query parameters.
+Returns a device created based on the supplied document.
 
-```javascript
-exp.createDevice({ subtype: 'scala:device:player' }).then(device => {});
+```python
+device = exp.create_device({ 'subtype': 'scala:device:player' })
 ```
 
-**`exp.getCurrentDevice()`**
+**`exp.find_devices(params=None)`**
 
-Resolves to the current device or null if not a device.
+Returns a list of devices matching the given query parameters. `params` is a dictionary of query parameters.
 
-**`device.getLocation()`**
+**`device.get_location()`**
 
-Resolves to the device's [location](#locations) or `null`.
+Returns the device's [location](#locations) or `None`.
 
-**`device.getZones()`**
+**`device.get_zones()`**
 
-Resolves to an array of the device's [zones](#zones).
+Returns a list of the device's [zones](#zones).
 
-**`device.getExperience()`**
+**`device.get_experience()`**
 
-Resolves to the device's [experience](#experiences) or `null`
-
-
+Returns the device's [experience](#experiences) or `None`
 
 
 ## Things
 
 Things inherit all [common resource methods and attributes](#resources).
 
-**`exp.getThing(uuid)`**
+**`exp.get_thing(uuid=None)`**
 
-Resolves to the thing with the given uuid or `None` if no things could be found.
+Returns the thing with the given uuid or `None` if no things could be found.
 
-**`exp.createThing(document=None)`**
+**`exp.create_thing(document=None)`**
 
-Resolves to a thing created based on the supplied document.
+Returns a thing created based on the supplied document.
 
-```javascript
-exp.createThing({ 'subtype': 'scala:thing:rfid', 'id': '[rfid]', 'name': 'my-rfid-tag' }).then(thing => {});
+```python
+thing = exp.create_thing({ 'subtype': 'scala:thing:rfid', 'id': '[rfid]', 'name': 'my-rfid-tag' })
 ```
 
-**`exp.findThings(params)`**
+**`exp.find_things(params=None)`**
 
-Resolves to an array of things matching the given query parameters. `params` is a map of query parameters.
+Returns a list of things matching the given query parameters. `params` is a dictionary of query parameters.
 
-**`thing.getLocation()`**
+**`thing.get_location()`**
 
-Resolves to the thing's [location](#locations) or `null`.
+Returns the thing's [location](#locations) or `None`.
 
-**`thing.getZones()`**
+**`thing.get_zones()`**
 
-Resolves to a list of the thing's [#zones](#zones).
+Returns a list of the thing's [#zones](#zones).
 
-**`thing.getExperience()`**
+**`thing.get_experience()`**
 
-Resolves to the the device's [experience](#experiences) or `null`
+Returns the device's [experience](#experiences) or `None`
 
 
 ## Experiences
 
 Experiences inherit all [common resource methods and attributes](#resources).
 
-**`exp.getExperience(uuid)`**
+**`exp.get_experience(uuid=None)`**
 
-Resolves to the experience with the given uuid or `null` if no experience could be found.
+Returns the experience with the given uuid or `None` if no experience could be found.
 
-**`exp.createExperience(document)`**
+**`exp.get_current_experience()`** 
 
-Resolves to an experience created based on the supplied document.
+Returns the current experience or `None`.
 
-**`exp.findExperiences(params)`**
+**`exp.create_experience(document=None)`**
 
-Returns a list of experiences matching the given query parameters. `params` is a map of query parameters.
+Returns an experience created based on the supplied document.
 
-**`exp.getCurrentExperience()`**
+**`exp.find_experiences(params=None)`**
 
-Resolves to the current experience or null.
+Returns a list of experiences matching the given query parameters. `params` is a dictionary of query parameters.
 
-**`experience.getDevices()`**
+**`experience.get_devices()`**
 
-Resolves to an array of [devices](#devices) that are part of this experience.
+Returns a list of [devices](#devices) that are part of this experience.
 
 
 ## Locations
-
 Locations inherit all [common resource methods and attributes](#resources).
 
-**`exp.getLocation(uuid)`**
+**`exp.get_location(uuid=None)`**
 
-Resolves to the location with the given uuid or `null` if no location could be found.
+Returns the location with the given uuid or `None` if no location could be found.
 
-**`exp.createLocation(document)`**
+**`exp.get_current_location()`** 
 
-Resolves to a location created based on the supplied document.
+Returns the current location or `None`.
 
-**`exp.findLocations(params)`**
+**`exp.create_location(document=None)`**
 
-Resolves to an array of locations matching the given query parameters. `params` is a dictionary of query parameters.
+Returns a location created based on the supplied document.
 
-**`exp.getCurrentLocation()`**
+**`exp.find_locations(params=None)`**
 
-Resolves to the current location or null.
+Returns a list of locations matching the given query parameters. `params` is a dictionary of query parameters.
 
-**`location.getDevices()`**
 
-Resolves to an array of [devices](#devices) that are part of this location.
+**`location.get_devices()`**
 
-**`location.getThings()`**
+Returns a list of [devices](#devices) that are part of this location.
 
-Resolves to an array of [things](#things) that are part of this location.
+**`location.get_things()`**
 
-**`location.getZones()`**
+Returns a list of [things](#things) that are part of this location.
 
-Resolves to an array of [zones](#zones) that are part of this location.
+**`location.get_zones()`**
 
-**`location.getLayoutUrl()`**
+Returns a list of [zones](#zones) that are part of this location.
+
+**`location.get_layout_url()`**
 
 Returns a url pointing to the location's layout image.
 
 
 ## Zones
+Zones inherit the [common resource methods and attributes](#resources) `save()`, `refresh()`, and `get_channel()`.
 
-Zones inherit the [common resource methods and attributes](#resources) `save()`, `refresh()`, and `getChannel()`.
+**`exp.get_current_zones()`** 
 
-**`exp.getCurrentZones()`**
-
-Resolves to the current zones or an empty array.
+Returns a list of the current zones or an empty list.
 
 **`zone.key`**
 
@@ -344,74 +373,74 @@ The zone's key.
 
 The zone's name.
 
-**`zone.getDevices()`**
+**`zone.get_devices()`**
 
-Resolves to an array of [devices](#devices) that are members of this zone.
+Returns all [devices](#devices) that are members of this zone.
 
-**`zone.getThings()`**
+**`zone.get_things()`**
 
-Resolves to an array of [things](#things) that are members of this zone.
+Returns all [things](#things) that are members of this zone.
 
-**`zone.getLocation()`**
+**`zone.get_location()`**
 
-Resolves to the zone's [location](#locations)
+Returns the zone's [location](#locations)
 
 
 ## Feeds
 Feeds inherit all [common resource methods and attributes](#resources).
 
-**`exp.getFeed(uuid)`**
+**`exp.get_feed(uuid=None)`**
 
-Resolves to the feed with the given uuid or `null` if no feed could be found.
+Returns the feed with the given uuid or `None` if no feed could be found.
 
-**`exp.createFeed(document)`**
+**`exp.create_feed(document=None)`**
 
-Resolves to a feed created based on the supplied document.
+Returns a feed created based on the supplied document.
 
-```javascript
-exp.createFeed({ subtype: 'scala:feed:weather', searchValue: '16902', name: 'My Weather Feed'  }).then(feed => {});
+```python
+feed = exp.create_feed({ 'subtype': 'scala:feed:weather', 'searchValue': '16902', 'name': 'My Weather Feed'  })
 ```
 
-**`exp.findFeeds(params)`**
+**`exp.find_feeds(params=None)`**
 
-Resolves to an array of feeds matching the given query parameters. `params` is a dictionary of query parameters.
+Returns a list of feeds matching the given query parameters. `params` is a dictionary of query parameters.
 
-```javascript
-exp.findFeeds({ subtype: 'scala:feed:facebook' }).then(feeds => {})
+```python
+feeds = exp.find_feeds({ 'subtype': 'scala:feed:facebook' })
 ```
 
-**`feed.getData(params)`**
+**`feed.get_data(**params)`**
 
-Resolves to the feed's data. Params is an object of key value query params for dynamic feeds.
+Returns the feed's data. For dynamic feeds specify key value query params in `params`.
 
 
 ## Data
 
-Data items inherit the [common resource methods and attributes](#resources) `save()`, `refresh()`, and `getChannel()`.
+Data items inherit the [common resource methods and attributes](#resources) `save()`, `refresh()`, and `get_channel()`.
 There is a limit of 16MB per data document.
 
-**`exp.getData(group, key)`**
+**`exp.get_data(group='default', key=None)`**
 
-Resolves to the data item with the given group and key or `null` if the data item could not be found.
-
-```python
-exp.getData('cats', 'fluffy').then(data => {});
-```
-
-**`exp.createData(groupr, key, value)`**
-
-Resolves to a data item created based on the supplied group, key, and value.
-
-```javascript
-exp.createData('cats', 'fluffy', { 'color': 'brown'}).then(data => {});
-```
-
-**`exp.findData(params)`**
-
-Resolves to an array of data items matching the given query parameters. `params` is a dictionary of query parameters.
+Returns the data item with the given group or key or `None` if the data item could not be found.
 
 ```python
-exp.findData({ group: 'cats' }).then(items => {});
+data = exp.get_data('cats', 'fluffy')
+```
+
+**`exp.create_data(group='default', key=None, value=None)`**
+
+Returns a data item created based on the supplied group, key, and value.
+
+```python
+data = exp.create_data('cats', 'fluffy', { 'color': 'brown'})
+```
+
+**`exp.find_data(params=None)`**
+
+Returns a list of data items matching the given query parameters. `params` is a dictionary of query parameters.
+
+```python
+items = exp.find_data({ 'group': 'cats' })
 ```
 
 **`data.key`**
@@ -426,39 +455,37 @@ The data item's group. Settable
 
 The data item's value. Settable.
 
-## Content
 
+## Content
 Content items inherit all [common resource methods and attributes](#resources) except `save()`.
 
-**`exp.getContent(uuid)`**
+**`exp.get_content(uuid=None)`**
 
-Resolves to the content item with the given uuid or `null` if no content item could be found.
+Returns the content item with the given uuid or `None` if no content item could be found.
 
-**`exp.findContent(params)`**
+**`exp.find_content(params=None)`**
 
-Resolves to an array of content items matching the given query parameters. `params` is a dictionary of query parameters.
+Returns a list of content items matching the given query parameters. `params` is a dictionary of query parameters.
 
 **`content.subtype`**
 
 The content item's subtype. Not settable.
 
-**`content.getUrl()`**
+**`content.get_url()`**
 
 Returns the delivery url for this content item.
 
-**`content.hasVariant(name)`**
+**`content.has_variant(name)`**
 
 Returns a boolean indicating whether or not this content item has a variant with the given name.
 
-**`content.getVariantUrl(name)`**
+**`content.get_variant_url(name)`**
 
 Returns the delivery url for a variant of this content item.
 
+**`content.get_children()`**
 
-**`content.getChildren()`**
-
-Resolves to an array of the content items children.
-
+Returns a list of the content items children.
 
 ## Resources
 
@@ -470,7 +497,7 @@ The uuid of the resource. Cannot be set.
 
 **`resource.name`**
 
-The name of the resource. Can be set directly.
+The name of the resource. Can be set directl
 
 **`resource.document`**
 
@@ -478,78 +505,77 @@ The resource's underlying document
 
 **`resource.save()`**
 
-Saves the resource and updates the document in place. Returns a promise to the save operation.
+Saves the resource and updates the document in place.
 
-```javascript
-exp.getDevice('[uuid]').then(device => {
-  device.name = 'newName';
-  device.save().then(() => console.log('Saved it!'));
-});
+```python
+device = exp.get_device('[uuid]')
+device.name = 'my-new-name'
+device.save()  # device changes are now saved
 ```
 
 **`resource.refresh()`**
 
-Refreshes the resource's underlying document in place. Returns a promise to refresh operation.
+Refreshes the resource's underlying document in place.
 
-```javascript
-exp.createDevice().then(device => {
-  exp.getDevice(device.uuid).then(device2 => {
-    device.name = 'newName';
-    device.save().then(() => {
-      device2.refresh().then(() => {
-        // device2 name is now updated.
-      });
-    });
-  });
-});
+```python
+device = exp.create_device()
+device.name = 'new-name'
+device_2 = exp.get_device(device.uuid)
+device.save()
+device_2.refresh()
+print device_2.name  # 'new-name'
 ```
 
-**`resource.getChannel(channelOptions)`**
+**`resource.get_channel(system=False, consumer=False)`**
 
-Returns the [channel](#channels) whose name is contextually associated with this resource.
+Returns the channel whose name is contextually associated with this resource.
 
+```python
+channel = experience.get_channel()
+channel.broadcast('hello?')
+```
 
 ## Custom Requests
 
-These methods send custom authenticated API calls. `params` is a map of url params and `body` is a JSON serializable document. in seconds, to wait for the request to complete. `path` is relative to the api host root. All methods will return a promise to the response document.
+These methods all users to send custom authenticated API calls. `params` is a dictionary of url params, `payload` is a JSON serializable type, and `timeout` is the duration, in seconds, to wait for the request to complete. `path` is relative to the api host root. All methods will return a JSON serializable type.
 
-**`exp.get(path, params)`**
+**`exp.get(path, params=None, timeout=10)`**
 
 Send a GET request.
 
-```javascript
-exp.get('/api/devices', { 'name': 'my-name' }).then(result => {});
+```python
+result = exp.get('/api/devices', { 'name': 'my-name' })  # Find devices by name.
 ```
 
-**`exp.post(path, body, params)`**
+**`exp.post(path, payload=None, params=None, timeout=10)`**
 
 Send a POST request.
 
-```javascript
-exp.post('/api/experiences', {}).then(document => {});
+```python
+document = exp.post('/api/experiences', {})  # Create a new empty experience.
 ```
 
-**`exp.patch(path, body, params)`**
+**`exp.patch(path, payload=None, params=None, timeout=10)`**
 
 Send a PATCH request.
 
-```javascript
-exp.patch('/api/experiences/[uuid]', { name: 'new-name' }).then(document => {});
+```python
+document = exp.patch('/api/experiences/[uuid]', { 'name': 'new-name' })  # Rename an experience.
 ```
 
 
-**`exp.put(path, body, params)`**
+**`exp.put(path, payload=None, params=None, timeout=10)`**
 
 Send a PUT request.
 
-```javascript
- exp.put('/api/data/cats/fluffy', { eyes: 'blue'}).then(document => {});
+```python
+document = exp.put('/api/data/cats/fluffy', { 'eyes': 'blue'})  # Insert a data value.
 ```
 
-**`exp.delete(path, params)`**
+**`exp.delete(path, params=None, timeout=10)`**
 
 Send a DELETE request.
 
-```javascript
-exp.delete('/api/location/[uuid]').then(() => {});
+```python
+exp.delete('/api/location/[uuid]') # Delete a location.
 ```
