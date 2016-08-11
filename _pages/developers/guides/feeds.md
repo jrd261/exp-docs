@@ -60,38 +60,197 @@ Some `third party` providers do not allow this `revoke access` to happen automat
 The `EXP platform` supports multiple `third party` online data feed sources. Not all of then `require` a `integration`.
 We can list them by category:
 
-## Social media
+## Feed Types Information
 
-1. `Facebook` -> integration Facebook
-2. `Instagram` -> integration Instagram
-3. `Twitter` -> integration Twitter
-4. `LinkedIn` -> integration linkedIn
-
-## Spreadsheet
-
-1. `Google Spreadsheet` -> integration Google Drive
-2. `Microsoft Spreadsheet` -> integration Microsoft oneDrive
-
-## Calendar
-
-1. `Google Calendar` -> integration Google Calendar
-2. `Microsoft Calendar` -> integration Microsoft Calendar
-
-## POS
-
-1. `Shopify` -> integration Shopify
-2. `Square` -> integration Square
-
-## Git
-
-1. `Github` -> integration Github
-2. `BitBucket` -> integration BitBucket
-
-## Other
-
-1. `Weather` -> no integration
-2. `RSS` -> no integration
-3. `Generic` -> no integration
+<style>
+.feed-information thead th {
+  text-align: left;
+}
+.feed-information td:first-child {
+  width: 215px;
+}
+.feed-information tbody tr td {
+  vertical-align: middle;
+}
+.category {
+  background-color: #FFFFE0;
+  font-weight: bold;
+}
+.feed-information img {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin: 5px;
+}
+</style>
+  
+<table class="feed-information">
+  <thead>
+    <tr>
+      <th>Feed Type</th>
+      <th>Integration</th>
+      <th>Subtype</th>
+      <th>Dynamic Feed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="category" colspan="4">Social Media</td>
+    </tr>
+    <tr>
+      <td>
+        <img src="/common_images/feedIcons/facebook.svg">
+        Facebook
+      </td>
+      <td>Facebook</td>
+      <td>scala:feed:facebook</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <img src="/common_images/feedIcons/instagram.svg">
+        Instagram
+      </td>
+      <td>Instagram</td>
+      <td>scala:feed:instagram</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <img src="/common_images/feedIcons/twitter.svg">
+        Instagram
+        Twitter
+      </td>
+      <td>Twitter</td>
+      <td>scala:feed:twitter</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <img src="/common_images/feedIcons/linkedIn.svg">
+        LinkedIn
+      </td>
+      <td>LinkedIn</td>
+      <td>scala:feed:linkedIn</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td class="category" colspan="4">Spreadsheet</td>
+    </tr>
+    <tr>
+      <td>
+        <img src="/common_images/feedIcons/google-drive.svg">
+        Google Spreadsheet
+      </td>
+      <td>Google Drive</td>
+      <td>scala:feed:googleSpreadsheet</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <img src="/common_images/feedIcons/one-drive.svg">
+        Microsoft Spreadsheet
+      </td>
+      <td>Microsoft OneDrive</td>
+      <td>scala:feed:microsoftSpreadsheet</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td class="category" colspan="4">Calendar</td>
+    </tr>
+    <tr>
+      <td>
+        <img src="/common_images/feedIcons/google-calendar.svg">
+        Google Calendar
+      </td>
+      <td>Google Calendar</td>
+      <td>scala:feed:google</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <img src="/common_images/feedIcons/outlook.svg">
+        Microsoft Calendar
+      </td>
+      <td>Microsoft Calendar</td>
+      <td>scala:feed:outlook</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td class="category" colspan="4">POS</td>
+    </tr>
+    <tr>
+      <td>
+        <img src="/common_images/feedIcons/shopify-logo.svg">
+        Shopify
+      </td>
+      <td>Shopify</td>
+      <td>scala:feed:shopify</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <img src="/common_images/feedIcons/square-logo.svg">
+        Square
+      </td>
+      <td>Square</td>
+      <td>scala:feed:square</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td class="category" colspan="4">Git</td>
+    </tr>
+    <tr>
+      <td>
+        <img src="/common_images/feedIcons/github.svg">
+        GitHub
+      </td>
+      <td>GitHub</td>
+      <td>scala:feed:gitHub</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <img src="/common_images/feedIcons/bitbucket.svg">
+        BitBucket
+      </td>
+      <td>BitBucket</td>
+      <td>scala:feed:bitBucket</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td class="category" colspan="4">Other</td>
+    </tr>
+    <tr>
+      <td>
+        <img src="/common_images/feedIcons/weather-partlycloudy.svg">
+        Weather
+      </td>
+      <td>N/A</td>
+      <td>scala:feed:weather</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <img src="/common_images/feedIcons/rss-box.svg">
+        RSS
+      </td>
+      <td>N/A</td>
+      <td>scala:feed:rss</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>
+        <img src="/common_images/feedIcons/access-point.svg">
+        RSS
+        Generic Endpoint
+      </td>
+      <td>N/A</td>
+      <td>scala:feed:generic</td>
+      <td>No</td>
+    </tr>
+  </tbody>
+</table>
 
 # FEEDS
 When the `integrations` are added to the `EXP platform` `FEEDS` can be created in the `FEEDS` section.
