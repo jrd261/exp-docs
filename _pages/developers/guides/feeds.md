@@ -6,13 +6,16 @@ last_updated: July 11, 2016
 tags: []
 ---
 
+<link rel="stylesheet" href="/_pages/developers/guides/feeds.css">
 
 # Overview
 
-`Experiences` created in the `EXP platform` may want to include `third party data sources` in some cases.
-The `EXP platform` has a build in `Data Aggregator` that simplifies getting data in your `Experiences`.
-We `unified` the data sources as much if possible to a `simple Json format`, this way a app can easily `switch` between sources without being `modified`.
-`FEEDS` can be accessed by EXP Player SDK or via one of the available EXP SDK's.
+To include data from third party data sources such as Facebook pages or local weather reports, EXP has the concept of feeds.
+The data from a feed will be available to your app in a simple, unified JSON format, so that an app can easily handle different data sources
+without being modified. 
+
+The feeds can be acessed through a method on your EXP SDK, so consult the reference for your platform below. This guide will have more detail
+about how to use feeds and how they can be configured.
 
 - [JavaScript SDK - Reference](http://docs.goexp.io/developers/reference/javascript-sdk-1.0.0/)
 
@@ -24,65 +27,40 @@ We `unified` the data sources as much if possible to a `simple Json format`, thi
 
 - [Android SDK - Reference](http://docs.goexp.io/developers/reference/android-sdk/)
 
-# Integration
-Most of the `FEEDS` in the `EXP platform` require permissions to access the online `third party` data source. 
-The `EXP platform` has a integration section to select what online data source is to be used. 
-Here the required `credentials` can be entered and will be stored under the used `organisation`. 
-Each user of this `organisation` will have access to these `integrations`.
+# Integrations
+Most of the feed types in EXP require permissions to access the third party data source. 
+To permanently link credentials for data sources that you provide, EXP has the concept of integrations.
+You can create a new integration from the integrations route (see below).
+Here the required credentials can be entered and then the integration will be available to everyone in the organization.
 
 ![Data Source Integration](/common_images/developers/integrations.png "Data Source Integration")
 
-## Adding a Integration
-- Find the `integration` source that your app will use and press the `ADD` button. 
+## Adding an Integration
+- Find the integration source that your app will use and press the ADD button. 
 
-- A `redirect` will happen to the login permission page of the `third party` online data source provider.
+- A redirect will happen to the login permission page of the third party online data source provider.
 
-- Enter `credentials` and `accept`. 
+- Enter credentials and accept. 
 
-- The `integrations` page will appear again. 
+- The EXP integrations page will appear again. 
 
-When the `integration` fails a `error message` will appear.
+If the integration fails, an error message will appear:
  
-![Data Source Integration](/common_images/developers/integration_error.png "Data Source Integration Error")
+![Data Source Integration Error Message](/common_images/developers/integration_error.png "Data Source Integration Error")
 
-When the `integration` is successful added it's `registered` under configured `integrations`.
+When the integration is successfuly added it will show up under configured integrations.
 
 ![Data Source Integration](/common_images/developers/integrations_implemented.png "Data Source Integration Implemented")
 
-## Updating Integration
-If for any reason the `integration` needs to be updated, for example a permission setting that has changed, the `UPDATE` button can be selected. 
+## Updating an Integration
+If for any reason the integration needs to be updated, for example a permission setting that has changed, click the integration's Update button to make changes.
 
-## Removing a Integration
-When removing a `integration` the `EXP platform` will attempt to `revoke access` it received from the `third party` provider. 
-Some `third party` providers do not allow this `revoke access` to happen automatically, in this case the `EXP platform` will show a warning and give a `link` to manually remove it.
+## Removing an Integration
+When removing an integration the EXP platform will attempt to revoke access it received from the third party provider. 
+Some third party providers do not allow this revoke access to happen automatically, in this case you will be shown a warning and given a link to manually remove it.
      
-# Feed Sources
-The `EXP platform` supports multiple `third party` online data feed sources. Not all of then `require` a `integration`.
-We can list them by category:
+# Feeds
 
-## Feed Types Information
-
-<style>
-.feed-information thead th {
-  text-align: left;
-}
-.feed-information td:first-child {
-  width: 215px;
-}
-.feed-information tbody tr td {
-  vertical-align: middle;
-}
-.category {
-  background-color: #FFFFE0;
-  font-weight: bold;
-}
-.feed-information img {
-  width: 25px;
-  height: 25px;
-  display: inline-block;
-  margin: 5px;
-}
-</style>
   
 <table class="feed-information">
   <thead>
@@ -252,234 +230,224 @@ We can list them by category:
   </tbody>
 </table>
 
-# FEEDS
-When the `integrations` are added to the `EXP platform` `FEEDS` can be created in the `FEEDS` section.
-In here the default view is a list of `FEEDS` already created. Icons will show what `type` of `FEED` is defined. 
-Other info like `created`, `modified` and `search` is also displayed in this view.
+Feeds can be created from the feeds section and you will see a list of existing feeds:
 
-![Feed](/common_images/developers/feed.png "Feed")
+![Feed List](/common_images/developers/feed.png "Feed")
 
-## Add feed
-- Select the `ADD` button on the right top corner to add a `FEED`.
+## Adding a feed
+- Click the Add icon <img src="/common_images/plus.svg" class="icon"> in the right top corner.
+- A dialog appears. Choose a valid, unique name and select the type of feed. A list of integrations will appear if required.
+Depending on what type of feed is selected, multiple options can be entered such as "search" or "max items". The details of these fields are documented later in this guide.
+- When done press the Save button.
 
-![Feed](/common_images/developers/feed_add.png "Adding New Feed")
-
-- When `ADD` feed is selected a popup box appears. A valid unique `name` can be entered and a `FEED` type can be selected. A list appears of `integrations` if required.
-Depending on what `FEED` is selected multiple options can be entered like `search`, `max items` and more. The `details` of these fields will be highlighted later in this `guide`. 
-
-- When done press the `SAVE` button.
-
-![Feed](/common_images/developers/feed_new.png "New Feed")
+![New Feed](/common_images/developers/feed_new.png "New Feed")
  
-## Viewing data
-When a `FEED` is created and added to the list a `preview` of the data can be generated.
+## Previewing feed data
+Once you've created a feed, you can see what the data it is returning looks like.
  
-- Select the `FEED` in the list by selecting the checkbox. 
-- In the top right a `preview` icon appears. This triggers a feed `preview` generation.
+- Select the feed in the list by checking the checkbox. 
+- Click the preview icon <img src="/common_images/eye.svg" class="icon"> in the top right corner.
+- A dialog opens to show the preview data in JSON format. 
+- The data can be downloaded by pressing the Download button in the bottom right corner.
 
-![Feed](/common_images/developers/feed_preview.png "Feed Preview Button")
-
-- A dialog opens to show the preview data in `Json` format. 
-- The `data` can be downloaded pressing the `DOWNLOAD` button in the bottom right corner.
-
-![Feed](/common_images/developers/feed_data.png "Feed Preview Data")
+![Feed Preview](/common_images/developers/feed_data.png "Feed Preview Data")
 
 ## Remove Feed
-In the `FEED` main list, select the feed that needs to be deleted using the `checkbox`. Select the delete `icon` to remove the `FEED`.
-
-`WARNING` it is possible that there are currently apps using this `FEED` that is to be deleted!
-
-![Feed](/common_images/developers/feed_delete.png "Feed Delete")
+- Make sure there are no apps currently running that rely on this feed.
+- Select the feed in the list by checking the checkbox.
+- Click the Delete icon <img src="/common_images/delete.svg" class="icon"> in the top right corner.
 
 ## Feed Configuration Fields
-When a `FEED` is created multiple `configuration fields` can be entered. This section will describe these `fields` per `FEED`.
 
 ### General fields
-`Feed Name` (required): All feeds require a unique feed name. 
+- **Feed Name** (required): a name that is only useful to you to remember what this feed is for and identify it in a list of other feeds. e.g. *New York City weather*
 
 ### Facebook
-`Profile/Page` (required): enter the page or profile name to pull data from. When getting a profile your account needs to have access to it.
+- **Profile/Page** (required): the page or profile name to pull data from. You must have access to the page or profile with the credentials in your Facebook integration.
 
-`Max Number of Results` (required): enter the amount of posts that needs to be collected.
+- **Max Number of Results** (required): the amount of posts that the feed should return.
 
 ### Twitter
-`Profile/Page` (optional): enter the page or profile name to pull data from.
+- **Profile/Page** (optional): the page or profile name to pull data from.
 
-OR
+  *or*
 
-`Query` (optional): enter a query string to filter data from twitter. More information can be found here `https://dev.twitter.com/rest/public/search`.  
+  **Query** (optional): a query string to filter data from Twitter. More information about queries can be found [here](https://dev.twitter.com/rest/public/search).
 
-`Max Number of Results` (required): enter the amount of posts that needs to be collected.
+- **Max Number of Results** (required): the amount of posts that the feed should return.
 
 ### Instagram
-`Profile/Page` (optional): enter the page or profile name to pull data from.
+- **Profile/Page** (optional): the page or profile name to pull data from.
 
-OR
+  *or*
 
-`Query` (optional): enter a tag name to search for.  
+  **Query** (optional): a tag name to search for.  
 
-`Max Number of Results` (required): enter the amount of posts that needs to be collected.
+- **Max Number of Results** (required): the amount of posts that the feed should return.
 
 ### Facebook
-`Company Name/ID` (required): enter the company name/id to pull data from. When getting a profile your account needs to have access to it.
+- **Company Name/ID** (required): the page or profile name to pull data from. You must have access to the page or profile with the credentials in your Facebook integration.
 
-`Max Number of Results` (required): enter the amount of posts that needs to be collected.
+- **Max Number of Results** (required): the amount of posts that the feed should return.
 
 ### Google Calendar
-`Calendar ID` (required): enter the calendarID to get the events from. Please make sure that the integration account has access to this calendar.
+- **Calendar ID** (required): the calendarID to get the events from. You must have access to this calendar with the credentials in your Google Calendar integration.
  
-`Number of Days` (required): enter the number of days to look for event from the current date forwards.
+- **Number of Days** (required): the number of days to look for events from the current date forwards.
 
 ### Microsoft Calendar
-`Calendar Name` (required): enter the calendar name to get the events from. Please make sure that the integration account has access to this calendar.
+- **Calendar Name** (required): the calendar name to get the events from. You must have access to this calendar with the credentials in your Microsoft Calendar integration.
  
-`Number of Days` (required): enter the number of days to look for event from the current date forwards.
+- **Number of Days** (required): the number of days to look for events from the current date forwards.
 
 ### Google Spreadsheet
-`Spreadsheet ID/File Path` (required): enter the ID or path to the spreadsheet file. As path backslash and forward slash can be used. As example `//documents//test or \\documents\\test or /documents/test or \documents\test` 
+- **Spreadsheet ID/File Path** (required): the ID or path to the spreadsheet file. As path backslash and forward slash can be used. e.g. *//documents//test* or *\\documents\\test* or */documents/test* or *\documents\test*.
 
-`Sheet Name` (optional): enter the sheet name you want to access the data from. If not defined first sheet name is automatically selected.
+- **Sheet Name** (optional): the sheet name you want to access the data from. If not defined first sheet name is automatically selected.
 
-`First Row As Header` (optional): when selecting this option the first row of the spreadsheet is used as header names. If there are headers that have the same name in the Json result a array of values for this header will be returned.
+- **First Row As Header** (optional): when selecting this option the first row of the spreadsheet is used as header names. If there are headers that have the same name in the JSON result, an array of values for this header will be returned.
 
-`Max Number of Results` (required): enter the amount of rows that needs to be collected.
+- **Max Number of Results** (required): the number of rows that the feed should return.
 
 ### Microsoft Spreadsheet
-`Spreadsheet ID/File Path` (required): enter the ID or path to the spreadsheet file. As path backslash and forward slash can be used. As example `//documents//test or \\documents\\test or /documents/test or \documents\test` 
+- **Spreadsheet ID/File Path** (required): the ID or path to the spreadsheet file. As path backslash and forward slash can be used. e.g. *//documents//test* or *\\documents\\test* or */documents/test* or *\documents\test*
 
-`Sheet Name` (optional): enter the sheet name you want to access the data from. If not defined first sheet name is automatically selected.
+- **Sheet Name** (optional): the sheet name you want to access the data from. If not defined first sheet name is automatically selected.
 
-`First Row As Header` (optional): when selecting this option the first row of the spreadsheet is used as header names. If there are headers that have the same name in the Json result a array of values for this header will be returned.
+- **First Row As Header** (optional): when selecting this option the first row of the spreadsheet is used as header names. If there are headers that have the same name in the JSON result, an array of values for this header will be returned.
 
-`Max Number of Results` (required): enter the amount of rows that needs to be collected.
+- **Max Number of Results** (required): the number of rows that the feed should return.
 
 ### Weather
-`City, Zip, or Place` (required): enter the location information to search for weather results. A combination of City and country can be used. As example: `amsterdam, netherlands` or `new york, united states`  
+- **City, Zip, or Place** (required): the location information to search for weather results. A combination of city and country can be used. e.g. *Amsterdam, Netherlands*, *New York, United States* . 
 
-`Language Code` (optional): enter the language code to translate the weather content. Following languages are supported:
+- **Language Code** (optional): the language code to translate the weather content. The following languages are supported:
  
-`AF	Afrikaans |
-AL	Albanian |
-AR	Arabic |
-HY	Armenian |
-AZ	Azerbaijani |
-EU	Basque |
-BY	Belarusian |
-BU	Bulgarian |
-LI	British English |
-MY	Burmese |
-CA	Catalan |
-CN	Chinese - Simplified |
-TW	Chinese - Traditional |
-CR	Croatian |
-CZ	Czech |
-DK	Danish |
-DV	Dhivehi |
-NL	Dutch |
-EN	English |
-EO	Esperanto |
-ET	Estonian |
-FA	Farsi |
-FI	Finnish |
-FR	French |
-FC	French Canadian |
-GZ	Galician |
-DL	German |
-KA	Georgian |
-GR	Greek |
-GU	Gujarati |
-HT	Haitian Creole |
-IL	Hebrew |
-HI	Hindi |
-HU	Hungarian |
-IS	Icelandic |
-IO	Ido |
-ID	Indonesian |
-IR	Irish Gaelic |
-IT	Italian |
-JP	Japanese |
-JW	Javanese |
-KM	Khmer |
-KR	Korean |
-KU	Kurdish |
-LA	Latin |
-LV	Latvian |
-LT	Lithuanian |
-ND	Low German |
-MK	Macedonian |
-MT	Maltese |
-GM	Mandinka |
-MI	Maori |
-MR	Marathi |
-MN	Mongolian |
-NO	Norwegian |
-OC	Occitan |
-PS	Pashto |
-GN	Plautdietsch |
-PL	Polish |
-BR	Portuguese |
-PA	Punjabi |
-RO	Romanian |
-RU	Russian |
-SR	Serbian |
-SK	Slovak |
-SL	Slovenian |
-SP	Spanish |
-SI	Swahili |
-SW	Swedish |
-CH	Swiss |
-TL	Tagalog |
-TT	Tatarish |
-TH	Thai |
-TR	Turkish |
-TK	Turkmen |
-UA	Ukrainian |
-UZ	Uzbek |
-VU	Vietnamese |
-CY	Welsh |
-SN	Wolof |
-JI	Yiddish - transliterated |
-YI	Yiddish - unicode` 
+  **AF	Afrikaans |
+  AL	Albanian |
+  AR	Arabic |
+  HY	Armenian |
+  AZ	Azerbaijani |
+  EU	Basque |
+  BY	Belarusian |
+  BU	Bulgarian |
+  LI	British English |
+  MY	Burmese |
+  CA	Catalan |
+  CN	Chinese - Simplified |
+  TW	Chinese - Traditional |
+  CR	Croatian |
+  CZ	Czech |
+  DK	Danish |
+  DV	Dhivehi |
+  NL	Dutch |
+  EN	English |
+  EO	Esperanto |
+  ET	Estonian |
+  FA	Farsi |
+  FI	Finnish |
+  FR	French |
+  FC	French Canadian |
+  GZ	Galician |
+  DL	German |
+  KA	Georgian |
+  GR	Greek |
+  GU	Gujarati |
+  HT	Haitian Creole |
+  IL	Hebrew |
+  HI	Hindi |
+  HU	Hungarian |
+  IS	Icelandic |
+  IO	Ido |
+  ID	Indonesian |
+  IR	Irish Gaelic |
+  IT	Italian |
+  JP	Japanese |
+  JW	Javanese |
+  KM	Khmer |
+  KR	Korean |
+  KU	Kurdish |
+  LA	Latin |
+  LV	Latvian |
+  LT	Lithuanian |
+  ND	Low German |
+  MK	Macedonian |
+  MT	Maltese |
+  GM	Mandinka |
+  MI	Maori |
+  MR	Marathi |
+  MN	Mongolian |
+  NO	Norwegian |
+  OC	Occitan |
+  PS	Pashto |
+  GN	Plautdietsch |
+  PL	Polish |
+  BR	Portuguese |
+  PA	Punjabi |
+  RO	Romanian |
+  RU	Russian |
+  SR	Serbian |
+  SK	Slovak |
+  SL	Slovenian |
+  SP	Spanish |
+  SI	Swahili |
+  SW	Swedish |
+  CH	Swiss |
+  TL	Tagalog |
+  TT	Tatarish |
+  TH	Thai |
+  TR	Turkish |
+  TK	Turkmen |
+  UA	Ukrainian |
+  UZ	Uzbek |
+  VU	Vietnamese |
+  CY	Welsh |
+  SN	Wolof |
+  JI	Yiddish - transliterated |
+  YI	Yiddish - unicode** 
 
 ### RSS
-`RSS feed URL` (required): enter a valid rss url.  
+- **RSS feed URL** (required): a valid rss url.  
 
-`Max Number of Results` (required): enter the amount of rows that needs to be collected.
+- **Max Number of Results** (required): the number of rows that the feed should return.
 
 ### Generic Endpoint
-`API endpoint` (required): enter a valid rest api url.
+- **API endpoint** (required): a valid rest api url.
 
-`Headers` (optional): enter headers required by the api call.
+- **Headers** (optional): headers required by the api call.
 
 ### Square
-`Max Number of Results` (required): enter the amount of items that needs to be collected.
+- **Item Types** (required): select to pull orders or products from the POS provider.
 
-`Item Types` (required): select to pull orders or products from the POS provider.
+- **Max Number of Results** (required): the number of items that the feed should return.
 
 ### Shopify
-`Max Number of Results` (required): enter the amount of items that needs to be collected.
+- **Item Types** (required): select to pull orders or products from the POS provider. When selected there are multiple filter fields to narrow down the search, example only orders that are closed.
 
-`Item Types` (required): select to pull orders or products from the POS provider. When selected there are multiple filter fields to narrow down the search, example only orders that are closed.
+- **Max Number of Results** (required): the number of items that the feed should return.
 
 ### GitHub
-`organization name / user name` (required): enter a valid username or organisation name.
+- **Username / Organization name** (required): a valid username or organization name.
 
-`Repository` (required): enter a valid repository.
+- **Repository** (required): a valid repository.
 
-`Max Number of Results` (required): enter the amount of Pull Requests that needs to be received.
+- **Max Number of Results** (required): the number of pull requests that the feed should return.
 
 ### BitBucket
-`organization name / user name` (required): enter a valid username or organisation name.
+- **Username / Organization name** (required): enter a valid username or organization name.
 
-`Repository` (required): enter a valid repository.
+- **Repository** (required): a valid repository.
 
-`Max Number of Results` (required): enter the amount of Pull Requests that needs to be received.
+- **Max Number of Results** (required): the number of pull requests that the feed should return.
 
 ## Feed Json Structure
-The structure of the `Json feed` that the `EXP platform` returns when calling a `FEED` is `unified` as much if possible. 
-In the top of the Json structure the `search details` are found with details on the requested `FEED` like what `url` is called or what is `searched` on.
-Then the `details` of the requested follows in the structure, including `profile`, `page`, `shop` or `account` info depending on the `FEED` requested.
-The `items` section is the actual `data` returned from the `FEED` search. Fields that can differ per feed is located in the `metadata` field. The `raw` field contains the original information.  
+The structure of the JSON returned by a feed is standardized as much as possible. 
+
+At the top of the JSON structure is `search` with details about the query or search terms that generated this feed.
+
+Then there is `details` with information including `profile`, `page`, `shop` or `account` depending on the type of feed.
+
+Finally, the actual data of the feed is in `items`. Fields that can differ per feed are located in `metadata`. `raw` contains the original information.  
    
 ```json
 {
@@ -512,27 +480,26 @@ The `items` section is the actual `data` returned from the `FEED` search. Fields
 ```
 
 ## Dynamic Feeds
-In some cases it could be that multiple `FEEDS` are `required`. As example depending on the `location` for `weather information`.
-This can lead to a `large` amount of `FEEDS` in the `EXP platform` making it hard to manage it all. 
-In this case `FEEDS` can be created with the `dynamic` option. All other options can then be send as a `parameter` next to the `UUID` to the `EXP platform` using the `EXP SDK's`. 
+In some cases it could be that numerous feeds are required by a single app. For example, showing weather data for many different locations would normally require a feed for each location.
+It would take a lot of time to manually create a feed for each location and add each of them to the app in turn.
 
-### Create Dynamic Feed
-- In the feed section click on the `ADD` button.
+For such a use case, feeds can be created with the dynamic option set to True. Then options that would normally be configured once on the feed can instead be sent as parameters alongside the feed UUID when requesting it from EXP. In other words, instead of your app consuming the feed "as is", it will have the ability to use the feed with whatever parameters it wants, and it can change those on the fly. An app using a Weather feed set to dynamic could use the same feed to request weather data from multiple different areas.
 
-- Select a valid `name` for the `FEED`.
+### Creating a Dynamic Feed
+- Create a feed as you would normally
+- Check the Dynamic option. All other fields will be removed.
 
-- Select a `type` and `integration`.
+![Dynamic Feed](/common_images/developers/feed_dynamic.png "Feed Dynamic")
 
-- Check the `dynamic` option. All other fields will be `removed`.
-
-![Uploading an App](/common_images/developers/feed_dynamic.png "Feed Dynamic")
-
-### Preview 
-The `FEED` can be tested in the `EXP platform` when selecting the feed in the feed list and clicking the preview `icon`. 
-A `preview modal` appears. On top you can find the `fields` that are send as parameters next to the UUID.
-Enter all fields required and press `PREVIEW` to see the data returned. 
+### Previewing a Dynamic Feed 
+Once you've created a dynamic feed, you can see what it's like to have dynamic parameters and what it returns.
+ 
+- Select the feed in the list by checking the checkbox. 
+- Click the preview icon <img src="/common_images/eye.svg" class="icon"> in the top right corner.
+- A dialog opens to show the preview data in JSON format. At the top of the dialog you can see the fields that are sent as parameters to EXP.
+- Enter all fields required and press Preview to see the data returned. 
   
-![Uploading an App](/common_images/developers/feed_dynamic_preview.png "Feed Dynamic Preview")
+![Feed Dynamic Preview](/common_images/developers/feed_dynamic_preview.png "Feed Dynamic Preview")
 
 ### Exceptions
-There are a couple of `FEEDS` not available as `dynamic`. They are the `RSS` and `Generic` feed types.  
+There are a couple of feed types not available as dynamic. Currently they are RSS and Generic Endpoint.  

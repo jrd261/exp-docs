@@ -1,0 +1,24 @@
+.icon {
+  margin: 0 !important;
+}
+
+/*Related to the table of feed types*/
+.feed-information thead th {
+  text-align: left;
+}
+.feed-information td:first-child {
+  width: 215px;
+}
+.feed-information tbody tr td {
+  vertical-align: middle;
+}
+.category {
+  background-color: #FFFFE0;
+  font-weight: bold;
+}
+.feed-information img {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin: 5px;
+}
