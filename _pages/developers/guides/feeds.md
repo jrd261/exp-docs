@@ -741,6 +741,43 @@ Finally, the actual data of the feed is in `items`. Fields that can differ per f
 }
 ```
 
+## Allowing Feeds in a Custom App
+Once you've created a feed in EXP, you can plug it into existing apps that accept feeds. To enable feeds in your own custom apps, you have to make the appropriate
+entry in the `manifest.json`. Add a type to `configTypes` with type `"feed"`  For example:
+
+```json
+{
+  "name": "Weather App",
+  "configTypes": [
+    {
+      "name": "feedId",
+      "type": "feed",
+      "label": "Feed",
+      "required": true,
+      "path": "feedConfiguration",
+      "supportedTypes": [ "scala:feed:weather" ]
+    }
+  ]
+}
+```
+
+Usually you are only intending to support a certain type of feed, so set the `supportedTypes` to the appropriate value (to see a list of types and supported types, see table above).
+
+Once the `manifest.json` has the feed in it, you can get the feed using the EXP SDK. Using the Javascript SDK it would look something like:
+
+```javascript
+exp.getFeed(exp.app.config.feedConfiguration.uuid)
+  .then(function(feed) {
+    return feed.getData();
+  })
+  .then(function(feedData) {
+    feedData.items.forEach(function(feedItem) {
+      // do something with the feed item like display it
+    });
+  });
+```
+
+
 ## Dynamic Feeds
 In some cases it could be that numerous feeds are required by a single app. For example, showing weather data for many different locations would normally require a feed for each location.
 It would take a lot of time to manually create a feed for each location and add each of them to the app in turn.
