@@ -319,93 +319,355 @@ Once you've created a feed, you can see what the data it is returning looks like
 - **Max Number of Results** (required): the number of rows that the feed should return.
 
 ### Weather
-- **City, Zip, or Place** (required): the location information to search for weather results. A combination of city and country can be used. e.g. *Amsterdam, Netherlands*, *New York, United States* . 
+<ul>
+  <li>
+    <strong>City, Zip, or Place</strong> (required): the location information to search for weather results. A combination of city and country can be used. e.g. <i>Amsterdam, Netherlands</i> or <i>New York, United States</i>.
+  </li>
+  <li class="expandable">
+    <p><strong>Language Code</strong> (optional): the language code to translate the weather content. The following languages are supported:</p>
 
-- **Language Code** (optional): the language code to translate the weather content. The following languages are supported:
+    <input id="language-checkbox" type="checkbox">
+    <label for="language-checkbox"></label>
+
+    <div class="content">
+      <table class="language-table">
+        <tr>
+          <td>AF</td>
+          <td>Afrikaans</td>
+        </tr>
+        <tr>
+          <td>AR</td>
+          <td>Arabic</td>
+        </tr>
+        <tr>
+          <td>AL</td>
+          <td>Albanian</td>
+        </tr>
+        <tr>
+          <td>HY</td>
+          <td>Armenian</td>
+        </tr>
+        <tr>
+          <td>AZ</td>
+          <td>Azerbaijani</td>
+        </tr>
+        <tr>
+          <td>EU</td>
+          <td>Basque</td>
+        </tr>
+        <tr>
+          <td>BY</td>
+          <td>Belarusian</td>
+        </tr>
+        <tr>
+          <td>BU</td>
+          <td>Bulgarian</td>
+        </tr>
+        <tr>
+          <td>LI</td>
+          <td>British English</td>
+        </tr>
+        <tr>
+          <td>MY</td>
+          <td>Burmese</td>
+        </tr>
+        <tr>
+          <td>CA</td>
+          <td>Catalan</td>
+        </tr>
+        <tr>
+          <td>CN</td>
+          <td>Chinese - Simplified</td>
+        </tr>
+        <tr>
+          <td>TW</td>
+          <td>Chinese - Traditional</td>
+        </tr>
+        <tr>
+          <td>CR</td>
+          <td>Croatian</td>
+        </tr>
+        <tr>
+          <td>CZ</td>
+          <td>Czech</td>
+        </tr>
+        <tr>
+          <td>DK</td>
+          <td>Danish</td>
+        </tr>
+        <tr>
+          <td>DV</td>
+          <td>Dhivehi</td>
+        </tr>
+        <tr>
+          <td>NL</td>
+          <td>Dutch</td>
+        </tr>
+        <tr>
+          <td>EN</td>
+          <td>English</td>
+        </tr>
+        <tr>
+          <td>EO</td>
+          <td>Esperanto</td>
+        </tr>
+        <tr>
+          <td>ET</td>
+          <td>Estonian</td>
+        </tr>
+        <tr>
+          <td>FA</td>
+          <td>Farsi</td>
+        </tr>
+        <tr>
+          <td>FI</td>
+          <td>Finnish</td>
+        </tr>
+        <tr>
+          <td>FR</td>
+          <td>French</td>
+        </tr>
+        <tr>
+          <td>FC</td>
+          <td>French Canadian</td>
+        </tr>
+        <tr>
+          <td>GZ</td>
+          <td>Galician</td>
+        </tr>
+        <tr>
+          <td>DL</td>
+          <td>German</td>
+        </tr>
+      </table>
+      <table class="language-table">
+        <tr>
+          <td>KA</td>
+          <td>Georgian</td>
+        </tr>
+        <tr>
+          <td>GR</td>
+          <td>Greek</td>
+        </tr>
+        <tr>
+          <td>GU</td>
+          <td>Gujarati</td>
+        </tr>
+        <tr>
+          <td>HT</td>
+          <td>Haitian Creole</td>
+        </tr>
+        <tr>
+          <td>IL</td>
+          <td>Hebrew</td>
+        </tr>
+        <tr>
+          <td>HI</td>
+          <td>Hindi</td>
+        </tr>
+        <tr>
+          <td>HU</td>
+          <td>Hungarian</td>
+        </tr>
+        <tr>
+          <td>IS</td>
+          <td>Icelandic</td>
+        </tr>
+        <tr>
+          <td>IO</td>
+          <td>Ido</td>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>Indonesian</td>
+        </tr>
+        <tr>
+          <td>IR</td>
+          <td>Irish Gaelic</td>
+        </tr>
+        <tr>
+          <td>IT</td>
+          <td>Italian</td>
+        </tr>
+        <tr>
+          <td>JP</td>
+          <td>Japanese</td>
+        </tr>
+        <tr>
+          <td>JW</td>
+          <td>Javanese</td>
+        </tr>
+        <tr>
+          <td>KM</td>
+          <td>Khmer</td>
+        </tr>
+        <tr>
+          <td>KR</td>
+          <td>Korean</td>
+        </tr>
+        <tr>
+          <td>KU</td>
+          <td>Kurdish</td>
+        </tr>
+        <tr>
+          <td>LA</td>
+          <td>Latin</td>
+        </tr>
+        <tr>
+          <td>LV</td>
+          <td>Latvian</td>
+        </tr>
+        <tr>
+          <td>LT</td>
+          <td>Lithuanian</td>
+        </tr>
+        <tr>
+          <td>ND</td>
+          <td>Low German</td>
+        </tr>
+        <tr>
+          <td>MK</td>
+          <td>Macedonian</td>
+        </tr>
+        <tr>
+          <td>MT</td>
+          <td>Maltese</td>
+        </tr>
+        <tr>
+          <td>GM</td>
+          <td>Mandinka</td>
+        </tr>
+        <tr>
+          <td>MI</td>
+          <td>Maori</td>
+        </tr>
+        <tr>
+          <td>MR</td>
+          <td>Marathi</td>
+        </tr>
+        <tr>
+          <td>MN</td>
+          <td>Mongolian</td>
+        </tr>
+      </table>
+      <table class="language-table">
+        <tr>
+          <td>NO</td>
+          <td>Norwegian</td>
+        </tr>
+        <tr>
+          <td>OC</td>
+          <td>Occitan</td>
+        </tr>
+        <tr>
+          <td>PS</td>
+          <td>Pashto</td>
+        </tr>
+        <tr>
+          <td>GN</td>
+          <td>Plautdietsch</td>
+        </tr>
+        <tr>
+          <td>PL</td>
+          <td>Polish</td>
+        </tr>
+        <tr>
+          <td>BR</td>
+          <td>Portuguese</td>
+        </tr>
+        <tr>
+          <td>PA</td>
+          <td>Punjabi</td>
+        </tr>
+        <tr>
+          <td>RO</td>
+          <td>Romanian</td>
+        </tr>
+        <tr>
+          <td>RU</td>
+          <td>Russian</td>
+        </tr>
+        <tr>
+          <td>SR</td>
+          <td>Serbian</td>
+        </tr>
+        <tr>
+          <td>SK</td>
+          <td>Slovak</td>
+        </tr>
+        <tr>
+          <td>SL</td>
+          <td>Slovenian</td>
+        </tr>
+        <tr>
+          <td>SP</td>
+          <td>Spanish</td>
+        </tr>
+        <tr>
+          <td>SI</td>
+          <td>Swahili</td>
+        </tr>
+        <tr>
+          <td>SW</td>
+          <td>Swedish</td>
+        </tr>
+        <tr>
+          <td>CH</td>
+          <td>Swiss</td>
+        </tr>
+        <tr>
+          <td>TL</td>
+          <td>Tagalog</td>
+        </tr>
+        <tr>
+          <td>TT</td>
+          <td>Tatarish</td>
+        </tr>
+        <tr>
+          <td>TH</td>
+          <td>Thai</td>
+        </tr>
+        <tr>
+          <td>TR</td>
+          <td>Turkish</td>
+        </tr>
+        <tr>
+          <td>TK</td>
+          <td>Turkmen</td>
+        </tr>
+        <tr>
+          <td>UA</td>
+          <td>Ukranian</td>
+        </tr>
+        <tr>
+          <td>UZ</td>
+          <td>Uzbek</td>
+        </tr>
+        <tr>
+          <td>VU</td>
+          <td>Vietnamese</td>
+        </tr>
+        <tr>
+          <td>CY</td>
+          <td>Welsh</td>
+        </tr>
+        <tr>
+          <td>SN</td>
+          <td>Wolof</td>
+        </tr>
+        <tr>
+          <td>JI</td>
+          <td>Yiddish - transliterated</td>
+        </tr>
+        <tr>
+          <td>YI</td>
+          <td>Yiddish - unicode</td>
+        </tr>
+      </table>
+    </div>
+  </li>
+</ul>
  
-  **AF	Afrikaans |
-  AL	Albanian |
-  AR	Arabic |
-  HY	Armenian |
-  AZ	Azerbaijani |
-  EU	Basque |
-  BY	Belarusian |
-  BU	Bulgarian |
-  LI	British English |
-  MY	Burmese |
-  CA	Catalan |
-  CN	Chinese - Simplified |
-  TW	Chinese - Traditional |
-  CR	Croatian |
-  CZ	Czech |
-  DK	Danish |
-  DV	Dhivehi |
-  NL	Dutch |
-  EN	English |
-  EO	Esperanto |
-  ET	Estonian |
-  FA	Farsi |
-  FI	Finnish |
-  FR	French |
-  FC	French Canadian |
-  GZ	Galician |
-  DL	German |
-  KA	Georgian |
-  GR	Greek |
-  GU	Gujarati |
-  HT	Haitian Creole |
-  IL	Hebrew |
-  HI	Hindi |
-  HU	Hungarian |
-  IS	Icelandic |
-  IO	Ido |
-  ID	Indonesian |
-  IR	Irish Gaelic |
-  IT	Italian |
-  JP	Japanese |
-  JW	Javanese |
-  KM	Khmer |
-  KR	Korean |
-  KU	Kurdish |
-  LA	Latin |
-  LV	Latvian |
-  LT	Lithuanian |
-  ND	Low German |
-  MK	Macedonian |
-  MT	Maltese |
-  GM	Mandinka |
-  MI	Maori |
-  MR	Marathi |
-  MN	Mongolian |
-  NO	Norwegian |
-  OC	Occitan |
-  PS	Pashto |
-  GN	Plautdietsch |
-  PL	Polish |
-  BR	Portuguese |
-  PA	Punjabi |
-  RO	Romanian |
-  RU	Russian |
-  SR	Serbian |
-  SK	Slovak |
-  SL	Slovenian |
-  SP	Spanish |
-  SI	Swahili |
-  SW	Swedish |
-  CH	Swiss |
-  TL	Tagalog |
-  TT	Tatarish |
-  TH	Thai |
-  TR	Turkish |
-  TK	Turkmen |
-  UA	Ukrainian |
-  UZ	Uzbek |
-  VU	Vietnamese |
-  CY	Welsh |
-  SN	Wolof |
-  JI	Yiddish - transliterated |
-  YI	Yiddish - unicode** 
-
 ### RSS
 - **RSS feed URL** (required): a valid rss url.  
 
