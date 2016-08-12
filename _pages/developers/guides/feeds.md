@@ -234,7 +234,7 @@ Feeds can be created from the feeds section and you will see a list of existing 
 
 ![Feed List](/common_images/developers/feed.png "Feed")
 
-## Adding a feed
+## Adding a Feed
 - Click the Add icon <img src="/common_images/plus.svg" class="icon"> in the right top corner.
 - A dialog appears. Choose a valid, unique name and select the type of feed. A list of integrations will appear if required.
 Depending on what type of feed is selected, multiple options can be entered such as "search" or "max items". The details of these fields are documented later in this guide.
@@ -242,7 +242,7 @@ Depending on what type of feed is selected, multiple options can be entered such
 
 ![New Feed](/common_images/developers/feed_new.png "New Feed")
  
-## Previewing feed data
+## Previewing Feed Data
 Once you've created a feed, you can see what the data it is returning looks like.
  
 - Select the feed in the list by checking the checkbox. 
