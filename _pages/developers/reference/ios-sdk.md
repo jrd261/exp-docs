@@ -391,7 +391,7 @@ Returns a url pointing to the location's layout image.
 
 **`location.getCurrentLocation()`**
 
-Resolves to the current Location(#locations) or `null`
+Resolves to the current [Locations](#locations) or `null`
 
 **`location.getDevices()`**
 
