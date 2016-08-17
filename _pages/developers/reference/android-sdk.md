@@ -9,6 +9,12 @@ keywords: android, sdk
 
 ## Usage
 
+- *sdflkj*
+
+-
+
+-
+
 Gradle:
 
 ```java
@@ -44,7 +50,7 @@ Exp.start(host, user, password, org)
                 }
 
 # Init exp connection for user with Host,User,Password,Organization.
-Exp.start(host,"cesar.oyarzun1@scala.com","Comm5715031","scala")
+Exp.start(host,"name@domain.com","password123","scala")
                 .subscribe(new Action1() {
                     @Override
                     public void call(Object o) {
@@ -55,8 +61,8 @@ Exp.start(host,"cesar.oyarzun1@scala.com","Comm5715031","scala")
 # Init exp connection for user with options object.
 final Map<String,String> options = new HashMap<>();
         options.put("host","https://api.exp.scala.com");
-        options.put("username","cesar.oyarzun1@scala.com");
-        options.put("password","Comm5715031");
+        options.put("username","name@domain.com");
+        options.put("password","password123");
         options.put("organization","scala");
   Exp.start(options)
                 .subscribe(new Action1() {
@@ -119,15 +125,15 @@ Whether or not you are connected to the network.
 
 ## Channels
 
-**`Exp.getChannel(name, system, consumerApp)`** 
- 
+**`Exp.getChannel(name, system, consumerApp)`**
+
  Returns a channel with the given name with two flags: `consumerApp` and `system`. Consumer devices can only listen and broadcast on consumer channels. System channels are listen only and can receive broadcasts about system events.
 
  ```java
     IChannel channel = Exp.getChannel("my-channel",false,true);
 ```
 
-**`channel.broadcast(name, payload, timeout)`** 
+**`channel.broadcast(name, payload, timeout)`**
 
 Sends a broadcast with given `name` and `payload` on the channel. Waits for responses for `timeout` milliseconds and resolves with an array of responses.
 
@@ -137,7 +143,7 @@ payload.put("test", "nice to meet you!");
 channel.broadcast("hi", payload, 2000);
 ```
 
-**`channel.listen(name, callback)`** 
+**`channel.listen(name, callback)`**
 
 Registers a [listener](#listeners) callback for events on the channel with the given `name`. Resolves to a [listener](#listeners) when the callback is registered and the network connection has subscribed to the channel.
 
@@ -160,7 +166,7 @@ channel.listen("hi", new Subscriber() {
                         });
 ```
 
-**`channel.fling(payload)`** 
+**`channel.fling(payload)`**
 
 Fling an app launch payload on the channel.
 
@@ -748,7 +754,7 @@ String variantUrl = contentNode.getVariantUrl("320.png");
 
 # Logging
 
-Android uses Proguard for packaging Apps, If you want to remove the Exp logs before you publish your app you need to change **build.gradle** under your project and add the file **proguard-android-optimize.txt** under build tpyes proguardFiles, this will activate the proguard rules that you can define in the file **proguard-rules.pro**, in this file you can remove the logs that you want. The configuration should luke like this 
+Android uses Proguard for packaging Apps, If you want to remove the Exp logs before you publish your app you need to change **build.gradle** under your project and add the file **proguard-android-optimize.txt** under build tpyes proguardFiles, this will activate the proguard rules that you can define in the file **proguard-rules.pro**, in this file you can remove the logs that you want. The configuration should luke like this
 
 ```xml
  buildTypes {

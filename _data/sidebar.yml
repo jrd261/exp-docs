@@ -11,6 +11,16 @@ entries:
     version: all
     output: web, pdf
     items:
+    - title: Updates
+      output: web, pdf
+      thirdlevel:
+      - title: Release Notes
+        url: /updates/release-notes
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
     - title: Tutorials, Walkthroughs and Examples
       output: web, pdf
       thirdlevel:
