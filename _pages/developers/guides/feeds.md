@@ -741,7 +741,7 @@ Finally, the actual data of the feed is in `items`. Fields that can differ per f
 }
 ```
 
-## Allowing Feeds in a Custom App
+## Using Feeds in an App Template
 Once you've created a feed in EXP, you can plug it into existing apps that accept feeds. To enable feeds in your own custom apps, you have to make the appropriate
 entry in the `manifest.json`. Add a type to `configTypes` with type `"feed"`  For example:
 
