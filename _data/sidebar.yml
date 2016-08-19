@@ -45,13 +45,6 @@ entries:
         product: all
         version: all
         output: web, pdf
-      - title: Integrating a Feed in Player App
-        url: /developers/tutorials/usingfeeds
-        audience: developers, designers
-        platform: all
-        product: all
-        version: all
-        output: web, pdf
     - title: Platform Guides
       output: web, pdf
       thirdlevel:
@@ -83,7 +76,7 @@ entries:
         product: all
         version: all
         output: web, pdf
-      - title: Data Aggregator
+      - title: Working with Feeds
         url: /developers/guides/feeds
         audience: developers, designers
         platform: all
