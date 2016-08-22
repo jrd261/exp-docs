@@ -79,13 +79,16 @@ duration specified in the launch options (or the default duration) is reached.
 If the play method returns a promise, the player will play the app
 until either the promise is resolved/rejected OR if `forceDuration` is `true` and the duration specified in the launch options (or the default duration) has elapsed.
 
-
-
-## Unloading: `window.unload()`
+## Stopping: `window.stop()`
 
 When an app enters the `finished` state, there is a short delay to
 allow any visual transitions to resolve before the player transitions
 the app into the `unloaded` state.
+
+When the `finished` state is entered the player will look for a method named `stop` on the app window and call it. This is an opportunity for an app to prepare for being unloaded or queue internal transition out visuals.
+
+
+## Unloading: `window.unload()`
 
 Just before detaching the app from the DOM, the player looks for an
 `unload` method on the app window and calls it if it exists. Note that
@@ -94,6 +97,7 @@ unlike `load` and `play` unload must perform its actions syncrounsly.
 The player will then detach the app from the DOM. A reference to an
 `unloaded` app is just a useless remnant that should be discarded to
 release any remaining memory footprint.
+
 
 
 ## Errors and Aborting
