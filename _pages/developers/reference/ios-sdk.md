@@ -1,4 +1,4 @@
-    ---
+---
 permalink: /developers/reference/ios-sdk/
 title: IOS SDK Reference (v1.0.3)
 keywords: ios, sdk
@@ -217,6 +217,7 @@ ExpSwift.respond(payload).then { result -> Void in
 **`channel.fling(payload)`** 
 
 Fling an app launch payload on the channel.
+
 ```swift
 let payload:Dictionary<String,AnyObject> = ["uuid":"myUuid"]
 channel1.fling(payload)
@@ -390,7 +391,7 @@ Returns a url pointing to the location's layout image.
 
 **`location.getCurrentLocation()`**
 
-Resolves to the current Location(#locations) or `null`
+Resolves to the current [Locations](#locations) or `null`
 
 **`location.getDevices()`**
 
@@ -404,6 +405,7 @@ location.getDevices().then { (devices: SearchResults<Device>) -> Void  in
     }.error { error in
         debugPrint(error)
 }
+```
 
 **`location.getThings()`**
 
@@ -503,23 +505,25 @@ The feed's UUID
 **`feed.getData()`**
 
 Get the feed's data. Resolves to the output of the feed query.
+
 ```swift
-    feed.getData().then { (data: [AnyObject]) -> Void in
-        debugPrint(data)
-    }.error { error in
-    debugPrint(error)
-    }
+feed.getData().then { (data: [AnyObject]) -> Void in
+    debugPrint(data)
+}.error { error in
+debugPrint(error)
+}
 ```
 
 **`feed.getData(query:[String:AnyObject])`**
 
 Get the feed's dynamic data. Resolves to the output of the feed query, with dynamic parameters.
+
 ```swift
-    feed.getData(["name":"scala"]).then { (data: [AnyObject]) -> Void in
-        debugPrint(data)
-    }.error { error in
-    debugPrint(error)
-    }
+feed.getData(["name":"scala"]).then { (data: [AnyObject]) -> Void in
+    debugPrint(data)
+}.error { error in
+debugPrint(error)
+}
 ```
 
 ## Data
