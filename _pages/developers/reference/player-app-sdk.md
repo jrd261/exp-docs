@@ -60,9 +60,14 @@ exp.player.launch(options).then(function (app) { app.play(); });
 
 ```
 
+**`app.stop()`**
+
+Stop playback and remove the app gracefully. The app will enter the "finished" state for brief period of time for transitions to occur.
+
+
 **`app.abort(error)`**
 
-Stop playback and remove the app. Optionally pass in an `error` to indicate why playback was stopped. Apps can call this method to indicate that there is some problem with playback. Apps can also use this method to stop the playback of other apps.
+Stop playback and remove the app abruptly. The app will be detached from the DOM immediately. Optionally pass in an `error` to indicate why playback was stopped. Apps can call this method to indicate that there is some problem with playback. Apps can also use this method to stop the playback of other apps.
 
 
 
