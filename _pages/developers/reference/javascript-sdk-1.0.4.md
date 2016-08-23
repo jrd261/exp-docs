@@ -3,7 +3,6 @@ permalink: /developers/reference/javascript-sdk/
 title: Javascript SDK Reference (v1.0.4)
 keywords: javascript, sdk
 ---
-
 # Installation
 
 ## Bower
@@ -301,7 +300,7 @@ Resolves to an experience created based on the supplied document.
 Returns a list of experiences matching the given query parameters. `params` is a optional object map of query parameters. Array has property `total` which is the total number of items in collection matching the query.
 
 
-**`exp.getCurrentExperience(params)`**
+**`exp.getCurrentExperience()`**
 
 Resolves to the current experience or null.
 
