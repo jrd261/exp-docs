@@ -9,17 +9,17 @@ tags: [updates]
 
 - Javascript SDK v1.0.4
 
-  - Added "total" fields on most query responses to support pagination.
+  - Added `total` fields on most query responses to support pagination.
 
   - Most queries now support filtering with query params.
 
-  - Auth can now be passed directly into EXP.start
+  - Auth can now be passed directly into `EXP.start`
 
 - Player updates
 
   - Apps now support `app.stop()` for graceful shutdown.
 
-  - Can now add window.stop method to app window. Will be called when app is stopped but before its unloaded.
+  - Can now add `window.stop` method to app `window`. Will be called when app is stopped but before its unloaded.
 
 - Manifest.json
 
