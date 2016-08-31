@@ -105,7 +105,7 @@ Some third party providers do not allow this revoke access to happen automatical
     </tr>
     <tr>
       <td>
-        <img src="/common_images/feedIcons/linkedIn.svg">
+        <img src="/common_images/feedIcons/linkedin.svg">
         LinkedIn
       </td>
       <td>LinkedIn</td>
