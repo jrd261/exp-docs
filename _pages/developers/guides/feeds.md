@@ -263,7 +263,7 @@ Once you've created a feed, you can see what the data it is returning looks like
 - **Feed Name** (required): a name that is only useful to you to remember what this feed is for and identify it in a list of other feeds. e.g. *New York City weather*
 
 ### Facebook
-- **Profile/Page** (required): the page or profile name to pull data from. You must have access to the page or profile with the credentials in your Facebook integration.
+- **Public Page** (required): the public page to pull data from.
 
 - **Max Number of Results** (required): the amount of posts that the feed should return.
 
@@ -285,8 +285,8 @@ Once you've created a feed, you can see what the data it is returning looks like
 
 - **Max Number of Results** (required): the amount of posts that the feed should return.
 
-### Facebook
-- **Company Name/ID** (required): the page or profile name to pull data from. You must have access to the page or profile with the credentials in your Facebook integration.
+### LinkedIn
+- **Company Name/ID** (required): the page or profile name to pull data from. You must have access to the page or profile with the credentials in your LinkedIn integration.
 
 - **Max Number of Results** (required): the amount of posts that the feed should return.
 
