@@ -283,9 +283,6 @@ Once you've created a feed, you can see what the data it is returning looks like
 
   **Query** (optional): a tag name to search for. See [Instagram's official API docs for tags](https://www.instagram.com/developer/endpoints/tags/).
 
-  If you somehow set both profile and query at the same time, only the query will be taken into account.
-
-
 - **Max Number of Results** (required): the amount of posts that the feed should return.
 
 ### LinkedIn
