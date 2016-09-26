@@ -11,6 +11,15 @@ tags: []
 
 At load time, player apps have access to the global variable `exp`. This is a full running instance of the [javascript SDK](http://docs.goexp.io/developers/reference/javascript-sdk/), but has two additional namespaces: `exp.app` and `exp.player`. Inside of an application, `exp.app` is a reference to the current app.
 
+# URL Paramters
+
+The following parameters can be added to the player url as query params or hash params:
+
+- `host` Specify the authentication host (the api server) to use. Default is `api.goexp.io`.
+- `debug` Enable debugging. Will stop player from restarting to leave logs accessible.
+- `uuid` The uuid of the device or consumer app to use for authentication.
+- `secret` The device's secret. We suggest using hash params to keep the secret off the wire.
+- `apiKey` The consumer app's api key.
 
 
 # App
