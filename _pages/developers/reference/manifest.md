@@ -112,7 +112,7 @@ that doesn't match. If `patternMessage` isn't specified then it will just say "I
 {
   "configTypes": [
     {
-      "name": "IP Address",
+      "name": "ipAddress",
       "type": "text",
       "label": "IP Address",
       "path": "ipAddress",
@@ -148,6 +148,25 @@ of the given height.
   ],
   "config": {
     "userMessage": "Default greeting message!"
+  }
+}
+```
+
+### configType: checkbox
+A way for the user to configure a value to be true or false.
+
+```json
+{
+  "configTypes": [
+    {
+      "name": "showAdvertisement",
+      "type": "checkbox",
+      "label": "Show Advertisement",
+      "path": "showAdvertisement"
+    }
+  ],
+  "config": {
+    "showAdvertisement": true
   }
 }
 ```
