@@ -85,9 +85,6 @@ For types like `feed` that have a subtype of acceptable values, this property is
 ### configType: text
 A simple text message. Its value is a string and in the UI the user will edit it with a text input.
 
-The attribute `pattern` is optional. If supplied, it causes the text element corresponding to this config object to validate
-that its value matches the supplied pattern. It follows the rules of the [browser's pattern matching](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#pattern).
-
 ```json
 {
   "configTypes": [
@@ -96,12 +93,36 @@ that its value matches the supplied pattern. It follows the rules of the [browse
       "type": "text",
       "label": "Message",
       "path": "userMessage",
-      "required": false,
-      "pattern": "\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b"
+      "required": false
     }
   ],
   "config": {
     "userMessage": "Default greeting message!"
+  }
+}
+```
+
+The attribute `pattern` is optional. If supplied, it causes the text element corresponding to this config object to validate
+that its value matches the supplied pattern. It follows the rules of the [browser's pattern matching](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#pattern).
+
+The attribute `patternMessage` can be set, if you set a `pattern`. It is the message shown to the user if they try to enter a value
+that doesn't match. If `patternMessage` isn't specified then it will just say "Invalid format".
+
+```json
+{
+  "configTypes": [
+    {
+      "name": "IP Address",
+      "type": "text",
+      "label": "IP Address",
+      "path": "ipAddress",
+      "required": false,
+      "pattern": "\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b",
+      "patternMessage": "Value must be an IP Address"
+    }
+  ],
+  "config": {
+    "ipAddress": "999:999:999:999"
   }
 }
 ```
