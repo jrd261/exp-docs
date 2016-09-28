@@ -388,3 +388,101 @@ of permitted content types. Possible values that can be restricted to are:
   }
 }
 ```
+
+### configType: device
+Specifies a control for users to configure one or more devices for their app. For example, the app
+might pull data from a `server` device that is configurable on an app-by-app basis.
+
+If you only want the user to be able to set one device, use this object but set `multiItem` to `false`.
+
+The usual use case for this is that only one or a few device types can be assigned. Define a `restriction` param, which is an array
+of permitted device types. Possible values that can be restricted to are:
+
+* `"scala:device:player"`
+
+* `"scala:device:embedded"`
+
+* `"scala:device:mobile"`
+
+* `"scala:device:server"`
+
+* `"scala:device:webbrowser"`
+
+* `"scala:device:chromebox"`
+
+* `"scala:device:android"`
+
+```json
+{
+  "configTypes": [
+    {
+      "name": "photoServer",
+      "type": "device",
+      "multiItem": false,
+      "label": "Photo Server",
+      "required": true,
+      "path": "server",
+      "restriction": ["scala:device:server"]
+    }
+  ],
+  "config": {}
+}
+```
+
+### configType: thing
+Specifies a control for users to configure one or more things for their app.
+
+If you only want the user to be able to set one thing, use this object but set `multiItem` to `false`.
+
+The usual use case for this is that only one or a few thing types can be assigned. Define a `restriction` param, which is an array
+of permitted thing types. Possible values that can be restricted to are:
+
+* `"scala:thing:beacon"`
+
+* `"scala:thing:endpoint"`
+
+* `"scala:thing:rfid"`
+
+* `"scala:thing:hueBulb"`
+
+* `"scala:thing:hueBridge"`
+
+```json
+{
+  "configTypes": [
+    {
+      "name": "nearbyBeacons",
+      "type": "thing",
+      "multiItem": true,
+      "label": "Nearby Beacons",
+      "required": false,
+      "path": "nearbyBeacons",
+      "restriction": ["scala:thing:beacon"]
+    }
+  ],
+  "config": {
+    "nearbyBeacons": []
+  }
+}
+```
+
+### configType: location
+Specifies a control for users to configure one or more locations for their app.
+
+If you only want the user to be able to set one location, use this object but set `multiItem` to `false`.
+
+```json
+{
+  "configTypes": [
+    {
+      "name": "zone",
+      "type": "location",
+      "multiItem": false,
+      "label": "Zone",
+      "required": false,
+      "path": "zone"
+    }
+  ],
+  "config": {}
+}
+```
