@@ -152,6 +152,27 @@ of the given height.
 }
 ```
 
+### configType: number
+A number field. Optionally supports `min` and `max` attributes.
+
+```json
+{
+  "configTypes": [
+    {
+      "name": "waitTime",
+      "type": "number",
+      "label": "Wait Time (seconds)",
+      "path": "waitTime",
+      "min": 0,
+      "max": 60
+    }
+  ],
+  "config": {
+    "waitTime": 5
+  }
+}
+```
+
 ### configType: checkbox
 A way for the user to configure a value to be true or false.
 
