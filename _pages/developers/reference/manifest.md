@@ -341,33 +341,23 @@ of permitted content types. Possible values that can be restricted to are:
 
 * `"app"`
 
-
 * `"image"`
-
 
 * `"youtube"`
 
-
 * `"url"`
-
 
 * `"video"`
 
-
 * `"pdf"`
-
 
 * `"file"`
 
-
 * `"composition"`
-
 
 * `"audio"`
 
-
 * `"vector"`
-
 
 * `"code"`
 
