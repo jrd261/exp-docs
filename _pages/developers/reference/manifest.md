@@ -173,6 +173,26 @@ A number field. Optionally supports `min` and `max` attributes.
 }
 ```
 
+### configType: url
+A text field that is validated to be sure it's a URL.
+
+```json
+{
+  "configTypes": [
+    {
+      "name": "homepage",
+      "type": "url",
+      "label": "URL to homepage",
+      "path": "homepage",
+      "required": true
+    }
+  ],
+  "config": {
+    "homepage": ""
+  }
+}
+```
+
 ### configType: checkbox
 A way for the user to configure a value to be true or false.
 
