@@ -1,6 +1,6 @@
 ---
 permalink: /developers/reference/ios-sdk/
-title: IOS SDK Reference (v1.0.3)
+title: IOS SDK Reference (v1.0.4)
 keywords: ios, sdk
 ---
 
@@ -55,8 +55,6 @@ use_frameworks!
 
 pod "ExpSwift", , :git => 'https://github.com/ScalaInc/exp-ios-sdk.git', :tag => 'v1.0.0'
 ```
-
-
 
 # Runtime
 
@@ -141,7 +139,6 @@ ExpSwift.on("error", callback: { obj -> Void in
 })
 ```
 
-
 # Real Time Communication
 
 
@@ -175,7 +172,7 @@ Whether or not you are connected to the network.
  Returns a channel with the given name with two flags: `consumerApp` and `system`. Consumer devices can only listen and broadcast on consumer channels. System channels are listen only and can receive broadcasts about system events.
  
 ```swift
-let channel = ExpSwift.getChannel("my-channel",system: false,consumerApp: true)
+    let channel = ExpSwift.getChannel("my-channel",system: false,consumerApp: true)
 ```
 
 **`channel.broadcast(name, payload, timeout)`** 
@@ -183,10 +180,10 @@ let channel = ExpSwift.getChannel("my-channel",system: false,consumerApp: true)
 Sends a broadcast with given `name` and `payload` on the channel. Waits for responses for `timeout` milliseconds and resolves with an array of responses.
 
 ```swift
-var payload:Dictionary<String,AnyObject> = ["opening":"knock knock?"]
-channel.broadcast("hi", payload: payload1, timeout: "2000").then { result -> Void in
-    debugPrint(result)
-}
+    var payload:Dictionary<String,AnyObject> = ["opening":"knock knock?"]
+    channel.broadcast("hi", payload: payload1, timeout: "2000").then { result -> Void in
+        debugPrint(result)
+    }
 ```
 
 **`channel.listen(name, callback)`** 
@@ -196,11 +193,11 @@ Registers a [listener](#listeners) callback for events on the channel with the g
 The callback is called with the broadcast payload as the first argument. Call the `respond` method to send a response back to the broadcaster.
 
 ```swift
-channel.listen("myEvent",  callback: { (resultListen) -> Void in
-    debugPrint(resultListen)
-    //respond to listen method
-    ExpSwift.respond(["text":"hi to you too"])
-})
+    channel.listen("myEvent",  callback: { (resultListen) -> Void in
+        debugPrint(resultListen)
+        //respond to listen method
+        ExpSwift.respond(["text":"hi to you too"])
+    })
 ```
 
 **`ExpSwift.respond(payload)`**
@@ -208,10 +205,10 @@ channel.listen("myEvent",  callback: { (resultListen) -> Void in
 Call the `respond` method to send a response back to the broadcaster whith a `payload`.
 
 ```swift
-var payload:Dictionary<String,AnyObject> = ["opening":"knock knock?"]
-ExpSwift.respond(payload).then { result -> Void in
-    debugPrint(result)
-}
+    var payload:Dictionary<String,AnyObject> = ["opening":"knock knock?"]
+    ExpSwift.respond(payload).then { result -> Void in
+        debugPrint(result)
+    }
 ```
 
 **`channel.fling(payload)`** 
@@ -219,10 +216,27 @@ ExpSwift.respond(payload).then { result -> Void in
 Fling an app launch payload on the channel.
 
 ```swift
-let payload:Dictionary<String,AnyObject> = ["uuid":"myUuid"]
-channel1.fling(payload)
+     let payload:Dictionary<String,AnyObject> = ["uuid":"myUuid"]
+     channel1.fling(payload)
 ```
 
+**`channel.identify()`**
+
+Requests that [devices](#devices) listening for this event on this channel visually identify themselves. Implementation is device specific; this is simply a convience method.
+
+```swift
+let channel = ExpSwift.getChannel("device uui",system: false,consumerApp: false)
+channel1.identify()
+```
+
+**`channel.identify()`**
+
+Requests that [devices](#devices) listening for this event on this channel visually identify themselves. Implementation is device specific; this is simply a convience method.
+
+```swift
+let channel = ExpSwift.getChannel("device uui",system: false,consumerApp: false)
+channel1.identify()
+```
 
 # API
 
@@ -247,9 +261,8 @@ ExpSwift.getDevice("8930ff64-1063-4a03-b1bc-33e1ba463d7a").then { (device: Devic
 Query for multiple devices. Resolves to an array of [Devices](#devices).
 
 ```swift
-ExpSwift.findDevices(["limit":10, "skip":0, "sort":"name"]).then 
-        { (devices: SearchResults<Device>) -> Void  in
-            for device in devices.getResults() {
+ExpSwift.findDevices(["limit":10, "skip":0, "sort":"name"]).then { (devices: SearchResults<Device>) -> Void  in
+            for device in devices {
                 debugPrint(device.get("name"))
             }
         }.error { error in
@@ -273,6 +286,7 @@ Resolves to the device's [experience](#experiences) or `null`
 
 Resolves to the current Device(#devices) or `null`
 
+
 ## Things
 
 **`ExpSwift.getThing(uuid:String)`**
@@ -292,13 +306,12 @@ ExpSwift.getThing("8930ff64-1063-4a03-b1bc-33e1ba463d7a").then { (thing: Thing) 
 Query for multiple things. Resolves to an array of [Things](#things).
 
 ```swift
-ExpSwift.findThings(["limit":10, "skip":0, "sort":"name"]).then 
-        { (things: SearchResults<Thing>) -> Void  in
-            for thing in things.getResults() {
-                debugPrint(thing.get("name"))
-            }
-        }.error { error in
-            debugPrint(error)
+ExpSwift.findThings(["limit":10, "skip":0, "sort":"name"]).then { (things: SearchResults<Thing>) -> Void  in
+    for thing in things {
+        debugPrint(thing.get("name"))
+    }
+}.error { error in
+    debugPrint(error)
 }
 ```
 
@@ -314,18 +327,19 @@ Resolves to an array of the device's [zones](#zones).
 
 Resolves to the device's [experience](#experiences) or `null`
 
+
 ## Experiences
+
 
 **`ExpSwift.getExperience(uuid:String)`**
 
 Get a single experience by UUID. Resolves to a [Experience](#experiences).
 
 ```swift
-ExpSwift.getExperience("58dc59e4-a44c-4b6e-902b-e6744c09d933").then 
-        { (experience: Experience) -> Void  in
-            debugPrint(experience.get("name"))
-        }.error { error in
-            debugPrint(error)
+ExpSwift.getExperience("58dc59e4-a44c-4b6e-902b-e6744c09d933").then { (experience: Experience) -> Void  in
+    debugPrint(experience.get("name"))
+}.error { error in
+        debugPrint(error)
 }
 ```
 
@@ -334,13 +348,12 @@ ExpSwift.getExperience("58dc59e4-a44c-4b6e-902b-e6744c09d933").then
 Query for multiple experiences. Resolves to an array of [Experiences](#experiences).
 
 ```swift
-ExpSwift.findExperiences(["limit":10, "skip":0, "sort":"name"]).then 
-        { (experiences: SearchResults<Experience>) -> Void  in
-            for experience in experiences.getResults() {
-                debugPrint(experience.get("name"))
-            }
-        }.error { error in
-            debugPrint(error)
+ExpSwift.findExperiences(["limit":10, "skip":0, "sort":"name"]).then { (experiences: SearchResults<Experience>) -> Void  in
+    for experience in experiences{
+        debugPrint(experience.get("name"))
+    }
+}.error { error in
+        debugPrint(error)
 }
 ```
 
@@ -351,6 +364,7 @@ Resolves to an array of [devices](#devices) that are part of this experience.
 **`experience.getCurrentExperience()`**
 
 Resolves to the current Experience(#experiences) or `null`
+
 
 ## Locations
 
@@ -371,13 +385,12 @@ ExpSwift.getLocation("3e2e25df-8324-4912-91c3-810751f527a4").then { (location: L
 Query for multiple locations. Resolves to an array of [Locations](#locations).
 
 ```swift
-ExpSwift.findLocations(["limit":10, "skip":0, "sort":"name"]).then 
-        { (locations: SearchResults<Location>) -> Void  in
-            for location in locations.getResults() {
-                debugPrint(location.get("name"))
-            }
-        }.error { error in
-            debugPrint(error)
+ExpSwift.findLocations(["limit":10, "skip":0, "sort":"name"]).then { (locations: SearchResults<Location>) -> Void  in
+    for location in locations {
+        debugPrint(location.get("name"))
+    }
+    }.error { error in
+        debugPrint(error)
 }
 ```
 
@@ -389,23 +402,22 @@ Resolves to an array of [zones](#zones) that are part of this location.
 
 Returns a url pointing to the location's layout image.
 
-**`location.getCurrentLocation()`**
-
-Resolves to the current [Locations](#locations) or `null`
-
 **`location.getDevices()`**
 
 Resolves to an array of [devices](#devices) that are part of this location.
 
+**`location.getCurrentLocation()`**
+
+Resolves to the current [Location](#locations) or `null`
+
 ```swift
 location.getDevices().then { (devices: SearchResults<Device>) -> Void  in
-    for device in devices.getResults() {
+    for device in devices {
         debugPrint(device.get("name"))
     }
     }.error { error in
         debugPrint(error)
 }
-```
 
 **`location.getThings()`**
 
@@ -413,7 +425,7 @@ Resolves to an array of [things](#things) that are part of this location.
 
 ```swift
 location.getThings().then { (things: SearchResults<Thing>) -> Void  in
-    for thing in things.getResults() {
+    for thing in things {
         debugPrint(thing.get("name"))
     }
     }.error { error in
@@ -441,7 +453,7 @@ Resolves to an array of [devices](#devices) that are members of this zone.
 
 ```swift
 zone.getDevices().then { (devices: SearchResults<Device>) -> Void  in
-    for device in devices.getResults() {
+    for device in devices {
         debugPrint(device.get("name"))
     }
     }.error { error in
@@ -455,7 +467,7 @@ Resolves to an array of [things](#things) that are members of this zone.
 
 ```swift
 zone.getThings().then { (things: SearchResults<Thing>) -> Void  in
-    for thing in things.getResults() {
+    for thing in things {
         debugPrint(thing.get("name"))
     }
     }.error { error in
@@ -486,13 +498,12 @@ ExpSwift.getFeed("3e2e25df-8324-4912-91c3-810751f527a4").then { (feed: Feed) -> 
 Query for multiple feeds. Resolves to an array of [Feeds](#feeds).
 
 ```swift
-ExpSwift.findFeeds(["limit":10, "skip":0, "sort":"name"]).then 
-        { (locations: SearchResults<Feed>) -> Void  in
-            for feed in feeds.getResults() {
-                debugPrint(feed("name"))
-            }
-        }.error { error in
-            debugPrint(error)
+ExpSwift.findFeeds(["limit":10, "skip":0, "sort":"name"]).then { (locations: SearchResults<Feed>) -> Void  in
+    for feed in feeds {
+        debugPrint(feed("name"))
+    }
+}.error { error in
+    debugPrint(error)
 }
 ```
 
@@ -507,11 +518,11 @@ The feed's UUID
 Get the feed's data. Resolves to the output of the feed query.
 
 ```swift
-feed.getData().then { (data: [AnyObject]) -> Void in
-    debugPrint(data)
-}.error { error in
-debugPrint(error)
-}
+    feed.getData().then { (data: [AnyObject]) -> Void in
+        debugPrint(data)
+    }.error { error in
+    debugPrint(error)
+    }
 ```
 
 **`feed.getData(query:[String:AnyObject])`**
@@ -519,11 +530,11 @@ debugPrint(error)
 Get the feed's dynamic data. Resolves to the output of the feed query, with dynamic parameters.
 
 ```swift
-feed.getData(["name":"scala"]).then { (data: [AnyObject]) -> Void in
-    debugPrint(data)
-}.error { error in
-debugPrint(error)
-}
+    feed.getData(["name":"scala"]).then { (data: [AnyObject]) -> Void in
+        debugPrint(data)
+    }.error { error in
+    debugPrint(error)
+    }
 ```
 
 ## Data
@@ -545,13 +556,12 @@ ExpSwift.getData("cats", "fluffbottom").then { (data: Data) -> Void  in
 Query for multiple data items. Resolves to an SearchResults object containing [Data](#data).
 
 ```swift
-ExpSwift.findData(["limit":10, "skip":0, "sort":"key", "group":"cats"]).then 
-        { (data: SearchResults<Data>) -> Void  in
-            for dataItem in data.getResults() {
-                debugPrint(dataItem.get("value"))
-            }
-        }.error { error in
-            debugPrint(error)
+ExpSwift.findData(["limit":10, "skip":0, "sort":"key", "group":"cats"]).then { (data: SearchResults<Data>) -> Void  in
+    for dataItem in data {
+        debugPrint(dataItem.get("value"))
+    }
+}.error { error in
+    debugPrint(error)
 }
 ```
 
@@ -571,16 +581,15 @@ ExpSwift.getContent("root").then { (content: Content) -> Void  in
 
 **`ExpSwift.findContent(params:[String:AnyObject])`**
 
-Query for multiple content . Resolves to a SearchResults object containing [Content](#content).
+Query for multiple content . Resolves to a SearchResults object containing [Content](   #content).
 
 ```swift
-ExpSwift.findContent(["limit":10, "skip":0, "sort":"name", "name":"images"]).then 
-        { (data: SearchResults<Content>) -> Void  in
-            for content in data.getResults() {
-                debugPrint(content.get("name"))
-            }
-        }.error { error in
-            debugPrint(error)
+ExpSwift.findContent(["limit":10, "skip":0, "sort":"name", "name":"images"]).then { (data: SearchResults<Content>) -> Void  in
+    for content in data {
+        debugPrint(content.get("name"))
+    }
+}.error { error in
+    debugPrint(error)
 }
 ```
 
@@ -601,6 +610,20 @@ Get the immediate children of this content node. Resolves to an array of [Conten
     }
     }.error { error in
         debugPrint(error)
+    }
+```
+
+**`content.getChildren(options)`**
+
+Resolves to a SearchResults object containing children [Content](#content).
+
+```swift
+  content.getChildren(["id":"123"]]).then { (children: SearchResults<Content>) -> Void in
+    for child in children{
+        debugPrint(child.get("name"))
+    }
+    }.error { error in
+    debugPrint(error)
     }
 ```
 
@@ -626,6 +649,4 @@ If you want to see the ExpSwift logs you need to Click on the POD project name a
 Click on the Debug line to select it. Place your mouse cursor over the right side of the line and double-click. A list view will appear. Click the + button at the lower left of the list view to add a value. A text field will become active.
 In the text field, enter the text **-D DEBUG** and press Return to commit the line.
 
-
 ![IOS debugg flag](/common_images/developers/ios-sdk-debuggFlag.png "IOS debugg flag")
-
