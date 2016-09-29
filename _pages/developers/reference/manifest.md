@@ -83,7 +83,7 @@ For types like `feed` that have a subtype of acceptable values, this property is
 
 
 ### configType: text
-A simple text message. Its value is a string and in the UI the user will edit it with a text input.
+An input for a simple text message. Its value is a string and in the UI the user will edit it with a text input.
 
 ```json
 {
@@ -194,7 +194,7 @@ A text field that is validated to be sure it's a URL.
 ```
 
 ### configType: checkbox
-A way for the user to configure a value to be true or false.
+A checkbox input for a user to set a value to true or false.
 
 ```json
 {
@@ -213,12 +213,39 @@ A way for the user to configure a value to be true or false.
 ```
 
 ### configType: content
-Generic content that can be uploaded to EXP. The user can choose to upload a piece of content or choose one from the content tree.
+A selector for generic content that can be uploaded to EXP. The user can choose to upload a piece of content or choose one from the content tree.
+
+The content selector supports the `multiItem` option, if set to `true` then the user can upload multiple pieces of content.
 
 Usually, you will want to add the `restriction` property to only allow the specified content types. If you are going to restrict to only
 image, video or audio then instead of this config type, use `image`, `video` or `audio` which are identical but for that restriction (see below).
 
-The content selector supports the `multiItem` option, if set to `true` then the user can upload multiple pieces of content.
+A full list of content types that can be restricted to:
+
+* `"folder"`
+
+* `"app"`
+
+* `"image"`
+
+* `"youtube"`
+
+* `"url"`
+
+* `"video"`
+
+* `"pdf"`
+
+* `"file"`
+
+* `"composition"`
+
+* `"audio"`
+
+* `"vector"`
+
+* `"code"`
+
 
 ```json
 {
@@ -237,7 +264,7 @@ The content selector supports the `multiItem` option, if set to `true` then the 
 ```
 
 ### configType: image
-An image that the user can upload and will then be available to your app. The user can choose to upload a picture or choose one from the content tree.
+A selector for an image that will then be available to your app. The user can choose to upload an image or choose one from the content tree.
 
 ```json
 {
@@ -256,7 +283,7 @@ An image that the user can upload and will then be available to your app. The us
 ```
 
 ### configType: video
-A video file that the user can upload and will then be available to your app. The user can choose to upload a new file or choose one from the content tree.
+A selector for a video that will then be available to your app. The user can choose to upload a video or choose one from the content tree.
 
 ```json
 {
@@ -277,7 +304,7 @@ A video file that the user can upload and will then be available to your app. Th
 ```
 
 ### configType: audio
-An audio file that the user can upload and will then be available to your app. The user can choose to upload a new file or choose one from the content tree.
+A selector for an audio file that will then be available to your app. The user can choose to upload an audio file or choose one from the content tree.
 
 ```json
 {
@@ -296,7 +323,7 @@ An audio file that the user can upload and will then be available to your app. T
 ```
 
 ### configType: feed
-A feed of data that your app will be consumed. Feeds are configurable from the UI by users and can then be assigned to apps.
+A selector for a feed of data that your app will consume. Feeds are configurable from the UI by users and can then be assigned to apps.
 
 For this type, `supportedTypes` should be supplied with the type of feed you are expecting. Possible values include
 
@@ -338,7 +365,7 @@ For this type, `supportedTypes` should be supplied with the type of feed you are
 For types like feed for which it doesn't make sense to have a default value, leave the value out of the `config` object.
 
 ### configType: color
-A color for the user to pick. Often used for letting them choose a theme for your app.
+A color selector. Often used for letting the user configure a theme for your app.
 
 ```json
 {
@@ -358,7 +385,7 @@ A color for the user to pick. Often used for letting them choose a theme for you
 ```
 
 ### configType: select
-This configuration object specifies the user be given a drop-down selection of different values. There should be an
+A drop-down selection of different values. There should be an
 additional config parameter supplied called `options` that lists the possible values and what they should be labeled.
 
 ```json
@@ -389,37 +416,13 @@ additional config parameter supplied called `options` that lists the possible va
 ```
 
 ### configType: appArray
-This configuration object declares the user will be able to configure a list of content items that are run in their apps within
-your app. 
+A selector for different types of content, including apps. As with the `content` config type, this appears to be
+an array of content. But with `appArray`, all the content that is selected will be wrapped in an app and so can be played
+by the exp player within another app.
 
 If you only want the user to be able to set one piece of content, use this object but set `multiItem` to `false`.
 
-If you want to restrict the control so only certain types of content can be assigned, define a `restriction` param, which is an array
-of permitted content types. Possible values that can be restricted to are:
-
-* `"folder"`
-
-* `"app"`
-
-* `"image"`
-
-* `"youtube"`
-
-* `"url"`
-
-* `"video"`
-
-* `"pdf"`
-
-* `"file"`
-
-* `"composition"`
-
-* `"audio"`
-
-* `"vector"`
-
-* `"code"`
+Can be restricted to certain types of content, along the same lines as the `content` config type.
 
 ```json
 {
@@ -440,7 +443,7 @@ of permitted content types. Possible values that can be restricted to are:
 ```
 
 ### configType: device
-Specifies a control for users to configure one or more devices for their app. For example, the app
+A selector for users to configure one or more devices for their app. For example, the app
 might pull data from a `server` device that is configurable on an app-by-app basis.
 
 If you only want the user to be able to set one device, use this object but set `multiItem` to `false`.
@@ -480,7 +483,7 @@ of permitted device types. Possible values that can be restricted to are:
 ```
 
 ### configType: thing
-Specifies a control for users to configure one or more things for their app.
+A selector for users to configure one or more things for their app.
 
 If you only want the user to be able to set one thing, use this object but set `multiItem` to `false`.
 
@@ -517,7 +520,7 @@ of permitted thing types. Possible values that can be restricted to are:
 ```
 
 ### configType: location
-Specifies a control for users to configure one or more locations for their app.
+A selector for users to configure one or more locations for their app.
 
 If you only want the user to be able to set one location, use this object but set `multiItem` to `false`.
 
