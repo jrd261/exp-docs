@@ -212,6 +212,30 @@ A way for the user to configure a value to be true or false.
 }
 ```
 
+### configType: content
+Generic content that can be uploaded to EXP. The user can choose to upload a piece of content or choose one from the content tree.
+
+Usually, you will want to add the `restriction` property to only allow the specified content types. If you are going to restrict to only
+image, video or audio then instead of this config type, use `image`, `video` or `audio` which are identical but for that restriction (see below).
+
+The content selector supports the `multiItem` option, if set to `true` then the user can upload multiple pieces of content.
+
+```json
+{
+  "configTypes": [
+    {
+      "name": "promotionalContent",
+      "type": "content",
+      "label": "Promotional Content",
+      "path": "promotionalContent",
+      "multiItem": false,
+      "required": true,
+      "restriction": ["image", "video"]
+    }
+  ]
+}
+```
+
 ### configType: image
 An image that the user can upload and will then be available to your app. The user can choose to upload a picture or choose one from the content tree.
 
