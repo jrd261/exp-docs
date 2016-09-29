@@ -1,6 +1,6 @@
 ---
 permalink: /developers/reference/android-sdk/
-title: Android SDK Reference (v1.0.3)
+title: Android SDK Reference (v1.0.4)
 keywords: android, sdk
 ---
 
@@ -9,16 +9,9 @@ keywords: android, sdk
 
 ## Usage
 
-- *sdflkj*
-
--
-
--
-
 Gradle:
-
-```java
-compile 'io.goexp:exp-android-sdk:v1.0.3'
+```groovy
+ compile 'io.goexp:exp-android-sdk:v1.0.4'
 ```
 
 Exp Android SDK requires at minimum Java 7 and Android 4.3.
@@ -42,35 +35,48 @@ Starts and returns an sdk instance. Can be called multiple times to start multip
 
 ```java
 Exp.start(host, user, password, org)
-                .subscribe(new Action1() {
+                .subscribe(new Subscriber<Boolean>() {
                     @Override
-                    public void call(Object o) {
-                      Log.i("EXP CONNECTED", o.toString());
+                    public void onCompleted() {}
+                    @Override
+                    public void onError(Throwable e) {Log.e("ERROR", e.getMessage());}
+                    @Override
+                    public void onNext(Boolean o) {
+                        Log.i("EXP CONNECTED", o);
                     }
-                }
+                });
 
 # Init exp connection for user with Host,User,Password,Organization.
-Exp.start(host,"name@domain.com","password123","scala")
-                .subscribe(new Action1() {
+Exp.start(host,"name@scala.com","12345","scala")
+                 .subscribe(new Subscriber<Boolean>() {
                     @Override
-                    public void call(Object o) {
-                      Log.i("EXP CONNECTED", o.toString());
+                    public void onCompleted() {}
+                    @Override
+                    public void onError(Throwable e) {Log.e("ERROR", e.getMessage());}
+                    @Override
+                    public void onNext(Boolean o) {
+                        Log.i("EXP CONNECTED", o);
                     }
-                }
+                });
 
 # Init exp connection for user with options object.
-final Map<String,String> options = new HashMap<>();
-        options.put("host","https://api.exp.scala.com");
-        options.put("username","name@domain.com");
-        options.put("password","password123");
-        options.put("organization","scala");
+final Map<String,Object> startOptions = new HashMap<>();
+startOptions.put(Utils.HOST,"https://api.exp.scala.com");
+startOptions.put(Utils.USERNAME,"name@scala.com");
+startOptions.put(Utils.PASSWORD,"123456");
+startOptions.put(Utils.ORGANIZATION,"scala);
+startOptions.put(Utils.ENABLE_EVENTS,true);
   Exp.start(options)
-                .subscribe(new Action1() {
+                 .subscribe(new Subscriber<Boolean>() {
                     @Override
-                    public void call(Object o) {
-                      Log.i("EXP CONNECTED", o.toString());
+                    public void onCompleted() {}
+                    @Override
+                    public void onError(Throwable e) {Log.e("ERROR", e.getMessage());}
+                    @Override
+                    public void onNext(Boolean o) {
+                        Log.i("EXP CONNECTED", o);
                     }
-                }
+                });
 ```
 
 ## Stopping the SDK
@@ -82,6 +88,42 @@ Stops all running instance of the sdk, cancels all listeners and network connect
 ```java
 Exp.stop();
 ```
+
+## Authentication
+
+
+**`Exp.getAuth()`**
+
+Returns the current authentication payload. Will be null if not yet authenticated.
+
+```java
+#GET USERNAME
+Exp.getAuth().getIdentity().getUsername();
+```
+
+**`Exp.on("update",subscriber)`** 
+
+Callback is called when authentication payload is updated.
+
+
+**`Exp.on("error",subscriber)`**
+
+Register a subscriber for when the sdk instance encounters a critical error and cannot continue. The subscriber is called with the error as the first argument. This is generally due to authentication failure.
+
+```java
+Subscriber errorSubscriber = new Subscriber<String>() {
+      @Override
+      public void onCompleted() {}
+      @Override
+      public void onError(Throwable e) {}
+      @Override
+      public void onNext(String o) {
+          Log.d(LOG_TAG, "ERROR SDK");
+      }
+};
+Exp.on("error", errorSubscriber);
+```
+
 
 # Real Time Communication
 
@@ -125,15 +167,15 @@ Whether or not you are connected to the network.
 
 ## Channels
 
-**`Exp.getChannel(name, system, consumerApp)`**
-
+**`Exp.getChannel(name, system, consumerApp)`** 
+ 
  Returns a channel with the given name with two flags: `consumerApp` and `system`. Consumer devices can only listen and broadcast on consumer channels. System channels are listen only and can receive broadcasts about system events.
 
- ```java
+```java
     IChannel channel = Exp.getChannel("my-channel",false,true);
 ```
 
-**`channel.broadcast(name, payload, timeout)`**
+**`channel.broadcast(name, payload, timeout)`** 
 
 Sends a broadcast with given `name` and `payload` on the channel. Waits for responses for `timeout` milliseconds and resolves with an array of responses.
 
@@ -143,7 +185,7 @@ payload.put("test", "nice to meet you!");
 channel.broadcast("hi", payload, 2000);
 ```
 
-**`channel.listen(name, callback)`**
+**`channel.listen(name, callback)`** 
 
 Registers a [listener](#listeners) callback for events on the channel with the given `name`. Resolves to a [listener](#listeners) when the callback is registered and the network connection has subscribed to the channel.
 
@@ -166,7 +208,7 @@ channel.listen("hi", new Subscriber() {
                         });
 ```
 
-**`channel.fling(payload)`**
+**`channel.fling(payload)`** 
 
 Fling an app launch payload on the channel.
 
@@ -175,6 +217,25 @@ Map<String, Object> payload = new HashMap<String, Object>();
 payload.put("uuid", "myUuid");
 channel.fling(payload)
 ```
+
+**`channel.identify()`**
+
+Requests that [devices](#devices) listening for this event on this channel visually identify themselves. Implementation is device specific; this is simply a convience method.
+
+```java
+//Start SDK as Device or User
+final Map<String,Object> startOptions = new HashMap<>();
+startOptions.put(Utils.UUID,"bca4adb2-8853-4b1f-966d-2f9bd34c6383");
+startOptions.put(Utils.SECRET,"d76651abb7f6938510cbcdcc6ecb35f29b5a289a809d38da55d0bdf28dc027b625c924fc39d5150802be92e7a9be4f85");
+Exp.start(startOptions)
+
+//Create channel with device uuid
+final IChannel channel1 = Exp.getChannel("8d50e9f6-6a50-487b-9324-714e8b0cb2ee",false,false);
+final Map<String, Object> payload = new HashMap<String, Object>();
+channel1.identify();
+```
+
+
 
 # API
 
@@ -233,13 +294,51 @@ Resolves to an array of [zones](#zones) that are part of this device.
 
 Resolves to an [Location](#locations) that are part of this device.
 
+```java
+device.getLocation().then(new Subscriber<Location>() {
+    @Override
+    public void onCompleted() {
+
+    }
+
+    @Override
+    public void onError(Throwable e) {
+        Log.e("error", e.toString());
+    }
+
+    @Override
+    public void onNext(Location location) {
+        Log.i("Response", location.toString());
+    }
+});
+```
+
 **`device.getExperience()`**
 
 Resolves to an [Experience](#experiences) that are part of this device.
 
+```java
+device.getExperience().then(new Subscriber<Experience>() {
+    @Override
+    public void onCompleted() {
+
+    }
+
+    @Override
+    public void onError(Throwable e) {
+        Log.e("error", e.toString());
+    }
+
+    @Override
+    public void onNext(Experience experience) {
+        Log.i("Response", experience.toString());
+    }
+});
+
 **`Device.getCurrentDevice()`**
 
 Resolves to the current Device(#devices) or `null`
+
 
 ## Things
 
@@ -303,7 +402,9 @@ Resolves to an [Location](#locations) that are part of this device.
 
 Resolves to an [Experience](#experiences) that are part of this device.
 
+
 ## Experiences
+
 
 **`Exp.getExperience(uuid)`**
 
@@ -374,8 +475,7 @@ experience.getDevices().then(new Subscriber<SearchResults<Device>>() {
 
 **`experience.getCurrentExperience()`**
 
-Resolves to the current Experience(#experiences) or `null`
-
+Resolves to the current [Experience](#experiences) or `null`
 
 ## Locations
 
@@ -429,7 +529,7 @@ Returns a url pointing to the location's layout image.
 
 **`location.getCurrentLocation()`**
 
-Resolves to the current Location(#locations) or `null`
+Resolves to the current [Location](#locations) or `null`
 
 **`location.geDevices()`**
 
@@ -474,6 +574,7 @@ location.geThings().then(new Subscriber<SearchResults<Thing>>() {
             }
         });
 ```
+
 
 ## Zones
 
@@ -537,6 +638,8 @@ zone.getThings().then(new Subscriber<SearchResults<Things>>() {
 
 Resolves to the zone's [location](#locations)
 
+
+
 ## Feeds
 
 **`Exp.getFeed(uuid)`**
@@ -559,7 +662,7 @@ Exp.getFeed("052a2419-0621-45ad-aa03-3747dbfe2b6d")
         });
 ```
 
-**`Exp.findFeeds(options)`**
+**`Exp.findFeeds(params)`**
 
 Query for multiple feeds. Resolves to an array of [Feeds](#feed-object).
 
@@ -606,7 +709,9 @@ feed.getData().then(new Subscriber<Map>() {
 **`feed.getData(query)`**
 
 Get the feed's dynamic data. Resolves to the output of the feed query, with dynamic parameters.
+
 ```java
+
 Map<String,Object> query = new HashMap<String, Object>();
 query.put("name","scala");
 feed.getData(query).then(new Subscriber<Map>() {
@@ -621,7 +726,6 @@ feed.getData(query).then(new Subscriber<Map>() {
         }
     });
 ```
-
 
 ## Data
 
@@ -670,7 +774,7 @@ Exp.findData(options)
 
 **`Exp.getContentNode(uuid)`**
 
-Get a content node by UUID. Resolves to a [Content](#content). Note: The UUID value of 'root' will return the contents of the root folder of the current organization.
+Get a content node by UUID. Resolves to a [Content](#content-object). Note: The UUID value of 'root' will return the contents of the root folder of the current organization.
 
 ```java
 Exp.getContent("d24c6581-f3d2-4d5a-b6b8-e90a4812d7df")
@@ -735,6 +839,30 @@ content.getChildren()
   });
 ```
 
+**`content.getChildren(options)`**
+
+Resolves to a SearchResults object containing children [Content](#content-object). 
+
+```java
+Map options = new HashMap();
+content.getChildren(options)
+  .then(new Subscriber<SearchResults<Content>>() {
+      @Override
+      public void onCompleted() {
+      }
+
+      @Override
+      public void onError(Throwable e) {
+          Log.e("error", e.toString());
+      }
+
+      @Override
+      public void onNext(<SearchResults<Content>> children) {
+        Log.i("Response", children.toString());
+      }
+  });
+```
+
 **`content.getUrl()`**
 
 Get the absolute url to the content node data. Useful for image/video tags or to download a content file. Returns empty String for folders
@@ -764,7 +892,6 @@ Android uses Proguard for packaging Apps, If you want to remove the Exp logs bef
         }
     }
 ```
-
 For removing the logs in your release APK you need to add this line into the file **proguard-rules.pro**
 
 ```xml
@@ -777,7 +904,6 @@ public static int d(...);
 public static int e(...);
 }
 ```
-
 Since you're using Exp SDK you need to add some extra configuration for third party library logs, after adding this part in your proguard-rules.pro you need to add this so the minify will work
 
 ```xml
