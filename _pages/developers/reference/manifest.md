@@ -215,7 +215,6 @@ A way for the user to configure a value to be true or false.
 ### configType: image
 An image that the user can upload and will then be available to your app. The user can choose to upload a picture or choose one from the content tree.
 
-
 ```json
 {
   "configTypes": [
@@ -228,12 +227,28 @@ An image that the user can upload and will then be available to your app. The us
       "required": false
     }
   ],
-  "config": {
-  }
+  "config": {}
 }
 ```
 
-For types like image for which it doesn't make sense to have a default value, leave the value out of the `config` object.
+### configType: audio
+An audio file that the user can upload and will then be available to your app. The user can choose to upload a new file or choose one from the content tree.
+
+```json
+{
+  "configTypes": [
+    {
+      "name": "jingle",
+      "type": "audio",
+      "label": "Commercial Jingle",
+      "path": "jingle",
+      "multiItem": false,
+      "required": false
+    }
+  ],
+  "config": {}
+}
+```
 
 ### configType: feed
 A feed of data that your app will be consumed. Feeds are configurable from the UI by users and can then be assigned to apps.
