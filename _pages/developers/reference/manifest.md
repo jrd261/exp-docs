@@ -231,6 +231,27 @@ An image that the user can upload and will then be available to your app. The us
 }
 ```
 
+### configType: video
+A video file that the user can upload and will then be available to your app. The user can choose to upload a new file or choose one from the content tree.
+
+```json
+{
+  "configTypes": [
+    {
+      "name": "highlights",
+      "type": "video",
+      "label": "Product Highlights",
+      "path": "highlights",
+      "multiItem": true,
+      "required": false
+    }
+  ],
+  "config": {
+    "highlights": []
+  }
+}
+```
+
 ### configType: audio
 An audio file that the user can upload and will then be available to your app. The user can choose to upload a new file or choose one from the content tree.
 
