@@ -416,9 +416,8 @@ additional config parameter supplied called `options` that lists the possible va
 ```
 
 ### configType: appArray
-A selector for different types of content, including apps. As with the `content` config type, this appears to be
-an array of content. But with `appArray`, all the content that is selected will be wrapped in an app and so can be played
-by the exp player within another app.
+Allows the user to select apps from the current experience or import apps from their content tree.
+Also allows the user to choose or upload content. The stored data is an array of [app launch options](/developers/reference/player-app-sdk/#app-launch-options) prepared for use by the player.
 
 If you only want the user to be able to set one piece of content, use this object but set `multiItem` to `false`.
 
