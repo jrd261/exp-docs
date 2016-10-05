@@ -173,7 +173,7 @@ A number field. Optionally supports `min` and `max` attributes.
 }
 ```
 
-### configType: url
+### configType: urlInput
 A text field that is validated to be sure it's a URL.
 
 ```json
@@ -181,7 +181,7 @@ A text field that is validated to be sure it's a URL.
   "configTypes": [
     {
       "name": "homepage",
-      "type": "url",
+      "type": "urlInput",
       "label": "URL to homepage",
       "path": "homepage",
       "required": true
