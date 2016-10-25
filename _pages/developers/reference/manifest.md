@@ -542,7 +542,7 @@ If you only want the user to be able to set one location, use this object but se
 ### configType: date
 A selector for users to configure a date for their app.
 
-Takes a `min` and `max` optional parameter in the format `YYYY-MM-DD`.
+Takes a `min` and `max` optional parameter in the format `YYYY/MM/DD`.
 
 ```json
 {
@@ -553,7 +553,7 @@ Takes a `min` and `max` optional parameter in the format `YYYY-MM-DD`.
       "label": "Promotion Day",
       "required": true,
       "path": "promotionDay",
-      "min": "2016-10-15"
+      "min": "2016/10/15"
     }
   ],
   "config": {
