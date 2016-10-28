@@ -5,7 +5,21 @@ keywords: developer
 tags: [updates]
 ---
 
-## August 29, 2016 Release
+## October 2016 Release
+
+- Added a weekly schedule view
+
+- Added Yammer to integrations
+
+## September 2016 Release
+
+- Meeting Room App
+
+  - Now supports multi-day events
+
+  - Now updates immediately when events become active
+
+## August 2016 Release
 
 - Javascript SDK v1.0.4
 
@@ -26,3 +40,4 @@ tags: [updates]
   - We now support Device, Thing and Location selection fields in app settings.
 
 - Added LinkedIn [integration](/developers/guides/feeds/#integrations)
+
