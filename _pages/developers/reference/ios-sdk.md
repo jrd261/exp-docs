@@ -33,10 +33,17 @@ for IOS 9.0 add Transport Security into info.plist
 
 Note: Xcode 8.x uses Swift 3.0 and is will not work with Swift 2.0 projects
 
-This project now supports Swift 3, if you still require Swift 1.2 you can use the `swift-1.2` or Swift 2.0 you an use `swift-2.0` branch in your Podfile
+This project now supports Swift 3, if you still require Swift 1.2 you can use the `swift-1.2` or Swift 2.0 you can use `swift-2.0` branch in your Podfile
 
-You can download Xcode 6.4 and install it outside of Applications, if you have already upgraded to Xcode 7.x
-http://developer.apple.com/devcenter/download.action?path=/Developer_Tools/Xcode_6.4/Xcode_6.4.dmg
+You can download Xcode 7.3 and install it outside of Applications for branch `swift-2.0`
+`https://developer.apple.com/services-account/download?path=/Developer_Tools/Xcode_7.3.1/Xcode_7.3.1.dmg`
+
+or
+
+You can download Xcode 6.4  for branch `swift-1.2`
+`http://developer.apple.com/devcenter/download.action?path=/Developer_Tools/Xcode_6.4/Xcode_6.4.dmg`
+
+
 
 
 ## Installation
