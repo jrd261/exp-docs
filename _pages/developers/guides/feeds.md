@@ -1,5 +1,5 @@
 ---
-permalink: /developers/guides/feeds/
+permalink: /developers/guides/feeds
 title: Feeds
 keywords: developer
 last_updated: July 11, 2016
