@@ -1,7 +1,7 @@
 ---
 permalink: /developers/guides/feeds/
 title: Feeds
-keywords: developer
+keywords: developer, feed, integration, facebook, google, linkedin, instagram, twitter, microsoft, shopify, square, github, weather, bitbucket, rss
 last_updated: July 11, 2016
 tags: []
 ---
@@ -12,7 +12,7 @@ tags: []
 
 To include data from third party data sources such as Facebook pages or local weather reports, EXP has the concept of feeds.
 The data from a feed will be available to your app in a simple, unified JSON format, so that an app can easily handle different data sources
-without being modified. 
+without being modified.
 
 The feeds can be acessed through a method on your EXP SDK, so consult the reference for your platform below. This guide will have more detail
 about how to use feeds and how they can be configured.
@@ -28,7 +28,7 @@ about how to use feeds and how they can be configured.
 - [Android SDK - Reference](http://docs.goexp.io/developers/reference/android-sdk/)
 
 # Integrations
-Most of the feed types in EXP require permissions to access the third party data source. 
+Most of the feed types in EXP require permissions to access the third party data source.
 To permanently link credentials for data sources that you provide, EXP has the concept of integrations.
 You can create a new integration from the integrations route (see below).
 Here the required credentials can be entered and then the integration will be available to everyone in the organization.
@@ -36,16 +36,16 @@ Here the required credentials can be entered and then the integration will be av
 ![Data Source Integration](/common_images/developers/integrations.png "Data Source Integration")
 
 ## Adding an Integration
-- Find the integration source that your app will use and press the ADD button. 
+- Find the integration source that your app will use and press the ADD button.
 
 - A redirect will happen to the login permission page of the third party online data source provider.
 
-- Enter credentials and accept. 
+- Enter credentials and accept.
 
-- The EXP integrations page will appear again. 
+- The EXP integrations page will appear again.
 
 If the integration fails, an error message will appear:
- 
+
 ![Data Source Integration Error Message](/common_images/developers/integration_error.png "Data Source Integration Error")
 
 When the integration is successfuly added it will show up under configured integrations.
@@ -56,12 +56,12 @@ When the integration is successfuly added it will show up under configured integ
 If for any reason the integration needs to be updated, for example a permission setting that has changed, click the integration's Update button to make changes.
 
 ## Removing an Integration
-When removing an integration the EXP platform will attempt to revoke access it received from the third party provider. 
+When removing an integration the EXP platform will attempt to revoke access it received from the third party provider.
 Some third party providers do not allow this revoke access to happen automatically, in this case you will be shown a warning and given a link to manually remove it.
-     
+
 # Feeds
 
-  
+
 <table class="feed-information">
   <thead>
     <tr>
@@ -241,13 +241,13 @@ Depending on what type of feed is selected, multiple options can be entered such
 - When done press the Save button.
 
 ![New Feed](/common_images/developers/feed_new.png "New Feed")
- 
+
 ## Previewing Feed Data
 Once you've created a feed, you can see what the data it is returning looks like.
- 
-- Select the feed in the list by checking the checkbox. 
+
+- Select the feed in the list by checking the checkbox.
 - Click the preview icon <img src="/common_images/eye.svg" class="icon"> in the top right corner.
-- A dialog opens to show the preview data in JSON format. 
+- A dialog opens to show the preview data in JSON format.
 - The data can be downloaded by pressing the Download button in the bottom right corner.
 
 ![Feed Preview](/common_images/developers/feed_data.png "Feed Preview Data")
@@ -292,12 +292,12 @@ Once you've created a feed, you can see what the data it is returning looks like
 
 ### Google Calendar
 - **Calendar ID** (required): the calendarID to get the events from. You must have access to this calendar with the credentials in your Google Calendar integration.
- 
+
 - **Number of Days** (required): the number of days to look for events from the current date forwards.
 
 ### Microsoft Calendar
 - **Calendar Name** (required): the calendar name to get the events from. You must have access to this calendar with the credentials in your Microsoft Calendar integration.
- 
+
 - **Number of Days** (required): the number of days to look for events from the current date forwards.
 
 ### Google Spreadsheet
@@ -667,9 +667,9 @@ Once you've created a feed, you can see what the data it is returning looks like
     </div>
   </li>
 </ul>
- 
+
 ### RSS
-- **RSS feed URL** (required): a valid rss url.  
+- **RSS feed URL** (required): a valid rss url.
 
 - **Max Number of Results** (required): the number of rows that the feed should return.
 
@@ -703,14 +703,14 @@ Once you've created a feed, you can see what the data it is returning looks like
 - **Max Number of Results** (required): the number of pull requests that the feed should return.
 
 ## Feed Json Structure
-The structure of the JSON returned by a feed is standardized as much as possible. 
+The structure of the JSON returned by a feed is standardized as much as possible.
 
 At the top of the JSON structure is `search` with details about the query or search terms that generated this feed.
 
 Then there is `details` with information including `profile`, `page`, `shop` or `account` depending on the type of feed.
 
-Finally, the actual data of the feed is in `items`. Fields that can differ per feed are located in `metadata`. `raw` contains the original information.  
-   
+Finally, the actual data of the feed is in `items`. Fields that can differ per feed are located in `metadata`. `raw` contains the original information.
+
 ```json
 {
   "search": { ... info about the search ... },
@@ -790,15 +790,15 @@ For such a use case, feeds can be created with the dynamic option set to True. T
 
 ![Dynamic Feed](/common_images/developers/feed_dynamic.png "Feed Dynamic")
 
-### Previewing a Dynamic Feed 
+### Previewing a Dynamic Feed
 Once you've created a dynamic feed, you can see what it's like to have dynamic parameters and what it returns.
- 
-- Select the feed in the list by checking the checkbox. 
+
+- Select the feed in the list by checking the checkbox.
 - Click the preview icon <img src="/common_images/eye.svg" class="icon"> in the top right corner.
 - A dialog opens to show the preview data in JSON format. At the top of the dialog you can see the fields that are sent as parameters to EXP.
-- Enter all fields required and press Preview to see the data returned. 
-  
+- Enter all fields required and press Preview to see the data returned.
+
 ![Feed Dynamic Preview](/common_images/developers/feed_dynamic_preview.png "Feed Dynamic Preview")
 
 ### Exceptions
-There are a couple of feed types not available as dynamic. Currently they are RSS and Generic Endpoint.  
+There are a couple of feed types not available as dynamic. Currently they are RSS and Generic Endpoint.
