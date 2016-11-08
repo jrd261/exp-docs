@@ -272,7 +272,7 @@ Once you've created a feed, you can see what the data it is returning looks like
 
   *or*
 
-  **Query** (optional): a query string to filter data from Twitter. More information about queries can be found [here](https://dev.twitter.com/rest/public/search).
+  **Query** (optional): a query string to filter data from Twitter. As example only tweets from scalainc should look like: 'from:scalainc AND -filter:retweets AND -filter:replies'. More information about queries can be found [here](https://dev.twitter.com/rest/public/search).
 
 - **Max Number of Results** (required): the amount of posts that the feed should return.
 
