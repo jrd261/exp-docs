@@ -14,7 +14,7 @@ importantly there are specific types of content that make up an experiences. Her
 
 - Content can be any type of file.
 - Content is arranged in a hierarchy of folders.
-- [Apps](http://docs.goexp.io/developers/reference/player-apps/) are a specific type of content.
+- [Apps](http://docs.goexp.io/developers/guides/player-apps) are a specific type of content.
 - URLs can be used as content (think bookmarks).
 - Files are processed after upload to provide additional data for App development.
 
@@ -141,7 +141,7 @@ Certain file types are post processed to create alternative variants of differen
 
 Apps have the subtype `scala:content:app`. The content repository allows uploading of a zip file with an index.html, JavaScript, CSS and other static assets as an app. Apps are unpacked into a folder structure.  Apps cannot be nested and are treated as a single item in the content tree.
 
-The only requirements of a app are that the App always contains an index.html file in the root and if there is a manifest.json file in the root of the app, the file must be valid json.
+An app **must** contain an `index.html` file in the root of the app and if there is a `manifest.json` file in the root of the app, the file must be valid json.
 
 Considering that apps are really just a special folder, the contents of an app can be traversed in a similar way to walking the tree.
 
