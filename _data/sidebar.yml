@@ -24,6 +24,13 @@ entries:
     - title: Tutorials, Walkthroughs and Examples
       output: web, pdf
       thirdlevel:
+      - title: Creating Your First Experience
+        url: /developers/tutorials/quickstart
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
       - title: Getting Started with App Development
         url: /developers/tutorials/player-apps
         audience: developers, designers
