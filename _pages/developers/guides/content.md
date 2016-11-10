@@ -139,7 +139,7 @@ Certain file types are post processed to create alternative variants of differen
 
 ## Apps
 
-Apps have the subtype `scala:content:app`. The content repository allows uploading of a zip file with an index.html, JavaScript, CSS and other static assets as an app. Apps are unpacked into a folder structure.  Apps cannot be nested and are treated as a single item in the content tree.
+Apps have the subtype `scala:content:app`. The content repository allows uploading an index.html file or a zip file with an index.html, JavaScript, CSS and other static assets as an app. Apps are unpacked into a folder structure.  Apps cannot be nested and are treated as a single item in the content tree.
 
 An app **must** contain an `index.html` file in the root of the app and if there is a `manifest.json` file in the root of the app, the file must be valid json.
 
