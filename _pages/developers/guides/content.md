@@ -90,7 +90,7 @@ if (file.document.mimeType.indexOf('image/') ===  0) {
 ```
 
 ### Properties
-All file types are post processed to create properties. Every file is given an `md5`, `sha1` and `sha256` checksum.
+All file types are post-processed to create properties. Every file is given an `md5`, `sha1` and `sha256` checksum.
 
 | File Type        | Properties                                                      | 
 |------------------|-----------------------------------------------------------------| 
