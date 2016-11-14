@@ -12,6 +12,16 @@ To that end, EXP provides:
 
 * Managed data feed connections to 3rd party services for adding that data to digital signage experiences
 
+## Quickstart
+
+<div class="row bs-callout bs-callout">
+  <div class="col-md-12">
+      <ul>
+        <li><a href="/developers/tutorials/quickstart">Creating Your First Experience</a></li>
+      </ul>
+  </div>
+</div>
+
 ## Building EXP Apps
 
 <div class="row bs-callout bs-callout">
