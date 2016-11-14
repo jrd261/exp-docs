@@ -5,6 +5,22 @@ keywords: developer
 tags: [updates]
 ---
 
+## November 2016 Release
+
+- IOS SDK v1.0.5 [click here](https://github.com/ScalaInc/exp-ios-sdk/releases/tag/v1.0.5).
+ 
+  - Added Swift 3.0 support if you're using previous version there are breaking changes.
+ 	
+  - Added Sequencetype extension for SearchResults to iterate the response.
+
+  - Updated all the project dependency to the latest stable release. 
+
+- Android SDK v1.0.5 [click here](https://github.com/ScalaInc/exp-android-sdk/releases/tag/v1.0.5).
+
+  - Added implements Iterable<T> for SearchResults to iterate the response.  
+
+  - Updated all the project dependency to the latest stable release. 
+
 ## October 2016 Release
 
 - Added a weekly schedule view

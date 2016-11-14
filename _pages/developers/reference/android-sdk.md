@@ -1,6 +1,6 @@
 ---
 permalink: /developers/reference/android-sdk/
-title: Android SDK Reference (v1.0.4)
+title: Android SDK Reference (v1.0.5)
 keywords: android, sdk
 ---
 
@@ -11,7 +11,7 @@ keywords: android, sdk
 
 Gradle:
 ```groovy
- compile 'io.goexp:exp-android-sdk:v1.0.4'
+ compile 'io.goexp:exp-android-sdk:v1.0.5'
 ```
 
 Exp Android SDK requires at minimum Java 7 and Android 4.3.
@@ -820,7 +820,7 @@ Get the immediate children of this content node. Resolves to a list of [Content]
 
 ```java
 content.getChildren()
-  .then(new Subscriber<List<ContentNode>() {
+  .then(new Subscriber<List<Content>() {
       @Override
       public void onCompleted() {
       }
@@ -831,8 +831,8 @@ content.getChildren()
       }
 
       @Override
-      public void onNext(List<ContentNode> children) {
-        for (ContentNode child : children) {
+      public void onNext(List<Content> children) {
+        for (Content child : children) {
           Log.i("Child", child.get("name"));
         }
       }
@@ -868,7 +868,7 @@ content.getChildren(options)
 Get the absolute url to the content node data. Useful for image/video tags or to download a content file. Returns empty String for folders
 
 ```java
-String url = contentNode.getUrl();
+String url = content.getUrl();
 ```
 
 **`content.getVariantUrl(name)`**
@@ -876,7 +876,7 @@ String url = contentNode.getUrl();
 Get the absolute url to the content node's variant data. Useful for image/video thumbnails or transcoded videos. Returns empty String for folders or if content does not contain the variant
 
 ```java
-String variantUrl = contentNode.getVariantUrl("320.png");
+String variantUrl = content.getVariantUrl("320.png");
 ```
 
 
