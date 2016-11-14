@@ -56,7 +56,7 @@ entries:
       output: web, pdf
       thirdlevel:
       - title: Player Apps
-        url: /developers/guides/player-apps/
+        url: /developers/guides/player-apps
         audience: developers, designers
         platform: all
         product: all
@@ -64,6 +64,13 @@ entries:
         output: web, pdf
       - title: Local App Development
         url: /developers/guides/local-app-development
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
+      - title: Working with Content
+        url: /developers/guides/content
         audience: developers, designers
         platform: all
         product: all

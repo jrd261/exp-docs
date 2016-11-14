@@ -17,7 +17,7 @@ without being modified.
 The feeds can be acessed through a method on your EXP SDK, so consult the reference for your platform below. This guide will have more detail
 about how to use feeds and how they can be configured.
 
-- [JavaScript SDK - Reference](http://docs.goexp.io/developers/reference/javascript-sdk-1.0.0/)
+- [JavaScript SDK - Reference](http://docs.goexp.io/developers/reference/javascript-sdk/)
 
 - [Python SDK - Reference](http://docs.goexp.io/developers/reference/python-sdk/)
 
