@@ -79,7 +79,7 @@ Modify the `index.html` to include a div in which to put the string and an exter
       </body>
     </html>
 
-And create a `main.js` file alongside the `index.js` file with the following contents:
+And create a `main.js` file alongside the `index.html` file with the following contents:
 
     'use strict';
 
