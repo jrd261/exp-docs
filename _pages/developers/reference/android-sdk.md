@@ -1,6 +1,6 @@
 ---
 permalink: /developers/reference/android-sdk/
-title: Android SDK Reference (v1.0.5)
+title: Android SDK Reference (v1.0.6)
 keywords: android, sdk
 ---
 
@@ -11,7 +11,7 @@ keywords: android, sdk
 
 Gradle:
 ```groovy
- compile 'io.goexp:exp-android-sdk:v1.0.5'
+ compile 'io.goexp:exp-android-sdk:v1.0.6'
 ```
 
 Exp Android SDK requires at minimum Java 7 and Android 4.3.
@@ -123,6 +123,7 @@ Subscriber errorSubscriber = new Subscriber<String>() {
 };
 Exp.on("error", errorSubscriber);
 ```
+
 
 
 # Real Time Communication
@@ -241,7 +242,7 @@ channel1.identify();
 
 ## Devices
 
-Devices inherit all [common resource methods and attributes](#resources).
+Devices inherit all [common resource methods and attributes](#abstractmodel).
 
 **`Exp.getDevice(uuid)`**
 
@@ -284,6 +285,26 @@ Exp.findDevices(options)
         Log.i("Response", resultDevice.toString());
       }
   });
+```
+
+**`Exp.createDevice(document)`**
+
+Resolves to a device created based on the supplied document.
+
+```java
+Map document= new HashMap();
+document.put("subtype","scala:device:player");
+document.put("name","Device Name");
+Exp.createDevice(document).then(new Subscriber<Device>() {
+    @Override
+    public void onCompleted() {}
+    @Override
+    public void onError(Throwable e) {Log.e("Response", e.getMessage());}
+    @Override
+    public void onNext(Device device) {
+        Log.i("Response", device.toString());
+    }
+});
 ```
 
 **`device.getZones()`**
@@ -334,6 +355,7 @@ device.getExperience().then(new Subscriber<Experience>() {
         Log.i("Response", experience.toString());
     }
 });
+```
 
 **`Device.getCurrentDevice()`**
 
@@ -341,6 +363,8 @@ Resolves to the current Device(#devices) or `null`
 
 
 ## Things
+
+Things inherit all [common resource methods and attributes](#abstractmodel).
 
 **`Exp.getThing(uuid)`**
 
@@ -390,6 +414,27 @@ Exp.findthings(options)
     });
 ```
 
+**`Exp.createThing(document)`**
+
+Resolves to a thing created based on the supplied document.
+
+```java
+Map document= new HashMap();
+document.put("subtype","scala:thing:rfid");
+document.put("id","rfid id");
+document.put("name","Rfid Name");
+Exp.createThing(document).then(new Subscriber<Thing>() {
+    @Override
+    public void onCompleted() {}
+    @Override
+    public void onError(Throwable e) {Log.e("Response", e.getMessage());}
+    @Override
+    public void onNext(Thing thing) {
+        Log.i("Response", thing.toString());
+    }
+});
+```
+
 **`thing.getZones()`**
 
 Resolves to an array of [zones](#zones) that are part of this device.
@@ -405,6 +450,7 @@ Resolves to an [Experience](#experiences) that are part of this device.
 
 ## Experiences
 
+Experiences inherit all [common resource methods and attributes](#abstractmodel).
 
 **`Exp.getExperience(uuid)`**
 
@@ -450,6 +496,25 @@ Exp.findExperiences(options)
                 }
 });
 ```
+**`Exp.createExperience(document)`**
+
+Resolves to an experience created based on the supplied document.
+
+```java
+Map document= new HashMap();
+document.put("name","Experience Name");
+Exp.createExperience(document).then(new Subscriber<Experience>() {
+    @Override
+    public void onCompleted() {}
+    @Override
+    public void onError(Throwable e) {Log.e("Response", e.getMessage());}
+    @Override
+    public void onNext(Experience experience) {
+        Log.i("Response", experience.toString());
+    }
+});
+```
+
 
 **`experience.geDevices()`**
 
@@ -475,9 +540,11 @@ experience.getDevices().then(new Subscriber<SearchResults<Device>>() {
 
 **`experience.getCurrentExperience()`**
 
-Resolves to the current [Experience](#experiences) or `null`
+Resolves to the current Experience(#experiences) or `null`
 
 ## Locations
+
+Locations inherit all [common resource methods and attributes](#abstractmodel).
 
 **`Exp.getLocation(uuid)`**
 
@@ -519,6 +586,25 @@ Exp.findLocations(options)
         });
 ```
 
+**`Exp.createLocation(document)`**
+
+Resolves to a location created based on the supplied document.
+
+```java
+Map document= new HashMap();
+document.put("name","Location Name");
+Exp.createLocation(document).then(new Subscriber<Location>() {
+    @Override
+    public void onCompleted() {}
+    @Override
+    public void onError(Throwable e) {Log.e("Response", e.getMessage());}
+    @Override
+    public void onNext(Location location) {
+        Log.i("Response", location.toString());
+    }
+});
+```
+
 **`location.getZones()`**
 
 Resolves to an array of [zones](#zones) that are part of this location.
@@ -529,7 +615,7 @@ Returns a url pointing to the location's layout image.
 
 **`location.getCurrentLocation()`**
 
-Resolves to the current [Location](#locations) or `null`
+Resolves to the current [location](#locations) or `null`
 
 **`location.geDevices()`**
 
@@ -577,6 +663,8 @@ location.geThings().then(new Subscriber<SearchResults<Thing>>() {
 
 
 ## Zones
+
+Zones inherit all [common resource methods and attributes](#abstractmodel).
 
 **`zone.getKey()`**
 
@@ -639,8 +727,9 @@ zone.getThings().then(new Subscriber<SearchResults<Things>>() {
 Resolves to the zone's [location](#locations)
 
 
-
 ## Feeds
+
+Feeds inherit all [common resource methods and attributes](#abstractmodel).
 
 **`Exp.getFeed(uuid)`**
 
@@ -682,9 +771,31 @@ Exp.findFeeds(options)
         });
 ```
 
+**`Exp.createFeed(document)`**
+
+Resolves to a feed created based on the supplied document.
+
+```java
+Map document= new HashMap();
+document.put("subtype","scala:feed:weather");
+document.put("searchValue","16902");
+document.put("name","My Weather Feed");
+Exp.createFeed(document).then(new Subscriber<Feed>() {
+    @Override
+    public void onCompleted() {}
+    @Override
+    public void onError(Throwable e) {Log.e("Response", e.getMessage());}
+    @Override
+    public void onNext(Feed feed) {
+        Log.i("Response", feed.toString());
+    }
+});
+```
+
+
 ## Feed Object
 
-**`feed.get("uuid")`**
+**`feed.getUuid()`**
 
 The feed's UUID
 
@@ -711,7 +822,6 @@ feed.getData().then(new Subscriber<Map>() {
 Get the feed's dynamic data. Resolves to the output of the feed query, with dynamic parameters.
 
 ```java
-
 Map<String,Object> query = new HashMap<String, Object>();
 query.put("name","scala");
 feed.getData(query).then(new Subscriber<Map>() {
@@ -729,7 +839,9 @@ feed.getData(query).then(new Subscriber<Map>() {
 
 ## Data
 
-**`Exp.getData(group:String, key:String)`**
+Data inherit all [common resource methods and attributes](#abstractmodel).There is a limit of 16MB per data document.
+
+**`Exp.getData(String group, String key)`**
 
 Get a single data item by group and key. Resolves to a [Data](#data).
 
@@ -770,7 +882,28 @@ Exp.findData(options)
 });
 ```
 
+**`Exp.createData(group, key, value)`**
+
+Resolves to a data item created based on the supplied group, key, and value.
+
+```java
+Map document = new HashMap();
+document.put("val","val");
+Exp.createData("data","model",document).then(new Subscriber<Data>() {
+    @Override
+    public void onCompleted() {}
+    @Override
+    public void onError(Throwable e) {Log.e("Response", e.getMessage());}
+    @Override
+    public void onNext(Data data) {
+        Log.i("Response", data.toString());
+    }
+});
+```
+
 ## Content
+
+Content inherit all [common resource methods and attributes](#abstractmodel) except `save()`.
 
 **`Exp.getContentNode(uuid)`**
 
@@ -791,7 +924,7 @@ Exp.getContent("d24c6581-f3d2-4d5a-b6b8-e90a4812d7df")
 });
 ```
 
-**`Exp.findContent(options)`**
+**`ExpSwift.findContent(options)`**
 
 ```java
 Exp.findContent(options)
@@ -820,7 +953,7 @@ Get the immediate children of this content node. Resolves to a list of [Content]
 
 ```java
 content.getChildren()
-  .then(new Subscriber<List<Content>() {
+  .then(new Subscriber<List<ContentNode>() {
       @Override
       public void onCompleted() {
       }
@@ -831,17 +964,18 @@ content.getChildren()
       }
 
       @Override
-      public void onNext(List<Content> children) {
-        for (Content child : children) {
+      public void onNext(List<ContentNode> children) {
+        for (ContentNode child : children) {
           Log.i("Child", child.get("name"));
         }
       }
   });
 ```
 
+
 **`content.getChildren(options)`**
 
-Resolves to a SearchResults object containing children [Content](#content-object). 
+Resolves to a SearchResults object containing children [Content](#content-object).
 
 ```java
 Map options = new HashMap();
@@ -868,7 +1002,7 @@ content.getChildren(options)
 Get the absolute url to the content node data. Useful for image/video tags or to download a content file. Returns empty String for folders
 
 ```java
-String url = content.getUrl();
+String url = contentNode.getUrl();
 ```
 
 **`content.getVariantUrl(name)`**
@@ -876,13 +1010,155 @@ String url = content.getUrl();
 Get the absolute url to the content node's variant data. Useful for image/video thumbnails or transcoded videos. Returns empty String for folders or if content does not contain the variant
 
 ```java
-String variantUrl = content.getVariantUrl("320.png");
+String variantUrl = contentNode.getVariantUrl("320.png");
+```
+
+## AbstractModel
+
+These methods and attributes are shared by many of the abstract API resources.
+
+**`getUuid()`**
+
+Returns the uuid of the resource. Cannot be set.
+
+```java
+String uuid = data.getUuid();
+```
+
+**`get(String name)`**
+
+Returns an object by the name specify if exist in the properties document.
+
+```java
+Object name = data.get("name");
+```
+
+**`getString(String name)`**
+
+Returns an String by the name specify if exist in the properties document.
+
+```java
+String name = data.getString("name");
+```
+
+**`getInteger(String name)`**
+
+Returns an Integer by the name specify if exist in the properties document.
+
+```java
+Integer total = data.getInteger("total");
+```
+
+**`getBoolean(String name)`**
+
+Returns an Boolean by the name specify if exist in the properties document.
+
+```java
+Integer result = data.getBoolean("result");
+```
+
+**`getChannel()`**
+
+Returns the channel whose name is contextually associated with this resource.
+
+```java
+IChannel channel = data.getChannel();
+```
+
+**`getChannel(boolean system,boolean consumer)`**
+
+Returns the channel whose name is contextually associated with this resource, with the options for system and consumer .
+
+```java
+IChannel channel = data.getChannel(false,true);
+```
+
+**`getDocument()`**
+
+The resource’s underlying document.
+
+```java
+Map document = data.getDocument();
+```
+
+**`setProperty(String name,Object value)`**
+
+Set a new property with name and value to the resource.
+
+```java
+device.setProperty("name","New Device Name");
+```
+
+**`save()`**
+
+Saves the resource and updates the document in place. Returns a promise to the save operation.
+
+```java
+ Exp.getDevice("[device uuid]").then(new Subscriber<Device>() {
+    @Override
+    public void onCompleted() {}
+    @Override
+    public void onError(Throwable e) {}
+    @Override
+    public void onNext(Device device) {
+        Log.i("Response", device.toString());
+        device.setProperty("name","Device Cesar 1");
+        device.save().then(new Subscriber<Device>() {
+            @Override
+            public void onCompleted() {}
+            @Override
+            public void onError(Throwable e) {}
+            @Override
+            public void onNext(Device device) {
+                Log.i("Response", device.toString());
+            }
+        });
+    }
+});
+```
+
+**`refresh()`**
+
+Refreshes the resource’s underlying document in place. Returns a promise to refresh operation.
+
+```java
+Exp.getDevice("[device uuid]").then(new Subscriber<Device>() {
+    @Override
+    public void onCompleted() {}
+    @Override
+    public void onError(Throwable e) {}
+    @Override
+    public void onNext(Device device) {
+        Log.i("Response", device.toString());
+        device.setProperty("name","Device Cesar 1");
+        device.save().then(new Subscriber<Device>() {
+            @Override
+            public void onCompleted() {}
+            @Override
+            public void onError(Throwable e) {}
+            @Override
+            public void onNext(Device device) {
+                device.refresh().then(new Subscriber<Device>() {
+                    @Override
+                    public void onCompleted() {}
+                    @Override
+                    public void onError(Throwable e) {}
+                    @Override
+                    public void onNext(Device device) {
+                        Log.i("Response", "Device Refresh!!");
+                    }
+                });
+            }
+        });
+    }
+});
+
 ```
 
 
-# Logging
+# LOGGING
 
-Android uses Proguard for packaging Apps, If you want to remove the Exp logs before you publish your app you need to change **build.gradle** under your project and add the file **proguard-android-optimize.txt** under build tpyes proguardFiles, this will activate the proguard rules that you can define in the file **proguard-rules.pro**, in this file you can remove the logs that you want. The configuration should luke like this
+Android uses Proguard for packaging Apps, If you want to remove the ExpSwift logs before you publish your app you need to change **build.gradle** under your project and add the file **proguard-android-optimize.txt** under build tpyes proguardFiles, this will activate the proguard rules that you can define in the file **proguard-rules.pro**, in this file you can remove the logs that you want. The configuration should luke like this
 
 ```xml
  buildTypes {
@@ -892,6 +1168,7 @@ Android uses Proguard for packaging Apps, If you want to remove the Exp logs bef
         }
     }
 ```
+
 For removing the logs in your release APK you need to add this line into the file **proguard-rules.pro**
 
 ```xml
@@ -904,6 +1181,7 @@ public static int d(...);
 public static int e(...);
 }
 ```
+
 Since you're using Exp SDK you need to add some extra configuration for third party library logs, after adding this part in your proguard-rules.pro you need to add this so the minify will work
 
 ```xml
@@ -945,5 +1223,5 @@ Since you're using Exp SDK you need to add some extra configuration for third pa
 -keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
     rx.internal.util.atomic.LinkedQueueNode consumerNode;
 }
-```
 
+```
