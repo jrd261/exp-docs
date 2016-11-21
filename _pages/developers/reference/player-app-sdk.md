@@ -102,6 +102,8 @@ Loads an app given the [app launch options](#app-launch-options). Returns a prom
 Loads and plays an app given the [app launch options](#app-launch-options). Returns a promise that resolves when playback is finished, or rejects if playback was interrupted.
 
 
+## Restarting and Pairing
+
 **`exp.player.restart()`**
 
 Restarts the player.
