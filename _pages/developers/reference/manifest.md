@@ -538,3 +538,44 @@ If you only want the user to be able to set one location, use this object but se
   "config": {}
 }
 ```
+
+### configType: date
+A selector for users to configure a date for their app.
+
+Takes a `min` and `max` optional parameter in the format `MM/DD/YYYY`.
+
+```json
+{
+  "configTypes": [
+    {
+      "name": "promotionDay",
+      "type": "date",
+      "label": "Promotion Day",
+      "required": true,
+      "path": "promotionDay",
+      "min": "10/15/2016"
+    }
+  ],
+  "config": {
+  }
+}
+```
+
+### configType: time
+A selector for users to configure a time for their app.
+
+```json
+{
+  "configTypes": [
+    {
+      "name": "storeOpen",
+      "type": "time",
+      "label": "Store Open",
+      "required": true,
+      "path": "storeOpen"
+    }
+  ],
+  "config": {
+  }
+}
+```
