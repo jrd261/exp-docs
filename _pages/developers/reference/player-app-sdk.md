@@ -102,6 +102,20 @@ Loads an app given the [app launch options](#app-launch-options). Returns a prom
 Loads and plays an app given the [app launch options](#app-launch-options). Returns a promise that resolves when playback is finished, or rejects if playback was interrupted.
 
 
+**`exp.player.restart()`**
+
+Restarts the player.
+
+
+**`exp.player.pair(credentials)`**
+
+Pairs the player. `credentials` is an object with fields `uuid` and `secret`/`apiKey`.
+
+
+**`exp.player.unpair()`**
+
+Unpairs and restarts the player.
+
 
 
 # App Launch Options
