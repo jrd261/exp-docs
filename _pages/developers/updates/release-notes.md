@@ -7,7 +7,7 @@ tags: [updates]
 
 ## November 2016 Release
 
-- IOS SDK v1.0.5 [click here](https://github.com/ScalaInc/exp-ios-sdk/releases/tag/v1.0.5).
+- IOS SDK v1.0.5 [view this release](https://github.com/ScalaInc/exp-ios-sdk/releases/tag/v1.0.5).
  
   - Added Swift 3.0 support - **if you're using previous version there are breaking changes**.
  	
@@ -15,17 +15,17 @@ tags: [updates]
 
   - Updated all the project dependencies to the latest stable release. 
 
-- Android SDK v1.0.5 [click here](https://github.com/ScalaInc/exp-android-sdk/releases/tag/v1.0.5).
+- Android SDK v1.0.5 [view this release](https://github.com/ScalaInc/exp-android-sdk/releases/tag/v1.0.5).
 
   - Added implements Iterable<T> for SearchResults to iterate the response.  
 
   - Updated all the project dependencies to the latest stable release. 
 
-- New version of exp-cli with a new 'deploy' feature to upload apps from your development environment. https://www.npmjs.com/package/exp-cli
+- New version of exp-cli with a new 'deploy' feature to upload apps from your development environment. [View on NPM] (https://www.npmjs.com/package/exp-cli)
 
 - Added support for datepicker and timepicker type in app manifest
 
-- Added restart, pair, and unpair methods to player app SDK. http://docs.goexp.io/developers/reference/player-app-sdk/#restarting-and-pairing
+- Added restart, pair, and unpair methods to player app SDK. [View documentation](http://docs.goexp.io/developers/reference/player-app-sdk/#restarting-and-pairing)
 
 - The player app Slideshow is now called Playlist.
 
