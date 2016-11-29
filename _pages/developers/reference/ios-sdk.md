@@ -1,6 +1,6 @@
 ---
 permalink: /developers/reference/ios-sdk/
-title: IOS SDK Reference (v1.0.5)
+title: IOS SDK Reference (v1.0.6)
 keywords: ios, sdk
 ---
 
@@ -242,7 +242,7 @@ channel1.identify()
 
 ## Devices
 
-Devices inherit all [common resource methods and attributes](#resources).
+Devices inherit all [common resource methods and attributes](#model).
 
 **`ExpSwift.getDevice(uuid:String)`**
 
@@ -270,6 +270,18 @@ ExpSwift.findDevices(["limit":10, "skip":0, "sort":"name"]).then { (devices: Sea
 }
 ```
 
+**`ExpSwift.createDevice(document:[String:Any])`**
+
+Resolves to a device created based on the supplied document.
+
+```swift
+ExpSwift.createDevice( ["name":"Device Swift","subtype":"scala:device:player"] ).then { (device: Device) -> Void in
+                     debugPrint(device)
+        }.catch { error in
+            debugPrint(error)
+    }
+```
+
 **`device.getLocation()`**
 
 Resolves to the device's [location](#locations) or `null`.
@@ -288,6 +300,8 @@ Resolves to the current Device(#devices) or `null`
 
 
 ## Things
+
+Things inherit all [common resource methods and attributes](#model).
 
 **`ExpSwift.getThing(uuid:String)`**
 
@@ -315,6 +329,18 @@ ExpSwift.findThings(["limit":10, "skip":0, "sort":"name"]).then { (things: Searc
 }
 ```
 
+**`Exp.createThing(document:[String:Any])`**
+
+Resolves to a thing created based on the supplied document.
+
+```swift
+ExpSwift.createThing( ["name","Rfid Name","subtype":"scala:thing:rfid","id","rfid id"] ).then { (thing: Thing) -> Void in
+                     debugPrint(thing)
+        }.catch { error in
+            debugPrint(error)
+    }
+```
+
 **`thing.getLocation()`**
 
 Resolves to the device's [location](#locations) or `null`.
@@ -330,6 +356,7 @@ Resolves to the device's [experience](#experiences) or `null`
 
 ## Experiences
 
+Experiences inherit all [common resource methods and attributes](#model).
 
 **`ExpSwift.getExperience(uuid:String)`**
 
@@ -357,6 +384,18 @@ ExpSwift.findExperiences(["limit":10, "skip":0, "sort":"name"]).then { (experien
 }
 ```
 
+**`Exp.createExperience(document:[String:Any])`**
+
+Resolves to an experience created based on the supplied document.
+
+```swift
+ExpSwift.createExperience( ["name","Experience Name"] ).then { (experience: Experience) -> Void in
+                     debugPrint(experience)
+        }.catch { error in
+            debugPrint(error)
+    }
+```
+
 **`experience.getDevices()`**
 
 Resolves to an array of [devices](#devices) that are part of this experience.
@@ -367,6 +406,8 @@ Resolves to the current Experience(#experiences) or `null`
 
 
 ## Locations
+
+Locations inherit all [common resource methods and attributes](#model).
 
 **`ExpSwift.getLocation(uuid:String)`**
 
@@ -392,6 +433,18 @@ ExpSwift.findLocations(["limit":10, "skip":0, "sort":"name"]).then { (locations:
     }.catch { error in
         debugPrint(error)
 }
+```
+
+**`Exp.createLocation(document:[String:Any])`**
+
+Resolves to a location created based on the supplied document.
+
+```swift
+ExpSwift.createLocation( ["name","Location Name"] ).then { (location: Location) -> Void in
+                     debugPrint(location)
+        }.catch { error in
+            debugPrint(error)
+    }
 ```
 
 **`location.getZones()`**
@@ -434,6 +487,8 @@ location.getThings().then { (things: SearchResults<Thing>) -> Void  in
 ```
 
 ## Zones
+
+Zones inherit all [common resource methods and attributes](#model).
 
 **`zone.key`**
 
@@ -481,6 +536,8 @@ Resolves to the zone's [location](#locations)
 
 ## Feeds
 
+Feeds inherit all [common resource methods and attributes](#model).
+
 **`ExpSwift.getFeed(uuid:String)`**
 
 Get a single feed by UUID. Resolves to a [Feed](#feeds).
@@ -505,6 +562,18 @@ ExpSwift.findFeeds(["limit":10, "skip":0, "sort":"name"]).then { (locations: Sea
 }.catch { error in
     debugPrint(error)
 }
+```
+
+**`Exp.createFeed(document:[String:Any])`**
+
+Resolves to a feed created based on the supplied document.
+
+```swift
+ExpSwift.createFeed( ["name","My Weather Feed","subtype","scala:feed:weather","searchValue","16902"] ).then { (feed: Feed) -> Void in
+                     debugPrint(feed)
+        }.catch { error in
+            debugPrint(error)
+    }
 ```
 
 ## Feed Object
@@ -539,6 +608,8 @@ Get the feed's dynamic data. Resolves to the output of the feed query, with dyna
 
 ## Data
 
+Data inherit all [common resource methods and attributes](#model).There is a limit of 16MB per data document.
+
 **`ExpSwift.getData(group:String, key:String)`**
 
 Get a single data item by group and key. Resolves to a [Data](#data).
@@ -565,7 +636,21 @@ ExpSwift.findData(["limit":10, "skip":0, "sort":"key", "group":"cats"]).then { (
 }
 ```
 
+**`Exp.createData(group:String, key:String, value:[String,Any])`**
+
+Resolves to a data item created based on the supplied group, key, and value.
+
+```swift
+ ExpSwift.createData("test",key: "datatest", document: ["name":"Device Swift","subtype":"scala:device:player"] ).then { (data:ExpSwift.Data) -> Void in
+        debugPrint(data)
+        }.catch { error in
+            debugPrint(error)
+    }
+```
+
 ## Content
+
+Content inherit all [common resource methods and attributes](#model) except save().
 
 **`ExpSwift.getContent(uuid)`**
 
@@ -641,6 +726,95 @@ Get the absolute url to the content node's variant data. Useful for image/video 
 
 ```swift
 let url = content.getVariantUrl("320.png");
+```
+
+## Model
+
+These methods and attributes are shared by many of the abstract API resources.
+
+**`getUuid()`**
+
+Returns the uuid of the resource. Cannot be set.
+
+```swift
+let uuid:String = data.getUuid()
+```
+
+**`get(name:String)`**
+
+Returns an object by the name specify if exist in the properties document.
+
+```swift
+let name = data.get("name")
+```
+
+**`getChannel()`**
+
+Returns the channel whose name is contextually associated with this resource.
+
+```swift
+let channel = data.getChannel();
+```
+
+**`getChannel(system:Bool,consumer:Bool)`**
+
+Returns the channel whose name is contextually associated with this resource, with the options for system and consumer .
+
+```swift
+let channel = data.getChannel(false,true);
+```
+
+**`getDocument()`**
+
+The resource’s underlying document.
+
+```swift
+let document = data.getDocument();
+```
+
+**`setProperty(name:String,value:Any)`**
+
+Set a new property with name and value to the resource.
+
+```java
+device.setProperty(name: "name", value: "Device Updated")
+```
+
+**`save()`**
+
+Saves the resource and updates the document in place. Returns a promise to the save operation.
+
+```swift
+ExpSwift.getDevice("8930ff64-1063-4a03-b1bc-33e1ba463d7a").then { (device: Device) -> Void in
+    device.setProperty(name: "name", value: "Device Updated SDK")
+    device.save().then{(device: Device) -> Void in
+        }.catch { error in
+           debugPrint(error)
+    }
+}.catch { error in
+    debugPrint(error)
+}
+```
+
+**`refresh()`**
+
+Refreshes the resource’s underlying document in place. Returns a promise to refresh operation.
+
+```swift
+ExpSwift.getDevice("8930ff64-1063-4a03-b1bc-33e1ba463d7a").then { (device: Device) -> Void in
+    device.setProperty(name: "name", value: "Device Updated SDK")
+    device.save().then{(device: Device) -> Void in
+        device.refresh().then { (device: Device) -> Void in
+            debugPrint("Device Refresh")
+            }.catch { error in
+                debugPrint(error)
+            }
+        }.catch { error in
+           debugPrint(error)
+    }
+}.catch { error in
+    debugPrint(error)
+}
 ```
 
 # Logging
