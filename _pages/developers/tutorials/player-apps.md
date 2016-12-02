@@ -125,9 +125,9 @@ The initial state of the config object is being set in the manifest too. We set 
 The code for the app is now complete. Compress the app directory into a .zip file and upload it as a content item to the content tree.
 After clicking "Upload App", you will be prompted to enter a name and upload the file. 
 
-![Uploading an App](/common_images/developers/uploading_an_app.png "Uploading an App")
+![Uploading an App](/common_images/developers/playerApps/uploading_an_app.png "Uploading an App")
 
-![Uploading an App Dialog](/common_images/developers/uploading_an_app_dialog.png "Uploading an App Dialog")
+![Uploading an App Dialog](/common_images/developers/playerApps/uploading_an_app_dialog.png "Uploading an App Dialog")
 
 From the Experiences route, create a new experience (choose "Empty Experience" rather than "From Template").
 
