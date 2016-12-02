@@ -307,6 +307,21 @@ Exp.createDevice(document).then(new Subscriber<Device>() {
 });
 ```
 
+**`Exp.deleteDevice(uuid)`**
+
+```java
+Exp.deleteDevice(device.getUuid()).then(new Subscriber<Void>() {
+    @Override
+    public void onCompleted() {}
+    @Override
+    public void onError(Throwable e) {Log.e("Error", e.getMessage());}
+    @Override
+    public void onNext(Void device) {
+        Log.i("Response", "Device Deleted!");
+    }
+});
+```
+
 **`device.getZones()`**
 
 Resolves to an array of [zones](#zones) that are part of this device.
@@ -435,6 +450,21 @@ Exp.createThing(document).then(new Subscriber<Thing>() {
 });
 ```
 
+**`Exp.deleteThing(uuid)`**
+
+```java
+Exp.deleteThing(thing.getUuid()).then(new Subscriber<Void>() {
+    @Override
+    public void onCompleted() {}
+    @Override
+    public void onError(Throwable e) {Log.e("Error", e.getMessage());}
+    @Override
+    public void onNext(Void device) {
+        Log.i("Response", "Thing Deleted!");
+    }
+});
+```
+
 **`thing.getZones()`**
 
 Resolves to an array of [zones](#zones) that are part of this device.
@@ -511,6 +541,21 @@ Exp.createExperience(document).then(new Subscriber<Experience>() {
     @Override
     public void onNext(Experience experience) {
         Log.i("Response", experience.toString());
+    }
+});
+```
+
+**`Exp.deleteExperience(uuid)`**
+
+```java
+Exp.deleteExperience(experience.getUuid()).then(new Subscriber<Void>() {
+    @Override
+    public void onCompleted() {}
+    @Override
+    public void onError(Throwable e) {Log.e("Error", e.getMessage());}
+    @Override
+    public void onNext(Void device) {
+        Log.i("Response", "Experience Deleted!");
     }
 });
 ```
@@ -604,6 +649,22 @@ Exp.createLocation(document).then(new Subscriber<Location>() {
     }
 });
 ```
+
+**`Exp.deleteLocation(uuid)`**
+
+```java
+Exp.deleteLocation(location.getUuid()).then(new Subscriber<Void>() {
+    @Override
+    public void onCompleted() {}
+    @Override
+    public void onError(Throwable e) {Log.e("Error", e.getMessage());}
+    @Override
+    public void onNext(Void device) {
+        Log.i("Response", "Location Deleted!");
+    }
+});
+```
+
 
 **`location.getZones()`**
 
@@ -792,6 +853,20 @@ Exp.createFeed(document).then(new Subscriber<Feed>() {
 });
 ```
 
+**`Exp.deleteFeed(uuid)`**
+
+```java
+Exp.deleteFeed(feed.getUuid()).then(new Subscriber<Void>() {
+    @Override
+    public void onCompleted() {}
+    @Override
+    public void onError(Throwable e) {Log.e("Error", e.getMessage());}
+    @Override
+    public void onNext(Void device) {
+        Log.i("Response", "Feed Deleted!");
+    }
+});
+```
 
 ## Feed Object
 
@@ -897,6 +972,21 @@ Exp.createData("data","model",document).then(new Subscriber<Data>() {
     @Override
     public void onNext(Data data) {
         Log.i("Response", data.toString());
+    }
+});
+```
+
+**`Exp.deleteData(group, key)`**
+
+```java
+Exp.deleteData("data","model").then(new Subscriber<Void>() {
+    @Override
+    public void onCompleted() {}
+    @Override
+    public void onError(Throwable e) {Log.e("Response", e.getMessage());}
+    @Override
+    public void onNext(Void data) {
+        Log.i("Response", "Data Deleted!");
     }
 });
 ```
