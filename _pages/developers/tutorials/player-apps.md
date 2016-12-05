@@ -125,19 +125,11 @@ The initial state of the config object is being set in the manifest too. We set 
 The code for the app is now complete. Compress the app directory into a .zip file and upload it as a content item to the content tree.
 After clicking "Upload App", you will be prompted to enter a name and upload the file. 
 
-![Uploading an App](/common_images/developers/uploading_an_app.png "Uploading an App")
+![Uploading an App](/common_images/developers/playerApps/uploading_an_app.gif "Uploading an App")
 
-![Uploading an App Dialog](/common_images/developers/uploading_an_app_dialog.png "Uploading an App Dialog")
+From the Experiences route, create a new experience (choose "Empty Experience" rather than "From Template"), then from the apps tab add a new instance of the app we just wrote.
 
-From the Experiences route, create a new experience (choose "Empty Experience" rather than "From Template").
-
-![Creating a New Experience](/common_images/developers/creating_new_experience.png "Creating a New Experience")
-
-From the Apps tab of the experience add an instance of the app we just wrote.
-
-![Adding an App](/common_images/developers/add_app.png "Adding an App")
-
-![Open App Settings](/common_images/developers/open_app_settings.png "Open App Settings")
+![Making an Experience](/common_images/developers/playerApps/making_an_experience.gif "Making an Experience")
 
 From the app settings menu for the instance of the app we just added, configure the message.
 
@@ -145,9 +137,7 @@ From the app settings menu for the instance of the app we just added, configure 
 
 From the Schedule tab, add a new day plan that runs our app at all times of the day, and assign that day plan to the current day.
 
-![Creating Day Plan](/common_images/developers/creating_day_plan.png "Creating Day Plan")
-
-![Creating Schedule](/common_images/developers/creating_schedule.png "Creating Schedule")
+![Scheduling an Experience](/common_images/developers/playerApps/scheduling_an_experience.gif "Scheduling an Experience")
 
 Now, we have an experience with our app included and scheduled to run. The last step is assigning a device to show whatever is
 scheduled to be running right now. If you don't already have a player set up and added in EXP, do so now by adding a new device
