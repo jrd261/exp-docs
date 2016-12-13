@@ -133,7 +133,7 @@ From the Experiences route, create a new experience (choose "Empty Experience" r
 
 From the app settings menu for the instance of the app we just added, configure the message.
 
-![App Settings](/common_images/developers/app_settings.png "App Settings")
+![App Settings](/common_images/developers/playerApps/app_settings.png "App Settings")
 
 From the Schedule tab, add a new day plan that runs our app at all times of the day, and assign that day plan to the current day.
 
