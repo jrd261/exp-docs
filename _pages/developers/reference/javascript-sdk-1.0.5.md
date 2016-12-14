@@ -387,7 +387,7 @@ Resolves to the feed with the given uuid or `null` if no feed could be found.
 Resolves to a feed created based on the supplied document.
 
 ```javascript
-exp.createFeed({ subtype: 'scala:feed:weather', searchValue: '16902', name: 'My Weather Feed'  }).then(feed => {});
+exp.createFeed({ subtype: 'scala:feed:weather', dataType: 'static', searchValue: '16902', name: 'My Weather Feed'  }).then(feed => {});
 ```
 
 **`exp.findFeeds(params)`**
