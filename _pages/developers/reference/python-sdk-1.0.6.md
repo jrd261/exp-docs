@@ -399,7 +399,7 @@ Returns the feed with the given uuid or `None` if no feed could be found.
 Returns a feed created based on the supplied document.
 
 ```python
-feed = exp.create_feed({ 'subtype': 'scala:feed:weather', 'searchValue': '16902', 'name': 'My Weather Feed'  })
+feed = exp.create_feed({ 'subtype': 'scala:feed:weather', dataType: 'static', 'searchValue': '16902', 'name': 'My Weather Feed'  })
 ```
 
 **`exp.find_feeds(params=None)`**
