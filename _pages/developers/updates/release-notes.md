@@ -5,6 +5,21 @@ keywords: developer
 tags: [updates]
 ---
 
+## December 2016 Release
+
+- Android SDK v1.0.6 [click here](https://github.com/ScalaInc/exp-android-sdk/releases/tag/v1.0.6).
+  
+  - Added Create,Delete,Upadte,Refresh to Exp model.
+
+  - Added setProperty to Exp model.
+
+- IOS SDK v1.0.6 [click here](https://github.com/ScalaInc/exp-ios-sdk/releases/tag/v1.0.6).
+  
+  - Added Create,Delete,Upadte,Refresh to Exp model.
+  
+  - Added setProperty to Exp model.
+
+
 ## November 2016 Release
 
 - IOS SDK v1.0.5 [view this release](https://github.com/ScalaInc/exp-ios-sdk/releases/tag/v1.0.5).
