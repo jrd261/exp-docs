@@ -55,7 +55,7 @@ exp.getContent('root').then(root => {
 
 To continue walking the tree you can call the `child.getChildren()` function to get the content of a folder.
 
-See the SDK reference for more details on the [Content](http://docs.goexp.io/developers/reference/javascript-sdk/#content) resource.
+*See the SDK reference for more details on the [Content](http://docs.goexp.io/developers/reference/javascript-sdk/#content) resource.
 
 # Working with Different Types of Content
 
