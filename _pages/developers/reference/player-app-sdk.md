@@ -20,6 +20,7 @@ The following parameters can be added to the player url as query params or hash 
 - `uuid` The uuid of the device or consumer app to use for authentication.
 - `secret` The device's secret. We suggest using hash params to keep the secret off the wire.
 - `apiKey` The consumer app's api key.
+- `experience` The uuid of the experience to play.
 
 
 # App
