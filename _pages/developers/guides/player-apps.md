@@ -243,7 +243,7 @@ function load () {
 
 ```
 
-Once this app is uploaded to EXP and can be referenced by uuid, any player app in your organization can launch a video by url by simply calling:
+*Once this app is uploaded to EXP and can be referenced by uuid, any player app in your organization can launch a video by url by simply calling:
 
 ```javascript
 
