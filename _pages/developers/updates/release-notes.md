@@ -5,19 +5,25 @@ keywords: developer
 tags: [updates]
 ---
 
+
+
 ## December 2016 Release
+
+- With the latest release, we made breaking changes to the github and bitbucket feed response format to fix the naming of properties that were inconsistent with the other feed formats.
+
+- Changes to an experience now cause a graceful transition from the old experience to the new instead of restarting the player.
 
 - Android SDK v1.0.6 [click here](https://github.com/ScalaInc/exp-android-sdk/releases/tag/v1.0.6).
   
-  - Added Create,Delete,Upadte,Refresh to Exp model.
+  - Added `Create`, `Delete`, `Update`, `Refresh` to Exp model.
 
   - Added setProperty to Exp model.
 
 - IOS SDK v1.0.6 [click here](https://github.com/ScalaInc/exp-ios-sdk/releases/tag/v1.0.6).
   
-  - Added Create,Delete,Upadte,Refresh to Exp model.
+  - Added `Create`, `Delete`, `Update`, `Refresh` to Exp model.
   
-  - Added setProperty to Exp model.
+  - Added `setProperty` to Exp model.
 
 
 ## November 2016 Release
@@ -36,7 +42,7 @@ tags: [updates]
 
   - Updated all the project dependencies to the latest stable release. 
 
-- New version of exp-cli with a new 'deploy' feature to upload apps from your development environment. [View on NPM] (https://www.npmjs.com/package/exp-cli)
+- New version of exp-cli with a new `deploy` feature to upload apps from your development environment. [View on NPM](https://www.npmjs.com/package/exp-cli).
 
 - Added support for datepicker and timepicker type in app manifest
 
