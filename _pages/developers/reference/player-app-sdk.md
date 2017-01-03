@@ -133,7 +133,7 @@ app {
 }
 ```
 
-Apps outside of any relative or absolute positioned parents will be full screen and stack on top of eachother. To bring an app into the flow of the DOM put the app inside of a relatively positioning container.
+Apps outside of any relative or absolute positioned parents will fill their parent and stack on top of eachother. To bring an app into the flow of the DOM put the app inside of a relatively positionined container.
 
 # App Launch Options
 
