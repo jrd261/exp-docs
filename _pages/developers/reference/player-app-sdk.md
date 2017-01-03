@@ -119,7 +119,21 @@ Pairs the player. `credentials` is an object with fields `uuid` and `secret`/`ap
 
 Unpairs and restarts the player.
 
+# Positioning Apps in the DOM
 
+Apps are styled to fill the available absolutely positioned space, i.e.
+
+```css
+app {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+```
+
+Apps outside of any relative or absolute positioned parents will be full screen and stack on top of eachother. To bring an app into the flow of the DOM put the app inside of a relatively positioning container.
 
 # App Launch Options
 
