@@ -1,5 +1,5 @@
 ---
-permalink: /developers/reference/authentication/
+permalink: /developers/reference/authentication
 title: Authentication
 keywords: developer, authentication
 last_updated: April 20, 2016

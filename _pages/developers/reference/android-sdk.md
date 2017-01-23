@@ -1,5 +1,5 @@
 ---
-permalink: /developers/reference/android-sdk/
+permalink: /developers/reference/android-sdk
 title: Android SDK Reference (v1.0.6)
 keywords: android, sdk
 ---

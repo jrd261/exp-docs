@@ -1,5 +1,5 @@
 ---
-permalink: /developers/reference/manifest/
+permalink: /developers/reference/manifest
 title: Manifest.json Reference 
 keywords: manifest
 ---

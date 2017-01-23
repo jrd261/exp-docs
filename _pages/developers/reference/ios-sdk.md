@@ -1,5 +1,5 @@
 ---
-permalink: /developers/reference/ios-sdk/
+permalink: /developers/reference/ios-sdk
 title: IOS SDK Reference (v1.0.6)
 keywords: ios, sdk
 ---
