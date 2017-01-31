@@ -108,7 +108,7 @@ entries:
       output: web, pdf
       thirdlevel:
       - title: Python SDK
-        url: /developers/reference/python-sdk/
+        url: /developers/reference/python-sdk
         audience: developers, designers
         platform: all
         product: all
@@ -129,28 +129,28 @@ entries:
         version: all
         output: web, pdf
       - title: IOS SDK
-        url: /developers/reference/ios-sdk/
+        url: /developers/reference/ios-sdk
         audience: developers, designers
         platform: all
         product: all
         version: all
         output: web, pdf
       - title: Android SDK
-        url: /developers/reference/android-sdk/
+        url: /developers/reference/android-sdk
         audience: developers, designers
         platform: all
         product: all
         version: all
         output: web, pdf
       - title: Authentication
-        url: /developers/reference/authentication/
+        url: /developers/reference/authentication
         audience: developers, designers
         platform: all
         product: all
         version: all
         output: web, pdf
       - title: Manifest.json
-        url: /developers/reference/manifest/
+        url: /developers/reference/manifest
         audience: developers, designers
         platform: all
         product: all

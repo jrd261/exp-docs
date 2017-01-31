@@ -1,5 +1,5 @@
 ---
-permalink: /developers/tutorials/usingfeeds/
+permalink: /developers/tutorials/usingfeeds
 title: Using Feeds
 keywords: developer
 last_updated: July 11, 2016
@@ -13,7 +13,7 @@ This tutorial will show how to set up a feed in the EXP platform and integrate t
 
 # RSS HTML APP
 As a example on how feed integrations works, we are going to create an Angular JS HTML App that will pull Facebook postings from the EXP platform.
-This `Angular HTML App` will run in a EXP player and will use the [EXP Player APP SDK](/developers/reference/player-app-sdk/) to get the Facebook data form the EXP platform.
+This `Angular HTML App` will run in a EXP player and will use the [EXP Player APP SDK](/developers/reference/player-app-sdk) to get the Facebook data form the EXP platform.
 For more info on the `EXP SDK's`, please check the [Developer Guide - Reference](/#more-resources).
 
 ## Setup Feed
@@ -46,7 +46,7 @@ In the EXP platform we are going to setup a Facebook feed that will pull posting
 ![tutorial](/common_images/tutorials/feed_tutorial_3.png "feed tutorial 3")
 
 ## EXP player SDK
-The [EXP Player APP SDK](/developers/reference/player-app-sdk/) will automatically be injected into all HTML apps running on an EXP player. 
+The [EXP Player APP SDK](/developers/reference/player-app-sdk) will automatically be injected into all HTML apps running on an EXP player. 
 The EXP player fires a Javascript `load` function when the `SDK` is loaded.
 From here the `SDK` can be accessed using the `exp` object. 
 For example getting configuration information: `exp.app.config`.
@@ -466,10 +466,10 @@ You can download the finished demo application here: [facebookApp](https://githu
 
 Scala offers a List of `SDK's` for multiple program languages:
 
-- [Python SDK - Reference](http://docs.goexp.io/developers/reference/python-sdk/)
+- [Python SDK - Reference](http://docs.goexp.io/developers/reference/python-sdk)
 
-- [Player app SDK - Reference](http://docs.goexp.io/developers/reference/player-app-sdk/)
+- [Player app SDK - Reference](http://docs.goexp.io/developers/reference/player-app-sdk)
 
-- [IOS SDK - Reference](http://docs.goexp.io/developers/reference/ios-sdk/)
+- [IOS SDK - Reference](http://docs.goexp.io/developers/reference/ios-sdk)
 
-- [Android SDK - Reference](http://docs.goexp.io/developers/reference/android-sdk/)
+- [Android SDK - Reference](http://docs.goexp.io/developers/reference/android-sdk)
