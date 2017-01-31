@@ -171,7 +171,7 @@ Fling an app launch payload on the channel.
 
 ```python
 location = exp.get_location('[uuid]')
-location.get_channel().fling({ 'appTemplate' : { 'uuid': '[uuid'} })
+location.get_channel().fling({ 'content' : '[url]' })
 ```
 
 
