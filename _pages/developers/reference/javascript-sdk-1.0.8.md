@@ -202,7 +202,7 @@ channel.listen('myEvent', (payload, respond) => {
 
 Fling an app launch payload on the channel.
 ```javascript
-channel.fling({ appTemplate: { uuid: '[uuid]' } });
+channel.fling({ content: '[url]' });
 ```
 
 **`channel.identify()`**
