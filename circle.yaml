@@ -5,10 +5,12 @@ machine:
     APP: docs
   services:
     - docker
+  ruby:
+    version: 2.3.0
 
 dependencies:
   post:
-    - jekyll build
+    - bundle exec jekyll build
 
 test:
   override:
