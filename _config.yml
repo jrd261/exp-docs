@@ -79,3 +79,4 @@ defaults:
       search: true
       tooltip: true
 
+baseurl: /docs
