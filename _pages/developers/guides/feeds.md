@@ -803,5 +803,7 @@ Once you've created a dynamic feed, you can see what it's like to have dynamic p
 ### Exceptions
 There are a couple of feed types not available as dynamic. Currently they are RSS and Generic Endpoint.
 
-## Calendar Feed "All Day Events"
+## Feed Special Cases
+
+### Calendar Feed "All Day Events"
 When setting up a Microsoft or Google Calendar feed and selecting a All Day event the time and timezone will not be returned in the feed. By design Microsoft and Google are not not returning these values in case of all day events. In this case Clients needs to apply there own timezone. 
