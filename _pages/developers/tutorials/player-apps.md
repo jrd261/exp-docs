@@ -125,19 +125,19 @@ The initial state of the config object is being set in the manifest too. We set 
 The code for the app is now complete. Compress the app directory into a .zip file and upload it as a content item to the content tree.
 After clicking "Upload App", you will be prompted to enter a name and upload the file. 
 
-![Uploading an App](/common_images/developers/playerApps/uploading_an_app.gif "Uploading an App")
+![Uploading an App]({{site.baseurl}}/common_images/developers/playerApps/uploading_an_app.gif "Uploading an App")
 
 From the Experiences route, create a new experience (choose "Empty Experience" rather than "From Template"), then from the apps tab add a new instance of the app we just wrote.
 
-![Making an Experience](/common_images/developers/playerApps/making_an_experience.gif "Making an Experience")
+![Making an Experience]({{site.baseurl}}/common_images/developers/playerApps/making_an_experience.gif "Making an Experience")
 
 From the app settings menu for the instance of the app we just added, configure the message.
 
-![App Settings](/common_images/developers/playerApps/app_settings.png "App Settings")
+![App Settings]({{site.baseurl}}/common_images/developers/playerApps/app_settings.png "App Settings")
 
 From the Schedule tab, add a new day plan that runs our app at all times of the day, and assign that day plan to the current day.
 
-![Scheduling an Experience](/common_images/developers/playerApps/scheduling_an_experience.gif "Scheduling an Experience")
+![Scheduling an Experience]({{site.baseurl}}/common_images/developers/playerApps/scheduling_an_experience.gif "Scheduling an Experience")
 
 Now, we have an experience with our app included and scheduled to run. The last step is assigning a device to show whatever is
 scheduled to be running right now. If you don't already have a player set up and added in EXP, do so now by adding a new device
@@ -146,9 +146,9 @@ already have a player set up, add that to the experience instead.
 
 As soon as the device is added we should see the player showing something like:
 
-![Hello World Player](/common_images/developers/hello_world_player.png "Hello World Player")
+![Hello World Player]({{site.baseurl}}/common_images/developers/hello_world_player.png "Hello World Player")
 
 # Conclusion
 That's it! You have now learned the basics of how to create an EXP player app.
 
-To learn more about what's possible with an EXP player app, read the documentation for the [EXP Javascript SDK](/developers/reference/javascript_sdk_reference).
+To learn more about what's possible with an EXP player app, read the documentation for the [EXP Javascript SDK]({{site.baseurl}}/developers/reference/javascript_sdk_reference).
