@@ -20,22 +20,22 @@ If you're just kicking the tires the easiest way to get to a player is by openin
 ## Let's Go!
 To get started create an experience using the Playlist Experience template and upload some content in the app settings menu.
 
-![Create and Configure an Experience](/common_images/developers/quickstart/create-and-configure.gif "Create and Configure an Experience")
+![Create and Configure an Experience]({{site.baseurl}}/common_images/developers/quickstart/create-and-configure.gif "Create and Configure an Experience")
 
 An Experience Template is a set of canned app configuration with scheduling.  The Playlist Experience template has one app (the Playlist App) and a 24/7 schedule for that single app.
 
 Open your player to get a pairing code.
 
-![Player Showing Pairing Code](/common_images/developers/quickstart/player-pairing-code.png "Player Showing Pairing Code")
+![Player Showing Pairing Code]({{site.baseurl}}/common_images/developers/quickstart/player-pairing-code.png "Player Showing Pairing Code")
 
 Create a device in your experience using the pairing code from the player.
 
-![Create a Player with Pairing Code](/common_images/developers/quickstart/pair-player.gif "Create a Player with Pairing Code")
+![Create a Player with Pairing Code]({{site.baseurl}}/common_images/developers/quickstart/pair-player.gif "Create a Player with Pairing Code")
 
 ## All Set
 That's it! You should now have content playing on your player.
 
 You can find more information about the player using the hidden player menu by clicking near the bottom left corner of the screen.
-![Hidden Player Menu](/common_images/developers/quickstart/player-menu-app.png "Hidden Player Menu")
+![Hidden Player Menu]({{site.baseurl}}/common_images/developers/quickstart/player-menu-app.png "Hidden Player Menu")
 
-You're ready to start writing your own custom apps, take a look at the documentation for [Player App Development](/developers/tutorials/player-apps).
+You're ready to start writing your own custom apps, take a look at the documentation for [Player App Development]({{site.baseurl}}/developers/tutorials/player-apps).
