@@ -6,7 +6,7 @@
 
         <ul id="mysidebar" class="nav" >
             <a class="brand" href="/">
-                <img class="sidebar-logo" src="{{site.footer_image_location}}" alt="EXP Docs Logo">
+                <img class="sidebar-logo" src="{{ site.baseurl }}{{site.footer_image_location}}" alt="EXP Docs Logo">
             </a>
             <!-- <span class="versionTagline">{{site.sidebar_version}}</span> -->
             {% for entry in site.data.sidebar.entries %}
