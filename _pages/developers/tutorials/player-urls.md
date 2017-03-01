@@ -12,11 +12,11 @@ These are the instructions for making a player which doesn't need to be paired, 
 
 1. Create a player by entering a name and NO pairing code.
 
-    ![Create New Device](/common_images/developers/playerUrls/creating_new_device.png)
+    ![Create New Device]({{site.baseurl}}/common_images/developers/playerUrls/creating_new_device.png)
 
 2. Save the uuid and secret of the device. You will only be given this option once. There's a Download button to save it as a json file.
 
-    ![Save Uuid and Secret](/common_images/developers/playerUrls/uuid_and_secret.png)
+    ![Save Uuid and Secret]({{site.baseurl}}/common_images/developers/playerUrls/uuid_and_secret.png)
 
 3. Add the uuid and secret to the query parameters OR hash of the player URL and use this as a web clip in Enterprise. e.g.
 
@@ -43,7 +43,7 @@ Start with the URL created above pointing to a device in an experience:
 Then steal the experience uuid and app key from the URL of the app config page.
 
 
-![Planned Player URL](/common_images/developers/playerUrls/planned_player_url.png)
+![Planned Player URL]({{site.baseurl}}/common_images/developers/playerUrls/planned_player_url.png)
 
 Add the experience uuid and app key as query params to the existing URL (it will now have four query parameters: `uuid` and `secret` which correspond to the device, and the new `experience` and `key`). The result will look like:
 

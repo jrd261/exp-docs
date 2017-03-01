@@ -6,7 +6,7 @@ last_updated: July 11, 2016
 tags: []
 ---
 
-<link rel="stylesheet" href="/_pages/developers/guides/feeds.css">
+<link rel="stylesheet" href="{{site.baseurl}}/_pages/developers/guides/feeds.css">
 
 # Overview
 
@@ -17,15 +17,15 @@ without being modified.
 The feeds can be acessed through a method on your EXP SDK, so consult the reference for your platform below. This guide will have more detail
 about how to use feeds and how they can be configured.
 
-- [JavaScript SDK - Reference](http://docs.goexp.io/developers/reference/javascript-sdk)
+- [JavaScript SDK - Reference]({{site.baseurl}}/developers/reference/javascript-sdk)
 
-- [Python SDK - Reference](http://docs.goexp.io/developers/reference/python-sdk)
+- [Python SDK - Reference]({{site.baseurl}}/developers/reference/python-sdk)
 
-- [Player app SDK - Reference](http://docs.goexp.io/developers/reference/player-app-sdk)
+- [Player app SDK - Reference]({{site.baseurl}}/developers/reference/player-app-sdk)
 
-- [IOS SDK - Reference](http://docs.goexp.io/developers/reference/ios-sdk)
+- [IOS SDK - Reference]({{site.baseurl}}/developers/reference/ios-sdk)
 
-- [Android SDK - Reference](http://docs.goexp.io/developers/reference/android-sdk)
+- [Android SDK - Reference]({{site.baseurl}}/developers/reference/android-sdk)
 
 # Integrations
 Most of the feed types in EXP require permissions to access the third party data source.
@@ -33,7 +33,7 @@ To permanently link credentials for data sources that you provide, EXP has the c
 You can create a new integration from the integrations route (see below).
 Here the required credentials can be entered and then the integration will be available to everyone in the organization.
 
-![Data Source Integration](/common_images/developers/integrations.png "Data Source Integration")
+![Data Source Integration]({{site.baseurl}}/common_images/developers/integrations.png "Data Source Integration")
 
 ## Adding an Integration
 - Find the integration source that your app will use and press the ADD button.
@@ -46,11 +46,11 @@ Here the required credentials can be entered and then the integration will be av
 
 If the integration fails, an error message will appear:
 
-![Data Source Integration Error Message](/common_images/developers/integration_error.png "Data Source Integration Error")
+![Data Source Integration Error Message]({{site.baseurl}}/common_images/developers/integration_error.png "Data Source Integration Error")
 
 When the integration is successfuly added it will show up under configured integrations.
 
-![Data Source Integration](/common_images/developers/integrations_implemented.png "Data Source Integration Implemented")
+![Data Source Integration]({{site.baseurl}}/common_images/developers/integrations_implemented.png "Data Source Integration Implemented")
 
 ## Updating an Integration
 If for any reason the integration needs to be updated, for example a permission setting that has changed, click the integration's Update button to make changes.
@@ -77,7 +77,7 @@ Some third party providers do not allow this revoke access to happen automatical
     </tr>
     <tr>
       <td>
-        <img src="/common_images/feedIcons/facebook.svg">
+        <img src="{{site.baseurl}}/common_images/feedIcons/facebook.svg">
         Facebook
       </td>
       <td>Facebook</td>
@@ -86,7 +86,7 @@ Some third party providers do not allow this revoke access to happen automatical
     </tr>
     <tr>
       <td>
-        <img src="/common_images/feedIcons/instagram.svg">
+        <img src="{{site.baseurl}}/common_images/feedIcons/instagram.svg">
         Instagram
       </td>
       <td>Instagram</td>
@@ -95,7 +95,7 @@ Some third party providers do not allow this revoke access to happen automatical
     </tr>
     <tr>
       <td>
-        <img src="/common_images/feedIcons/twitter.svg">
+        <img src="{{site.baseurl}}/common_images/feedIcons/twitter.svg">
         Instagram
         Twitter
       </td>
@@ -105,7 +105,7 @@ Some third party providers do not allow this revoke access to happen automatical
     </tr>
     <tr>
       <td>
-        <img src="/common_images/feedIcons/linkedin.svg">
+        <img src="{{site.baseurl}}/common_images/feedIcons/linkedin.svg">
         LinkedIn
       </td>
       <td>LinkedIn</td>
@@ -117,7 +117,7 @@ Some third party providers do not allow this revoke access to happen automatical
     </tr>
     <tr>
       <td>
-        <img src="/common_images/feedIcons/google-drive.svg">
+        <img src="{{site.baseurl}}/common_images/feedIcons/google-drive.svg">
         Google Spreadsheet
       </td>
       <td>Google Drive</td>
@@ -126,7 +126,7 @@ Some third party providers do not allow this revoke access to happen automatical
     </tr>
     <tr>
       <td>
-        <img src="/common_images/feedIcons/one-drive.svg">
+        <img src="{{site.baseurl}}/common_images/feedIcons/one-drive.svg">
         Microsoft Spreadsheet
       </td>
       <td>Microsoft OneDrive</td>
@@ -138,7 +138,7 @@ Some third party providers do not allow this revoke access to happen automatical
     </tr>
     <tr>
       <td>
-        <img src="/common_images/feedIcons/google-calendar.svg">
+        <img src="{{site.baseurl}}/common_images/feedIcons/google-calendar.svg">
         Google Calendar
       </td>
       <td>Google Calendar</td>
@@ -147,7 +147,7 @@ Some third party providers do not allow this revoke access to happen automatical
     </tr>
     <tr>
       <td>
-        <img src="/common_images/feedIcons/outlook.svg">
+        <img src="{{site.baseurl}}/common_images/feedIcons/outlook.svg">
         Microsoft Calendar
       </td>
       <td>Microsoft Calendar</td>
@@ -159,7 +159,7 @@ Some third party providers do not allow this revoke access to happen automatical
     </tr>
     <tr>
       <td>
-        <img src="/common_images/feedIcons/shopify-logo.svg">
+        <img src="{{site.baseurl}}/common_images/feedIcons/shopify-logo.svg">
         Shopify
       </td>
       <td>Shopify</td>
@@ -168,7 +168,7 @@ Some third party providers do not allow this revoke access to happen automatical
     </tr>
     <tr>
       <td>
-        <img src="/common_images/feedIcons/square-logo.svg">
+        <img src="{{site.baseurl}}/common_images/feedIcons/square-logo.svg">
         Square
       </td>
       <td>Square</td>
@@ -180,7 +180,7 @@ Some third party providers do not allow this revoke access to happen automatical
     </tr>
     <tr>
       <td>
-        <img src="/common_images/feedIcons/github.svg">
+        <img src="{{site.baseurl}}/common_images/feedIcons/github.svg">
         GitHub
       </td>
       <td>GitHub</td>
@@ -189,7 +189,7 @@ Some third party providers do not allow this revoke access to happen automatical
     </tr>
     <tr>
       <td>
-        <img src="/common_images/feedIcons/bitbucket.svg">
+        <img src="{{site.baseurl}}/common_images/feedIcons/bitbucket.svg">
         BitBucket
       </td>
       <td>BitBucket</td>
@@ -201,7 +201,7 @@ Some third party providers do not allow this revoke access to happen automatical
     </tr>
     <tr>
       <td>
-        <img src="/common_images/feedIcons/weather-partlycloudy.svg">
+        <img src="{{site.baseurl}}/common_images/feedIcons/weather-partlycloudy.svg">
         Weather
       </td>
       <td>N/A</td>
@@ -210,7 +210,7 @@ Some third party providers do not allow this revoke access to happen automatical
     </tr>
     <tr>
       <td>
-        <img src="/common_images/feedIcons/rss-box.svg">
+        <img src="{{site.baseurl}}/common_images/feedIcons/rss-box.svg">
         RSS
       </td>
       <td>N/A</td>
@@ -219,7 +219,7 @@ Some third party providers do not allow this revoke access to happen automatical
     </tr>
     <tr>
       <td>
-        <img src="/common_images/feedIcons/access-point.svg">
+        <img src="{{site.baseurl}}/common_images/feedIcons/access-point.svg">
         RSS
         Generic Endpoint
       </td>
@@ -232,30 +232,30 @@ Some third party providers do not allow this revoke access to happen automatical
 
 Feeds can be created from the feeds section and you will see a list of existing feeds:
 
-![Feed List](/common_images/developers/feed.png "Feed")
+![Feed List]({{site.baseurl}}/common_images/developers/feed.png "Feed")
 
 ## Adding a Feed
-- Click the Add icon <img src="/common_images/plus.svg" class="icon"> in the right top corner.
+- Click the Add icon <img src="{{site.baseurl}}/common_images/plus.svg" class="icon"> in the right top corner.
 - A dialog appears. Choose a valid, unique name and select the type of feed. A list of integrations will appear if required.
 Depending on what type of feed is selected, multiple options can be entered such as "search" or "max items". The details of these fields are documented later in this guide.
 - When done press the Save button.
 
-![New Feed](/common_images/developers/feed_new.png "New Feed")
+![New Feed]({{site.baseurl}}/common_images/developers/feed_new.png "New Feed")
 
 ## Previewing Feed Data
 Once you've created a feed, you can see what the data it is returning looks like.
 
 - Select the feed in the list by checking the checkbox.
-- Click the preview icon <img src="/common_images/eye.svg" class="icon"> in the top right corner.
+- Click the preview icon <img src="{{site.baseurl}}/common_images/eye.svg" class="icon"> in the top right corner.
 - A dialog opens to show the preview data in JSON format.
 - The data can be downloaded by pressing the Download button in the bottom right corner.
 
-![Feed Preview](/common_images/developers/feed_data.png "Feed Preview Data")
+![Feed Preview]({{site.baseurl}}/common_images/developers/feed_data.png "Feed Preview Data")
 
 ## Remove Feed
 - Make sure there are no apps currently running that rely on this feed.
 - Select the feed in the list by checking the checkbox.
-- Click the Delete icon <img src="/common_images/delete.svg" class="icon"> in the top right corner.
+- Click the Delete icon <img src="{{site.baseurl}}/common_images/delete.svg" class="icon"> in the top right corner.
 
 ## Feed Configuration Fields
 
@@ -788,17 +788,17 @@ For such a use case, feeds can be created with the dynamic option set to True. T
 - Create a feed as you would normally
 - Check the Dynamic option. All other fields will be removed.
 
-![Dynamic Feed](/common_images/developers/feed_dynamic.png "Feed Dynamic")
+![Dynamic Feed]({{site.baseurl}}/common_images/developers/feed_dynamic.png "Feed Dynamic")
 
 ### Previewing a Dynamic Feed
 Once you've created a dynamic feed, you can see what it's like to have dynamic parameters and what it returns.
 
 - Select the feed in the list by checking the checkbox.
-- Click the preview icon <img src="/common_images/eye.svg" class="icon"> in the top right corner.
+- Click the preview icon <img src="{{site.baseurl}}/common_images/eye.svg" class="icon"> in the top right corner.
 - A dialog opens to show the preview data in JSON format. At the top of the dialog you can see the fields that are sent as parameters to EXP.
 - Enter all fields required and press Preview to see the data returned.
 
-![Feed Dynamic Preview](/common_images/developers/feed_dynamic_preview.png "Feed Dynamic Preview")
+![Feed Dynamic Preview]({{site.baseurl}}/common_images/developers/feed_dynamic_preview.png "Feed Dynamic Preview")
 
 ### Exceptions
 There are a couple of feed types not available as dynamic. Currently they are RSS and Generic Endpoint.
