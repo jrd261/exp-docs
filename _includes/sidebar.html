@@ -22,9 +22,9 @@
                                 {% if third.external_url %}
                                 <li><a href="{{third.external_url}}" target="_blank">{{third.title}}</a></li>
                                 {% elsif page.url == third.url %}
-                                <li class="active"><a href="{{third.url }}">{{third.title}}</a></li>
+                                <li class="active"><a href="{{site.baseurl}}{{third.url }}">{{third.title}}</a></li>
                                 {% else %}
-                                <li><a href="{{third.url }}">{{third.title}}</a></li>
+                                <li><a href="{{site.baseurl}}{{third.url }}">{{third.title}}</a></li>
                                 {% endif %}
                                 {% endif %}
                             {% endfor %}
