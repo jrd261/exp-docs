@@ -344,11 +344,11 @@ Once you've created a feed, you can see what the data it is returning looks like
           <td>Italian</td>
         </tr>
         <tr>
-          <td>es or sp</td>
+          <td>es</td>
           <td>Spanish</td>
         </tr>
         <tr>
-          <td>uk or ua</td>
+          <td>ua</td>
           <td>Ukrainian</td>
         </tr>
         <tr>
@@ -386,7 +386,7 @@ Once you've created a feed, you can see what the data it is returning looks like
           <td>Bulgarian</td>
         </tr>
         <tr>
-          <td>sv or se</td>
+          <td>se</td>
           <td>Swedish</td>
         </tr>
       </table>
@@ -396,7 +396,7 @@ Once you've created a feed, you can see what the data it is returning looks like
           <td>Chinese Traditional</td>
         </tr>
         <tr>
-          <td>zh or zh_cn</td>
+          <td>zh</td>
           <td>Chinese Simplified</td>
         </tr>
         <tr>
