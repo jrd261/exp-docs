@@ -888,4 +888,4 @@ If you want to see the ExpSwift logs you need to Click on the POD project name a
 Click on the Debug line to select it. Place your mouse cursor over the right side of the line and double-click. A list view will appear. Click the + button at the lower left of the list view to add a value. A text field will become active.
 In the text field, enter the text **-D DEBUG** and press Return to commit the line.
 
-![IOS debugg flag](/common_images/developers/ios-sdk-debuggFlag.png "IOS debugg flag")
+![IOS debugg flag]({{site.baseurl}}/common_images/developers/ios-sdk-debuggFlag.png "IOS debugg flag")
