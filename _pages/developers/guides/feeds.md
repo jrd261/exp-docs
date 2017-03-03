@@ -367,7 +367,7 @@ Once you've created a feed, you can see what the data it is returning looks like
         </tr>
         <tr>
           <td>pl</td>
-          <td>Pilish</td>
+          <td>Polish</td>
         </tr>
         <tr>
           <td>fi</td>
