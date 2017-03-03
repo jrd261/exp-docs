@@ -1,6 +1,6 @@
 ---
 permalink: /developers/guides/feeds
-title: Feeds
+title: Working With Feeds
 keywords: developer, feed, integration, facebook, google, linkedin, instagram, twitter, microsoft, shopify, square, github, weather, bitbucket, rss
 last_updated: July 11, 2016
 tags: []
