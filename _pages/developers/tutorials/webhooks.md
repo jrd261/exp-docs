@@ -32,12 +32,12 @@ Before we can hook up **Youtube** to **EXP** using **IFTTT** we need to define a
 ## Setup Web Hook
 
 1. Login to **EXP**.
-2. Select you organisation in the right top corner and choose **"Current Organisation"**.
+2. Select you organization in the right top corner and choose **"Current Organisation"**.
 3. Select **"Broadcast Web Hooks"**.
 4. In the right top corner you can create a new **Web Hook**.
 5. Enter a valid name for the **web Hook**.
 6. Enter for **event name** **"fling"**.
-7. Enter for **channel name** **"organisation"**, this will fling content to all players in the organisation. You can also select a individual player by using **UUID**, or select **location/zone**, or select **experience**. 
+7. Enter for **channel name** **"organization"**, this will fling content to all players in the organization. You can also select a individual player by using **UUID**, or select **location/zone**, or select **experience**. 
 8. When you have saved the **Web Hook**, find it in the list and open the **details**.
 9. Copy the Web Hook **URL** that we need in our **IFTTT** setup.
 
