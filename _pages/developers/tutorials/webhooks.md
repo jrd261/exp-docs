@@ -1,12 +1,12 @@
 ---
-permalink: /developers/guides/webhooks
+permalink: /developers/tutorials/webhooks
 title: Using a Broadcast Webhook to Fling
 keywords: developer, webhook, webhooks, IFTTT, fling, video, content
 last_updated: March 3, 2017
 tags: []
 ---
 
-<link rel="stylesheet" href="/_pages/developers/guides/webhooks.css">
+<link rel="stylesheet" href="/_pages/developers/tutorials/webhooks.css">
 
 # Overview
 
