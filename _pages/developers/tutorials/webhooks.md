@@ -32,7 +32,7 @@ Before we can hook up **Youtube** to **EXP** using **IFTTT** we need to define a
 ## Setup Web Hook
 
 1. Login to **EXP**.
-2. Select you organization in the right top corner and choose **"Current Organisation"**.
+2. Select you organization in the right top corner and choose **"Current Organization"**.
 3. Select **"Broadcast Web Hooks"**.
 4. In the right top corner you can create a new **Web Hook**.
 5. Enter a valid name for the **web Hook**.
