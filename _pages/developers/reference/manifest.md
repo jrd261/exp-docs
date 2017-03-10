@@ -1,6 +1,6 @@
 ---
 permalink: /developers/reference/manifest
-title: Manifest.json Reference 
+title: Manifest.json Reference
 keywords: manifest
 ---
 
@@ -440,9 +440,10 @@ additional config parameter supplied called `options` that lists the possible va
 }
 ```
 
-### configType: appArray
-Allows the user to select apps from the current experience or import apps from their content tree.
-Also allows the user to choose or upload content. The stored data is an array of [app launch options](/developers/reference/player-app-sdk/#app-launch-options) prepared for use by the player.
+### configType: app
+Allows the user to select one or more apps from the current experience or import apps from their content tree.
+
+Also allows the user to choose or upload content. The stored data is the `config` object of the [app launch options](/developers/reference/player-app-sdk/#app-launch-options) available at `exp.app.config[<path>]` during player app runtime.
 
 If you only want the user to be able to set one piece of content, use this object but set `multiItem` to `false`.
 
@@ -453,11 +454,12 @@ Can be restricted to certain types of content, along the same lines as the `cont
   "configTypes": [
     {
       "name": "content",
-      "type": "appArray",
+      "type": "app",
       "label": "Content For App",
       "required": true,
       "path": "contentItems",
-      "restriction": ["video", "image"]
+      "restriction": ["video", "image"],
+      "multiItem": false
     }
   ],
   "config": {
