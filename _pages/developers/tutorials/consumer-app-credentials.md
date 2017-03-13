@@ -1,6 +1,6 @@
 ---
 permalink: /developers/tutorials/consumer-app-credentials
-title: Using Consumer App Credentials
+title: Consumer App Credentials
 keywords: developer
 last_updated: April 12, 2016
 tags: [getting_started]
