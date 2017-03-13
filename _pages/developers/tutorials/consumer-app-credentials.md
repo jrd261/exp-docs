@@ -47,3 +47,15 @@ For the details of how to use these to authenticate your app, see the reference 
 
 You can also click Reset API Key in this form to change the API Key value. All devices running the app that has the old value will no longer be able
 to connect to EXP.
+
+## Player URLs
+
+Consumer app credentials can be used to authenticate an EXP player launched in a browser. Following the steps above, make a note of the UUID and API Key
+of your consumer app and then enter them in the query string of a url to a player, e.g.
+
+```
+https://player.goexp.io/#uuid=7871d45b-9ce3-49be-ab98-8739dfa84693&apiKey=f305a37f9e86546e1391730d417b9c810844f2b66f89d6514c6c061c2c33322102541487c64ad53f92c2de5fe2240915
+```
+
+This URL, together with the query parameters specifying an experience and app, will play an EXP player app. For more about player urls see the
+[Player URLs]({{site.baseurl}}/developers/tutorials/player-urls) guide and [Player App SDK reference]({{site.baseurl}}/developers/reference/player-app-sdk#url-parameters).
