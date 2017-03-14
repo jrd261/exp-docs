@@ -1,0 +1,14 @@
+machine:
+  ruby:
+    version: 2.3.0
+  services:
+    - docker
+dependencies:
+  override:
+    - echo
+compile:
+  override:
+    - /bin/bash ./circle.sh
+test:
+  override:
+    - echo
