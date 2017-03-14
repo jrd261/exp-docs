@@ -31,4 +31,4 @@ $GCLOUD_BIN config set container/cluster $CIRCLE_BRANCH
 $GCLOUD_BIN container clusters get-credentials $CIRCLE_BRANCH
 sudo chown -R ubuntu:ubuntu /home/ubuntu/.kube
 kubectl set image deployment/$K8S_DEPLOYMENT $K8S_DEPLOYMENT=$DOCKER_IMAGE
-kubectl rollout status deployment/$DEPLOYMENT
+kubectl rollout status deployment/$K8S_DEPLOYMENT
