@@ -46,9 +46,9 @@ In the EXP platform we are going to setup a Facebook feed that will pull posting
 ![tutorial](/common_images/tutorials/feed_tutorial_3.png "feed tutorial 3")
 
 ## EXP player SDK
-The [EXP Player APP SDK](/developers/reference/player-app-sdk) will automatically be injected into all HTML apps running on an EXP player. 
+The [EXP Player APP SDK](/developers/reference/player-app-sdk) will automatically be injected into all HTML apps running on an EXP player.
 The EXP player fires a Javascript `load` function when the `SDK` is loaded.
-From here the `SDK` can be accessed using the `exp` object. 
+From here the `SDK` can be accessed using the `exp` object.
 For example getting configuration information: `exp.app.config`.
 
 ## App Start Point
@@ -68,62 +68,62 @@ Alternatively, the modules can also be downloaded manually and included, or CDN 
 
     <!DOCTYPE html>
     <html ng-app="facebookApp">
-    
+
         <head>
             <meta charset="UTF-8">
             <title>Facebook APP</title>
             <link href="bower_components/angular-material/angular-material.min.css" rel="stylesheet">
             <link href="style/style.css" rel="stylesheet">
         </head>
-    
+
         <body ng-controller="mainController" class="main_container">
-    
+
         <md-toolbar class="tool_bar" layout="row" layout-align="center center">
-    
+
             <div layout="row" layout-align="start center" class="title_container">
                 <h1><span>{{pageName | uppercase}}</span></h1>
             </div>
-    
+
             <div flex></div>
-    
+
             <div class="image_container" layout="row" layout-align="center center">
                 <img ng-src="{{pageLogo}}" class="image">
             </div>
-    
+
         </md-toolbar>
-    
+
         <md-content class="content_container">
             <md-grid-list md-cols="4" md-row-height="16:9">
                 <md-grid-tile ng-repeat="message in messages" ng-style="message.background">
-    
+
                     <div class="tile_content" layout="column" layout-align="start start">
                         <h2>{{message.text}}</h2>
                     </div>
-    
+
                     <md-grid-tile-footer>
                         <div layout="row" class="footer_container">
                             <div>
                                 <h3>{{message.created}}</h3>
                             </div>
                             <div flex>
-    
+
                             </div>
                             <div>
                                 <h3>{{message.date | date:'dd-MM-yyyy'}}</h3>
                             </div>
                         </div>
                     </md-grid-tile-footer>
-    
+
                 </md-grid-tile>
             </md-grid-list>
         </md-content>
-    
+
         </body>
         <script src="bower_components/angular/angular.min.js" type="text/javascript"></script>
         <script src="bower_components/angular-material/angular-material.min.js" type="text/javascript"></script>
         <script src="bower_components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
         <script src="bower_components/angular-aria/angular-aria.min.js" type="text/javascript"></script>
-    
+
         <script src="scripts/app.js" type="text/javascript"></script>
     </html>
 
@@ -199,8 +199,8 @@ Goal is to `populate` these scope variables with data from our `SCALA Facebook F
 
 ### Manifest File
 Before start implementing the data in the `angular HTML App`, a configuration file can be added using a `manifest.json`.
-This configuration file is placed in the root of the project. 
-In principle we are creating a App Template from the `angular HTML App` this way, allowing a `EXP user` to select a `FEED` or set a interval duration. 
+This configuration file is placed in the root of the project.
+In principle we are creating a App Template from the `angular HTML App` this way, allowing a `EXP user` to select a `FEED` or set a interval duration.
 
 - Create a file called manifest.json in the root of the `Angular HTML App` and add this code:
 
@@ -235,7 +235,7 @@ In principle we are creating a App Template from the `angular HTML App` this way
 ```
 
 Now we created an `App Template` from the `Angular HTML App` that can be configured.
-A user can now select a `Facebook FEED` and `refresh interval` for the data in the `EXP platform`.  
+A user can now select a `Facebook FEED` and `refresh interval` for the data in the `EXP platform`.
 
 Looking in the manifest file the configTypes array allows to create properties to select in the `EXP platform`.
 
@@ -247,14 +247,14 @@ Available property types are:
 4. `select`: a selection of options.
 5. `image`: to select a image file.
 6. `color`: to select a HTML color value.
-7. `appArray`: to select different HTML apps.
+7. `app`: to select any type of EXP content.
 
 The config section will be used to set `default` values for the `Angular HTML App`.
-To `access` these values using the 'EXP Player SDK', simple use the `exp` object and reference to the path name like: `exp.app.config.refreshRateSeconds` 
+To `access` these values using the 'EXP Player SDK', simple use the `exp` object and reference to the path name like: `exp.app.config.refreshRateSeconds`
 
 ### The load function
 When the `load function` is fired the `Scala Player` is ready injecting the `exp object`, at that moment we can load all `angular code` and start the `Angular HTML App`.
-The `Scala Player` can only fire this function when it's created in the `Angular HTML App`. 
+The `Scala Player` can only fire this function when it's created in the `Angular HTML App`.
 
 - Remove the `ng-app` option in the `index.html` page:
 
@@ -262,62 +262,62 @@ The `Scala Player` can only fire this function when it's created in the `Angular
 
     <!DOCTYPE html>
         <html>
-        
+
             <head>
                 <meta charset="UTF-8">
                 <title>Facebook APP</title>
                 <link href="bower_components/angular-material/angular-material.min.css" rel="stylesheet">
                 <link href="style/style.css" rel="stylesheet">
             </head>
-        
+
             <body ng-controller="mainController" class="main_container">
-        
+
             <md-toolbar class="tool_bar" layout="row" layout-align="center center">
-        
+
                 <div layout="row" layout-align="start center" class="title_container">
                     <h1><span>{{pageName | uppercase}}</span></h1>
                 </div>
-        
+
                 <div flex></div>
-        
+
                 <div class="image_container" layout="row" layout-align="center center">
                     <img ng-src="{{pageLogo}}" class="image">
                 </div>
-        
+
             </md-toolbar>
-        
+
             <md-content class="content_container">
                 <md-grid-list md-cols="4" md-row-height="16:9">
                     <md-grid-tile ng-repeat="message in messages" ng-style="message.background">
-        
+
                         <div class="tile_content" layout="column" layout-align="start start">
                             <h2>{{message.text}}</h2>
                         </div>
-        
+
                         <md-grid-tile-footer>
                             <div layout="row" class="footer_container">
                                 <div>
                                     <h3>{{message.created}}</h3>
                                 </div>
                                 <div flex>
-        
+
                                 </div>
                                 <div>
                                     <h3>{{message.date | date:'dd-MM-yyyy'}}</h3>
                                 </div>
                             </div>
                         </md-grid-tile-footer>
-        
+
                     </md-grid-tile>
                 </md-grid-list>
             </md-content>
-        
+
             </body>
             <script src="bower_components/angular/angular.min.js" type="text/javascript"></script>
             <script src="bower_components/angular-material/angular-material.min.js" type="text/javascript"></script>
             <script src="bower_components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
             <script src="bower_components/angular-aria/angular-aria.min.js" type="text/javascript"></script>
-        
+
             <script src="scripts/app.js" type="text/javascript"></script>
         </html>
 

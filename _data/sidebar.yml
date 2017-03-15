@@ -45,6 +45,13 @@ entries:
         product: all
         version: all
         output: web, pdf
+      - title: Consumer App Credentials
+        url: /developers/tutorials/consumer-app-credentials
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
       - title: Using EXP CLI
         external_url: https://github.com/scalainc/exp-cli
         audience: developers, designers
@@ -54,6 +61,13 @@ entries:
         output: web, pdf
       - title: Example Player Applications
         external_url: https://github.com/scalainc/exp-app-boilerplates
+        audience: developers, designers
+        platform: all
+        product: all
+        version: all
+        output: web, pdf
+      - title: Using a Broadcast Web Hook to Fling
+        url: /developers/tutorials/webhooks
         audience: developers, designers
         platform: all
         product: all
