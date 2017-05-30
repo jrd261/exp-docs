@@ -1,6 +1,6 @@
 ---
 permalink: /developers/reference/android-sdk
-title: Android SDK Reference (v1.0.6)
+title: Android SDK Reference (v5.0.0)
 keywords: android, sdk
 ---
 
@@ -11,7 +11,7 @@ keywords: android, sdk
 
 Gradle:
 ```groovy
- compile 'io.goexp:exp-android-sdk:v1.0.6'
+ compile 'io.goexp:exp-android-sdk:v5.0.0'
 ```
 
 Exp Android SDK requires at minimum Java 7 and Android 4.3.
