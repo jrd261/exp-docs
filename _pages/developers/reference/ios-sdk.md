@@ -1,6 +1,6 @@
 ---
 permalink: /developers/reference/ios-sdk
-title: IOS SDK Reference (v1.0.6)
+title: IOS SDK Reference (v5.0.0)
 keywords: ios, sdk
 ---
 
@@ -62,7 +62,7 @@ Or to use a specific release:
 ```ruby
 use_frameworks!
 
-pod "ExpSwift", , :git => 'https://github.com/ScalaInc/exp-ios-sdk.git', :tag => 'v1.0.0'
+pod "ExpSwift", , :git => 'https://github.com/ScalaInc/exp-ios-sdk.git', :tag => 'v5.0.0'
 ```
 
 # Runtime

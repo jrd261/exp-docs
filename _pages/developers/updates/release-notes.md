@@ -5,6 +5,15 @@ keywords: developer
 tags: [updates]
 ---
 
+## May 2017 Release
+
+- Android SDK 5.0.0 [click here](https://github.com/ScalaInc/exp-android-sdk/releases/tag/v5.0.0).
+
+  - First Eagle release for Android SDK for single tenant
+
+- IOS SDK 5.0.0 [click here](https://github.com/ScalaInc/exp-ios-sdk/releases/tag/v5.0.0).
+
+  - First Eagle release for IOS SDK for single tenant
 
 
 ## December 2016 Release
